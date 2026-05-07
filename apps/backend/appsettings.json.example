@@ -1,0 +1,13 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=db.prisma.io;Database=postgres;Username=[username];Password=[password];Port=5432;SSL Mode=Require;Trust Server Certificate=true;Pooling=false"
+  }
+}
