@@ -17,3 +17,10 @@
 ## 初期ディレクトリ構造の構築 - 2026/05/07
 
 フレームワークの導入
+
+---
+
+## ASPとローカルpostgresのセットアップ - 2026/05/08
+
+* https://zenn.dev/fujishu/articles/1340032d4474b5
+* https://zenn.dev/fujishu/articles/94002b74c39646
