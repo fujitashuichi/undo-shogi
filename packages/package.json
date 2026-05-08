@@ -1,15 +1,11 @@
 {
-  "name": "undo-shogi",
+  "name": "packages",
   "version": "1.0.0",
   "description": "",
-  "main": "",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "workspaces": {
-    "@undo-shogi/packages": [
-      "./packages/*"
-    ]
   },
   "keywords": [],
   "author": "",
@@ -17,6 +13,7 @@
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
     "@types/node": "^25.6.2",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "zod": "^4.4.3"
   }
 }

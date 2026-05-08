@@ -1,7 +1,10 @@
+import { z } from "zod";
+
 export type Side = "Sente" | "Gote";
 
-export type PieceKind =
-  | "King" | "Gold" | "Silver" | "Knight" | "Lance"
-  | "Bishop" | "Rook"
-  | "Pawn"
-;
+export const PieceKindSchema = z.enum([
+  "King", "Gold", "Silver", "Knight", "Lance",
+  "Bishop", "Rook",
+  "Pawn"
+]);
+export type PieceKind = z.infer<typeof PieceKindSchema>;
