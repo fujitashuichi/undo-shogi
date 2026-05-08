@@ -5,7 +5,7 @@
 
 appsettings.json
 appsettings.*.json
-*.example*
+!*.example*
 
 # dotenv files
 .env
