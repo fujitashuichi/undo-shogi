@@ -17,7 +17,6 @@
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
     "@types/node": "^25.6.2",
-    "crypt": "^0.0.2",
     "pino": "^10.3.1",
     "typescript": "^6.0.3"
   },

@@ -11,9 +11,6 @@ importers:
       '@types/node':
         specifier: ^25.6.2
         version: 25.6.2
-      crypt:
-        specifier: ^0.0.2
-        version: 0.0.2
       pino:
         specifier: ^10.3.1
         version: 10.3.1
@@ -39,9 +36,6 @@ packages:
 
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
-
-  crypt@0.0.2:
-    resolution: {integrity: sha512-mCxBlsHFYh9C+HVpiEacem8FEBnMXgU9gy4zmNC+SXAZNB/1idgp/aulFJ4FgCi7GPEVbfyng092GqL2k2rmow==}
 
   dateformat@4.6.3:
     resolution: {integrity: sha512-2P0p0pFGzHS5EMnhdxQi7aJN+iMheud0UhG4dlE1DLAlvL8JHjJJTX/CSm4JXwV0Ka5nGk3zC5mcb5bUQUxxMA==}
@@ -143,8 +137,6 @@ snapshots:
   atomic-sleep@1.0.0: {}
 
   colorette@2.0.20: {}
-
-  crypt@0.0.2: {}
 
   dateformat@4.6.3: {}
 
