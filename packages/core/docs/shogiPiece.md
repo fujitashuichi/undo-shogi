@@ -13,7 +13,7 @@ constructor(
 ```
 
 
-## インスタンス普遍性
+## インスタンス不変性
 
 * zenn: https://zenn.dev/fujishu/articles/70ae4198a4d7f5
 

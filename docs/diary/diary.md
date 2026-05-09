@@ -24,3 +24,7 @@
 
 * https://zenn.dev/fujishu/articles/1340032d4474b5
 * https://zenn.dev/fujishu/articles/94002b74c39646
+
+## 基本的な駒のエンティティを定義 - 2026/05/09
+
+* https://zenn.dev/fujishu/articles/70ae4198a4d7f5
