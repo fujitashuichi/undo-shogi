@@ -5,15 +5,13 @@ import { pieceValidator } from "./validators/PieceValidator.js";
 
 
 export class ShogiPiece {
-  public readonly id: UUID;
-
   constructor(
     public readonly side: Side,
     public readonly kind: PieceKind,
-    public readonly isPromoted: boolean = false
+    public readonly isPromoted: boolean = false,
+    public readonly id: UUID = crypto.randomUUID()
   ) {
     pieceValidator(isPromoted, kind);
-    this.id = crypto.randomUUID();
   }
 
 
@@ -23,7 +21,7 @@ export class ShogiPiece {
       return this;
     }
 
-    return new ShogiPiece(this.side, this.kind, true);
+    return new ShogiPiece(this.side, this.kind, true, this.id);
   }
 
   public changeSide = (): ShogiPiece => {
@@ -31,6 +29,6 @@ export class ShogiPiece {
 
     const nextSide: Side = this.side === "Sente" ? "Gote" : "Sente";
 
-    return new ShogiPiece(nextSide, this.kind, false);
+    return new ShogiPiece(nextSide, this.kind, false, this.id);
   }
 }
