@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { PieceKindSchema } from "../types.js";
+import { PieceKindSchema } from "../types/piece.types.js";
 
 export const NoPromotablePieceSchema = PieceKindSchema.extract([
   "King", "Gold"

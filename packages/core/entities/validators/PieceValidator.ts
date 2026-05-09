@@ -1,4 +1,4 @@
-import type { PieceKind } from "../types.js";
+import type { PieceKind } from "../types/piece.types.js";
 import { NoPromotablePieceSchema } from "./types.js";
 
 export const pieceValidator = (isPromoted: boolean, kind: PieceKind) => {
