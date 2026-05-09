@@ -1,6 +1,6 @@
 import type { UUID } from "crypto";
 import { logger } from "../../tools/index.js";
-import type { PieceKind, Side } from "./types.js";
+import type { PieceKind, Side } from "./types/piece.types.js";
 import { pieceValidator } from "./validators/PieceValidator.js";
 
 
