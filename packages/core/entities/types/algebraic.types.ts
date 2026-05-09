@@ -1,4 +1,4 @@
-export interface Position {
-  readonly file: number;
-  readonly rank: number;
+export type Position = {
+  file: number,
+  row: number;
 }
