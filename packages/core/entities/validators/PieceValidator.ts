@@ -1,8 +1,11 @@
 import type { PieceKind } from "../types.js";
+import { NoPromotablePieceSchema } from "./types.js";
 
 export const pieceValidator = (isPromoted: boolean, kind: PieceKind) => {
   if (isPromoted) {
-    if (kind === "King" || kind === "Gold") {
+    const isNoPromotable = NoPromotablePieceSchema.safeParse(kind).success;
+
+    if (isNoPromotable) {
       throw new Error(`${kind} cannot be promoted.`);
     }
   }
