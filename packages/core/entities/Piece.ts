@@ -9,10 +9,9 @@ export class ShogiPiece {
     public readonly side: Side,
     public readonly kind: PieceKind,
     public readonly isPromoted: boolean = false,
-    public readonly id?: UUID
+    public readonly id: UUID = crypto.randomUUID()
   ) {
     pieceValidator(isPromoted, kind);
-    this.id = id ?? crypto.randomUUID();
   }
 
 
