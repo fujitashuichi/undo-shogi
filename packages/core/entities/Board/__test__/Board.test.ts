@@ -11,4 +11,13 @@ describe("test example", () => {
       kind: "Silver"
     })
   })
+
+  it("飛車先の歩が突ける", () => {
+    const board = new Board(hirateSquares);
+
+    console.log(board.debugRenderKanji());
+
+    const nextBoard = board.movePiece({ x: 7, y: 6 }, { x: 7, y: 5 }, false);
+    console.log(nextBoard.debugRenderKanji());
+  })
 });

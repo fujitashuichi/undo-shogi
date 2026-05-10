@@ -1,4 +1,6 @@
 import type { FixedLengthArray } from "../../../tools/index.js";
+import { MovementError } from "../../errors/movement.errors.js";
+import { boardConfig } from "../config/boardConfig.js";
 import type { ShogiPiece } from "../Piece.js";
 import type { Position } from "../types/algebraic.types.js";
 
@@ -12,8 +14,8 @@ type Squares = FixedLengthArray<
 
 
 export class Board {
-  public readonly boardSize = 9;
   public readonly squares: Squares;
+  public readonly boardSize = boardConfig.boardSize;
 
   constructor(
     squares: Squares
@@ -23,14 +25,14 @@ export class Board {
 
 
   public readonly movePiece = (current: Position, next: Position, promote: boolean) => {
-    const currentFile = current.file;
-    const currentRow = current.row;
+    const currentX = current.x;
+    const currentY = current.y;
 
-    const nextFile = next.file;
-    const nextRow = next.row;
+    const nextX = next.x;
+    const nextY = next.y;
 
-    let movingPiece = this.squares[currentRow]![currentFile];
-    if (!movingPiece) throw new Error("駒が見つかりません");
+    let movingPiece = this.squares[currentY]![currentX];
+    if (!movingPiece) throw new MovementError("MOVE_UNDEFINED_PIECE");
 
     if (promote) {
       movingPiece = movingPiece.promote();
@@ -38,8 +40,8 @@ export class Board {
 
     const nextSquares = this.squares.map((row, rIdx) =>
       row.map((piece, cIdx) => {
-        if (rIdx === nextRow && cIdx === nextFile) return movingPiece;
-        if (rIdx === currentRow && cIdx === currentFile) return undefined;
+        if (rIdx === nextY && cIdx === nextX) return movingPiece;
+        if (rIdx === currentY && cIdx === currentX) return undefined;
         return piece;
       })
     ) as Squares;
@@ -50,17 +52,71 @@ export class Board {
 
   // 持ち駒を打つ
   public readonly dropPiece = (position: Position, piece: ShogiPiece) => {
-    const targetFile = position.file;
-    const targetRow = position.row;
+    const targetX = position.x;
+    const targetY = position.y;
 
 
     const nextSquares = this.squares.map((row, rIdx) =>
       row.map((currentPiece, fIdx) => {
-        if (rIdx === targetRow && fIdx === targetFile) return piece;
+        if (rIdx === targetX && fIdx === targetY) return piece;
         return currentPiece;
       })
     ) as Squares;
 
     return new Board(nextSquares);
+  }
+
+
+  public debugRenderKanji(): string {
+    const kindToKanji: Record<string, string> = {
+      Pawn: "歩",
+      Lance: "香",
+      Knight: "桂",
+      Silver: "銀",
+      Gold: "金",
+      Bishop: "角",
+      Rook: "飛",
+      King: "玉",
+    };
+
+    const graph = this.squares
+      .map((row) =>
+        row
+          .map((piece) => {
+            if (!piece) return "  ・ ";
+
+            const side = piece.side === "Sente" ? "▲" : "△";
+            const kanji = kindToKanji[piece.kind] || "？";
+
+            const displayKind = piece.isPromoted
+              ? kanji.toUpperCase()
+              : kanji.toLowerCase();
+
+            return ` ${side}${displayKind} `;
+          })
+          .join("")
+      )
+      .join("\n");
+
+    return `\n${graph}\n`;
+  }
+
+  public debugRender(): string {
+    const graph = this.squares
+      .map((row) =>
+        row
+          .map((piece) => {
+            if (!piece) return " ・ ";
+            const side = piece.side === "Sente" ? "▲" : "△";
+            if (piece.isPromoted) {
+              return ` ${side}${piece.kind.slice(0, 1)} `;
+            }
+            return ` ${side}${piece.kind.slice(0, 1).toLowerCase()} `;
+          })
+          .join("")
+      )
+      .join("\n");
+
+    return `※成り駒は大文字で表記します\n\n${graph}\n`;
   }
 }
