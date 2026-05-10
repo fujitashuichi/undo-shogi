@@ -38,10 +38,10 @@ export class Board {
       movingPiece = movingPiece.promote();
     }
 
-    const nextSquares = this.squares.map((row, rIdx) =>
-      row.map((piece, cIdx) => {
-        if (rIdx === nextY && cIdx === nextX) return movingPiece;
-        if (rIdx === currentY && cIdx === currentX) return undefined;
+    const nextSquares = this.squares.map((row, yIdx) =>
+      row.map((piece, xIdx) => {
+        if (yIdx === nextY && xIdx === nextX) return movingPiece;
+        if (yIdx === currentY && xIdx === currentX) return undefined;
         return piece;
       })
     ) as Squares;
@@ -56,9 +56,9 @@ export class Board {
     const targetY = position.y;
 
 
-    const nextSquares = this.squares.map((row, rIdx) =>
-      row.map((currentPiece, fIdx) => {
-        if (rIdx === targetX && fIdx === targetY) return piece;
+    const nextSquares = this.squares.map((row, yIdx) =>
+      row.map((currentPiece, xIdx) => {
+        if (yIdx === targetY && xIdx === targetX) return piece;
         return currentPiece;
       })
     ) as Squares;

@@ -16,7 +16,10 @@ export const moveValidator = {
       throw new MovementError("MOVE_UNDEFINED_PIECE");
     }
 
-    if (next.x > boardSize || next.y > boardSize) {
+    if (
+      (next.x < 0 || next.y < 0) ||
+      (next.x > boardSize || next.y > boardSize)
+    ) {
       logger.error("盤の範囲外です。");
       throw new MovementError("MOVE_TO_INVALID_SQUARE");
     }
