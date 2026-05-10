@@ -1,7 +1,7 @@
 import type { FixedLengthArray } from "../../../tools/index.js";
 import { MovementError } from "../../errors/movement.errors.js";
 import { boardConfig } from "../config/boardConfig.js";
-import type { ShogiPiece } from "../Piece.js";
+import type { ShogiPiece } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
 
 
@@ -67,6 +67,9 @@ export class Board {
   }
 
 
+
+  /* ↓ デバッグ用のメソッド */
+
   public debugRenderKanji(): string {
     const kindToKanji: Record<string, string> = {
       Pawn: "歩",
@@ -83,22 +86,22 @@ export class Board {
       .map((row) =>
         row
           .map((piece) => {
-            if (!piece) return "  ・ ";
+            if (!piece) return "  ・  ";
 
             const side = piece.side === "Sente" ? "▲" : "△";
             const kanji = kindToKanji[piece.kind] || "？";
 
             const displayKind = piece.isPromoted
-              ? kanji.toUpperCase()
-              : kanji.toLowerCase();
+              ? `${kanji}+`
+              : `${kanji} `;
 
             return ` ${side}${displayKind} `;
           })
           .join("")
       )
-      .join("\n");
+      .join("\n\n");
 
-    return `\n${graph}\n`;
+    return `\n ☆ 盤面図 \n${graph}\n`;
   }
 
   public debugRender(): string {

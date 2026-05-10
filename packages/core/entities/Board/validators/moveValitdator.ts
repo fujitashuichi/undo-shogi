@@ -1,9 +1,9 @@
-import { logger } from "../../../tools/index.js";
-import { MovementError } from "../../errors/movement.errors.js";
-import { boardConfig } from "../config/boardConfig.js";
-import type { ShogiPiece } from "../Piece.js";
-import type { Position } from "../types/algebraic.types.js";
-import type { Board } from "./Board.js";
+import { logger } from "../../../../tools/index.js";
+import { MovementError } from "../../../errors/movement.errors.js";
+import { boardConfig } from "../../config/boardConfig.js";
+import type { ShogiPiece } from "../../Piece/Piece.js";
+import type { Position } from "../../types/algebraic.types.js";
+import type { Board } from "../Board.js";
 
 
 const boardSize = boardConfig.boardSize;
