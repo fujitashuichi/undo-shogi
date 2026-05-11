@@ -7,8 +7,8 @@ const vectors: PieceVectors = [
     infinity: true
   },
   {
-    dx: 0,
-    dy: 1,
+    dx: 1,
+    dy: 0,
     infinity: true
   },
   {
@@ -24,6 +24,6 @@ const vectors: PieceVectors = [
 ];
 
 
-export const pawnMotion: PieceMotion = {
+export const rookMotion: PieceMotion = {
   vectors
 }

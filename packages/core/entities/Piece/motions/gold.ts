@@ -34,6 +34,6 @@ const vectors: PieceVectors = [
 ];
 
 
-export const pawnMotion: PieceMotion = {
+export const goldMotion: PieceMotion = {
   vectors
 }

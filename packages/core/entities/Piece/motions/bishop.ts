@@ -24,6 +24,6 @@ const vectors: PieceVectors = [
 ];
 
 
-export const pawnMotion: PieceMotion = {
+export const bishopMotion: PieceMotion = {
   vectors
 }
