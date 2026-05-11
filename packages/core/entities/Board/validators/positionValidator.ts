@@ -10,7 +10,7 @@ export const promotionZoneRange = (side: Side): [number, number] => {
   if (side === "Sente") {
     return [0, boardConfig.promotionZone - 1];
   }
-  return [boardSize, boardSize - boardConfig.promotionZone];
+  return [boardSize - 1, boardSize - boardConfig.promotionZone];
 }
 
 
