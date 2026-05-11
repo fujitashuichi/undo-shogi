@@ -1,15 +1,12 @@
-import type { TupleType } from "typescript";
 import { logger } from "../../../../tools/index.js";
 import { MovementError } from "../../../errors/movement.errors.js";
-import { boardConfig } from "../../config/boardConfig.js";
 import type { ShogiPiece } from "../../Piece/Piece.js";
 import type { Position } from "../../types/algebraic.types.js";
 import type { Board } from "../Board.js";
 import type { Side } from "../../types/piece.types.js";
 import { isInsideRange } from "../../../../tools/math/isInsideRange.js";
+import { positionValidator } from "./positionValidator.js";
 
-
-const boardSize = boardConfig.boardSize;
 
 export const moveValidator = {
   canMove: (board: Board, current: Position, next: Position) => {
@@ -19,10 +16,7 @@ export const moveValidator = {
       throw new MovementError("MOVE_UNDEFINED_PIECE");
     }
 
-    if (
-      (next.x < 0 || next.y < 0) ||
-      (next.x > boardSize || next.y > boardSize)
-    ) {
+    if (!positionValidator.isInBoard(next.x, next.y)) {
       logger.error("盤の範囲外です。");
       throw new MovementError("MOVE_TO_INVALID_SQUARE");
     }
@@ -42,6 +36,11 @@ export const moveValidator = {
     if (pieceInTargetSquare) {
       logger.error("そのマスには駒が存在するため持ち駒を打てません。");
       throw new MovementError("DROP_TO_INVALID_SQUARE");
+    }
+
+    if (!positionValidator.isInBoard(position.x, position.y)) {
+      logger.error("盤の範囲外です。");
+      throw new MovementError("MOVE_TO_INVALID_SQUARE");
     }
 
 
@@ -64,10 +63,13 @@ export const moveValidator = {
     return true;
   },
 
-  canPromote: (board: Board, side: Side, currentPos: Position, nextPos: Position) => {
+  canPromote: (side: Side, currentPos: Position, nextPos: Position) => {
     // 既に持ち駒が直接成らないように定義しているためバリデーションは不要
 
-    if (!board.isInPromotionZone(side, currentPos) && !board.isInPromotionZone(side, nextPos)) {
+    if (
+      !positionValidator.isInPromotionZone(side, currentPos) &&
+      !positionValidator.isInPromotionZone(side, nextPos)
+    ) {
       logger.error("相手陣地に入るか相手陣地から動かないと成りはできません。");
       throw new MovementError("INVALID_PROMOTION");
     }

@@ -1,10 +1,8 @@
 import type { FixedLengthArray } from "../../../tools/index.js";
-import { isInsideRange } from "../../../tools/math/isInsideRange.js";
 import { MovementError } from "../../errors/movement.errors.js";
 import { boardConfig } from "../config/boardConfig.js";
 import type { ShogiPiece } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
-import type { Side } from "../types/piece.types.js";
 
 
 // Boardは動作のみ保証する。駒の増減などは責務ではないと定義する。
@@ -66,18 +64,6 @@ export class Board {
     ) as Squares;
 
     return new Board(nextSquares);
-  }
-
-
-  public isInPromotionZone = (side: Side, position: Position): boolean => {
-    return isInsideRange(position.y, this.promotionZone(side));
-  }
-
-  public promotionZone = (side: Side): [number, number] => {
-    if (side === "Sente") {
-      return [0, 2];
-    }
-    return [8, 6];
   }
 
 
