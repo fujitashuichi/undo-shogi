@@ -5,15 +5,26 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>_</RootNamespace>
+<<<<<<< HEAD
     <UserSecretsId>1940c533-5651-4c99-bb2b-544e56ef9119</UserSecretsId>
+=======
+>>>>>>> 196a814d15f2cc7f4dec4b43a2abaf7910520c3d
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.7" />
+<<<<<<< HEAD
+=======
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.7" />
+>>>>>>> 196a814d15f2cc7f4dec4b43a2abaf7910520c3d
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.7">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+<<<<<<< HEAD
+=======
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.7" />
+>>>>>>> 196a814d15f2cc7f4dec4b43a2abaf7910520c3d
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.1" />
   </ItemGroup>
 

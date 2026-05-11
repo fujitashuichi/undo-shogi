@@ -17,3 +17,22 @@
 ## 初期ディレクトリ構造の構築 - 2026/05/07
 
 フレームワークの導入
+<<<<<<< HEAD
+=======
+
+---
+
+## ASPとローカルpostgresのセットアップ - 2026/05/08
+
+* https://zenn.dev/fujishu/articles/1340032d4474b5
+* https://zenn.dev/fujishu/articles/94002b74c39646
+
+## 基本的な駒のエンティティを定義 - 2026/05/09
+
+* https://zenn.dev/fujishu/articles/70ae4198a4d7f5
+
+## 将棋盤の動きを定義 - 2026/05/10
+* https://zenn.dev/fujishu/articles/ed9a332f394879
+盤はバリデーションを持たないとし、バリデーションを外部の関数に完全に切り出した。
+バリデーション関数は、Boardクラスをそのまま利用してバリデーションする。
+>>>>>>> 196a814d15f2cc7f4dec4b43a2abaf7910520c3d
