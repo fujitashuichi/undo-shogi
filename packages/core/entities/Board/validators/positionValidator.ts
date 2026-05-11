@@ -18,7 +18,7 @@ export const positionValidator = {
   isInBoard: (x: number, y: number) => {
     if (
       (x < 0 || y < 0) ||
-      (x > boardSize || y > boardSize)
+      (x >= boardSize || y >= boardSize)
     ) {
       return false;
     }
