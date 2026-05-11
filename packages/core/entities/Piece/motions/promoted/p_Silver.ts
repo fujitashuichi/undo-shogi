@@ -1,4 +1,4 @@
-import type { PieceMotion, PieceVectors } from "../../types/algebraic.types.js";
+import type { PieceMotion, PieceVectors } from "../../../types/algebraic.types.js";
 
 const vectors: PieceVectors = [
   {
@@ -17,17 +17,7 @@ const vectors: PieceVectors = [
     infinity: false
   },
   {
-    dx: 1,
-    dy: -1,
-    infinity: false
-  },
-  {
     dx: 0,
-    dy: -1,
-    infinity: false
-  },
-  {
-    dx: -1,
     dy: -1,
     infinity: false
   },
@@ -44,6 +34,6 @@ const vectors: PieceVectors = [
 ];
 
 
-export const kingMotion: PieceMotion = {
+export const p_SilverMotion: PieceMotion = {
   vectors
 }

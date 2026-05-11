@@ -1,18 +1,24 @@
 import type { UUID } from "crypto";
 import { logger } from "../../../tools/index.js";
-import type { PieceKind, Side } from "../types/piece.types.js";
+import { PromotablePieceKindSchema, PromotedPieceKindSchema, type PieceKind, type Side } from "../types/piece.types.js";
 import { pieceValidator } from "./validators/pieceValidator.js";
-import { NoPromotablePieceSchema } from "./validators/types.js";
+import type { PieceMotion } from "../types/algebraic.types.js";
+import { motionMap } from "./motions/motionMap.js";
+import { normalKindToPromoted } from "./normalToPromoted.js";
 
 
 export class ShogiPiece {
+  public readonly motion: PieceMotion;
+  public isPromoted: boolean;
+
   constructor(
     public readonly side: Side,
     public readonly kind: PieceKind,
-    public readonly isPromoted: boolean = false,
     public readonly id: UUID = crypto.randomUUID()
   ) {
-    pieceValidator(isPromoted, kind);
+    this.isPromoted = PromotedPieceKindSchema.safeParse(kind).success;
+    pieceValidator(this.isPromoted, kind);
+    this.motion = motionMap[kind];
   }
 
 
@@ -22,13 +28,14 @@ export class ShogiPiece {
       return this;
     }
 
-    const isNonPromotable = NoPromotablePieceSchema.safeParse(this.kind).success;
-    if (isNonPromotable) {
-      logger.warn(`${this.kind}は成ることが出来ない駒です。`);
+    const parsed = PromotablePieceKindSchema.safeParse(this.kind)
+    if (!parsed.success) {
+      logger.warn(`${this.kind} は成ることが出来ない駒です。`);
       return this;
     }
+    const nextKind = normalKindToPromoted(parsed.data);
 
-    return new ShogiPiece(this.side, this.kind, true, this.id);
+    return new ShogiPiece(this.side, nextKind, this.id);
   }
 
   public changeSide = (): ShogiPiece => {
@@ -36,6 +43,6 @@ export class ShogiPiece {
 
     const nextSide: Side = this.side === "Sente" ? "Gote" : "Sente";
 
-    return new ShogiPiece(nextSide, this.kind, false, this.id);
+    return new ShogiPiece(nextSide, this.kind, this.id);
   }
 }

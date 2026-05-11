@@ -1,4 +1,4 @@
-import type { PieceMotion, PieceVectors } from "../../types/algebraic.types.js";
+import type { PieceMotion, PieceVectors } from "../../../types/algebraic.types.js";
 
 const vectors: PieceVectors = [
   {
