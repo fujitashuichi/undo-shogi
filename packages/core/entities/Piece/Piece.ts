@@ -5,6 +5,7 @@ import { pieceValidator } from "./validators/pieceValidator.js";
 import type { PieceMotion } from "../types/algebraic.types.js";
 import { motionMap } from "./motions/motionMap.js";
 import { normalKindToPromoted } from "./normalToPromoted.js";
+import { promotedKindToNormal } from "./promotedToNormal.js";
 
 
 export class ShogiPiece {
@@ -42,6 +43,12 @@ export class ShogiPiece {
     logger.trace(`${this.side}の${this.kind}が対局相手に渡りました。`);
 
     const nextSide: Side = this.side === "Sente" ? "Gote" : "Sente";
+
+    const parsed = PromotedPieceKindSchema.safeParse(this.kind);
+    if (parsed.success) {
+      const nextKind = promotedKindToNormal(parsed.data);
+      return new ShogiPiece(nextSide, nextKind, this.id);
+    }
 
     return new ShogiPiece(nextSide, this.kind, this.id);
   }
