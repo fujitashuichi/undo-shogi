@@ -1,6 +1,9 @@
 # undo-shogi
 
 
+## [開発ログ](./docs/diary/diary.md)
+
+
 ## 技術スタック
 
 ### FE: Next.js
