@@ -3,6 +3,7 @@ import { MovementError } from "../../errors/movement.errors.js";
 import { boardConfig } from "../config/boardConfig.js";
 import type { ShogiPiece } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
+import { moveValidator } from "./validators/moveValidator.js";
 
 
 // Boardは動作のみ保証する。駒の増減などは責務ではないと定義する。
@@ -25,6 +26,8 @@ export class Board {
 
 
   public readonly movePiece = (current: Position, next: Position, promote: boolean) => {
+    moveValidator.canMove(this, current, next);
+
     const currentX = current.x;
     const currentY = current.y;
 
@@ -52,6 +55,8 @@ export class Board {
 
   // 持ち駒を打つ
   public readonly dropPiece = (position: Position, piece: ShogiPiece) => {
+    moveValidator.canDrop(this, position, piece);
+
     const targetX = position.x;
     const targetY = position.y;
 

@@ -10,6 +10,9 @@ import { positionValidator } from "./positionValidator.js";
 
 export const moveValidator = {
   canMove: (board: Board, current: Position, next: Position) => {
+    positionValidator.isInBoard(current.x, current.y);
+    positionValidator.isInBoard(next.x, next.y);
+
     const movingPiece: ShogiPiece | undefined = board.squares[current.y]![current.x];
 
     if (!movingPiece) {
@@ -31,6 +34,8 @@ export const moveValidator = {
   },
 
   canDrop: (board: Board, position: Position, piece: ShogiPiece) => {
+    positionValidator.isInBoard(position.x, position.y);
+
     const pieceInTargetSquare = board.squares[position.y]![position.x];
 
     if (pieceInTargetSquare) {
