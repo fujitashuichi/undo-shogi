@@ -4,11 +4,24 @@
 ## Get latest from `dotnet new gitignore`
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 196a814d15f2cc7f4dec4b43a2abaf7910520c3d
+>>>>>>> 4e1c46eb13ab49d2a9763c7e56f335c89f7a7bdf
 appsettings.json
 appsettings.*.json
 !*.example*
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 196a814d15f2cc7f4dec4b43a2abaf7910520c3d
+=======
+>>>>>>> 4e1c46eb13ab49d2a9763c7e56f335c89f7a7bdf
 >>>>>>> 196a814d15f2cc7f4dec4b43a2abaf7910520c3d
 # dotenv files
 .env
