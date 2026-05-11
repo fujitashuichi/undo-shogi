@@ -21,7 +21,7 @@ describe("座標エラーの確認", () => {
     invalidPosList.forEach(pos => {
       expect(
         () => board.movePiece({ x: 8, y: 8 }, pos, false)
-      ).toThrow();
+      ).toThrow(MovementError);
     })
   })
 
@@ -37,7 +37,7 @@ describe("座標エラーの確認", () => {
     invalidPosList.forEach(pos => {
       expect(
         () => board.dropPiece(pos, new ShogiPiece("Sente", "Gold"))
-      ).toThrow();
+      ).toThrow(MovementError);
     })
   })
 
@@ -45,7 +45,7 @@ describe("座標エラーの確認", () => {
     const board = new Board(centerBishopSquares);
 
     const invalidPosList: Position[] = [
-      { x: 0, y: 8 },
+      { x: 0, y: 0 },
       { x: 0, y: 8 },
       { x: 8, y: 0 },
       { x: 8, y: 8 }
@@ -106,6 +106,22 @@ describe("駒の重複を防止", () => {
       expect(
         () => board.dropPiece(pos, new ShogiPiece("Sente", "Gold"))
       ).toThrow(MovementError);
+    })
+  });
+
+  it ("駒がない場所には持ち駒を打てる", () => {
+    const board = new Board(hirateSquares);
+
+    const invalidPosList = [
+      { x: 0, y: 1 },
+      { x: 4, y: 4 },
+      { x: 3, y: 7 }
+    ]
+
+    invalidPosList.forEach(pos => {
+      expect(
+        board.dropPiece(pos, new ShogiPiece("Sente", "Gold"))
+      ).toBeInstanceOf(Board);
     })
   });
 })

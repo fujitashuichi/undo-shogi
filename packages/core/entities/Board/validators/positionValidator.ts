@@ -1,4 +1,5 @@
 import { isInsideRange } from "../../../../tools/math/isInsideRange.js";
+import { MovementError } from "../../../errors/movement.errors.js";
 import { boardConfig } from "../../config/boardConfig.js";
 import type { Position } from "../../types/algebraic.types.js";
 import type { Side } from "../../types/piece.types.js";
@@ -15,18 +16,21 @@ export const promotionZoneRange = (side: Side): [number, number] => {
 
 
 export const positionValidator = {
-  isInBoard: (x: number, y: number) => {
+  assertInBoard: (x: number, y: number) => {
     if (
       (x < 0 || y < 0) ||
       (x >= boardSize || y >= boardSize)
     ) {
-      return false;
+      throw new MovementError("MOVE_TO_INVALID_SQUARE");
     }
 
     return true;
   },
 
   isInPromotionZone: (side: Side, position: Position): boolean => {
-    return isInsideRange(position.y, promotionZoneRange(side));
+    if (!isInsideRange(position.y, promotionZoneRange(side))) {
+      return false;
+    };
+    return true;
   }
 }

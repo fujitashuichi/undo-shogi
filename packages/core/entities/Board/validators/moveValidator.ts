@@ -10,18 +10,13 @@ import { positionValidator } from "./positionValidator.js";
 
 export const moveValidator = {
   canMove: (board: Board, current: Position, next: Position) => {
-    positionValidator.isInBoard(current.x, current.y);
-    positionValidator.isInBoard(next.x, next.y);
+    positionValidator.assertInBoard(current.x, current.y);
+    positionValidator.assertInBoard(next.x, next.y);
 
     const movingPiece: ShogiPiece | undefined = board.squares[current.y]![current.x];
 
     if (!movingPiece) {
       throw new MovementError("MOVE_UNDEFINED_PIECE");
-    }
-
-    if (!positionValidator.isInBoard(next.x, next.y)) {
-      logger.error("盤の範囲外です。");
-      throw new MovementError("MOVE_TO_INVALID_SQUARE");
     }
 
     const pieceInTargetSquare = board.squares[next.y]![next.x];
@@ -34,18 +29,13 @@ export const moveValidator = {
   },
 
   canDrop: (board: Board, position: Position, piece: ShogiPiece) => {
-    positionValidator.isInBoard(position.x, position.y);
+    positionValidator.assertInBoard(position.x, position.y);
 
     const pieceInTargetSquare = board.squares[position.y]![position.x];
 
     if (pieceInTargetSquare) {
       logger.error("そのマスには駒が存在するため持ち駒を打てません。");
       throw new MovementError("DROP_TO_INVALID_SQUARE");
-    }
-
-    if (!positionValidator.isInBoard(position.x, position.y)) {
-      logger.error("盤の範囲外です。");
-      throw new MovementError("MOVE_TO_INVALID_SQUARE");
     }
 
 
