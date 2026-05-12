@@ -8,6 +8,10 @@ import { isInsideRange } from "../../../../tools/math/isInsideRange.js";
 import { positionValidator } from "./positionValidator.js";
 import { pieceMotionValidator } from "../../Piece/validators/motionValidator.js";
 import { ShogiRulesValidator } from "../../rules/shogiRulesValidator.js";
+import { boardConfig } from "../../config/boardConfig.js";
+
+
+const boardSize = boardConfig.boardSize;
 
 
 export const moveValidator = {
@@ -44,7 +48,7 @@ export const moveValidator = {
 
     if (piece.kind === "Knight") {
       // 桂馬は相手陣地2段目以内に打てません（移動不能な駒となるため）
-      const invalidYRange: [number, number] = piece.side === "Sente" ? [0, 1] : [8, 7];
+      const invalidYRange: [number, number] = piece.side === "Sente" ? [0, 1] : [boardSize - 1, boardSize - 2];
       if (isInsideRange(position.y, invalidYRange)) {
         throw new MovementError("DROP_TO_INVALID_SQUARE");
       }
@@ -52,7 +56,7 @@ export const moveValidator = {
 
     if (piece.kind === "Lance" || piece.kind === "Pawn") {
       // 前にしか動けない駒は、最下段に打てません（移動不能な駒となるため）
-      const invalidY = piece.side === "Sente" ? 0 : 8;
+      const invalidY = piece.side === "Sente" ? 0 : boardSize - 1;
       if (position.y === invalidY) {
         throw new MovementError("DROP_TO_INVALID_SQUARE");
       }
