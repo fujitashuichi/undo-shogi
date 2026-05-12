@@ -14,7 +14,7 @@ const assertMotionVector = (board: Board, current: Position, next: Position): vo
   const direction = piece.side === "Sente" ? -1 : 1;
 
   const isValid = vectors.some(vector => {
-    const dx = vector.dx * direction;
+    const dx = vector.dx * (direction * -1);
     const dy = vector.dy * direction;
 
     let x = current.x + dx;
@@ -45,7 +45,7 @@ const violatesLeapRestriction = (board: Board, current: Position, next: Position
   const direction = piece.side === "Sente" ? -1 : 1;
 
   for (const vector of vectors) {
-    const dx = vector.dx * direction;
+    const dx = vector.dx * (direction * -1);
     const dy = vector.dy * direction;
 
     let x = current.x + dx;
