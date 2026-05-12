@@ -1,11 +1,15 @@
+import { MovementError } from "../../../errors/movement.errors.js";
 import { PieceError } from "../../../errors/piece.error.js";
 import type { Board } from "../../Board/Board.js";
 import { positionValidator } from "../../Board/validators/positionValidator.js";
 import type { Position } from "../../types/algebraic.types.js";
-import type { ShogiPiece } from "../Piece.js";
 
 
-const assertMotionVector = (piece: ShogiPiece, current: Position, next: Position): void => {
+const assertMotionVector = (board: Board, current: Position, next: Position): void => {
+  const piece = board.squares[current.y]![current.x];
+
+  if (!piece) throw new MovementError("MOVE_UNDEFINED_PIECE");
+
   const vectors = piece.motion.vectors;
   const direction = piece.side === "Sente" ? -1 : 1;
 
@@ -32,7 +36,11 @@ const assertMotionVector = (piece: ShogiPiece, current: Position, next: Position
 }
 
 
-const violatesLeapRestriction = (board: Board, piece: ShogiPiece, current: Position, next: Position): void => {
+const violatesLeapRestriction = (board: Board, current: Position, next: Position): void => {
+  const piece = board.squares[current.y]![current.y];
+
+  if (!piece) throw new MovementError("MOVE_UNDEFINED_PIECE");
+
   const vectors = piece.motion.vectors;
   const direction = piece.side === "Sente" ? -1 : 1;
 
@@ -64,7 +72,7 @@ const violatesLeapRestriction = (board: Board, piece: ShogiPiece, current: Posit
 }
 
 
-export const pieceMotionValidator = (board: Board, piece: ShogiPiece, current: Position, next: Position) => {
-  assertMotionVector(piece, current, next);
-  violatesLeapRestriction(board, piece, current, next);
+export const pieceMotionValidator = (board: Board, current: Position, next: Position) => {
+  assertMotionVector(board, current, next);
+  violatesLeapRestriction(board, current, next);
 }
