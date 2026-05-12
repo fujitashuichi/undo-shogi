@@ -7,6 +7,7 @@ import type { Side } from "../../types/piece.types.js";
 import { isInsideRange } from "../../../../tools/math/isInsideRange.js";
 import { positionValidator } from "./positionValidator.js";
 import { pieceMotionValidator } from "../../Piece/validators/motionValidator.js";
+import { ShogiRulesValidator } from "../../rules/shogiRulesValidator.js";
 
 
 export const moveValidator = {
@@ -33,7 +34,6 @@ export const moveValidator = {
 
   canDrop: (board: Board, position: Position, piece: ShogiPiece) => {
     positionValidator.assertInBoard(position.x, position.y);
-
     const pieceInTargetSquare = board.squares[position.y]![position.x];
 
     if (pieceInTargetSquare) {
@@ -56,6 +56,10 @@ export const moveValidator = {
       if (position.y === invalidY) {
         throw new MovementError("DROP_TO_INVALID_SQUARE");
       }
+    }
+
+    if (piece.kind === "Pawn") {
+      ShogiRulesValidator.violateDoublePawn(board, position, piece.side);
     }
 
     return true;
