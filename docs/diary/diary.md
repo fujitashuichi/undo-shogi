@@ -33,3 +33,9 @@
 * https://zenn.dev/fujishu/articles/ed9a332f394879
 盤はバリデーションを持たないとし、バリデーションを外部の関数に完全に切り出した。
 バリデーション関数は、Boardクラスをそのまま利用してバリデーションする。
+
+## 基本的な動作制約を定義 - 2026/05/11
+* https://zenn.dev/fujishu/articles/d19a7fb95c9957
+
+## pieceMotionを定義 - 2026/05/12
+* [motionValidator.md](../../packages/core/docs/motionValitator.md)
