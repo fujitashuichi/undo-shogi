@@ -37,7 +37,7 @@ const assertMotionVector = (board: Board, current: Position, next: Position): vo
 
 
 const violatesLeapRestriction = (board: Board, current: Position, next: Position): void => {
-  const piece = board.squares[current.y]![current.y];
+  const piece = board.squares[current.y]![current.x];
 
   if (!piece) throw new MovementError("MOVE_UNDEFINED_PIECE");
 
