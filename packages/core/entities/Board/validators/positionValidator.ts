@@ -16,17 +16,15 @@ export const promotionZoneRange = (side: Side): [number, number] => {
 
 
 export const positionValidator = {
-  assertInBoard: (x: number, y: number) => {
+  assertInBoard: (x: number, y: number): void => {
     if (
       (x < 0 || y < 0) ||
       (x >= boardSize || y >= boardSize)
     ) {
       throw new MovementError("MOVE_TO_INVALID_SQUARE");
     }
-
-    return true;
   },
-  isInBoard: (x: number, y: number) => {
+  isInBoard: (x: number, y: number): boolean => {
     if (
       (x < 0 || y < 0) ||
       (x >= boardSize || y >= boardSize)
