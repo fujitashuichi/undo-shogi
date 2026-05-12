@@ -6,12 +6,15 @@ import type { Board } from "../Board.js";
 import type { Side } from "../../types/piece.types.js";
 import { isInsideRange } from "../../../../tools/math/isInsideRange.js";
 import { positionValidator } from "./positionValidator.js";
+import { pieceMotionValidator } from "../../Piece/validators/motionValidator.js";
 
 
 export const moveValidator = {
-  canMove: (board: Board, current: Position, next: Position) => {
+  canMove: (board: Board, piece: ShogiPiece, current: Position, next: Position) => {
     positionValidator.assertInBoard(current.x, current.y);
     positionValidator.assertInBoard(next.x, next.y);
+
+    pieceMotionValidator(board, piece, current, next);
 
     const movingPiece: ShogiPiece | undefined = board.squares[current.y]![current.x];
 
