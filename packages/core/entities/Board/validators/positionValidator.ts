@@ -26,6 +26,16 @@ export const positionValidator = {
 
     return true;
   },
+  isInBoard: (x: number, y: number) => {
+    if (
+      (x < 0 || y < 0) ||
+      (x >= boardSize || y >= boardSize)
+    ) {
+      return false;
+    }
+
+    return true;
+  },
 
   isInPromotionZone: (side: Side, position: Position): boolean => {
     if (!isInsideRange(position.y, promotionZoneRange(side))) {
