@@ -26,16 +26,16 @@ export class Board {
 
 
   public readonly movePiece = (current: Position, next: Position, promote: boolean) => {
+    moveValidator.canMove(this, current, next);
+
     const currentX = current.x;
     const currentY = current.y;
 
     const nextX = next.x;
     const nextY = next.y;
+
     let targetPiece = this.squares[currentY]![currentX];
-
     if (!targetPiece) throw new MovementError("MOVE_UNDEFINED_PIECE");
-
-    moveValidator.canMove(this, targetPiece, current, next);
 
     if (promote) {
       targetPiece = targetPiece.promote();

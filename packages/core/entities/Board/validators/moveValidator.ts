@@ -10,11 +10,11 @@ import { pieceMotionValidator } from "../../Piece/validators/motionValidator.js"
 
 
 export const moveValidator = {
-  canMove: (board: Board, piece: ShogiPiece, current: Position, next: Position) => {
+  canMove: (board: Board, current: Position, next: Position) => {
     positionValidator.assertInBoard(current.x, current.y);
     positionValidator.assertInBoard(next.x, next.y);
 
-    pieceMotionValidator(board, piece, current, next);
+    pieceMotionValidator(board, current, next);
 
     const movingPiece: ShogiPiece | undefined = board.squares[current.y]![current.x];
 

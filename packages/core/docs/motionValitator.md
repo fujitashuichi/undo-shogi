@@ -126,9 +126,14 @@ export const p_RookMotion: PieceMotion = {
 
 ### 移動ベクトルの確認のみ行う
 ```ts
-const assertMotionVector = (piece: ShogiPiece, current: Position, next: Position): void => {
+const assertMotionVector = (board: Board, current: Position, next: Position): void => {
   const vectors = piece.motion.vectors;
   const direction = piece.side === "Sente" ? -1 : 1;
+
+  const piece = board.squares[current.y]![current.x];
+
+  if (!piece) throw new MovementError("MOVE_UNDEFINED_PIECE");
+
 
   const isValid = vectors.some(vector => {
     const dx = vector.dx;
@@ -156,9 +161,14 @@ const assertMotionVector = (piece: ShogiPiece, current: Position, next: Position
 
 ### 駒追い越しの規制だけ行う
 ```ts
-const violatesLeapRestriction = (board: Board, piece: ShogiPiece, current: Position, next: Position): void => {
+const violatesLeapRestriction = (board: Board, current: Position, next: Position): void => {
   const vectors = piece.motion.vectors;
   const direction = piece.side === "Sente" ? -1 : 1;
+
+  const piece = board.squares[current.y]![current.x];
+
+  if (!piece) throw new MovementError("MOVE_UNDEFINED_PIECE");
+
 
   for (const vector of vectors) {
     const dx = vector.dx;
@@ -190,20 +200,20 @@ const violatesLeapRestriction = (board: Board, piece: ShogiPiece, current: Posit
 
 ### まとめて一つのバリデーションにする
 ```ts
-export const pieceMotionValidator = (board: Board, piece: ShogiPiece, current: Position, next: Position) => {
-  assertMotionVector(piece, current, next);
-  violatesLeapRestriction(board, piece, current, next);
+export const pieceMotionValidator = (board: Board, current: Position, next: Position) => {
+  assertMotionVector(board, current, next);
+  violatesLeapRestriction(board, current, next);
 }
 ```
 
 ### 既存のバリデーションに統合
 ```ts
 export const moveValidator = {
-  canMove: (board: Board, piece: ShogiPiece, current: Position, next: Position) => {
+  canMove: (board: Board, current: Position, next: Position) => {
     positionValidator.assertInBoard(current.x, current.y);
     positionValidator.assertInBoard(next.x, next.y);
 
-    pieceMotionValidator(board, piece, current, next);
+    pieceMotionValidator(board, current, next);
     ...
   }
   ...
@@ -215,3 +225,60 @@ export const moveValidator = {
 残っているのは、「2歩」「千日手」「先手・後手」などの制約であり、これは一回り外側で定義していくことになる。
 
 駒の動作ルールなどは実質的に意識したくないものであり、上記の3つのルールのようなゲーム性に直結するルールを定義する際に意識しなくて済むことが多層的なバリデーションの狙いである。
+
+## テスト
+
+```ts
+describe("pieceMotionVector", () => {
+  it("他の駒を追い越せない", () => {
+    const board = new Board(hirateSquares);
+
+    const invalidPosList: Position[] = [
+      { x: 7, y: 4 },
+      { x: 0, y: 7 }
+    ];
+
+    invalidPosList.forEach(pos => {
+      expect(
+        () => pieceMotionValidator(board, { x: 7, y: 7 }, pos)
+      ).toThrow(PieceError);
+    });
+  });
+
+  it("定義されていないベクトル移動はできない", () => {
+    const board = new Board(hirateSquares);
+
+    const invalidPosList: Position[] = [
+      { x: 1, y: 1 },
+      { x: 5, y: 4 },
+      { x: 3, y: 7 }
+    ];
+
+    invalidPosList.forEach(pos => {
+      expect(
+        () => pieceMotionValidator(board, { x: 1, y: 8 }, pos)
+      ).toThrow(PieceError);
+    });
+  });
+
+  it("ベクトル定義に沿った移動が可能である", () => {
+    const board = new Board(hirateSquares);
+
+    expect(
+      () => pieceMotionValidator(board, { x: 7, y: 7 }, { x: 3, y: 7 })
+    ).not.toThrow();
+
+    expect(
+      () => pieceMotionValidator(board, { x: 4, y: 8 }, { x: 5, y: 7 })
+    ).not.toThrow();
+  });
+});
+```
+
+```sh
+✓ packages/core/entities/Piece/__test__/Piece.test.ts (3 tests) 5ms
+   ✓ pieceMotionVector (3)
+     ✓ 他の駒を追い越せない 2ms
+     ✓ 定義されていないベクトル移動はできない 0ms
+     ✓ ベクトル定義に沿った移動が可能である 1ms
+```
