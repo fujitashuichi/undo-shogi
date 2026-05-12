@@ -40,6 +40,9 @@ export type PieceKind = z.infer<typeof PieceKindSchema>;
 
 ## pieceMotionを汎用的に定義した
 
+ここは人間的な感覚（先手にとっての前側が+）という仕組みを優先するため、
+y軸は反転・x軸は非反転という仕組みを`motionValidator`の一か所で管理する。
+
 ```ts
 const vectors: PieceVectors = [
   {
@@ -136,7 +139,7 @@ const assertMotionVector = (board: Board, current: Position, next: Position): vo
 
 
   const isValid = vectors.some(vector => {
-    const dx = vector.dx;
+    const dx = vector.dx * (direction * -1);
     const dy = vector.dy * direction;
 
     let x = current.x + dx;
@@ -171,7 +174,7 @@ const violatesLeapRestriction = (board: Board, current: Position, next: Position
 
 
   for (const vector of vectors) {
-    const dx = vector.dx;
+    const dx = vector.dx * (direction * -1);
     const dy = vector.dy * direction;
 
     let x = current.x + dx;
