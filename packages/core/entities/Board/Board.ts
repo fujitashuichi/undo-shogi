@@ -26,24 +26,24 @@ export class Board {
 
 
   public readonly movePiece = (current: Position, next: Position, promote: boolean) => {
-    moveValidator.canMove(this, current, next);
-
     const currentX = current.x;
     const currentY = current.y;
 
     const nextX = next.x;
     const nextY = next.y;
+    let targetPiece = this.squares[currentY]![currentX];
 
-    let movingPiece = this.squares[currentY]![currentX];
-    if (!movingPiece) throw new MovementError("MOVE_UNDEFINED_PIECE");
+    if (!targetPiece) throw new MovementError("MOVE_UNDEFINED_PIECE");
+
+    moveValidator.canMove(this, targetPiece, current, next);
 
     if (promote) {
-      movingPiece = movingPiece.promote();
+      targetPiece = targetPiece.promote();
     }
 
     const nextSquares = this.squares.map((row, yIdx) =>
       row.map((piece, xIdx) => {
-        if (yIdx === nextY && xIdx === nextX) return movingPiece;
+        if (yIdx === nextY && xIdx === nextX) return targetPiece;
         if (yIdx === currentY && xIdx === currentX) return undefined;
         return piece;
       })
