@@ -63,7 +63,7 @@ export const moveValidator = {
     }
 
     if (piece.kind === "Pawn") {
-      ShogiRulesValidator.violateDoublePawn(board, position, piece.side);
+      ShogiRulesValidator.assertIllegalMove.drop.violateDoublePawn(board, position, piece.side);
     }
 
     return true;
