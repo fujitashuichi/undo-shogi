@@ -39,3 +39,6 @@
 
 ## pieceMotionを定義 - 2026/05/12
 * [motionValidator.md](../../packages/core/docs/motionValitator.md)
+
+##  - 2026/05/13
+## 対局者の駒の効きを取得する関数を作成 - 2026/05/13
