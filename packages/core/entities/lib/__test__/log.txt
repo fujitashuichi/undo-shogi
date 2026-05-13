@@ -1,0 +1,8 @@
+ RERUN  packages/core/entities/lib/__test__/positionUnderAttack.test.ts x15
+
+ ✓ packages/core/entities/lib/__test__/positionUnderAttack.test.ts (3 tests) 7ms
+   ✓ lib/positionsUnderAttack (3)
+     ✓ 駒単体の効きを正しく補足する (3)
+       ✓ 先手桂馬の例 3ms
+       ✓ 後手飛車の例 1ms
+       ✓ 先手玉の例 0ms

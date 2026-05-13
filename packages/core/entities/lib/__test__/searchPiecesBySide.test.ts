@@ -66,7 +66,7 @@ describe("lib/searchPiecesBySide", () => {
       const board = new Board(hirateSquares);
 
       expect(
-        searchPiecesBySide.returnInstances(board, "Sente")
+        searchPiecesBySide.returnInstances(board, "Gote")
       ).toEqual(
         expect.arrayContaining([
           expect.objectContaining({ kind: "King" }),

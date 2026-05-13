@@ -26,6 +26,7 @@ export const byPiece = (board: Board, piecePos: Position): Position[] => {
     const dx = vector.dx * (direction * -1);
     const dy = vector.dy * direction;
 
+
     if (vector.infinity) {
       while (
         positionValidator.isInBoard(x, y) &&
@@ -34,11 +35,10 @@ export const byPiece = (board: Board, piecePos: Position): Position[] => {
         const square: ShogiPiece | undefined = board.squares[y]![x];
 
         if (square) {
-          // 駒は自分に効きを持たない
-          if (x !== piecePos.x && y !== piecePos.y) return;
-
-          // 最初にぶつかった駒が相手のものであれば、駒が利いている扱いになる
-          if (square.side !== piece.side) {
+          if (
+            (!(x === piecePos.x && y === piecePos.y)) && // 駒は自分に効きを持たない
+            (square.side !== piece.side)  // 最初にぶつかった駒が相手のものであれば、駒が利いている扱いになる
+          ) {
             collided = true;
             positionsUnderAttack.push({ x, y });
           }
@@ -51,17 +51,28 @@ export const byPiece = (board: Board, piecePos: Position): Position[] => {
       }
     }
 
+
     if (!vector.infinity) {
-      x += vector.dx;
-      y += vector.dy;
+      x += dx;
+      y += dy;
 
-      if (!positionValidator.isInBoard(x, y)) return;
+      if (positionValidator.isInBoard(x, y)) {
+        const square = board.squares[y]![x];
 
-      const square = board.squares[y]![x];
-      if (square && !square.side) {
-        positionsUnderAttack.push({ x, y });
+        if (square) {
+          if (
+            (!(x === piecePos.x && y === piecePos.y)) &&
+            (!square.side)
+          ) {
+            positionsUnderAttack.push({ x, y });
+          }
+        };
+
+        if (!square) {
+          positionsUnderAttack.push({ x, y });
+        }
       }
-    }
+    };
   });
 
   return positionsUnderAttack;
