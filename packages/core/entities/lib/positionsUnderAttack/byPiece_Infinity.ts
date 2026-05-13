@@ -16,6 +16,8 @@ export const byPiece_Infinity = (
 ) => {
   let collided = false;
 
+  if (!positionValidator.isInBoard(x, y)) return;
+
   const firstSquare = board.squares[y]![x];
   if (firstSquare) {
     collided = true;
