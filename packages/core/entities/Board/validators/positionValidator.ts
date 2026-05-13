@@ -19,7 +19,7 @@ export const promotionZoneRange = (side: Side): [number, number] => {
 export const positionValidator = {
   assertInBoard: (x: number, y: number): void => {
     if (!positionValidator.isInBoard(x, y)) {
-      console.log(`{ x: ${x}, y: ${y} } は盤外です。`);
+      logger.error(`{ x: ${x}, y: ${y} } は盤外です。`);
       throw new MovementError("MOVE_TO_INVALID_SQUARE");
     }
   },
