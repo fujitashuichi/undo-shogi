@@ -40,4 +40,8 @@
 ## pieceMotionを定義 - 2026/05/12
 * [motionValidator.md](../../packages/core/docs/motionValitator.md)
 
+## 二歩禁止を実装 - 2026/05/13
+
 ## 駒の効きを取得する関数を作成 - 2026/05/13
+
+## 強制成り判定を追加 - 2026/05/13

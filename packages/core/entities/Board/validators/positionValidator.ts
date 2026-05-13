@@ -1,3 +1,4 @@
+import { logger } from "../../../../tools/index.js";
 import { isInsideRange } from "../../../../tools/math/isInsideRange.js";
 import { MovementError } from "../../../errors/movement.errors.js";
 import { boardConfig } from "../../config/boardConfig.js";
@@ -17,13 +18,12 @@ export const promotionZoneRange = (side: Side): [number, number] => {
 
 export const positionValidator = {
   assertInBoard: (x: number, y: number): void => {
-    if (
-      (x < 0 || y < 0) ||
-      (x >= boardSize || y >= boardSize)
-    ) {
+    if (!positionValidator.isInBoard(x, y)) {
+      logger.error(`{ x: ${x}, y: ${y} } は盤外です。`);
       throw new MovementError("MOVE_TO_INVALID_SQUARE");
     }
   },
+
   isInBoard: (x: number, y: number): boolean => {
     if (
       (x < 0 || y < 0) ||

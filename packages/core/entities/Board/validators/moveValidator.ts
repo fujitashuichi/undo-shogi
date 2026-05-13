@@ -15,11 +15,11 @@ const boardSize = boardConfig.boardSize;
 
 
 export const moveValidator = {
-  canMove: (board: Board, current: Position, next: Position) => {
+  canMove: (board: Board, current: Position, next: Position, promote: boolean) => {
     positionValidator.assertInBoard(current.x, current.y);
     positionValidator.assertInBoard(next.x, next.y);
 
-    pieceMotionValidator(board, current, next);
+    pieceMotionValidator(board, current, next, promote);
 
     const movingPiece: ShogiPiece | undefined = board.squares[current.y]![current.x];
 
