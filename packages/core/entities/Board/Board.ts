@@ -26,7 +26,7 @@ export class Board {
 
 
   public readonly movePiece = (current: Position, next: Position, promote: boolean) => {
-    moveValidator.canMove(this, current, next);
+    moveValidator.canMove(this, current, next, promote);
 
     const currentX = current.x;
     const currentY = current.y;
