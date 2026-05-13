@@ -26,7 +26,9 @@ describe("lib/positionsUnderAttack", () => {
         expect.arrayContaining(expected)
       );
       expect(expected).toEqual(
-        expect.arrayContaining(expected)
+        expect.arrayContaining(
+          positionsUnderAttack.byPiece(board, { x: 1, y: 1 })
+        )
       );
     });
 
