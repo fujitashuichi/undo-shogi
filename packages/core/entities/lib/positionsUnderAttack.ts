@@ -1,12 +1,14 @@
 import { Board } from "../Board/Board.js";
 import { positionValidator } from "../Board/validators/positionValidator.js";
-import type { ShogiPiece } from "../Piece/Piece.js";
 import type { PieceVectors, Position } from "../types/algebraic.types.js";
 import type { Side } from "../types/piece.types.js";
+import { byPiece_Infinity } from "./positionsUnderAttack/byPiece_Infinity.js";
 import { searchPiecesBySide } from "./searchPiecesBySide.js";
 
 
-// underAttack は「駒の利き」を意味しており、駒が移動可能な範囲を指す
+// underAttack は「駒の効き」を意味しており、駒が移動可能な範囲を指す
+
+// memo: 目的の駒自身を効きから省く → 「自分sideの駒がある場所を省く」に含まれるため不要
 
 
 export const byPiece = (board: Board, piecePos: Position): Position[] => {
@@ -19,59 +21,30 @@ export const byPiece = (board: Board, piecePos: Position): Position[] => {
   const direction = piece.side === "Sente" ? -1 : 1;
 
   vectors.forEach(vector => {
-    let x = piecePos.x;
-    let y = piecePos.y;
-    let collided = false;
-
     const dx = vector.dx * (direction * -1);
     const dy = vector.dy * direction;
 
+    let x = piecePos.x + dx;
+    let y = piecePos.y + dy;
+
 
     if (vector.infinity) {
-      while (
-        positionValidator.isInBoard(x, y) &&
-        !collided
-      ) {
-        const square: ShogiPiece | undefined = board.squares[y]![x];
-
-        if (square) {
-          if (
-            (!(x === piecePos.x && y === piecePos.y)) && // 駒は自分に効きを持たない
-            (square.side !== piece.side)  // 最初にぶつかった駒が相手のものであれば、駒が利いている扱いになる
-          ) {
-            collided = true;
-            positionsUnderAttack.push({ x, y });
-          }
-        } else {
-          positionsUnderAttack.push({ x, y });
-        }
-
-        x += dx;
-        y += dy;
-      }
-    }
-
-
-    if (!vector.infinity) {
-      x += dx;
-      y += dy;
-
+      byPiece_Infinity(board, piece, x, y, dx, dy, positionsUnderAttack);
+    } else {
       if (positionValidator.isInBoard(x, y)) {
         const square = board.squares[y]![x];
 
-        if (square) {
-          if (
-            (!(x === piecePos.x && y === piecePos.y)) &&
-            (!square.side)
-          ) {
-            positionsUnderAttack.push({ x, y });
-          }
+        if (
+          square &&
+          square.side !== piece.side
+        ) {
+          positionsUnderAttack.push({ x, y });
         };
 
         if (!square) {
           positionsUnderAttack.push({ x, y });
         }
-      }
+      };
     };
   });
 
