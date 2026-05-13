@@ -33,7 +33,6 @@ export const byPiece_Infinity = (
 
       if (square) {
         collided = true;
-        console.log(`{ x: ${x}, y: ${y} } : collided`);
 
         if (square.side !== piece.side) {
           positionsUnderAttack.push({ x, y });
@@ -41,7 +40,6 @@ export const byPiece_Infinity = (
       };
 
       if (!square) {
-        console.log(`{ x: ${x}, y: ${y} }`)
         positionsUnderAttack.push({ x, y });
       }
     }
