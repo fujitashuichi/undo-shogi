@@ -17,7 +17,7 @@ describe("checkMateValidator", () => {
       );
 
       const checkedBoard = new Board(checkedSquares);
-      expect(checkmateValidator.isChecked(board, "Gote")).toBe(
+      expect(checkmateValidator.isChecked(checkedBoard, "Gote")).toBe(
         false
       );
     });
