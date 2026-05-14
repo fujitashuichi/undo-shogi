@@ -4,9 +4,6 @@ import type { ShogiPiece } from "../../Piece/Piece.js";
 import type { Position } from "../../types/algebraic.types.js";
 
 
-
-// 各移動ベクトルにおいて適用される
-
 export const byPiece_Infinity = (
   board: Board,
   piece: ShogiPiece,

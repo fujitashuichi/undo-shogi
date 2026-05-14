@@ -69,14 +69,14 @@ describe("lib/searchPiecesBySide", () => {
         searchPiecesBySide.returnInstances(board, "Gote")
       ).toEqual(
         expect.arrayContaining([
-          expect.objectContaining({ kind: "King" }),
-          expect.objectContaining({ kind: "Gold" }),
-          expect.objectContaining({ kind: "Silver" }),
-          expect.objectContaining({ kind: "Knight" }),
-          expect.objectContaining({ kind: "Lance" }),
-          expect.objectContaining({ kind: "Bishop" }),
-          expect.objectContaining({ kind: "Rook" }),
-          expect.objectContaining({ kind: "Pawn" })
+          expect.objectContaining({ kind: "King", side: "Gote" }),
+          expect.objectContaining({ kind: "Gold", side: "Gote" }),
+          expect.objectContaining({ kind: "Silver", side: "Gote" }),
+          expect.objectContaining({ kind: "Knight", side: "Gote" }),
+          expect.objectContaining({ kind: "Lance", side: "Gote" }),
+          expect.objectContaining({ kind: "Bishop", side: "Gote" }),
+          expect.objectContaining({ kind: "Rook", side: "Gote" }),
+          expect.objectContaining({ kind: "Pawn", side: "Gote" })
         ])
       )
     });
