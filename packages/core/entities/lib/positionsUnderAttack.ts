@@ -1,6 +1,6 @@
 import { Board } from "../Board/Board.js";
 import { positionValidator } from "../Board/validators/positionValidator.js";
-import type { PieceVectors, Position } from "../types/algebraic.types.js";
+import type { Position } from "../types/algebraic.types.js";
 import type { Side } from "../types/piece.types.js";
 import { byPiece_Infinity } from "./positionsUnderAttack/byPiece_Infinity.js";
 import { searchPiecesBySide } from "./searchPiecesBySide.js";
@@ -17,12 +17,11 @@ const byPiece = (board: Board, piecePos: Position): Position[] => {
   const piece = board.squares[piecePos.y]![piecePos.x];
   if (!piece) return [];
 
-  const vectors: PieceVectors = piece.motion.vectors;
-  const direction = piece.side === "Sente" ? -1 : 1;
+  const vectors = piece.motion.vectors;
 
   vectors.forEach(vector => {
-    const dx = vector.dx * (direction * -1);
-    const dy = vector.dy * direction;
+    const dx = vector.dx;
+    const dy = vector.dy;
 
     let x = piecePos.x + dx;
     let y = piecePos.y + dy;
