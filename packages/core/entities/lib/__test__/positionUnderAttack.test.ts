@@ -11,9 +11,6 @@ describe("lib/positionsUnderAttack", () => {
       expect(
         positionsUnderAttack.byPiece(board, { x: 1, y: 8 })
       ).toStrictEqual([]);
-      expect([]).toStrictEqual(
-        positionsUnderAttack.byPiece(board, { x: 1, y: 8 })
-      );
     });
 
 

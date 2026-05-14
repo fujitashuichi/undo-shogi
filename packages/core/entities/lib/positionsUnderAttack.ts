@@ -11,7 +11,7 @@ import { searchPiecesBySide } from "./searchPiecesBySide.js";
 // memo: 目的の駒自身を効きから省く → 「自分sideの駒がある場所を省く」に含まれるため不要
 
 
-export const byPiece = (board: Board, piecePos: Position): Position[] => {
+const byPiece = (board: Board, piecePos: Position): Position[] => {
   let positionsUnderAttack: Position[] = [];
 
   const piece = board.squares[piecePos.y]![piecePos.x];
@@ -52,7 +52,7 @@ export const byPiece = (board: Board, piecePos: Position): Position[] => {
 }
 
 
-export const all = (board: Board, side: Side): Position[] => {
+const all = (board: Board, side: Side): Position[] => {
   let positionsUnderAttack: Position[] = [];
 
   const piecePosList = searchPiecesBySide.returnPositions(board, side);

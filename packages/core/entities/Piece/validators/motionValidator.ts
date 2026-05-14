@@ -95,10 +95,10 @@ const assertForcedPromotion = (board: Board, current: Position, next: Position, 
     throw new MovementError("FORCED_PROMOTION");
   }
 
-  const twoEndOfBoardYRange: [number, number] = side === "Sente" ? [0, 1] : [boardSize - 1, boardSize - 2];
+  const endOfBoardYRangeTwo: [number, number] = side === "Sente" ? [0, 1] : [boardSize - 1, boardSize - 2];
   if (
     piece.kind === "Knight" &&
-    isInsideRange(next.y, twoEndOfBoardYRange)
+    isInsideRange(next.y, endOfBoardYRangeTwo)
   ) {
     logger.warn("桂は、敵陣二段目以内では成らなければなりません。");
     throw new MovementError("FORCED_PROMOTION")
