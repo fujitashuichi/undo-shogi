@@ -17,11 +17,10 @@ const assertMotionVector = (board: Board, current: Position, next: Position): vo
   if (!piece) throw new MovementError("MOVE_UNDEFINED_PIECE");
 
   const vectors = piece.motion.vectors;
-  const direction = piece.side === "Sente" ? -1 : 1;
 
   const isValid = vectors.some(vector => {
-    const dx = vector.dx * (direction * -1);
-    const dy = vector.dy * direction;
+    const dx = vector.dx;
+    const dy = vector.dy;
 
     let x = current.x + dx;
     let y = current.y + dy;
@@ -48,11 +47,10 @@ const violatesLeapRestriction = (board: Board, current: Position, next: Position
   if (!piece) throw new MovementError("MOVE_UNDEFINED_PIECE");
 
   const vectors = piece.motion.vectors;
-  const direction = piece.side === "Sente" ? -1 : 1;
 
   for (const vector of vectors) {
-    const dx = vector.dx * (direction * -1);
-    const dy = vector.dy * direction;
+    const dx = vector.dx;
+    const dy = vector.dy;
 
     let x = current.x + dx;
     let y = current.y + dy;

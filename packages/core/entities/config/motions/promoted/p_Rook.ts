@@ -1,11 +1,27 @@
-import type { PieceMotion, PieceVectors } from "../../../types/algebraic.types.js";
+import type { PieceMotion, PieceVectors } from "../types.js";
 
 const vectors: PieceVectors = [
   {
     dx: 0,
     dy: 1,
-    infinity: false
+    infinity: true
   },
+  {
+    dx: 1,
+    dy: 0,
+    infinity: true
+  },
+  {
+    dx: 0,
+    dy: -1,
+    infinity: true
+  },
+  {
+    dx: -1,
+    dy: 0,
+    infinity: true
+  },
+
   {
     dx: 1,
     dy: 1,
@@ -13,27 +29,12 @@ const vectors: PieceVectors = [
   },
   {
     dx: 1,
-    dy: 0,
-    infinity: false
-  },
-  {
-    dx: 1,
-    dy: -1,
-    infinity: false
-  },
-  {
-    dx: 0,
     dy: -1,
     infinity: false
   },
   {
     dx: -1,
     dy: -1,
-    infinity: false
-  },
-  {
-    dx: -1,
-    dy: 0,
     infinity: false
   },
   {
@@ -44,6 +45,6 @@ const vectors: PieceVectors = [
 ];
 
 
-export const kingMotion: PieceMotion = {
+export const p_RookMotion: PieceMotion = {
   vectors
 }

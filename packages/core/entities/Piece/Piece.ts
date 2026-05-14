@@ -2,14 +2,13 @@ import type { UUID } from "crypto";
 import { logger } from "../../../tools/index.js";
 import { PromotablePieceKindSchema, PromotedPieceKindSchema, type PieceKind, type Side } from "../types/piece.types.js";
 import { pieceValidator } from "./validators/pieceValidator.js";
-import type { PieceMotion } from "../types/algebraic.types.js";
-import { motionMap } from "./motions/motionMap.js";
 import { normalKindToPromoted } from "./normalToPromoted.js";
 import { promotedKindToNormal } from "./promotedToNormal.js";
+import { pieceConfig } from "../config/pieceConfig.js";
 
 
 export class ShogiPiece {
-  public readonly motion: PieceMotion;
+  public readonly motion: PieceConfig["motion"];
   public isPromoted: boolean;
 
   constructor(
@@ -19,7 +18,7 @@ export class ShogiPiece {
   ) {
     this.isPromoted = PromotedPieceKindSchema.safeParse(kind).success;
     pieceValidator(this.isPromoted, kind);
-    this.motion = motionMap[kind];
+    this.motion = pieceConfig(side, kind).motion;
   }
 
 
