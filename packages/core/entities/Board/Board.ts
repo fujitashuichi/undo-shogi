@@ -5,6 +5,8 @@ import type { Position } from "../types/algebraic.types.js";
 import { checkmateValidator } from "./validators/checkmate/checkmateValidator.js";
 import { board_dropPiece } from "./lib/dropPiece/dropPiece.js";
 import { board_movePiece } from "./lib/movePiece/movePiece.js";
+import type { Hands } from "../Hand/Hands.js";
+import type { Side } from "../types/piece.types.js";
 
 
 // Boardは動作のみ保証する。駒の増減などは責務ではないと定義する。
@@ -17,12 +19,15 @@ type Squares = FixedLengthArray<
 
 export class Board {
   public readonly squares: Squares;
+  public readonly hands: Hands;
   public readonly boardSize = boardConfig.boardSize;
 
   constructor(
-    squares: Squares
+    squares: Squares,
+    hands: Hands
   ) {
     this.squares = squares;
+    this.hands = hands;
   }
 
 
@@ -31,11 +36,11 @@ export class Board {
   }
 
   public readonly dropPiece = (position: Position, piece: ShogiPiece): Board => {
-    return board_dropPiece(this, position, piece);
+    return board_dropPiece(this, this.hands, position, piece);
   }
 
 
-  public readonly isCheckMated = checkmateValidator.isCheckMated;
+  public readonly isCheckMated = (hands: Hands, side: Side) => checkmateValidator.isCheckMated(this, hands, side);
 
 
 

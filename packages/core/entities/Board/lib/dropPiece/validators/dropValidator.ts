@@ -2,7 +2,7 @@ import { logger } from "../../../../../../tools/index.js";
 import { isInsideRange } from "../../../../../../tools/math/isInsideRange.js";
 import { MovementError } from "../../../../../errors/movement.errors.js";
 import { boardConfig } from "../../../../config/boardConfig.js";
-import type { Hands } from "../../../../Hand/Hand.js";
+import type { Hands } from "../../../../Hand/Hands.js";
 import { allPositionInBoard } from "../../../../lib/allPositionsInBoard.js";
 import { ShogiPiece } from "../../../../Piece/Piece.js";
 import { ShogiRulesValidator } from "../../../../rules/shogiRulesValidator.js";
@@ -16,7 +16,11 @@ const boardSize = boardConfig.boardSize;
 
 
 export const dropValidator = {
-  assertCanDrop: (board: Board, position: Position, piece: ShogiPiece): void => {
+  assertCanDrop: (board: Board, hands: Hands, position: Position, piece: ShogiPiece): void => {
+    if (!hands.allPieceKindsBySide(piece.side).some(kind => piece.kind === kind)) {
+      throw new MovementError("DROP_UNDEFINED_PIECE");
+    }
+
     positionValidator.assertInBoard(position.x, position.y);
     const pieceInTargetSquare = board.squares[position.y]![position.x];
 
@@ -47,9 +51,9 @@ export const dropValidator = {
     }
   },
 
-  canDrop: (board: Board, position: Position, piece: ShogiPiece): boolean => {
+  canDrop: (board: Board, hands: Hands, position: Position, piece: ShogiPiece): boolean => {
     try {
-      dropValidator.assertCanDrop(board, position, piece);
+      dropValidator.assertCanDrop(board, hands, position, piece);
       return true;
     } catch {
       return false;
@@ -59,7 +63,7 @@ export const dropValidator = {
   canAnyDrop: (board: Board, hands: Hands, side: Side): boolean => {
     for(const pos of allPositionInBoard) {
       for (const kind of hands.allPieceKindsBySide(side)) {
-        const canDrop = dropValidator.canDrop(board, pos, new ShogiPiece(side, kind));
+        const canDrop = dropValidator.canDrop(board, hands, pos, new ShogiPiece(side, kind));
         if (canDrop) return true;
       }
     }
