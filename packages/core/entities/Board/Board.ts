@@ -3,6 +3,7 @@ import { MovementError } from "../../errors/movement.errors.js";
 import { boardConfig } from "../config/boardConfig.js";
 import type { ShogiPiece } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
+import { violateSelfCheck } from "./validators/checkmate/violateSelfCheck.js";
 import { moveValidator } from "./validators/moveValidator.js";
 
 
@@ -28,13 +29,8 @@ export class Board {
   public readonly movePiece = (current: Position, next: Position, promote: boolean) => {
     moveValidator.canMove(this, current, next, promote);
 
-    const currentX = current.x;
-    const currentY = current.y;
 
-    const nextX = next.x;
-    const nextY = next.y;
-
-    let targetPiece = this.squares[currentY]![currentX];
+    let targetPiece = this.squares[current.y]![current.x];
     if (!targetPiece) throw new MovementError("MOVE_UNDEFINED_PIECE");
 
     if (promote) {
@@ -43,13 +39,18 @@ export class Board {
 
     const nextSquares = this.squares.map((row, yIdx) =>
       row.map((piece, xIdx) => {
-        if (yIdx === nextY && xIdx === nextX) return targetPiece;
-        if (yIdx === currentY && xIdx === currentX) return undefined;
+        if (yIdx === next.y && xIdx === next.y) return targetPiece;
+        if (yIdx === current.y && xIdx === current.x) return undefined;
         return piece;
       })
     ) as Squares;
 
-    return new Board(nextSquares);
+    const side = this.squares[current.y]![current.x]!.side;
+    const newBoard = new Board(nextSquares);
+
+    violateSelfCheck(newBoard, side);
+
+    return newBoard;
   }
 
 
