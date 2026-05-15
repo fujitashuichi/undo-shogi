@@ -16,7 +16,8 @@ export const generateLegalMoves = {
     if (!piece) throw new MovementError("MOVE_UNDEFINED_PIECE");
 
     underAttack.forEach(pos => {
-      // ここでは駒の位置だけが必要であるため、isPromote: boolean はどちらでもよい
+      // ここでは駒の位置だけが必要であるため、promote: boolean はどちらでもよい
+      // 「移動したときに自殺手になっているか」を見ているため、「ならないから詰む」というのは関係がない
       try {
         board.movePiece(piecePos, pos, false);
         legalPosList.push(pos);
