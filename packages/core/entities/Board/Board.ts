@@ -39,7 +39,7 @@ export class Board {
 
     const nextSquares = this.squares.map((row, yIdx) =>
       row.map((piece, xIdx) => {
-        if (yIdx === next.y && xIdx === next.y) return targetPiece;
+        if (yIdx === next.y && xIdx === next.x) return targetPiece;
         if (yIdx === current.y && xIdx === current.x) return undefined;
         return piece;
       })
