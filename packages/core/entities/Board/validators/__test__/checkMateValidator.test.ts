@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { Board } from "../../Board.js";
 import { hirateSquares } from "../../hirateSquares.js";
-import { checkmateValidator } from "../checkmateValidator.js";
+import { checkmateValidator } from "../checkmate/checkmateValidator.js";
 import { checkedSquares } from "../__mock__/checkedSquare.js";
 
 describe("checkMateValidator", () => {

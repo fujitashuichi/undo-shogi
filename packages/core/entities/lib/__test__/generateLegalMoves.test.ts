@@ -2,7 +2,7 @@ import { describe } from "node:test";
 import { expect, it } from "vitest";
 import { Board } from "../../Board/Board.js";
 import { hirateSquares } from "../../Board/hirateSquares.js";
-import { generateLegalMoves } from "../generateLegalMoves.js";
+import { legalMovePositions } from "../legalMovePosition.js";
 import { vitest_checkArray } from "../../../../tools/vitest/checkArray.js";
 import { pinnedRookSquares } from "../__mock__/pinnedRookSquare.js";
 import type { Position } from "../../types/algebraic.types.js";
@@ -13,7 +13,7 @@ describe("generateLegalMoves", () => {
       const board = new Board(hirateSquares);
 
       vitest_checkArray.containingEachOther(
-        generateLegalMoves.byPiece(board, { x: 1, y: 1 }),
+        legalMovePositions.byPiece(board, { x: 1, y: 1 }),
         [
           { x: 0, y: 1 }, { x: 2, y: 1 }, { x: 3, y: 1 }, { x: 4, y: 1 }, { x: 5, y: 1 }, { x: 6, y: 1 }
         ]
@@ -24,7 +24,7 @@ describe("generateLegalMoves", () => {
       const board = new Board(pinnedRookSquares);
 
       expect(
-        generateLegalMoves.byPiece(board, { x: 3, y: 7 })
+        legalMovePositions.byPiece(board, { x: 3, y: 7 })
       ).toStrictEqual([]);
     });
   });
@@ -43,7 +43,7 @@ describe("generateLegalMoves", () => {
       expected.push({ x: 0, y: 7 }, { x: 2, y: 7 }, { x: 3, y: 7 }, { x: 4, y: 7 }, { x: 5, y: 7 }, { x: 6, y: 7 }, { x: 8, y: 7 });
 
       vitest_checkArray.containingEachOther(
-        generateLegalMoves.all(board, "Sente"),
+        legalMovePositions.all(board, "Sente"),
         expected
       )
     });
@@ -56,7 +56,7 @@ describe("generateLegalMoves", () => {
       ]
 
       vitest_checkArray.containingEachOther(
-        generateLegalMoves.all(board, "Sente"),
+        legalMovePositions.all(board, "Sente"),
         expected
       )
     });

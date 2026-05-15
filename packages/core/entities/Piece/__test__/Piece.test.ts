@@ -16,7 +16,7 @@ describe("pieceMotionVector", () => {
 
     invalidPosList.forEach(pos => {
       expect(
-        () => pieceMotionValidator(board, { x: 7, y: 7 }, pos)
+        () => pieceMotionValidator(board, { x: 7, y: 7 }, pos, false)
       ).toThrow(PieceError);
     });
   });
@@ -32,7 +32,7 @@ describe("pieceMotionVector", () => {
 
     invalidPosList.forEach(pos => {
       expect(
-        () => pieceMotionValidator(board, { x: 1, y: 8 }, pos)
+        () => pieceMotionValidator(board, { x: 1, y: 8 }, pos, false)
       ).toThrow(PieceError);
     });
   });
@@ -41,11 +41,11 @@ describe("pieceMotionVector", () => {
     const board = new Board(hirateSquares);
 
     expect(
-      () => pieceMotionValidator(board, { x: 7, y: 7 }, { x: 3, y: 7 })
+      () => pieceMotionValidator(board, { x: 7, y: 7 }, { x: 3, y: 7 }, false)
     ).not.toThrow();
 
     expect(
-      () => pieceMotionValidator(board, { x: 4, y: 8 }, { x: 5, y: 7 })
+      () => pieceMotionValidator(board, { x: 4, y: 8 }, { x: 5, y: 7 }, false)
     ).not.toThrow();
   });
 });
