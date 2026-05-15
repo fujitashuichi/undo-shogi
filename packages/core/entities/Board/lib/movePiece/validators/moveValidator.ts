@@ -32,7 +32,7 @@ export const moveValidator = {
 
   canMove: (board: Board, current: Position, next: Position, promote: boolean): boolean => {
     try {
-      moveValidator.canMove(board, current, next, promote);
+      moveValidator.assertCanMove(board, current, next, promote);
       return true;
     } catch {
       return false;
