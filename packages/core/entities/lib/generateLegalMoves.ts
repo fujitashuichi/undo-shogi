@@ -17,7 +17,7 @@ export const generateLegalMoves = {
 
     underAttack.forEach(pos => {
       // ここでは駒の位置だけが必要であるため、promote: boolean はどちらでもよい
-      // 「移動したときに自殺手になっているか」を見ているため、「ならないから詰む」というのは関係がない
+      // 「移動したときに自殺手になっているか」を見ているため、「成らないから詰む」というのはここで調べることではない
       try {
         board.movePiece(piecePos, pos, false);
         legalPosList.push(pos);
