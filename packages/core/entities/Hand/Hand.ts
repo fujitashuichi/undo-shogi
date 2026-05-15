@@ -29,6 +29,8 @@ export class Hands {
   }
 
   public readonly allPieceKindsBySide = (side: Side): ShogiPiece["kind"][] => {
-    return Object.keys(this.pieceRecord[side]) as ShogiPiece["kind"][];
+    return (Object.keys(this.pieceRecord[side]) as ShogiPiece["kind"][]).filter(
+      (kind) => this.pieceRecord[side][kind] > 0
+    );
   }
 }
