@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { positionsUnderAttack } from "../positionsUnderAttack.js";
+import { positionsUnderAttack } from "../positionsUnderAttack/positionsUnderAttack.js";
 import { Board } from "../../Board/Board.js";
 import { hirateSquares } from "../../Board/hirateSquares.js";
 

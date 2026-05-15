@@ -1,9 +1,9 @@
-import { Board } from "../Board/Board.js";
-import { positionValidator } from "../Board/validators/positionValidator.js";
-import type { Position } from "../types/algebraic.types.js";
-import type { Side } from "../types/piece.types.js";
-import { byPiece_Infinity } from "./positionsUnderAttack/byPiece_Infinity.js";
-import { searchPiecesBySide } from "./searchPiecesBySide.js";
+import { Board } from "../../Board/Board.js";
+import { positionValidator } from "../../Board/validators/positionValidator.js";
+import type { Position } from "../../types/algebraic.types.js";
+import type { Side } from "../../types/piece.types.js";
+import { byPiece_Infinity } from "./byPiece_Infinity.js";
+import { searchPiecesBySide } from "../searchPiecesBySide.js";
 
 
 // underAttack は「駒の効き」を意味しており、駒が移動可能な範囲を指す

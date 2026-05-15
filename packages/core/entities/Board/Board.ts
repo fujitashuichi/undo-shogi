@@ -1,10 +1,10 @@
 import type { FixedLengthArray } from "../../../tools/index.js";
-import { MovementError } from "../../errors/movement.errors.js";
 import { boardConfig } from "../config/boardConfig.js";
 import type { ShogiPiece } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
-import { violateSelfCheck } from "./validators/checkmate/violateSelfCheck.js";
-import { moveValidator } from "./validators/moveValidator.js";
+import { checkmateValidator } from "./validators/checkmate/checkmateValidator.js";
+import { board_dropPiece } from "./lib/dropPiece/dropPiece.js";
+import { board_movePiece } from "./lib/movePiece/movePiece.js";
 
 
 // Boardは動作のみ保証する。駒の増減などは責務ではないと定義する。
@@ -26,51 +26,16 @@ export class Board {
   }
 
 
-  public readonly movePiece = (current: Position, next: Position, promote: boolean) => {
-    moveValidator.canMove(this, current, next, promote);
+  public readonly movePiece = (current: Position, next: Position, promote: boolean): Board => {
+    return board_movePiece(this, current, next, promote);
+  }
 
-
-    let targetPiece = this.squares[current.y]![current.x];
-    if (!targetPiece) throw new MovementError("MOVE_UNDEFINED_PIECE");
-
-    if (promote) {
-      targetPiece = targetPiece.promote();
-    }
-
-    const nextSquares = this.squares.map((row, yIdx) =>
-      row.map((piece, xIdx) => {
-        if (yIdx === next.y && xIdx === next.x) return targetPiece;
-        if (yIdx === current.y && xIdx === current.x) return undefined;
-        return piece;
-      })
-    ) as Squares;
-
-    const side = this.squares[current.y]![current.x]!.side;
-    const newBoard = new Board(nextSquares);
-
-    violateSelfCheck(newBoard, side);
-
-    return newBoard;
+  public readonly dropPiece = (position: Position, piece: ShogiPiece): Board => {
+    return board_dropPiece(this, position, piece);
   }
 
 
-  // 持ち駒を打つ
-  public readonly dropPiece = (position: Position, piece: ShogiPiece) => {
-    moveValidator.canDrop(this, position, piece);
-
-    const targetX = position.x;
-    const targetY = position.y;
-
-
-    const nextSquares = this.squares.map((row, yIdx) =>
-      row.map((currentPiece, xIdx) => {
-        if (yIdx === targetY && xIdx === targetX) return piece;
-        return currentPiece;
-      })
-    ) as Squares;
-
-    return new Board(nextSquares);
-  }
+  public readonly isCheckMated = checkmateValidator.isCheckMated;
 
 
 
