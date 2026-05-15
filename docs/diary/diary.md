@@ -41,7 +41,12 @@
 * [motionValidator.md](../../packages/core/docs/motionValitator.md)
 
 ## 二歩禁止を実装 - 2026/05/13
+* https://zenn.dev/fujishu/articles/418deadb2956eb
 
 ## 駒の効きを取得する関数を作成 - 2026/05/13
+* https://zenn.dev/fujishu/articles/ebb79c32432796
 
 ## 強制成り判定を追加 - 2026/05/13
+
+## リファクタリング（pieceConfig） - 2026/05/14
+* https://zenn.dev/fujishu/articles/4f9bdf55b93021
