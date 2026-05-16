@@ -2,7 +2,6 @@ import type { FixedLengthArray } from "../../../tools/index.js";
 import { boardConfig } from "../config/boardConfig.js";
 import type { ShogiPiece, ShogiPieceNormal } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
-import { checkmateValidator } from "./validators/checkmate/checkmateValidator.js";
 import { board_dropPiece } from "./lib/dropPiece/dropPiece.js";
 import { board_movePiece } from "./lib/movePiece/movePiece.js";
 import type { Hands } from "../Hand/Hands.js";
@@ -38,20 +37,6 @@ export class Board {
   public readonly dropPiece = (position: Position, piece: ShogiPieceNormal): Board => {
     return board_dropPiece(this, this.hands, position, piece);
   }
-
-  public readonly takePiece = (position: Position, side: Side): Board => {
-    const tookPiece = this.squares[position.y]![position.x];
-
-    if (!tookPiece) return this;
-
-    const nextHands = this.hands.addPiece(side, tookPiece.disPromote().kind);
-
-    return new Board(this.squares, nextHands);
-  }
-
-
-  public readonly isCheckMated = (hands: Hands, side: Side) => checkmateValidator.isCheckMated(this, side);
-
 
 
   /* ↓ デバッグ用のメソッド */
