@@ -4,7 +4,6 @@ import type { ShogiPiece, ShogiPieceNormal } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
 import { board_dropPiece } from "./lib/dropPiece/dropPiece.js";
 import { board_movePiece } from "./lib/movePiece/movePiece.js";
-import type { Hands } from "../Hand/Hands.js"
 
 
 // Boardは動作のみ保証する。駒の増減などは責務ではないと定義する。
@@ -32,61 +31,5 @@ export class Board {
 
   public readonly dropPiece = (position: Position, piece: ShogiPieceNormal): Board => {
     return board_dropPiece(this, position, piece);
-  }
-
-
-  /* ↓ デバッグ用のメソッド */
-
-  public debugRenderKanji(): string {
-    const kindToKanji: Record<string, string> = {
-      Pawn: "歩",
-      Lance: "香",
-      Knight: "桂",
-      Silver: "銀",
-      Gold: "金",
-      Bishop: "角",
-      Rook: "飛",
-      King: "玉",
-    };
-
-    const graph = this.squares
-      .map((row) =>
-        row
-          .map((piece) => {
-            if (!piece) return "  ・  ";
-
-            const side = piece.side === "Sente" ? "▲" : "△";
-            const kanji = kindToKanji[piece.kind] || "？";
-
-            const displayKind = piece.isPromoted
-              ? `${kanji}+`
-              : `${kanji} `;
-
-            return ` ${side}${displayKind} `;
-          })
-          .join("")
-      )
-      .join("\n\n");
-
-    return `\n ☆ 盤面図 \n${graph}\n`;
-  }
-
-  public debugRender(): string {
-    const graph = this.squares
-      .map((row) =>
-        row
-          .map((piece) => {
-            if (!piece) return " ・ ";
-            const side = piece.side === "Sente" ? "▲" : "△";
-            if (piece.isPromoted) {
-              return ` ${side}${piece.kind.slice(0, 1)} `;
-            }
-            return ` ${side}${piece.kind.slice(0, 1).toLowerCase()} `;
-          })
-          .join("")
-      )
-      .join("\n");
-
-    return `※成り駒は大文字で表記します\n\n${graph}\n`;
   }
 }
