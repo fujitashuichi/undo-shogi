@@ -11,12 +11,16 @@ export const legalDropsPositions = (board: Board, hands: Hands, side: Side) => {
   const pieces = hands.allPieceKindsBySide(side);
 
   allPositionInBoard.forEach(pos => {
-    pieces.forEach(piece => {
+    const canDrop = pieces.some(piece => {
       try {
         board.dropPiece(pos, new ShogiPieceNormal(side, piece));
-        positions.push(pos);
-      } catch {}
+        return true;
+      } catch {
+        return false;
+      }
     });
+
+    if (canDrop) positions.push(pos);
   });
 
   return positions;
