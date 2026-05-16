@@ -1,17 +1,17 @@
 import { describe } from "node:test";
 import { expect, it } from "vitest";
-import { Board } from "../../Board/Board.js";
-import { hirateSquares } from "../../Board/hirateSquares.js";
+import { Board } from "../../../Board/Board.js";
+import { hirateSquares } from "../../../Board/hirateSquares.js";
 import { legalMovePositions } from "../legalMovePosition.js";
-import { vitest_checkArray } from "../../../../tools/vitest/checkArray.js";
-import { pinnedRookSquares } from "../__mock__/pinnedRookSquare.js";
-import type { Position } from "../../types/algebraic.types.js";
-import { fullHands } from "../../Hand/__mock__/fullHands.js";
+import { vitest_checkArray } from "../../../../../tools/vitest/checkArray.js";
+import { pinnedRookSquares } from "../../../lib/__mock__/pinnedRookSquare.js";
+import type { Position } from "../../../types/algebraic.types.js";
+
 
 describe("generateLegalMoves", () => {
   describe(".byPiece() で、合法手を正しく取得する", () => {
     it("通常局面", () => {
-      const board = new Board(hirateSquares, fullHands);
+      const board = new Board(hirateSquares);
 
       vitest_checkArray.containingEachOther(
         legalMovePositions.byPiece(board, { x: 1, y: 1 }),
@@ -22,7 +22,7 @@ describe("generateLegalMoves", () => {
     });
 
     it("ピンされた局面（間接王手飛車）はピン駒（飛車）の有効な移動がない", () => {
-      const board = new Board(pinnedRookSquares, fullHands);
+      const board = new Board(pinnedRookSquares);
 
       expect(
         legalMovePositions.byPiece(board, { x: 3, y: 7 })
@@ -33,7 +33,7 @@ describe("generateLegalMoves", () => {
 
   describe(".all() で、合法手を正しく取得する", () => {
     it("通常局面", () => {
-      const board = new Board(hirateSquares, fullHands);
+      const board = new Board(hirateSquares);
 
       let expected: Position[] = [];
       for (let i = 0; i < 9; i++) {
@@ -50,7 +50,7 @@ describe("generateLegalMoves", () => {
     });
 
     it("ピンされた局面（間接王手飛車）はピン駒（飛車）の有効な移動がない", () => {
-      const board = new Board(pinnedRookSquares, fullHands);
+      const board = new Board(pinnedRookSquares);
 
       const expected: Position[] = [
         { x: 3, y: 8 }, { x: 5, y: 8 }, { x: 4, y: 7 }, { x: 5, y: 7 }
