@@ -13,7 +13,7 @@ export class LogicError extends Error {
     public readonly type:  ErrorTypes
   ) {
     super();
-    this.name = "MovementError";
+    this.name = "LogicError";
     this.message = messages[type]
   }
 }
