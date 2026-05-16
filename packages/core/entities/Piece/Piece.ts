@@ -43,7 +43,7 @@ export class ShogiPiece {
 
     const parseForPromoted = PromotedPieceKindSchema.safeParse(kind);
     if (parseForPromoted.success) {
-      return new ShogiPieceNormal(this.side, promotedKindToNormal(parseForPromoted.data));
+      return new ShogiPieceNormal(this.side, promotedKindToNormal(parseForPromoted.data), this.id);
     }
 
     const parseForNormal = NormalPieceKindSchema.safeParse(kind);
@@ -76,6 +76,6 @@ export class ShogiPieceNormal extends ShogiPiece {
     public readonly kind: NormalPieceKind,
     public readonly id: UUID = crypto.randomUUID()
   ) {
-    super(side, kind);
+    super(side, kind, id);
   }
 }
