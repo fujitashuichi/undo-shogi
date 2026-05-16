@@ -4,7 +4,7 @@ import { GameState } from "../GameState.js";
 import { positionValidator } from "../validators/positionValidator.js";
 
 
-export const gameState_dropPiece = (gameState: GameState, position: Position, piece: ShogiPieceNormal) => {
+export const gameState_dropPiece = (gameState: GameState, position: Position, piece: ShogiPieceNormal): GameState => {
   positionValidator.assertInBoard(position.x, position.y);
 
   const nextBoard = gameState.board.dropPiece(position, piece);
