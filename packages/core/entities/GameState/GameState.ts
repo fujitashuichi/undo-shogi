@@ -4,9 +4,9 @@ import type { ShogiPieceNormal } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
 import type { Side } from "../types/piece.types.js";
 import { gameState_dropPiece } from "./dropPiece/dropPiece.js";
-import { isChecked } from "./lib/checkmate/isChecked.js";
-import { isCheckMated } from "./lib/checkmate/isCheckMated.js";
 import { gameState_movePiece } from "./movePiece/movePiece.js";
+import { isChecked } from "./validators/checkmate/isChecked.js";
+import { isCheckMated } from "./validators/checkmate/isCheckMated.js";
 
 
 export class GameState {
