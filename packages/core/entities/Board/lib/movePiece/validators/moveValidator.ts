@@ -4,15 +4,13 @@ import type { ShogiPiece } from "../../../../Piece/Piece.js";
 import type { Position } from "../../../../types/algebraic.types.js";
 import type { Board } from "../../../Board.js";
 import type { Side } from "../../../../types/piece.types.js";
-import { positionValidator } from "../../../validators/positionValidator.js";
 import { pieceMotionValidator } from "../../../../Piece/validators/motionValidator.js";
+import { positionValidator } from "../../../../GameState/validators/positionValidator.js";
+import { isInPromotionZone } from "../../../../lib/positions/isInArea/isInPromotionZone.js";
 
 
 export const moveValidator = {
   assertCanMove: (board: Board, current: Position, next: Position, promote: boolean): void => {
-    positionValidator.assertInBoard(current.x, current.y);
-    positionValidator.assertInBoard(next.x, next.y);
-
     pieceMotionValidator(board, current, next, promote);
 
     const movingPiece: ShogiPiece | undefined = board.squares[current.y]![current.x];
@@ -40,11 +38,9 @@ export const moveValidator = {
   },
 
   assertCanPromote: (side: Side, current: Position, next: Position): void => {
-    // 既に持ち駒が直接成らないように定義しているためバリデーションは不要
-
     if (
-      !positionValidator.isInPromotionZone(side, current) &&
-      !positionValidator.isInPromotionZone(side, next)
+      !isInPromotionZone(side, current) &&
+      !isInPromotionZone(side, next)
     ) {
       logger.error("相手陣地に入るか相手陣地から動かないと成りはできません。");
       throw new MovementError("INVALID_PROMOTION");

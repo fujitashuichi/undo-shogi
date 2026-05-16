@@ -5,6 +5,7 @@ import type { Position } from "../types/algebraic.types.js";
 import type { Side } from "../types/piece.types.js";
 import { isChecked } from "./validators/checkmate/isChecked.js";
 import { isCheckMated } from "./validators/checkmate/isCheckMated.js";
+import { positionValidator } from "./validators/positionValidator.js";
 
 
 export class GameState {
@@ -29,6 +30,10 @@ export class GameState {
 
 
   public readonly movePiece = (current: Position, next: Position, promote: boolean) => {
+    positionValidator.assertInBoard(current.x, current.y);
+    positionValidator.assertInBoard(next.x, next.y);
+
+
     const pieceInNextPos = this.board.squares[next.y]![next.x];
     let nextHands = this.hands;
 
@@ -44,6 +49,9 @@ export class GameState {
 
 
   public readonly dropPiece = (position: Position, piece: ShogiPieceNormal) => {
+    positionValidator.assertInBoard(position.x, position.y);
+
+
     const nextBoard = this.board.dropPiece(position, piece);
     const nextHands = this.hands.takePiece(this.currentSide, piece.kind);
     const nextSide = this.currentSide === "Sente" ? "Gote" : "Sente";

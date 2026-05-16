@@ -2,7 +2,7 @@ import type { Board } from "../../Board/Board.js";
 import { ShogiPieceNormal } from "../../Piece/Piece.js";
 import type { Position } from "../../types/algebraic.types.js";
 import type { Side } from "../../types/piece.types.js";
-import { allPositionInBoard } from "../../lib/allPositionsInBoard.js";
+import { allPositionInBoard } from "../../lib/positions/positionsUnderAttack/allPositionsInBoard.js";
 import type { Hands } from "../../Hand/Hands.js";
 
 

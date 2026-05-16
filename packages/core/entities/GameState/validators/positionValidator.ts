@@ -2,43 +2,19 @@ import { logger } from "../../../../tools/index.js";
 import { isInsideRange } from "../../../../tools/math/isInsideRange.js";
 import { MovementError } from "../../../errors/movement.errors.js";
 import { boardConfig } from "../../config/boardConfig.js";
+import { isInBoard } from "../../lib/positions/isInArea/isInBoard.js";
 import type { Position } from "../../types/algebraic.types.js";
 import type { Side } from "../../types/piece.types.js";
 
 
 const boardSize = boardConfig.boardSize;
 
-export const promotionZoneRange = (side: Side): [number, number] => {
-  if (side === "Sente") {
-    return [0, boardConfig.promotionZone - 1];
-  }
-  return [boardSize - 1, boardSize - boardConfig.promotionZone];
-}
-
 
 export const positionValidator = {
   assertInBoard: (x: number, y: number): void => {
-    if (!positionValidator.isInBoard(x, y)) {
+    if (!isInBoard(x, y)) {
       logger.error(`{ x: ${x}, y: ${y} } は盤外です。`);
       throw new MovementError("MOVE_TO_INVALID_SQUARE");
     }
-  },
-
-  isInBoard: (x: number, y: number): boolean => {
-    if (
-      (x < 0 || y < 0) ||
-      (x >= boardSize || y >= boardSize)
-    ) {
-      return false;
-    }
-
-    return true;
-  },
-
-  isInPromotionZone: (side: Side, position: Position): boolean => {
-    if (!isInsideRange(position.y, promotionZoneRange(side))) {
-      return false;
-    };
-    return true;
   }
 }
