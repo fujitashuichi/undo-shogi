@@ -1,6 +1,6 @@
 import type { UUID } from "crypto";
 import { logger } from "../../../tools/index.js";
-import { PromotablePieceKindSchema, PromotedPieceKindSchema, type NormalPieceKind, type PieceKind, type Side } from "../types/piece.types.js";
+import { NormalPieceKindSchema, PromotablePieceKindSchema, PromotedPieceKindSchema, type NormalPieceKind, type PieceKind, type Side } from "../types/piece.types.js";
 import { pieceValidator } from "./validators/pieceValidator.js";
 import { normalKindToPromoted } from "./normalToPromoted.js";
 import { promotedKindToNormal } from "./promotedToNormal.js";
@@ -36,6 +36,22 @@ export class ShogiPiece {
     const nextKind = normalKindToPromoted(parsed.data);
 
     return new ShogiPiece(this.side, nextKind, this.id);
+  }
+
+  public disPromote = (): ShogiPieceNormal => {
+    const kind = this.kind;
+
+    const parseForPromoted = PromotedPieceKindSchema.safeParse(kind);
+    if (parseForPromoted.success) {
+      return new ShogiPieceNormal(this.side, promotedKindToNormal(parseForPromoted.data));
+    }
+
+    const parseForNormal = NormalPieceKindSchema.safeParse(kind);
+    if (parseForNormal.success) {
+      return new ShogiPieceNormal(this.side, parseForNormal.data, this.id);
+    }
+
+    throw new Error("致命的なエラーが発生しました");
   }
 
   public changeSide = (): ShogiPiece => {

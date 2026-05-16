@@ -114,8 +114,6 @@ describe("駒の重複を防止", () => {
   it ("駒がない場所には持ち駒を打てる", () => {
     const board = new Board(hirateSquares, fullHands);
 
-    console.log(board.hands.pieceRecord);
-
     const validPosList = [
       { x: 0, y: 1 },
       { x: 4, y: 4 },

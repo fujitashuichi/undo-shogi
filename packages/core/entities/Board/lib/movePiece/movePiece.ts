@@ -1,10 +1,11 @@
 import { MovementError } from "../../../../errors/movement.errors.js";
+import type { Hands } from "../../../Hand/Hands.js";
 import type { Position } from "../../../types/algebraic.types.js";
 import { Board } from "../../Board.js";
 import { violateSelfCheck } from "../../validators/checkmate/violateSelfCheck.js";
 import { moveValidator } from "./validators/moveValidator.js";
 
-export const board_movePiece = (board: Board, current: Position, next: Position, promote: boolean) => {
+export const board_movePiece = (board: Board, hands: Hands, current: Position, next: Position, promote: boolean) => {
   moveValidator.assertCanMove(board, current, next, promote);
 
 
@@ -23,9 +24,15 @@ export const board_movePiece = (board: Board, current: Position, next: Position,
     })
   ) as Board["squares"];
 
-  const side = board.squares[current.y]![current.x]!.side;
-  const newBoard = new Board(nextSquares);
 
+
+  const side = board.squares[current.y]![current.x]!.side;
+  let newBoard = new Board(nextSquares, hands);
+
+  const tookPiece = board.squares[next.y]![next.x];
+  if (tookPiece) {
+    newBoard = newBoard.takePiece({ x: next.x, y: next.y }, side);
+  }
 
   violateSelfCheck(newBoard, side);
 
