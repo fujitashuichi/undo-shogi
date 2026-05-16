@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { Board } from "../../Board.js";
-import { hirateSquares } from "../../hirateSquares.js";
 import { checkmateValidator } from "../checkmate/checkmateValidator.js";
-import { checkedSquares } from "../__mock__/checkedSquare.js";
 import { emptyHands } from "../../../Hand/__mock__/emptyHands.js";
-import { atamakinSquares } from "../__mock__/atamakinSquares.js";
 import { fullHands } from "../../../Hand/__mock__/fullHands.js";
+import { Board } from "../../../Board/Board.js";
+import { hirateSquares } from "../../../Board/hirateSquares.js";
+import { checkedSquares } from "../../../Board/validators/__mock__/checkedSquare.js";
+import { atamakinSquares } from "../../../Board/validators/__mock__/atamakinSquares.js";
 
 describe("checkMateValidator", () => {
   describe("isChecked", () => {
