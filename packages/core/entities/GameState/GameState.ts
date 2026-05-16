@@ -3,6 +3,7 @@ import { Hands } from "../Hand/Hands.js";
 import type { ShogiPiece, ShogiPieceNormal } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
 import type { Side } from "../types/piece.types.js";
+import { isChecked } from "./validators/checkmate/isChecked.js";
 import { isCheckMated } from "./validators/checkmate/isCheckMated.js";
 
 
