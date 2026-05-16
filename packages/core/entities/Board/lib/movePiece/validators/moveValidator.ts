@@ -5,7 +5,6 @@ import type { Position } from "../../../../types/algebraic.types.js";
 import type { Board } from "../../../Board.js";
 import type { Side } from "../../../../types/piece.types.js";
 import { pieceMotionValidator } from "../../../../Piece/validators/motionValidator.js";
-import { positionValidator } from "../../../../GameState/validators/positionValidator.js";
 import { isInPromotionZone } from "../../../../lib/positions/isInArea/isInPromotionZone.js";
 
 
