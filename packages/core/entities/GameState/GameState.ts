@@ -1,11 +1,12 @@
 import { Board } from "../Board/Board.js";
 import { Hands } from "../Hand/Hands.js";
-import type { ShogiPiece, ShogiPieceNormal } from "../Piece/Piece.js";
+import type { ShogiPieceNormal } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
 import type { Side } from "../types/piece.types.js";
+import { gameState_dropPiece } from "./dropPiece/dropPiece.js";
+import { gameState_movePiece } from "./movePiece/movePiece.js";
 import { isChecked } from "./validators/checkmate/isChecked.js";
 import { isCheckMated } from "./validators/checkmate/isCheckMated.js";
-import { positionValidator } from "./validators/positionValidator.js";
 
 
 export class GameState {
@@ -30,32 +31,11 @@ export class GameState {
 
 
   public readonly movePiece = (current: Position, next: Position, promote: boolean) => {
-    positionValidator.assertInBoard(current.x, current.y);
-    positionValidator.assertInBoard(next.x, next.y);
-
-
-    const pieceInNextPos = this.board.squares[next.y]![next.x];
-    let nextHands = this.hands;
-
-    if (pieceInNextPos) {
-      nextHands = this.hands.addPiece(this.currentSide, pieceInNextPos.disPromote().kind)
-    }
-
-    const nextBoard = this.board.movePiece(current, next, promote);
-    const nextSide = this.currentSide === "Sente" ? "Gote" : "Sente";
-
-    return new GameState(nextBoard, nextHands, nextSide);
+    return gameState_movePiece(this, current, next, promote);
   }
 
 
   public readonly dropPiece = (position: Position, piece: ShogiPieceNormal) => {
-    positionValidator.assertInBoard(position.x, position.y);
-
-
-    const nextBoard = this.board.dropPiece(position, piece);
-    const nextHands = this.hands.takePiece(this.currentSide, piece.kind);
-    const nextSide = this.currentSide === "Sente" ? "Gote" : "Sente";
-
-    return new GameState(nextBoard, nextHands, nextSide)
+    return gameState_dropPiece(this, position, piece);
   }
 }
