@@ -1,13 +1,10 @@
 import { isInsideRange } from "../../../../../../tools/math/isInsideRange.js";
 import { MovementError } from "../../../../../errors/movement.errors.js";
 import { boardConfig } from "../../../../config/boardConfig.js";
-import { allPositionInBoard } from "../../../../lib/allPositionsInBoard.js";
 import { ShogiPieceNormal } from "../../../../Piece/Piece.js";
 import { ShogiRulesValidator } from "../../../../rules/shogiRulesValidator.js";
 import type { Position } from "../../../../types/algebraic.types.js";
-import type { Side } from "../../../../types/piece.types.js";
-import { Board } from "../../../Board.js";
-import { positionValidator } from "../../../validators/positionValidator.js";
+import type { Board } from "../../../Board.js";
 
 
 const boardSize = boardConfig.boardSize;
@@ -15,7 +12,6 @@ const boardSize = boardConfig.boardSize;
 
 export const dropValidator = {
   assertCanDrop: (board: Board, position: Position, piece: ShogiPieceNormal): void => {
-    positionValidator.assertInBoard(position.x, position.y);
     const pieceInTargetSquare = board.squares[position.y]![position.x];
 
     if (pieceInTargetSquare) {

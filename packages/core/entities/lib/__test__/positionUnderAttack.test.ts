@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { positionsUnderAttack } from "../positionsUnderAttack/positionsUnderAttack.js";
 import { Board } from "../../Board/Board.js";
 import { hirateSquares } from "../../Board/hirateSquares.js";
+import { positionsUnderAttack } from "../positions/positionsUnderAttack/positionsUnderAttack.js";
 
 describe("lib/positionsUnderAttack", () => {
   describe("駒単体の効きを正しく補足する", () => {

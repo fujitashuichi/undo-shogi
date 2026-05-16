@@ -1,5 +1,5 @@
 import type { Board } from "../../../Board/Board.js";
-import { positionsUnderAttack } from "../../../lib/positionsUnderAttack/positionsUnderAttack.js";
+import { positionsUnderAttack } from "../../../lib/positions/positionsUnderAttack/positionsUnderAttack.js";
 import { searchKingPosition } from "../../../lib/searchKing.js";
 import type { Side } from "../../../types/piece.types.js";
 

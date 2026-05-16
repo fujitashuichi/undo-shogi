@@ -1,14 +1,14 @@
-import { Board } from "../../Board/Board.js";
-import { positionValidator } from "../../Board/validators/positionValidator.js";
-import type { Position } from "../../types/algebraic.types.js";
-import type { Side } from "../../types/piece.types.js";
-import { byPiece_Infinity } from "./byPiece_Infinity.js";
-import { searchPiecesBySide } from "../searchPiecesBySide.js";
 
-
-// underAttack は「駒の効き」を意味しており、駒が移動可能な範囲を指す
 
 // memo: 目的の駒自身を効きから省く → 「自分sideの駒がある場所を省く」に含まれるため不要
+
+import type { Board } from "../../../Board/Board.js";
+import type { PieceVectors } from "../../../config/motions/types.js";
+import type { Position } from "../../../types/algebraic.types.js";
+import type { Side } from "../../../types/piece.types.js";
+import { searchPiecesBySide } from "../../searchPiecesBySide.js";
+import { isInBoard } from "../isInArea/isInBoard.js";
+import { byPiece_Infinity } from "./byPiece_Infinity.js";
 
 
 const byPiece = (board: Board, piecePos: Position): Position[] => {
@@ -17,7 +17,7 @@ const byPiece = (board: Board, piecePos: Position): Position[] => {
   const piece = board.squares[piecePos.y]![piecePos.x];
   if (!piece) return [];
 
-  const vectors = piece.motion.vectors;
+  const vectors: PieceVectors = piece.motion.vectors;
 
   vectors.forEach(vector => {
     const dx = vector.dx;
@@ -30,7 +30,7 @@ const byPiece = (board: Board, piecePos: Position): Position[] => {
     if (vector.infinity) {
       byPiece_Infinity(board, piece, x, y, dx, dy, positionsUnderAttack);
     } else {
-      if (positionValidator.isInBoard(x, y)) {
+      if (isInBoard(x, y)) {
         const square = board.squares[y]![x];
 
         if (
@@ -54,7 +54,7 @@ const byPiece = (board: Board, piecePos: Position): Position[] => {
 const all = (board: Board, side: Side): Position[] => {
   let positionsUnderAttack: Position[] = [];
 
-  const piecePosList = searchPiecesBySide.returnPositions(board, side);
+  const piecePosList: Position[] = searchPiecesBySide.returnPositions(board, side);
 
   piecePosList.forEach(pos => {
     positionsUnderAttack.push(

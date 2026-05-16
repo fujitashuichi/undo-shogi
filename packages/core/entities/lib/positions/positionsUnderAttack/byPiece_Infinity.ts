@@ -1,7 +1,7 @@
-import type { Board } from "../../Board/Board.js";
-import { positionValidator } from "../../Board/validators/positionValidator.js";
-import type { ShogiPiece } from "../../Piece/Piece.js";
-import type { Position } from "../../types/algebraic.types.js";
+import type { Board } from "../../../Board/Board.js";
+import type { ShogiPiece } from "../../../Piece/Piece.js";
+import type { Position } from "../../../types/algebraic.types.js";
+import { isInBoard } from "../isInArea/isInBoard.js";
 
 
 export const byPiece_Infinity = (
@@ -13,7 +13,7 @@ export const byPiece_Infinity = (
 ) => {
   let collided = false;
 
-  if (!positionValidator.isInBoard(x, y)) return;
+  if (!isInBoard(x, y)) return;
 
   const firstSquare = board.squares[y]![x];
   if (firstSquare) {
@@ -24,8 +24,8 @@ export const byPiece_Infinity = (
     }
   }
 
-  while (!collided && positionValidator.isInBoard(x, y)) {
-    if (positionValidator.isInBoard(x, y)) {
+  while (!collided && isInBoard(x, y)) {
+    if (isInBoard(x, y)) {
       const square = board.squares[y]![x];
 
       if (square) {
