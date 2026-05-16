@@ -4,10 +4,11 @@ import { hirateSquares } from "../../Board/hirateSquares.js";
 import { ShogiPiece } from "../../Piece/Piece.js";
 import { ShogiRulesError } from "../../../errors/shogiRules.error.js";
 import type { Position } from "../../types/algebraic.types.js";
+import { fullHands } from "../../Hand/__mock__/fullHands.js";
 
 describe("将棋のルール", () => {
   it("2歩を禁止する", () => {
-    const board = new Board(hirateSquares);
+    const board = new Board(hirateSquares, fullHands);
 
     const invalidPosList: Position[] = [
       { x: 5, y: 4 },

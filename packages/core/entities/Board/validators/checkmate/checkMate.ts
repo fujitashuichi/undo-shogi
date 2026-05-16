@@ -1,4 +1,4 @@
-import type { Hands } from "../../../Hand/Hand.js";
+import type { Hands } from "../../../Hand/Hands.js";
 import { legalMovePositions } from "../../../lib/legalMovePosition.js";
 import type { Side } from "../../../types/piece.types.js";
 import type { Board } from "../../Board.js";
