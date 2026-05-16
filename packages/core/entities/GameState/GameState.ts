@@ -22,7 +22,7 @@ export class GameState {
     this.hands = hands;
     this.currentSide = currentSide;
 
-    this.checked = isCheckMated(board, hands, currentSide) ? currentSide : null;
+    this.checked = isChecked(board, currentSide) ? currentSide : null;
     this.checkMated = isCheckMated(board, hands, currentSide) ? currentSide : null;
   }
 
