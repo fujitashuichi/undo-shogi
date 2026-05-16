@@ -2,10 +2,10 @@ import { describe } from "node:test";
 import { expect, it } from "vitest";
 import { Board } from "../../../Board/Board.js";
 import { hirateSquares } from "../../../Board/hirateSquares.js";
-import { legalMovePositions } from "../legalMovePosition.js";
 import { vitest_checkArray } from "../../../../../tools/vitest/checkArray.js";
 import { pinnedRookSquares } from "../../../lib/__mock__/pinnedRookSquare.js";
 import type { Position } from "../../../types/algebraic.types.js";
+import { legalMovePositions } from "../legalMovePosition.js";
 
 
 describe("generateLegalMoves", () => {

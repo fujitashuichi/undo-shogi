@@ -3,10 +3,15 @@ import type { Position } from "../../types/algebraic.types.js";
 import type { Side } from "../../types/piece.types.js";
 import { searchPiecesBySide } from "../../lib/searchPiecesBySide.js";
 import { positionsUnderAttack } from "../../lib/positions/positionsUnderAttack/positionsUnderAttack.js";
+import { isChecked } from "../validators/checkmate/isChecked.js";
+import { MovementError } from "../../../errors/movement.errors.js";
 
 export const legalMovePositions = {
   byPiece: (board: Board, piecePos: Position) => {
     let legalPosList: Position[] = [];
+
+    const piece = board.squares[piecePos.y]![piecePos.x];
+    if (!piece) throw new MovementError("MOVE_UNDEFINED_PIECE");
 
     const underAttack = positionsUnderAttack.byPiece(board, piecePos);
 
@@ -14,7 +19,8 @@ export const legalMovePositions = {
       // ここでは駒の位置だけが必要であるため、promote: boolean はどちらでもよい
       // 「移動したときに自殺手になっているか」を見ているため、「成らないから詰む」というのはここで調べることではない
       try {
-        if (board.movePiece(piecePos, pos, false)) {
+        const checked = isChecked(board.movePiece(piecePos, pos, false), piece.side);
+        if (!checked) {
           legalPosList.push(pos);
         }
       } catch {}

@@ -30,12 +30,12 @@ export class GameState {
   }
 
 
-  public readonly movePiece = (current: Position, next: Position, promote: boolean) => {
+  public readonly movePiece = (current: Position, next: Position, promote: boolean): GameState => {
     return gameState_movePiece(this, current, next, promote);
   }
 
 
-  public readonly dropPiece = (position: Position, piece: ShogiPieceNormal) => {
+  public readonly dropPiece = (position: Position, piece: ShogiPieceNormal): GameState => {
     return gameState_dropPiece(this, position, piece);
   }
 }
