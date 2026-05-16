@@ -5,7 +5,7 @@ import type { Position } from "../../types/algebraic.types.js";
 import { centerBishopSquares } from "../__mock__/centerBishopSquares.js";
 import { centerBishop_fourLancesSquares } from "../__mock__/centerBishop-fourLancesSquares.js";
 import { MovementError } from "../../../errors/movement.errors.js";
-import { ShogiPiece } from "../../Piece/Piece.js";
+import { ShogiPiece, ShogiPieceNormal } from "../../Piece/Piece.js";
 import { emptyHands } from "../../Hand/__mock__/emptyHands.js";
 import { fullHands } from "../../Hand/__mock__/fullHands.js";
 
@@ -38,7 +38,7 @@ describe("座標エラーの確認", () => {
 
     invalidPosList.forEach(pos => {
       expect(
-        () => board.dropPiece(pos, new ShogiPiece("Sente", "Gold"))
+        () => board.dropPiece(pos, new ShogiPieceNormal("Sente", "Gold"))
       ).toThrow(MovementError);
     })
   })
@@ -106,7 +106,7 @@ describe("駒の重複を防止", () => {
 
     invalidPosList.forEach(pos => {
       expect(
-        () => board.dropPiece(pos, new ShogiPiece("Sente", "Gold"))
+        () => board.dropPiece(pos, new ShogiPieceNormal("Sente", "Gold"))
       ).toThrow(MovementError);
     })
   });
@@ -114,15 +114,17 @@ describe("駒の重複を防止", () => {
   it ("駒がない場所には持ち駒を打てる", () => {
     const board = new Board(hirateSquares, fullHands);
 
-    const invalidPosList = [
+    console.log(board.hands.pieceRecord);
+
+    const validPosList = [
       { x: 0, y: 1 },
       { x: 4, y: 4 },
       { x: 3, y: 7 }
     ]
 
-    invalidPosList.forEach(pos => {
+    validPosList.forEach(pos => {
       expect(
-        board.dropPiece(pos, new ShogiPiece("Sente", "Gold"))
+        board.dropPiece(pos, new ShogiPieceNormal("Sente", "Gold"))
       ).toBeInstanceOf(Board);
     })
   });

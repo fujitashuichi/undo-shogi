@@ -1,4 +1,3 @@
-import { ShogiPiece } from "../Piece/Piece.js";
 import type { NormalPieceKind, Side } from "../types/piece.types.js";
 
 
@@ -19,13 +18,21 @@ export class Hands {
 
 
   public readonly addPiece = (side: Side, kind: NormalPieceKind) => {
-    this.pieceRecord[side][kind]++
-    return this;
+    const nextRecord = {
+      Sente: { ...this.pieceRecord.Sente },
+      Gote: { ...this.pieceRecord.Gote }
+    };
+    nextRecord[side][kind]++
+    return new Hands(nextRecord);
   }
 
   public readonly takePiece = (side: Side, kind: NormalPieceKind) => {
-    this.pieceRecord[side][kind]--
-    return this;
+    const nextRecord = {
+      Sente: { ...this.pieceRecord.Sente },
+      Gote: { ...this.pieceRecord.Gote }
+    };
+    nextRecord[side][kind]--
+    return new Hands(nextRecord);
   }
 
   public readonly allPieceKindsBySide = (side: Side): NormalPieceKind[] => {

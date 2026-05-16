@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { Board } from "../../Board/Board.js";
 import { hirateSquares } from "../../Board/hirateSquares.js";
-import { ShogiPiece } from "../../Piece/Piece.js";
+import { ShogiPieceNormal } from "../../Piece/Piece.js";
 import { ShogiRulesError } from "../../../errors/shogiRules.error.js";
 import type { Position } from "../../types/algebraic.types.js";
 import { fullHands } from "../../Hand/__mock__/fullHands.js";
@@ -18,7 +18,7 @@ describe("将棋のルール", () => {
 
     invalidPosList.forEach(pos => {
       expect(
-        () => board.dropPiece(pos, new ShogiPiece("Sente", "Pawn"))
+        () => board.dropPiece(pos, new ShogiPieceNormal("Sente", "Pawn"))
       ).toThrow(ShogiRulesError);
     });
   });

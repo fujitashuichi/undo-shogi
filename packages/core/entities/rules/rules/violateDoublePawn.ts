@@ -28,7 +28,6 @@ export const violateDoublePawn = (board: Board, positionDropped: Position, side:
       pawnsPosList.push({ x: positionDropped.x, y });
 
       if (pawnsPosList.length > 1) {
-        console.log(`2歩はこの座標で起こっています: ${pawnsPosList.map(pos => JSON.stringify(pos))}`);
         throw new ShogiRulesError("DOUBLE_PAWN");
       }
     };
