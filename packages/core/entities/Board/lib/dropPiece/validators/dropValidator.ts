@@ -1,8 +1,6 @@
-import { logger } from "../../../../../../tools/index.js";
 import { isInsideRange } from "../../../../../../tools/math/isInsideRange.js";
 import { MovementError } from "../../../../../errors/movement.errors.js";
 import { boardConfig } from "../../../../config/boardConfig.js";
-import type { Hands } from "../../../../Hand/Hands.js";
 import { allPositionInBoard } from "../../../../lib/allPositionsInBoard.js";
 import { ShogiPieceNormal } from "../../../../Piece/Piece.js";
 import { ShogiRulesValidator } from "../../../../rules/shogiRulesValidator.js";
@@ -16,13 +14,7 @@ const boardSize = boardConfig.boardSize;
 
 
 export const dropValidator = {
-  assertCanDrop: (board: Board, hands: Hands, position: Position, piece: ShogiPieceNormal): void => {
-    const isPieceInHand = hands.allPieceKindsBySide(piece.side).some(kind => piece.kind === kind);
-
-    if (!isPieceInHand) {
-      throw new MovementError("DROP_UNDEFINED_PIECE");
-    }
-
+  assertCanDrop: (board: Board, position: Position, piece: ShogiPieceNormal): void => {
     positionValidator.assertInBoard(position.x, position.y);
     const pieceInTargetSquare = board.squares[position.y]![position.x];
 
@@ -50,23 +42,12 @@ export const dropValidator = {
     }
   },
 
-  canDrop: (board: Board, hands: Hands, position: Position, piece: ShogiPieceNormal): boolean => {
+  canDrop: (board: Board, position: Position, piece: ShogiPieceNormal): boolean => {
     try {
-      dropValidator.assertCanDrop(board, hands, position, piece);
+      dropValidator.assertCanDrop(board, position, piece);
       return true;
     } catch {
       return false;
     }
-  },
-
-  canAnyDrop: (board: Board, hands: Hands, side: Side): boolean => {
-    for(const pos of allPositionInBoard) {
-      for (const kind of hands.allPieceKindsBySide(side)) {
-        const canDrop = dropValidator.canDrop(board, hands, pos, new ShogiPieceNormal(side, kind));
-        if (canDrop) return true;
-      }
-    }
-
-    return false;
   }
 }

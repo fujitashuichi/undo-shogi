@@ -1,8 +1,8 @@
-import type { Board } from "../Board/Board.js";
-import type { Position } from "../types/algebraic.types.js";
-import type { Side } from "../types/piece.types.js";
-import { positionsUnderAttack } from "./positionsUnderAttack/positionsUnderAttack.js";
-import { searchPiecesBySide } from "./searchPiecesBySide.js";
+import type { Board } from "../../Board/Board.js";
+import type { Position } from "../../types/algebraic.types.js";
+import type { Side } from "../../types/piece.types.js";
+import { positionsUnderAttack } from "../../lib/positionsUnderAttack/positionsUnderAttack.js";
+import { searchPiecesBySide } from "../../lib/searchPiecesBySide.js";
 
 export const legalMovePositions = {
   byPiece: (board: Board, piecePos: Position) => {

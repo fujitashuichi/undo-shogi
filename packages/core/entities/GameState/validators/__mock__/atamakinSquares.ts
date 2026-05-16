@@ -1,7 +1,7 @@
 import type { FixedLengthArray } from "../../../../../tools/index.js";
+import type { Board } from "../../../Board/Board.js";
 import { ShogiPiece } from "../../../Piece/Piece.js";
 import type { Side } from "../../../types/piece.types.js";
-import type { Board } from "../../Board.js";
 
 
 type Row = FixedLengthArray<ShogiPiece | undefined, 9>;

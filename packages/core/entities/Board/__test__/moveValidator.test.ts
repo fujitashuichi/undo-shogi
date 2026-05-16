@@ -5,14 +5,12 @@ import type { Position } from "../../types/algebraic.types.js";
 import { centerBishopSquares } from "../__mock__/centerBishopSquares.js";
 import { centerBishop_fourLancesSquares } from "../__mock__/centerBishop-fourLancesSquares.js";
 import { MovementError } from "../../../errors/movement.errors.js";
-import { ShogiPiece, ShogiPieceNormal } from "../../Piece/Piece.js";
-import { emptyHands } from "../../Hand/__mock__/emptyHands.js";
-import { fullHands } from "../../Hand/__mock__/fullHands.js";
+import { ShogiPieceNormal } from "../../Piece/Piece.js";
 
 
 describe("座標エラーの確認", () => {
   it ("盤外には移動できない", () => {
-    const board = new Board(hirateSquares, fullHands);
+    const board = new Board(hirateSquares);
 
     const invalidPosList: Position[] = [
       { x: 0, y: -1 },
@@ -28,7 +26,7 @@ describe("座標エラーの確認", () => {
   })
 
   it ("盤外には持ち駒を打てない", () => {
-    const board = new Board(hirateSquares, fullHands);
+    const board = new Board(hirateSquares);
 
     const invalidPosList: Position[] = [
       { x: 0, y: -1 },
@@ -44,7 +42,7 @@ describe("座標エラーの確認", () => {
   })
 
   it ("盤の端を誤ってエラーにしない", () => {
-    const board = new Board(centerBishopSquares, fullHands);
+    const board = new Board(centerBishopSquares);
 
     const invalidPosList: Position[] = [
       { x: 0, y: 0 },
@@ -66,7 +64,7 @@ describe("座標エラーの確認", () => {
 
 describe("駒の重複を防止", () => {
   it ("味方の駒がいる場所には動けない", () => {
-    const board = new Board(centerBishop_fourLancesSquares, fullHands);
+    const board = new Board(centerBishop_fourLancesSquares);
 
     const invalidPosList = [
       { x: 0, y: 8 },
@@ -81,7 +79,7 @@ describe("駒の重複を防止", () => {
   })
 
   it ("相手の駒がいる場所には動くことが出来る", () => {
-    const board = new Board(centerBishop_fourLancesSquares, fullHands);
+    const board = new Board(centerBishop_fourLancesSquares);
 
     const invalidPosList = [
       { x: 0, y: 0 },
@@ -96,7 +94,7 @@ describe("駒の重複を防止", () => {
   })
 
   it ("駒がある場所には持ち駒を打てない", () => {
-    const board = new Board(hirateSquares, fullHands);
+    const board = new Board(hirateSquares);
 
     const invalidPosList = [
       { x: 0, y: 0 },
@@ -112,7 +110,7 @@ describe("駒の重複を防止", () => {
   });
 
   it ("駒がない場所には持ち駒を打てる", () => {
-    const board = new Board(hirateSquares, fullHands);
+    const board = new Board(hirateSquares);
 
     const validPosList = [
       { x: 0, y: 1 },

@@ -1,6 +1,6 @@
 import { MovementError } from "../../../../errors/movement.errors.js";
+import type { Board } from "../../../Board/Board.js";
 import type { Side } from "../../../types/piece.types.js";
-import type { Board } from "../../Board.js";
 import { isChecked } from "./isChecked.js";
 
 
