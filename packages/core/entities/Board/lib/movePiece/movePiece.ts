@@ -25,13 +25,15 @@ export const board_movePiece = (board: Board, hands: Hands, current: Position, n
   ) as Board["squares"];
 
 
-
   const side = board.squares[current.y]![current.x]!.side;
-  let newBoard = new Board(nextSquares, hands);
+  let newBoard;
 
   const tookPiece = board.squares[next.y]![next.x];
   if (tookPiece) {
-    newBoard = newBoard.takePiece({ x: next.x, y: next.y }, side);
+    const nextHands = board.takePiece({ x: next.x, y: next.y }, side).hands;
+    newBoard = new Board(nextSquares, nextHands);
+  } else {
+    newBoard = new Board(nextSquares, hands);
   }
 
   violateSelfCheck(newBoard, side);

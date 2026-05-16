@@ -40,11 +40,11 @@ export class Board {
   }
 
   public readonly takePiece = (position: Position, side: Side): Board => {
-    const piece = this.squares[position.y]![position.x];
+    const tookPiece = this.squares[position.y]![position.x];
 
-    if (!piece) return this;
+    if (!tookPiece) return this;
 
-    const nextHands = this.hands.addPiece(side, piece.disPromote().kind);
+    const nextHands = this.hands.addPiece(side, tookPiece.disPromote().kind);
 
     return new Board(this.squares, nextHands);
   }
