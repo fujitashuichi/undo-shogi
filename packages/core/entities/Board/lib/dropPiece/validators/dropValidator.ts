@@ -17,7 +17,6 @@ const boardSize = boardConfig.boardSize;
 
 export const dropValidator = {
   assertCanDrop: (board: Board, hands: Hands, position: Position, piece: ShogiPieceNormal): void => {
-    console.log(hands.allPieceKindsBySide(piece.side));
     const isPieceInHand = hands.allPieceKindsBySide(piece.side).some(kind => piece.kind === kind);
 
     if (!isPieceInHand) {

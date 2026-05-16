@@ -1,5 +1,4 @@
 import type { Board } from "../Board/Board.js";
-import { moveValidator } from "../Board/lib/movePiece/validators/moveValidator.js";
 import type { Position } from "../types/algebraic.types.js";
 import type { Side } from "../types/piece.types.js";
 import { positionsUnderAttack } from "./positionsUnderAttack/positionsUnderAttack.js";

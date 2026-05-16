@@ -32,15 +32,25 @@ export class Board {
 
 
   public readonly movePiece = (current: Position, next: Position, promote: boolean): Board => {
-    return board_movePiece(this, current, next, promote);
+    return board_movePiece(this, this.hands, current, next, promote);
   }
 
   public readonly dropPiece = (position: Position, piece: ShogiPieceNormal): Board => {
     return board_dropPiece(this, this.hands, position, piece);
   }
 
+  public readonly takePiece = (position: Position, side: Side): Board => {
+    const piece = this.squares[position.y]![position.x];
 
-  public readonly isCheckMated = (hands: Hands, side: Side) => checkmateValidator.isCheckMated(this, hands, side);
+    if (!piece) return this;
+
+    const nextHands = this.hands.addPiece(side, piece.disPromote().kind);
+
+    return new Board(this.squares, nextHands);
+  }
+
+
+  public readonly isCheckMated = (hands: Hands, side: Side) => checkmateValidator.isCheckMated(this, side);
 
 
 

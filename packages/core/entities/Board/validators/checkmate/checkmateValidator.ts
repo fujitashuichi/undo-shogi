@@ -1,4 +1,4 @@
-import { isCheckMated } from "./checkMate.js";
+import { isCheckMated } from "./isCheckMated.js";
 import { isChecked } from "./isChecked.js";
 
 

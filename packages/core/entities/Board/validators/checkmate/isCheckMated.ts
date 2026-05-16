@@ -1,17 +1,15 @@
 import type { Hands } from "../../../Hand/Hands.js";
+import { legalDropsPositions } from "../../../lib/legalDropPositions.js";
 import { legalMovePositions } from "../../../lib/legalMovePosition.js";
 import type { Side } from "../../../types/piece.types.js";
 import type { Board } from "../../Board.js";
-import { dropValidator } from "../../lib/dropPiece/validators/dropValidator.js";
 
 
-export const isCheckMated = (board: Board, hands: Hands, side: Side): boolean => {
+export const isCheckMated = (board: Board, side: Side): boolean => {
   const allLegalMoves = legalMovePositions.all(board, side);
 
   if (allLegalMoves.length === 0) {
-    const canDrop = dropValidator.canAnyDrop(board, hands, side);
-
-    if (canDrop) {
+    if (legalDropsPositions(board, side).length > 0) {
       return false;
     }
 
