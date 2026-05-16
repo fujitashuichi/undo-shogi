@@ -1,6 +1,6 @@
 import type { UUID } from "crypto";
 import { logger } from "../../../tools/index.js";
-import { PromotablePieceKindSchema, PromotedPieceKindSchema, type PieceKind, type Side } from "../types/piece.types.js";
+import { PromotablePieceKindSchema, PromotedPieceKindSchema, type NormalPieceKind, type PieceKind, type Side } from "../types/piece.types.js";
 import { pieceValidator } from "./validators/pieceValidator.js";
 import { normalKindToPromoted } from "./normalToPromoted.js";
 import { promotedKindToNormal } from "./promotedToNormal.js";
@@ -50,5 +50,16 @@ export class ShogiPiece {
     }
 
     return new ShogiPiece(nextSide, this.kind, this.id);
+  }
+}
+
+
+export class ShogiPieceNormal extends ShogiPiece {
+  constructor(
+    public readonly side: Side,
+    public readonly kind: NormalPieceKind,
+    public readonly id: UUID = crypto.randomUUID()
+  ) {
+    super(side, kind);
   }
 }

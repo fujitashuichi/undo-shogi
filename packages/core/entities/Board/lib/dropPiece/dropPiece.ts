@@ -1,12 +1,11 @@
-import { emptyHands } from "../../../Hand/__mock__/emptyHands.js";
 import { Hands } from "../../../Hand/Hands.js";
-import type { ShogiPiece } from "../../../Piece/Piece.js";
+import type { ShogiPieceNormal } from "../../../Piece/Piece.js";
 import type { Position } from "../../../types/algebraic.types.js";
 import { Board } from "../../Board.js";
 import { dropValidator } from "./validators/dropValidator.js";
 
 
-export const board_dropPiece = (board: Board, hands: Hands, position: Position, piece: ShogiPiece) => {
+export const board_dropPiece = (board: Board, hands: Hands, position: Position, piece: ShogiPieceNormal) => {
   dropValidator.assertCanDrop(board, hands, position, piece);
 
   const targetX = position.x;
@@ -20,5 +19,7 @@ export const board_dropPiece = (board: Board, hands: Hands, position: Position, 
     })
   ) as Board["squares"];
 
-  return new Board(nextSquares, emptyHands);
+  const nextHands = board.hands.takePiece(piece.side, piece.kind);
+
+  return new Board(nextSquares, nextHands);
 }

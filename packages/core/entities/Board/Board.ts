@@ -1,6 +1,6 @@
 import type { FixedLengthArray } from "../../../tools/index.js";
 import { boardConfig } from "../config/boardConfig.js";
-import type { ShogiPiece } from "../Piece/Piece.js";
+import type { ShogiPiece, ShogiPieceNormal } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
 import { checkmateValidator } from "./validators/checkmate/checkmateValidator.js";
 import { board_dropPiece } from "./lib/dropPiece/dropPiece.js";
@@ -35,7 +35,7 @@ export class Board {
     return board_movePiece(this, current, next, promote);
   }
 
-  public readonly dropPiece = (position: Position, piece: ShogiPiece): Board => {
+  public readonly dropPiece = (position: Position, piece: ShogiPieceNormal): Board => {
     return board_dropPiece(this, this.hands, position, piece);
   }
 
