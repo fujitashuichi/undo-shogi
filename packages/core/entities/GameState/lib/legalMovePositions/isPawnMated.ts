@@ -7,6 +7,8 @@ import { legalMovePositions } from "./legalMovePositions.js";
 
 export const isPawnMated = (nextBoard: Board, nextHands: Hands, side: Side, pieceKind: NormalPieceKind): boolean => {
   if (pieceKind === "Pawn") {
+    if (!isChecked(nextBoard, side)) return false;
+
     const hasOpponentMoves = legalMovePositions.all(nextBoard, side).length > 0;
     const hasOpponentDrops = legalDropPositions_IgnorePawnMate.all(nextBoard, nextHands, side).length > 0;
 
