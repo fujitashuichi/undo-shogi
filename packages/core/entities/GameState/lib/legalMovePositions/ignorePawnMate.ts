@@ -22,7 +22,7 @@ const byPiece = (board: Board, hands: Hands, kind: NormalPieceKind, side: Side):
 
       positions.push(pos);
     } catch {
-      return false;
+      return;
     }
   });
 
@@ -31,16 +31,17 @@ const byPiece = (board: Board, hands: Hands, kind: NormalPieceKind, side: Side):
 
 
 const all = (board: Board, hands: Hands, side: Side): Position[] => {
-  let positions: Position[] = [];
+  const positionsSet = new Set<Position>();
   const pieceKinds = hands.allPieceKindsBySide(side);
 
   pieceKinds.forEach(kind => {
-    positions.push(
-      ...byPiece(board, hands, kind, side)
-    );
-  })
+    const validPositions = byPiece(board, hands, kind, side);
+    validPositions.forEach(pos => {
+      positionsSet.add(pos);
+    });
+  });
 
-  return positions;
+  return Array.from(positionsSet);
 }
 
 
