@@ -9,7 +9,7 @@ import { longRangeCheckedSquares_Rook } from "../__mock__/longRangeCheckSquares_
 import { vitest_checkArray } from "../../../../../tools/vitest/checkArray.js";
 import { longRangeCheckedSquares_Bishop } from "../__mock__/longRangeCheckSquares_Bishop.js";
 import { dropPawnMateTrapSquares } from "../__mock__/dropPawnMateTrapSquares.js";
-import { boardDebugger } from "../../../Board/__debug__/Board.debug.js";
+
 
 describe("legalDropPositions", () => {
   describe("二歩", () => {
@@ -18,7 +18,7 @@ describe("legalDropPositions", () => {
 
       expect(
         legalDropPositions.byPiece(board, fullHands, "Pawn", "Sente")
-      ).toStrictEqual
+      ).toStrictEqual([])
     });
   });
 
