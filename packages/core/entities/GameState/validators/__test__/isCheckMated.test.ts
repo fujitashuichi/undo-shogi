@@ -14,14 +14,14 @@ describe("isCheckMated", () => {
     ).toBe(true);
   });
 
-  it("持ち駒があっても詰みを誤検知しない", () => {
+  it("持ち駒があっても詰みは詰みと判定される", () => {
     const board = new Board(atamakinSquares);
     expect(
       isCheckMated(board, fullHands, "Sente")
     ).toBe(true);
   });
 
-  it("詰んでいない場合に誤検知しない", () => {
+  it("王手されても詰んでいない場合に誤検知しない", () => {
     const board = new Board(checkedSquares);
     expect(
       isCheckMated(board, emptyHands, "Sente")
