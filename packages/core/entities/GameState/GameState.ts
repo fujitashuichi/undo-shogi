@@ -1,8 +1,8 @@
 import { Board } from "../Board/Board.js";
 import { Hands } from "../Hand/Hands.js";
-import type { ShogiPieceNormal } from "../Piece/Piece.js";
+import { ShogiPieceNormal } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
-import type { Side } from "../types/piece.types.js";
+import type { NormalPieceKind, Side } from "../types/piece.types.js";
 import { gameState_dropPiece } from "./dropPiece/dropPiece.js";
 import { gameState_movePiece } from "./movePiece/movePiece.js";
 import { isChecked } from "./validators/checkmate/isChecked.js";
@@ -35,7 +35,7 @@ export class GameState {
   }
 
 
-  public readonly dropPiece = (position: Position, piece: ShogiPieceNormal): GameState => {
-    return gameState_dropPiece(this, position, piece);
+  public readonly dropPiece = (position: Position, kind: NormalPieceKind): GameState => {
+    return gameState_dropPiece(this, position, new ShogiPieceNormal(this.currentSide, kind));
   }
 }
