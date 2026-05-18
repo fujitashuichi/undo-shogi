@@ -1,3 +1,4 @@
+import { MovementError } from "../../errors/movement.errors.js";
 import { Board } from "../Board/Board.js";
 import { Hands } from "../Hand/Hands.js";
 import { ShogiPieceNormal } from "../Piece/Piece.js";
@@ -31,6 +32,11 @@ export class GameState {
 
 
   public readonly movePiece = (current: Position, next: Position, promote: boolean): GameState => {
+    const targetPiece = this.board.squares[current.y]![current.x];
+    if (!targetPiece) throw new MovementError("MOVE_UNDEFINED_PIECE");
+
+    if (targetPiece.side !== this.currentSide) throw new MovementError("MOVE_OPPONENT_SIDES_PIECE");
+
     return gameState_movePiece(this, current, next, promote);
   }
 
