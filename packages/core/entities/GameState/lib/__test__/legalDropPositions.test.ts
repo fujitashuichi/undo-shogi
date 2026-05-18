@@ -66,11 +66,9 @@ describe("legalDropPositions", () => {
 
       expect(
         legalDropPositions.byPiece(board, fullHands, "Pawn", "Sente")
-      ).not.toContainEqual(
-        expect.arrayContaining([
-          { x: 8, y: 1 }
-        ])
-      );
+      ).not.toContainEqual([
+        { x: 8, y: 1 }
+      ])
     });
   });
 });
