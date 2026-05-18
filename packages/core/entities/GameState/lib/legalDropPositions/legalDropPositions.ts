@@ -3,7 +3,7 @@ import type { Hands } from "../../../Hand/Hands.js";
 import type { Position } from "../../../types/algebraic.types.js";
 import type { NormalPieceKind, Side } from "../../../types/piece.types.js";
 import { legalDropPositions_IgnorePawnMate } from "../legalMovePositions/ignorePawnMate.js";
-import { isPawnMateDrop } from "../legalMovePositions/isPawnMated.js";
+import { isPawnMateDrop } from "./isPawnMateDrop.js";
 
 
 const byPiece = (board: Board, hands: Hands, kind: NormalPieceKind, side: Side): Position[] => {
