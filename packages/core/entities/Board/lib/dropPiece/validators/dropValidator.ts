@@ -2,9 +2,9 @@ import { isInsideRange } from "../../../../../../tools/math/isInsideRange.js";
 import { MovementError } from "../../../../../errors/movement.errors.js";
 import { boardConfig } from "../../../../config/boardConfig.js";
 import { ShogiPieceNormal } from "../../../../Piece/Piece.js";
-import { ShogiRulesValidator } from "../../../../rules/shogiRulesValidator.js";
 import type { Position } from "../../../../types/algebraic.types.js";
 import type { Board } from "../../../Board.js";
+import { violateDoublePawn } from "./violateDoublePawn.js";
 
 
 const boardSize = boardConfig.boardSize;
@@ -34,7 +34,7 @@ export const dropValidator = {
     }
 
     if (piece.kind === "Pawn") {
-      ShogiRulesValidator.assertIllegalMove.drop.violateDoublePawn(board, position, piece.side);
+      violateDoublePawn(board, position, piece.side);
     }
   },
 

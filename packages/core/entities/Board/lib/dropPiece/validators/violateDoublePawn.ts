@@ -1,9 +1,9 @@
-import { ShogiRulesError } from "../../../errors/shogiRules.error.js";
-import type { Board } from "../../Board/Board.js";
-import { boardConfig } from "../../config/boardConfig.js";
-import type { ShogiPiece } from "../../Piece/Piece.js";
-import type { Position } from "../../types/algebraic.types.js";
-import type { Side } from "../../types/piece.types.js";
+import { ShogiRulesError } from "../../../../../errors/shogiRules.error.js";
+import type { Board } from "../../../Board.js";
+import { boardConfig } from "../../../../config/boardConfig.js";
+import type { ShogiPiece } from "../../../../Piece/Piece.js";
+import type { Position } from "../../../../types/algebraic.types.js";
+import type { Side } from "../../../../types/piece.types.js";
 
 
 const boardSize = boardConfig.boardSize;
