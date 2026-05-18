@@ -4,7 +4,7 @@ import { ShogiPieceNormal } from "../../../Piece/Piece.js";
 import type { Position } from "../../../types/algebraic.types.js";
 import type { NormalPieceKind, Side } from "../../../types/piece.types.js";
 import { isChecked } from "../../validators/checkmate/isChecked.js";
-import { legalDropPositions_IgnorePawnMate } from "./ignorePawnMate.js";
+import { legalDropPositions_IgnoreDropPawnMate } from "./ignoreDropPawnMate.js";
 import { legalMovePositions } from "../legalMovePositions/legalMovePositions.js";
 
 
@@ -18,9 +18,8 @@ export const isPawnMateDrop = (board: Board, hands: Hands, side: Side, position:
 
     const hasOpponentMoves = legalMovePositions.all(nextBoard, opponentSide).length > 0;
 
-    // ではない場合を検知すると「最後の審判」という詰み問題になり、これは将棋連盟公式にも規定がない
-    // これは一般に起こることがまずなく、循環参照を防ぐためにも実装を避ける
-    const hasOpponentDrops = legalDropPositions_IgnorePawnMate.all(nextBoard, nextHands, opponentSide).length > 0;
+    // こちらから王手で歩を打った時に相手からDropPawnMateを打つことは不可能なため、IgnoreDropPawnMateを使って成立する
+    const hasOpponentDrops = legalDropPositions_IgnoreDropPawnMate.all(nextBoard, nextHands, opponentSide).length > 0;
 
     if (!hasOpponentMoves && !hasOpponentDrops) {
       return true;

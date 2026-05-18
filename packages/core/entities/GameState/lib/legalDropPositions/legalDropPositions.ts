@@ -2,7 +2,7 @@ import type { Board } from "../../../Board/Board.js";
 import type { Hands } from "../../../Hand/Hands.js";
 import type { Position } from "../../../types/algebraic.types.js";
 import type { NormalPieceKind, Side } from "../../../types/piece.types.js";
-import { legalDropPositions_IgnorePawnMate } from "./ignorePawnMate.js";
+import { legalDropPositions_IgnoreDropPawnMate } from "./ignoreDropPawnMate.js";
 import { isPawnMateDrop } from "./isPawnMateDrop.js";
 
 
@@ -11,7 +11,7 @@ const byPiece = (board: Board, hands: Hands, kind: NormalPieceKind, side: Side):
     return [];
   }
 
-  const positions: Position[] = legalDropPositions_IgnorePawnMate.byPiece(board, hands, kind, side);
+  const positions: Position[] = legalDropPositions_IgnoreDropPawnMate.byPiece(board, hands, kind, side);
 
   return positions.filter(pos => {
     return !isPawnMateDrop(board, hands, side, pos, kind);

@@ -45,7 +45,7 @@ const all = (board: Board, hands: Hands, side: Side): Position[] => {
 }
 
 
-export const legalDropPositions_IgnorePawnMate = {
+export const legalDropPositions_IgnoreDropPawnMate = {
   byPiece,
   all
 }

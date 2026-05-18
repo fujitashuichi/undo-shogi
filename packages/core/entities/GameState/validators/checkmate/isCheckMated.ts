@@ -9,11 +9,9 @@ export const isCheckMated = (board: Board, hands: Hands, side: Side): boolean =>
   const allLegalMoves = legalMovePositions.all(board, side);
 
   if (allLegalMoves.length === 0) {
-    if (legalDropPositions.all(board, hands, side).length > 0) {
-      return false;
+    if (legalDropPositions.all(board, hands, side).length === 0) {
+      return true;
     }
-
-    return true;
   }
 
   return false;
