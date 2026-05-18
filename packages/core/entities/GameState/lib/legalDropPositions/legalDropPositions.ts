@@ -20,16 +20,17 @@ const byPiece = (board: Board, hands: Hands, kind: NormalPieceKind, side: Side):
 
 
 const all = (board: Board, hands: Hands, side: Side): Position[] => {
-  let positions: Position[] = [];
+  let legalPosList: Position[] = [];
   const pieceKinds = hands.allPieceKindsBySide(side);
 
   pieceKinds.forEach(kind => {
-    positions.push(
+    legalPosList.push(
       ...byPiece(board, hands, kind, side)
     );
   })
 
-  return positions;
+  const uniqueMap = new Map(legalPosList.map(p => [`${p.x},${p.y}`, p]));
+  return [...uniqueMap.values()];
 }
 
 

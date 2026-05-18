@@ -1,3 +1,4 @@
+import { MovementError } from "../../errors/movement.errors.js";
 import { Board } from "../Board/Board.js";
 import { Hands } from "../Hand/Hands.js";
 import { ShogiPieceNormal } from "../Piece/Piece.js";
@@ -7,6 +8,7 @@ import { gameState_dropPiece } from "./dropPiece/dropPiece.js";
 import { gameState_movePiece } from "./movePiece/movePiece.js";
 import { isChecked } from "./validators/checkmate/isChecked.js";
 import { isCheckMated } from "./validators/checkmate/isCheckMated.js";
+import { positionValidator } from "./validators/positionValidator.js";
 
 
 export class GameState {
@@ -31,11 +33,21 @@ export class GameState {
 
 
   public readonly movePiece = (current: Position, next: Position, promote: boolean): GameState => {
+    positionValidator.assertInBoard(current.x, current.y);
+    positionValidator.assertInBoard(next.x, next.y);
+
+    const targetPiece = this.board.squares[current.y]![current.x];
+    if (!targetPiece) throw new MovementError("MOVE_UNDEFINED_PIECE");
+
+    if (targetPiece.side !== this.currentSide) throw new MovementError("MOVE_OPPONENT_SIDES_PIECE");
+
     return gameState_movePiece(this, current, next, promote);
   }
 
 
   public readonly dropPiece = (position: Position, kind: NormalPieceKind): GameState => {
+    positionValidator.assertInBoard(position.x, position.y);
+
     return gameState_dropPiece(this, position, new ShogiPieceNormal(this.currentSide, kind));
   }
 }

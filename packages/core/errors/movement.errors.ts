@@ -3,6 +3,7 @@ type ErrorTypes =
   | "DROP_UNDEFINED_PIECE" | "DROP_TO_INVALID_SQUARE"
   | "INVALID_PROMOTION" | "FORCED_PROMOTION"
   | "SELF_CHECKED" | "DROP_PAWN_MATE"
+  | "MOVE_OPPONENT_SIDES_PIECE"
 ;
 
 
@@ -14,7 +15,8 @@ const messages: Record<ErrorTypes, string> = {
   FORCED_PROMOTION: "その動作においては、必ず成る必要があります",
   SELF_CHECKED: "自殺手です",
   DROP_PAWN_MATE: "打ち歩詰めは反則です",
-  DROP_UNDEFINED_PIECE: "その持ち駒は存在しないため打てません"
+  DROP_UNDEFINED_PIECE: "その持ち駒は存在しないため打てません",
+  MOVE_OPPONENT_SIDES_PIECE: "相手の駒を動かすことはできません"
 }
 
 

@@ -1,12 +1,7 @@
 import type { Position } from "../../types/algebraic.types.js";
 import { GameState } from "../GameState.js";
-import { positionValidator } from "../validators/positionValidator.js";
 
 export const gameState_movePiece = (gameState: GameState, current: Position, next: Position, promote: boolean): GameState => {
-  positionValidator.assertInBoard(current.x, current.y);
-  positionValidator.assertInBoard(next.x, next.y);
-
-
   const pieceInNextPos = gameState.board.squares[next.y]![next.x];
   let nextHands = gameState.hands;
 
