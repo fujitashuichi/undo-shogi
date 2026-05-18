@@ -4,7 +4,7 @@ import { ShogiPieceNormal } from "../../../Piece/Piece.js";
 import type { Position } from "../../../types/algebraic.types.js";
 import type { NormalPieceKind, Side } from "../../../types/piece.types.js";
 import { isChecked } from "../../validators/checkmate/isChecked.js";
-import { legalDropPositions_IgnorePawnMate } from "../legalMovePositions/ignorePawnMate.js";
+import { legalDropPositions_IgnorePawnMate } from "./ignorePawnMate.js";
 import { legalMovePositions } from "../legalMovePositions/legalMovePositions.js";
 
 
