@@ -33,6 +33,8 @@ export class GameState {
 
 
   public readonly movePiece = (current: Position, next: Position, promote: boolean): GameState => {
+    if (this.checkMated === this.currentSide) throw new MovementError("CHECK_MATED")
+
     positionValidator.assertInBoard(current.x, current.y);
     positionValidator.assertInBoard(next.x, next.y);
 
@@ -46,6 +48,7 @@ export class GameState {
 
 
   public readonly dropPiece = (position: Position, kind: NormalPieceKind): GameState => {
+    if (this.checkMated === this.currentSide) throw new MovementError("CHECK_MATED");
     positionValidator.assertInBoard(position.x, position.y);
 
     return gameState_dropPiece(this, position, new ShogiPieceNormal(this.currentSide, kind));

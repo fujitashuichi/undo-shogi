@@ -1,16 +1,17 @@
+import type { PieceKind } from "../../types/piece.types.js";
 import type { Board } from "../Board.js";
 
 export const boardDebugger = {
   debugRenderKanji: (board: Board): string => {
-    const kindToKanji: Record<string, string> = {
-      Pawn: "歩",
-      Lance: "香",
-      Knight: "桂",
-      Silver: "銀",
+    const kindToKanji: Record<PieceKind, string> = {
+      Pawn: "歩",   P_Pawn: "と",
+      Lance: "香",  P_Lance: "杏",
+      Knight: "桂", P_Knight: "圭",
+      Silver: "銀", P_Silver: "全",
       Gold: "金",
-      Bishop: "角",
-      Rook: "飛",
-      King: "玉",
+      Bishop: "角", P_Bishop: "馬",
+      Rook: "飛",   P_Rook: "龍",
+      King: "玉"
     };
 
     const graph = board.squares
@@ -22,11 +23,8 @@ export const boardDebugger = {
             const side = piece.side === "Sente" ? "▲" : "△";
             const kanji = kindToKanji[piece.kind] || "？";
 
-            const displayKind = piece.isPromoted
-              ? `${kanji}+`
-              : `${kanji} `;
 
-            return ` ${side}${displayKind} `;
+            return ` ${side}${kanji}  `;
           })
           .join("")
       )
