@@ -50,3 +50,13 @@
 
 ## リファクタリング（pieceConfig） - 2026/05/14
 * https://zenn.dev/fujishu/articles/4f9bdf55b93021
+
+## GameStateの作成 - ~2026/05/20
+* Boardインスタンスの保持
+* Handsインスタンスの保持
+* 手番・王手・詰み状態の保持
+* 以上をまとめてイミュータブルインスタンスとして生成する
+
+* https://zenn.dev/fujishu/articles/368fd3fe785113
+* https://zenn.dev/fujishu/articles/4bc5c7f8c2436b
+* https://zenn.dev/fujishu/articles/daf10672b7e975
