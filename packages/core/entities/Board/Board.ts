@@ -1,5 +1,4 @@
 import type { FixedLengthArray } from "../../../tools/index.js";
-import { boardConfig } from "../config/boardConfig.js";
 import type { ShogiPiece, ShogiPieceNormal } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
 import { board_dropPiece } from "./lib/dropPiece/dropPiece.js";
@@ -16,7 +15,6 @@ type Squares = FixedLengthArray<
 
 export class Board {
   public readonly squares: Squares;
-  public readonly boardSize = boardConfig.boardSize;
 
   constructor(
     squares: Squares
