@@ -13,7 +13,6 @@ import type { KifPosition, MoveAction } from "./types.js";
 const numToKanjiX = ["", "１", "２", "３", "４", "５", "６", "７", "８", "９"];
 const numToKanjiY = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
 
-
 export const objectToKif = (moves: MoveAction[]): string => {
   let kifLines: string[] = ["手数----指手"];
   let lastTo: KifPosition | null = null;
@@ -27,7 +26,6 @@ export const objectToKif = (moves: MoveAction[]): string => {
       y: move.to.y
     });
 
-
     let toStr = "";
     if (lastTo && lastTo.x === toPosition.x && lastTo.y === toPosition.y) {
       toStr = "同　";
@@ -36,7 +34,6 @@ export const objectToKif = (moves: MoveAction[]): string => {
     }
     lastTo = toPosition;
 
-
     if (move.type === "drop") {
       const pieceName = codeToKifPieceMap[move.kind] || move.kind;
       kifLines.push(`${pad} ${toStr}${pieceName}打`);
@@ -44,28 +41,29 @@ export const objectToKif = (moves: MoveAction[]): string => {
       const fromPosition = convertPosition.logicToKifPosition({
         x: move.from.x,
         y: move.from.y
-      })
+      });
 
       const baseKind = move.kind;
+      const isAlreadyPromoted = PromotedPieceKindSchema.safeParse(baseKind).success;
+
       let pieceName = codeToKifPieceMap[baseKind] || baseKind;
 
       let promoteStr = "";
-      const isAlreadyPromoted = PromotedPieceKindSchema.safeParse(baseKind).success;
       const side: Side = step % 2 === 1 ? "Sente" : "Gote";
 
-      if (move.promote) {
-        if (!isAlreadyPromoted) {
+      if (!isAlreadyPromoted) {
+        if (move.promote) {
           promoteStr = "成";
-        }
-      } else {
-        const canPromote =
-          PromotablePieceKindSchema.safeParse(baseKind).success && (
-            isInPromotionZone(side, fromPosition) ||
-            isInPromotionZone(side, toPosition)
-          );
+        } else {
+          const canPromote =
+            PromotablePieceKindSchema.safeParse(baseKind).success && (
+              isInPromotionZone(side, fromPosition) ||
+              isInPromotionZone(side, toPosition)
+            );
 
-        if (canPromote && !isAlreadyPromoted) {
-          promoteStr = "不成";
+          if (canPromote) {
+            promoteStr = "不成";
+          }
         }
       }
 

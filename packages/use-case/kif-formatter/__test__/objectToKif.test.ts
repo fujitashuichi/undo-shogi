@@ -19,7 +19,7 @@ describe("objectToKif", () => {
       expect.stringContaining("手数----指手") &&
       expect.stringContaining("1 ７六歩(77)") &&
       expect.stringContaining("2 ３四歩(33)") &&
-      expect.stringContaining("3 ２二角成(88)") &&
+      expect.stringContaining("3 ２二角不成(88)") &&
       expect.stringContaining("4 ５二金(41)") &&
       expect.stringContaining("5 ４二角打") &&
       expect.stringContaining("6 ４一玉(51)") &&

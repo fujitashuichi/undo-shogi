@@ -68,7 +68,9 @@ export const kifToObject = (kifText: string): MoveAction[] => {
 
       moves.push({ type: "drop", to, kind: parsed.data });
     } else {
-      const piece = pieceStr.split(/[右左直上寄引行入成]|不成?/)[0]!;
+      const piece = pieceStr
+        .replace(/成$/, "")
+        .split(/[右左直上寄引行入]|不成/)[0]!;
       const kind = kifPieceMap[piece];
 
       if (!fromXStr || !fromYStr || !kind) throw new KifError("UNSUPPORTED_KIF");
