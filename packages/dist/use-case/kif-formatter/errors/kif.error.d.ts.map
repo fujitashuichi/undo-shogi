@@ -1,0 +1,1 @@
+{"version":3,"file":"kif.error.d.ts","sourceRoot":"","sources":["../../../../src/use-case/kif-formatter/errors/kif.error.ts"],"names":[],"mappings":"AAAA,KAAK,SAAS,GAAG,iBAAiB,CAAA;AAMlC,qBAAa,QAAS,SAAQ,KAAK;aAEf,IAAI,EAAE,SAAS;gBAAf,IAAI,EAAE,SAAS;CAMlC"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"movement.errors.d.ts","sourceRoot":"","sources":["../../../src/core/errors/movement.errors.ts"],"names":[],"mappings":"AAAA,KAAK,UAAU,GACX,sBAAsB,GAAG,wBAAwB,GACjD,sBAAsB,GAAG,wBAAwB,GACjD,mBAAmB,GAAG,kBAAkB,GACxC,cAAc,GAAG,aAAa,GAAG,gBAAgB,GACjD,2BAA2B,CAC9B;AAiBD,qBAAa,aAAc,SAAQ,KAAK;aAEpB,IAAI,EAAG,UAAU;gBAAjB,IAAI,EAAG,UAAU;CAMpC"}
