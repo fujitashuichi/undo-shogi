@@ -13,7 +13,7 @@ import type { KifPosition, MoveAction } from "./types.js";
 const numToKanjiX = ["", "１", "２", "３", "４", "５", "６", "７", "８", "９"];
 const numToKanjiY = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
 
-export const objectToKif = (moves: MoveAction[]): string => {
+export const actionsToKif = (moves: MoveAction[]): string => {
   let kifLines: string[] = ["手数----指手"];
   let lastTo: KifPosition | null = null;
 
