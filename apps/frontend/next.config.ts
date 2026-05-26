@@ -1,7 +1,11 @@
+import path from "path";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: {
+    // モノレポ全体のルートディレクトリを明示的に指定します
+    root: path.join( __dirname, '../..'),
+  },
 };
 
 export default nextConfig;

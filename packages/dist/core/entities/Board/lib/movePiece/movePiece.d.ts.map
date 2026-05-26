@@ -1,0 +1,1 @@
+{"version":3,"file":"movePiece.d.ts","sourceRoot":"","sources":["../../../../../../src/core/entities/Board/lib/movePiece/movePiece.ts"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAE,QAAQ,EAAE,MAAM,mCAAmC,CAAC;AAClE,OAAO,EAAE,KAAK,EAAE,MAAM,gBAAgB,CAAC;AAGvC,eAAO,MAAM,eAAe,GAAI,OAAO,KAAK,EAAE,SAAS,QAAQ,EAAE,MAAM,QAAQ,EAAE,SAAS,OAAO,UAoBhG,CAAA"}

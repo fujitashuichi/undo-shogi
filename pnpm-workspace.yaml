@@ -1,2 +1,5 @@
 allowBuilds:
   node: set this to true or false
+
+packages:
+  - 'packages/'
