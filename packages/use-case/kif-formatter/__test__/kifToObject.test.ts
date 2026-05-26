@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { kifToObject } from "../kifToObject.js";
+import { kifToActions } from "../kifToActions.js";
 
 describe("kifToObject", () => {
   it("正常に棋譜をパースする", () => {
-    const actions = kifToObject(`
+    const actions = kifToActions(`
       手数----指手---------消費時間--
         1 ７六歩(77)     ( 0:00/00:00:00)
         2 ３四歩(33)     ( 0:00/00:00:00)

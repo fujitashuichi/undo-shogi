@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { objectToKif } from "../objectToKif.js";
+import { actionsToKif } from "../actionsToKif.js";
 
 describe("objectToKif", () => {
   it("moveオブジェクトを正常に棋譜化する", () => {
-    const kif = objectToKif([
+    const kif = actionsToKif([
       { type: 'move', from: { x: 2, y: 6 }, to: { x: 2, y: 5 }, kind: 'Pawn', promote: false },
       { type: 'move', from: { x: 6, y: 2 }, to: { x: 6, y: 3 }, kind: 'Pawn', promote: false },
       { type: 'move', from: { x: 1, y: 7 }, to: { x: 7, y: 1 }, kind: 'Bishop', promote: false },
@@ -12,8 +12,6 @@ describe("objectToKif", () => {
       { type: 'move', from: { x: 4, y: 0 }, to: { x: 5, y: 0 }, kind: 'King', promote: false },
       { type: 'move', from: { x: 7, y: 1 }, to: { x: 6, y: 0 }, kind: 'P_Bishop', promote: true }
     ]);
-
-    console.log(kif);
 
     expect(kif).toEqual(
       expect.stringContaining("手数----指手") &&

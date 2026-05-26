@@ -11,7 +11,7 @@ import { stringToNum } from "./lib/stringToNum.js";
 import type { KifPosition, MoveAction } from "./types.js";
 
 
-export const kifToObject = (kifText: string): MoveAction[] => {
+export const kifToActions = (kifText: string): MoveAction[] => {
   const lines = kifText.split(/\r?\n/);
   const moves: MoveAction[] = [];
 
@@ -32,8 +32,6 @@ export const kifToObject = (kifText: string): MoveAction[] => {
     if (!match) continue;
 
     const [_, _indexStr, toStr, pieceStr, _modifierStr, fromXStr, fromYStr] = match;
-
-    console.log(match)
 
 
     if (!toStr || !pieceStr) throw new KifError("UNSUPPORTED_KIF");
