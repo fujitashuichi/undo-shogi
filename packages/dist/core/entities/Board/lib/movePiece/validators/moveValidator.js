@@ -1,7 +1,7 @@
-import { logger } from "../../../../../../tools/index.js";
 import { MovementError } from "../../../../../errors/movement.errors.js";
 import { pieceMotionValidator } from "../../../../Piece/validators/motionValidator.js";
 import { isInPromotionZone } from "../../../../lib/positions/isInArea/isInPromotionZone.js";
+import { logger } from "../../../../../../tools/index.js";
 export const moveValidator = {
     assertCanMove: (board, current, next, promote) => {
         pieceMotionValidator(board, current, next, promote);

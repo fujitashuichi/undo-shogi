@@ -5,9 +5,9 @@ import { legalDropPositions } from "../legalDropPositions/legalDropPositions.js"
 import { fullHands } from "../../../Hand/__mock__/fullHands.js";
 import { checkedSquares } from "../../validators/__mock__/checkedSquare.js";
 import { longRangeCheckedSquares_Rook } from "../__mock__/longRangeCheckSquares_Rook.js";
-import { vitest_checkArray } from "../../../../../tools/vitest/checkArray.js";
 import { longRangeCheckedSquares_Bishop } from "../__mock__/longRangeCheckSquares_Bishop.js";
 import { dropPawnMateTrapSquares } from "../__mock__/dropPawnMateTrapSquares.js";
+import { vitest_checkArray } from "../../../../../tools/vitest/checkArray.js";
 describe("legalDropPositions", () => {
     describe("二歩", () => {
         it("二歩は選択肢に出ない", () => {

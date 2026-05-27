@@ -1,9 +1,9 @@
-import { logger } from "../../../tools/index.js";
 import { NormalPieceKindSchema, PromotablePieceKindSchema, PromotedPieceKindSchema } from "../types/piece.types.js";
 import { pieceValidator } from "./validators/pieceValidator.js";
 import { normalKindToPromoted } from "./normalToPromoted.js";
 import { promotedKindToNormal } from "./promotedToNormal.js";
 import { pieceConfig } from "../config/pieceConfig.js";
+import { logger } from "../../../tools/index.js";
 export class ShogiPiece {
     side;
     kind;

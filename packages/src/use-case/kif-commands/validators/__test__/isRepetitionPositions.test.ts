@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { isRepetitionPositions } from "../isRepetitionPositions.js";
 import { hashGameStates } from "../../hashGameStates.js";
 import { executeActions } from "../../executeActions.js";
-import { kifToActions } from "../../../../interface/kif-formatter/kifToActions.js";
 import { initialGameState_Hirate } from "../../../../core/entities/GameState/initialGameState_Hirate.js";
+import { kifToActions } from "../../../kif-formatter/kifToActions.js";
 
 describe("isRepetitionPositions", () => {
   it("同一局面が4回出たときに正しく判定する", () => {
