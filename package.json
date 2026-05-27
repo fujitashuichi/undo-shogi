@@ -4,6 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
+    "prepare": "pnpm build:packages",
     "build:packages": "pnpm -filter \"./packages/\" build",
     "typecheck:packages": "pnpm -filter \"./packages/\" typecheck",
     "test": "npx vitest"

@@ -1,6 +1,6 @@
 // 5五角のみを置いておく初期配置
 
-import type { FixedLengthArray } from "../../../tools/index.js";
+import type { FixedLengthArray } from "../../../../tools/index.js";
 import { ShogiPiece } from "../../Piece/Piece.js";
 import type { Board } from "../Board.js";
 
