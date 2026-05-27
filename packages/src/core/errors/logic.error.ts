@@ -10,7 +10,7 @@ const messages: Record<ErrorTypes, string> = {
 
 export class LogicError extends Error {
   constructor (
-    public readonly type:  ErrorTypes
+    public readonly type: ErrorTypes
   ) {
     super();
     this.name = "LogicError";
