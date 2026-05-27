@@ -1,6 +1,6 @@
 // In the context of Shogi, Hirate (平手) refers to an even game or a standard starting position where no handicap is applied.
 
-import type { FixedLengthArray } from "../../tools/index.js";
+import type { FixedLengthArray } from "../../../tools/index.js";
 import { ShogiPiece } from "../Piece/Piece.js";
 import type { Board } from "./Board.js";
 

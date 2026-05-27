@@ -4,6 +4,7 @@ import type { PieceError } from "./core/errors/piece.error.js";
 import type { ShogiRulesError } from "./core/errors/shogiRules.error.js";
 
 export { GameState } from "./core/entities/GameState/GameState.js"
+export { Board } from "./core/entities/Board/Board.js"
 
 export interface Errors {
   LogicError: LogicError,

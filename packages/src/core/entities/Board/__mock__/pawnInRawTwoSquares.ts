@@ -1,7 +1,6 @@
 // 敵陣二段目に歩を置く配置
 
-
-import type { FixedLengthArray } from "../../../tools/index.js";
+import type { FixedLengthArray } from "../../../../tools/index.js";
 import { ShogiPiece } from "../../Piece/Piece.js";
 import type { Side } from "../../types/piece.types.js";
 import type { Board } from "../Board.js";

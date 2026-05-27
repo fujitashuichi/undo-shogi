@@ -1,4 +1,4 @@
-import type { FixedLengthArray } from "../../tools/index.js";
+import type { FixedLengthArray } from "../../../tools/index.js";
 import type { ShogiPiece, ShogiPieceNormal } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
 import { board_dropPiece } from "./lib/dropPiece/dropPiece.js";

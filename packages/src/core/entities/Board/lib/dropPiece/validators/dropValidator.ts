@@ -1,5 +1,5 @@
+import { isInsideRange } from "../../../../../../tools/math/isInsideRange.js";
 import { MovementError } from "../../../../../errors/movement.errors.js";
-import { isInsideRange } from "../../../../../tools/math/isInsideRange.js";
 import { boardConfig } from "../../../../config/boardConfig.js";
 import { ShogiPieceNormal } from "../../../../Piece/Piece.js";
 import type { Position } from "../../../../types/algebraic.types.js";

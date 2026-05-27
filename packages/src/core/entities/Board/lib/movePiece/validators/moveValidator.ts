@@ -5,7 +5,7 @@ import type { Board } from "../../../Board.js";
 import type { Side } from "../../../../types/piece.types.js";
 import { pieceMotionValidator } from "../../../../Piece/validators/motionValidator.js";
 import { isInPromotionZone } from "../../../../lib/positions/isInArea/isInPromotionZone.js";
-import { logger } from "../../../../../tools/index.js";
+import { logger } from "../../../../../../tools/index.js";
 
 
 export const moveValidator = {
