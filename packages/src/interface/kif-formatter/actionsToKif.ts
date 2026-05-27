@@ -7,7 +7,7 @@ import { isInPromotionZone } from "../../core/entities/lib/positions/isInArea/is
 import { PromotablePieceKindSchema, PromotedPieceKindSchema, type Side } from "../../core/entities/types/piece.types.js";
 import { codeToKifPieceMap } from "./lib/codeToKifPieceMap.js";
 import { convertPosition } from "./lib/convertPosition.js";
-import type { KifPosition, MoveAction } from "./types.js";
+import type { KifPosition, MoveAction } from "../../use-case/types/types.js";
 
 
 const numToKanjiX = ["", "１", "２", "３", "４", "５", "６", "７", "８", "９"];
