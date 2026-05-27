@@ -2,9 +2,9 @@ import { describe } from "node:test";
 import { expect, it } from "vitest";
 import { Board } from "../../../Board/Board.js";
 import { hirateSquares } from "../../../Board/hirateSquares.js";
-import { vitest_checkArray } from "../../../../../tools/vitest/checkArray.js";
 import { pinnedRookSquares } from "../../../lib/__mock__/pinnedRookSquare.js";
 import { legalMovePositions } from "../legalMovePositions/legalMovePositions.js";
+import { vitest_checkArray } from "../../../../../tools/vitest/checkArray.js";
 describe("generateLegalMoves", () => {
     describe(".byPiece() で、合法手を正しく取得する", () => {
         it("通常局面", () => {

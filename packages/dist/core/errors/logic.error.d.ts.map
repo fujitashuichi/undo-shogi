@@ -1,1 +1,1 @@
-{"version":3,"file":"logic.error.d.ts","sourceRoot":"","sources":["../../../src/core/errors/logic.error.ts"],"names":[],"mappings":"AAAA,KAAK,UAAU,GACX,cAAc,CACjB;AAQD,qBAAa,UAAW,SAAQ,KAAK;aAEjB,IAAI,EAAG,UAAU;gBAAjB,IAAI,EAAG,UAAU;CAMpC"}
+{"version":3,"file":"logic.error.d.ts","sourceRoot":"","sources":["../../../src/core/errors/logic.error.ts"],"names":[],"mappings":"AAAA,KAAK,UAAU,GACX,cAAc,CACjB;AAQD,qBAAa,UAAW,SAAQ,KAAK;aAEjB,IAAI,EAAE,UAAU;gBAAhB,IAAI,EAAE,UAAU;CAMnC"}

@@ -11,4 +11,14 @@ export interface CreateGameStates {
       success: true,
       gameStates: GameState[]
     }
+
+  hirate():
+    | {
+      success: false,
+      error: DomainError
+    }
+    | {
+      success: true,
+      gameState: GameState
+    }
 }
