@@ -8,7 +8,7 @@ import { KifError } from "./errors/kif.error.js";
 import { convertPosition } from "./lib/convertPosition.js";
 import { kifPieceMap } from "./lib/kifPieceMap.js";
 import { stringToNum } from "./lib/stringToNum.js";
-import type { KifPosition, MoveAction } from "./types.js";
+import type { KifPosition, MoveAction } from "../../use-case/types/types.js";
 
 
 export const kifToActions = (kifText: string): MoveAction[] => {

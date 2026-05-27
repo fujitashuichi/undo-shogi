@@ -1,5 +1,5 @@
 import type { GameState } from "../../core/entities/GameState/GameState.js";
-import type { MoveAction } from "../../interface/kif-formatter/types.js";
+import type { MoveAction } from "../types/types.js";
 
 export const executeActions = (actions: MoveAction[], initialState: GameState): GameState[] => {
   let currentState: GameState = initialState;

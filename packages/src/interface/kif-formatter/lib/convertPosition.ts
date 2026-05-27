@@ -1,6 +1,6 @@
 import { boardConfig } from "../../../core/entities/config/boardConfig.js";
 import type { Position } from "../../../core/entities/types/algebraic.types.js";
-import type { KifPosition } from "../types.js";
+import type { KifPosition } from "../../../use-case/types/types.js";
 
 
 const boardSize = boardConfig.boardSize;
