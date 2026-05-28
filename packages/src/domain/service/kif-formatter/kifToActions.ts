@@ -2,13 +2,13 @@
  * KIF文字列を解析し、GameStateが解釈できる着手情報の配列（JSON）に変換します。
  */
 
-import type { Position } from "../../core/entities/types/algebraic.types.js";
-import { NormalPieceKindSchema } from "../../core/entities/types/piece.types.js";
+import type { Position } from "../../entities/types/algebraic.types.js";
+import { NormalPieceKindSchema } from "../../entities/types/piece.types.js";
+import type { KifPosition, MoveAction } from "../types/types.js";
 import { KifError } from "./errors/kif.error.js";
 import { convertPosition } from "./lib/convertPosition.js";
 import { kifPieceMap } from "./lib/kifPieceMap.js";
 import { stringToNum } from "./lib/stringToNum.js";
-import type { KifPosition, MoveAction } from "../../use-case/types/types.js";
 
 
 export const kifToActions = (kifText: string): MoveAction[] => {

@@ -1,8 +1,8 @@
-import { LogicError } from "../../core/errors/logic.error.js";
-import { MovementError } from "../../core/errors/movement.errors.js";
-import { PieceError } from "../../core/errors/piece.error.js";
-import { ShogiRulesError } from "../../core/errors/shogiRules.error.js";
-import { KifError } from "../../use-case/kif-formatter/errors/kif.error.js";
+import { LogicError } from "../../errors/logic.error.js";
+import { MovementError } from "../../errors/movement.errors.js";
+import { PieceError } from "../../errors/piece.error.js";
+import { ShogiRulesError } from "../../errors/shogiRules.error.js";
+import { KifError } from "../../service/kif-formatter/errors/kif.error.js";
 
 export class DomainError extends Error {
   constructor (name: string, message: string) {

@@ -1,8 +1,8 @@
-import { hirateBoard } from "../../../core/entities/Board/hirateBoard.js";
-import { GameState } from "../../../core/entities/GameState/GameState.js";
-import { emptyHands } from "../../../core/entities/Hand/__mock__/emptyHands.js";
-import { executeActions } from "../../../use-case/kif-commands/executeActions.js";
-import { kifToActions } from "../../../use-case/kif-formatter/kifToActions.js";
+import { hirateBoard } from "../../../entities/Board/hirateBoard.js";
+import { GameState } from "../../../entities/GameState/GameState.js";
+import { emptyHands } from "../../../entities/Hand/emptyHands.js";
+import { executeActions } from "../../../service/kif-commands/executeActions.js";
+import { kifToActions } from "../../../service/kif-formatter/kifToActions.js";
 import { convertToDomainError } from "../../errors/domain.error.js";
 import type { CreateGameStates } from "../types/createGameStates.types.js";
 

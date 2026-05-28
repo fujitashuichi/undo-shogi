@@ -1,4 +1,4 @@
-import { Hands } from "../Hands.js";
+import { Hands } from "./Hands.js";
 
 const pieceRecord: Hands["pieceRecord"] = {
   Sente: {
