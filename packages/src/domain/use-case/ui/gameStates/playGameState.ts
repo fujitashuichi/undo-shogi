@@ -1,6 +1,6 @@
-import type { GameState } from "../../../core/entities/GameState/GameState.js";
-import type { Position } from "../../../core/entities/types/algebraic.types.js";
-import type { NormalPieceKind } from "../../../core/entities/types/piece.types.js";
+import type { GameState } from "../../../entities/GameState/GameState.js";
+import type { Position } from "../../../entities/types/algebraic.types.js";
+import type { NormalPieceKind } from "../../../entities/types/piece.types.js";
 import { convertToDomainError } from "../../errors/domain.error.js";
 import type { PlayGameState } from "../types/playGameState.types.js";
 

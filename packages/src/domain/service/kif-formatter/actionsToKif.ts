@@ -3,11 +3,12 @@
  * 移動前の駒種が必要なため、シミュレーション時の情報を一部付与して渡す構造を想定しています。
  */
 
-import { isInPromotionZone } from "../../core/entities/lib/positions/isInArea/isInPromotionZone.js";
-import { PromotablePieceKindSchema, PromotedPieceKindSchema, type Side } from "../../core/entities/types/piece.types.js";
+import { isInPromotionZone } from "../../entities/lib/positions/isInArea/isInPromotionZone.js";
+import { PromotablePieceKindSchema, PromotedPieceKindSchema, type Side } from "../../entities/types/piece.types.js";
+import type { KifPosition, MoveAction } from "../types/types.js";
 import { codeToKifPieceMap } from "./lib/codeToKifPieceMap.js";
 import { convertPosition } from "./lib/convertPosition.js";
-import type { KifPosition, MoveAction } from "../../use-case/types/types.js";
+
 
 
 const numToKanjiX = ["", "１", "２", "３", "４", "５", "６", "７", "８", "９"];

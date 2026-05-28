@@ -1,4 +1,4 @@
-import type { GameState } from "../../core/entities/GameState/GameState.js";
+import type { GameState } from "../../entities/GameState/GameState.js";
 
 export const hashGameStates = (gameStates: GameState[]): string[] => {
   return gameStates.map(state => {

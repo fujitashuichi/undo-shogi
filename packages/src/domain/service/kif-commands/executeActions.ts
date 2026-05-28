@@ -1,4 +1,4 @@
-import type { GameState } from "../../core/entities/GameState/GameState.js";
+import type { GameState } from "../../entities/GameState/GameState.js";
 import type { MoveAction } from "../types/types.js";
 
 export const executeActions = (actions: MoveAction[], initialState: GameState): GameState[] => {
