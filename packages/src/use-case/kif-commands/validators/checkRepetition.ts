@@ -14,10 +14,16 @@ export const checkRepetition = (actionsHash: string[]): RepetitionResult => {
     hashPositions[hash].push(index);
   });
 
-
-  const targetHash = Object.keys(hashPositions).find(
+  const candidates = Object.keys(hashPositions).filter(
     hash => hashPositions[hash] && hashPositions[hash].length >= 4
   );
+
+  if (candidates.length === 0) return { isRepetition: false };
+
+  const targetHash = candidates.reduce((earliest, current) =>
+    hashPositions[current]![3]! < hashPositions[earliest]![3]! ? current : earliest
+  );
+
 
   if (!targetHash) {
     return {
