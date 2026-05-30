@@ -16,6 +16,38 @@ export class Hands {
     this.pieceRecord = pieceRecord;
   }
 
+  public static init = {
+    empty: () => {
+      return new Hands({
+        Sente: {
+          King: 0, Gold: 0, Silver: 0, Knight: 0, Lance: 0,
+          Bishop: 0, Rook: 0,
+          Pawn: 0
+        },
+        Gote: {
+          King: 0, Gold: 0, Silver: 0, Knight: 0, Lance: 0,
+          Bishop: 0, Rook: 0,
+          Pawn: 0
+        }
+      })
+    },
+
+    full: () => {
+      return new Hands({
+        Sente: {
+          King: 0, Gold: 2, Silver: 2, Knight: 2, Lance: 2,
+          Bishop: 1, Rook: 1,
+          Pawn: 9
+        },
+        Gote: {
+          King: 0, Gold: 2, Silver: 2, Knight: 2, Lance: 2,
+          Bishop: 1, Rook: 1,
+          Pawn: 9
+        }
+      })
+    }
+  }
+
 
   public readonly addPiece = (side: Side, kind: NormalPieceKind) => {
     const nextRecord = {

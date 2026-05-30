@@ -1,9 +1,9 @@
 import { describe, it } from "vitest";
 import { hashGameStates } from "../hashGameStates.js";
 import { executeActions } from "../executeActions.js";
-import { initialGameState_Hirate } from "../../../core/entities/GameState/initialGameState_Hirate.js";
-import { vitest_checkArray } from "../../../tools/vitest/checkArray.js";
 import { kifToActions } from "../../kif-formatter/kifToActions.js";
+import { GameState } from "../../../entities/GameState/GameState.js";
+import { vitest_checkArray } from "../../../../tools/vitest/checkArray.js";
 
 describe("hashGameStates", () => {
   it("同じ盤面は同じハッシュになる", () => {
@@ -20,11 +20,11 @@ describe("hashGameStates", () => {
     `);
 
     const hashed_1 = hashGameStates(
-      executeActions(actions, initialGameState_Hirate)
+      executeActions(actions, GameState.init.hirate())
     );
 
     const hashed_2 = hashGameStates(
-      executeActions(actions, initialGameState_Hirate)
+      executeActions(actions, GameState.init.hirate())
     )
 
     vitest_checkArray.sameArray(

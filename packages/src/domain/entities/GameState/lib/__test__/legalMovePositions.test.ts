@@ -11,7 +11,7 @@ import { vitest_checkArray } from "../../../../../tools/vitest/checkArray.js";
 describe("generateLegalMoves", () => {
   describe(".byPiece() で、合法手を正しく取得する", () => {
     it("通常局面", () => {
-      const board = new Board(hirateSquares);
+      const board = Board.init.hirate();
 
       vitest_checkArray.containingEachOther(
         legalMovePositions.byPiece(board, { x: 1, y: 1 }),
@@ -33,7 +33,7 @@ describe("generateLegalMoves", () => {
 
   describe(".all() で、合法手を正しく取得する", () => {
     it("通常局面", () => {
-      const board = new Board(hirateSquares);
+      const board = Board.init.hirate();
 
       let expected: Position[] = [];
       for (let i = 0; i < 9; i++) {

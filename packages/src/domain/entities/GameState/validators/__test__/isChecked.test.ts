@@ -1,12 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { Board } from "../../../Board/Board.js";
-import { hirateSquares } from "../../../Board/hirateSquares.js";
 import { checkedSquares } from "../__mock__/checkedSquare.js";
 import { isChecked } from "../checkmate/isChecked.js";
 
 describe("isChecked", () => {
   it("王手でない状態を正しく判定する", () => {
-    const board = new Board(hirateSquares);
+    const board = Board.init.hirate();
 
     expect(isChecked(board, "Sente")).toBe(
       false

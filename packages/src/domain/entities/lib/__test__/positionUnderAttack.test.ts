@@ -1,11 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { Board } from "../../Board/Board.js";
-import { hirateSquares } from "../../Board/hirateSquares.js";
 import { positionsUnderAttack } from "../positions/positionsUnderAttack/positionsUnderAttack.js";
 
 describe("lib/positionsUnderAttack", () => {
   describe("駒単体の効きを正しく補足する", () => {
-    const board = new Board(hirateSquares);
+    const board = Board.init.hirate();
 
     it("先手桂馬の例", () => {
       expect(

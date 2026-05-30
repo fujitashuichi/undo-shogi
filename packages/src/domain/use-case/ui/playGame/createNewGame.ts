@@ -1,4 +1,4 @@
-import { hirateGameState } from "../../../entities/GameState/hirateGameState.js";
+import { GameState } from "../../../entities/GameState/GameState.js";
 import type { GameHistory } from "../../types/gameHistory.types.js";
 
 export const createNewGame = {
@@ -7,7 +7,7 @@ export const createNewGame = {
       gameEndStatus: {
         ended: false
       },
-      history: [hirateGameState]
+      history: [GameState.init.hirate()]
     }
   }
 }

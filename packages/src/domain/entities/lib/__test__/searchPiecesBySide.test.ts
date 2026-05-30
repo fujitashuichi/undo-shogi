@@ -1,12 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { Board } from "../../Board/Board.js";
-import { hirateSquares } from "../../Board/hirateSquares.js";
 import { searchPiecesBySide } from "../searchPiecesBySide.js";
 
 describe("lib/searchPiecesBySide", () => {
   describe("先手の駒を全て取得する", () => {
     it ("returnPositionsの場合", () => {
-      const board = new Board(hirateSquares);
+      const board = Board.init.hirate();
 
       let expected = [];
       for (let i = 0; i < 9; i++) {
@@ -24,7 +23,7 @@ describe("lib/searchPiecesBySide", () => {
     });
 
     it ("returnInstancesの場合", () => {
-      const board = new Board(hirateSquares);
+      const board = Board.init.hirate();
 
       expect(
         searchPiecesBySide.returnInstances(board, "Sente")
@@ -45,7 +44,7 @@ describe("lib/searchPiecesBySide", () => {
 
   describe("後手の駒を全て取得する", () => {
     it ("returnPositionsの場合", () => {
-      const board = new Board(hirateSquares);
+      const board = Board.init.hirate();
 
       let expected = [];
       for (let i = 0; i < 9; i++) {
@@ -63,7 +62,7 @@ describe("lib/searchPiecesBySide", () => {
     });
 
     it ("returnInstancesの場合", () => {
-      const board = new Board(hirateSquares);
+      const board = Board.init.hirate();
 
       expect(
         searchPiecesBySide.returnInstances(board, "Gote")

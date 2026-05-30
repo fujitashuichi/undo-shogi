@@ -3,6 +3,7 @@ import type { NormalPieceKind } from "../../entities/types/piece.types.js";
 import { convertToDomainError, type DomainError } from "../errors/domainError.js";
 import { PlayError } from "../logic/errors/playError.js";
 import type { GameHistory } from "../types/gameHistory.types.js";
+import { createNewGame } from "./playGame/createNewGame.js";
 import { playGame } from "./playGame/playGame.js";
 
 
@@ -18,6 +19,25 @@ export class ShogiPlayer {
     history: GameHistory
   ) {
     this.history = history;
+  }
+
+
+  public static init = {
+    hirate: (): PlayResult => {
+      try {
+        return {
+          success: true,
+          nextPlayer: new ShogiPlayer(
+            createNewGame.hirate()
+          )
+        }
+      } catch (err) {
+        return {
+          success: false,
+          error: convertToDomainError(err)
+        }
+      }
+    }
   }
 
   public readonly play = {

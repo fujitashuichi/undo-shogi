@@ -1,10 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { Board } from "../../Board/Board.js";
-import { hirateSquares } from "../../Board/hirateSquares.js";
 import { searchKingPosition } from "../searchKing.js";
 
 describe("searchKingPosition", () => {
-  const board = new Board(hirateSquares);
+  const board = Board.init.hirate();
 
   it("先手玉の位置を返す", () => {
     expect(

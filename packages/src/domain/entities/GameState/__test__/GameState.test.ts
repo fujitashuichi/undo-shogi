@@ -1,18 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { GameState } from "../GameState.js";
 import { Board } from "../../Board/Board.js";
-import { hirateSquares } from "../../Board/hirateSquares.js";
-import { emptyHands } from "../../Hand/__mock__/emptyHands.js";
-import { fullHands } from "../../Hand/__mock__/fullHands.js";
-import { PieceError } from "../../../errors/piece.error.js";
-import { MovementError } from "../../../errors/movement.errors.js";
-import { boardDebugger } from "../../Board/__debug__/Board.debug.js";
 import { checkedSquares } from "../validators/__mock__/checkedSquare.js";
+import { Hands } from "../../Hand/Hands.js";
+import { PieceError } from "../../errors/piece.error.js";
+import { MovementError } from "../../errors/movement.errors.js";
 
 describe("GameState", () => {
   it("駒を動かした際に手番が移る", () => {
-    const board = new Board(hirateSquares);
-    const gameState = new GameState(board, emptyHands);
+    const board = Board.init.hirate();
+    const gameState = new GameState(board, Hands.init.empty());
 
     const nextState = gameState.movePiece({ x: 2, y: 6 }, { x: 2, y: 5 }, false);
     expect(
@@ -26,8 +23,8 @@ describe("GameState", () => {
   })
 
   it("持ち駒を打った際に手番が移る", () => {
-    const board = new Board(hirateSquares);
-    const gameState = new GameState(board, fullHands);
+    const board = Board.init.hirate();
+    const gameState = new GameState(board, Hands.init.full());
 
     const nextState = gameState.dropPiece({ x: 3, y: 5 }, "Gold");
     expect(
@@ -44,8 +41,8 @@ describe("GameState", () => {
   describe("ゲーム進行が正常に行える", () => {
     it("相掛かりの例", () => {
       const gameState = new GameState(
-        new Board(hirateSquares),
-        emptyHands
+        Board.init.hirate(),
+        Hands.init.empty()
       );
 
       const nextState = gameState
@@ -81,8 +78,8 @@ describe("GameState", () => {
   describe("不正な手をエラーにする", () => {
     it("既定のベクトルに従わない駒移動はできない", () => {
       const gameState = new GameState(
-        new Board(hirateSquares),
-        emptyHands
+        Board.init.hirate(),
+        Hands.init.empty()
       );
 
       expect(
@@ -92,8 +89,8 @@ describe("GameState", () => {
 
     it("成れない位置で成らない", () => {
       const gameState = new GameState(
-        new Board(hirateSquares),
-        emptyHands
+        Board.init.hirate(),
+        Hands.init.empty()
       );
 
       expect(
@@ -104,8 +101,8 @@ describe("GameState", () => {
 
     it("手番を無視できない", () => {
       const gameState = new GameState(
-        new Board(hirateSquares),
-        emptyHands
+        Board.init.hirate(),
+        Hands.init.empty()
       );
 
       expect(
@@ -116,7 +113,7 @@ describe("GameState", () => {
     it("王手のまま手を指せない", () => {
       const gameState = new GameState(
         new Board(checkedSquares),
-        fullHands
+        Hands.init.full()
       );
 
       expect(

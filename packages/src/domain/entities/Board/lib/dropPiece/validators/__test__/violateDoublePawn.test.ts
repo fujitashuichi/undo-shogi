@@ -1,13 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { Board } from "../../../../Board.js";
-import { hirateSquares } from "../../../../hirateSquares.js";
 import { ShogiPieceNormal } from "../../../../../Piece/Piece.js";
-import { ShogiRulesError } from "../../../../../../errors/shogiRules.error.js";
 import type { Position } from "../../../../../types/algebraic.types.js";
+import { ShogiRulesError } from "../../../../../errors/shogiRules.error.js";
 
 describe("将棋のルール", () => {
   it("2歩を禁止する", () => {
-    const board = new Board(hirateSquares);
+    const board = Board.init.hirate();
 
     const invalidPosList: Position[] = [
       { x: 5, y: 4 },

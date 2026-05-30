@@ -1,0 +1,1 @@
+export { ShogiPlayer } from "./ui/ShogiPlayer.js"
