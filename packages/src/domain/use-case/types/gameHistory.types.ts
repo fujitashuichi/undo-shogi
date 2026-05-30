@@ -1,7 +1,15 @@
 import type { GameState } from "../../entities/GameState/GameState.js";
-import type { GameEndStatus } from "../logic/checkGameEnd.js";
 
 export type GameHistory = {
   gameEndStatus: GameEndStatus,
   history: GameState[]
 }
+
+export type GameEndStatus =
+  | {
+    ended: false
+  }
+  | {
+    ended: true,
+    winner: "Sente" | "Gote" | "Draw"
+  }

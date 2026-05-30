@@ -55,7 +55,8 @@ export const convertToDomainError = (err: unknown) => {
     err instanceof MovementError ||
     err instanceof PieceError ||
     err instanceof ShogiRulesError ||
-    err instanceof KifError
+    err instanceof KifError ||
+    err instanceof PieceError
   ) {
     return new DomainError(err.type, messageMap[err.type]);
   }
