@@ -1,6 +1,7 @@
 import type { FixedLengthArray } from "../../../tools/index.js";
 import type { ShogiPiece, ShogiPieceNormal } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";
+import { hirateSquares } from "./hirateSquares.js";
 import { board_dropPiece } from "./lib/dropPiece/dropPiece.js";
 import { board_movePiece } from "./lib/movePiece/movePiece.js";
 
@@ -22,6 +23,12 @@ export class Board {
     this.squares = squares;
   }
 
+
+  public static init = {
+    hirate: () => {
+      return new Board(hirateSquares)
+    }
+  }
 
   public readonly movePiece = (current: Position, next: Position, promote: boolean): Board => {
     return board_movePiece(this, current, next, promote);

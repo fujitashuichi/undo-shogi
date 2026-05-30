@@ -2,13 +2,13 @@ import { describe, expect, it } from "vitest";
 import { GameState } from "../GameState.js";
 import { Board } from "../../Board/Board.js";
 import { hirateSquares } from "../../Board/hirateSquares.js";
-import { emptyHands } from "../../Hand/__mock__/emptyHands.js";
+import { Hands } from "../../Hand/Hands.js";
 
 describe("終局まで通した検証", () => {
   it("馬と角で詰ます手順", () => {
     const gameState = new GameState(
-      new Board(hirateSquares),
-      emptyHands
+      Board.init.hirate(),
+      Hands.init.empty()
     );
 
     const checkmateGameState = gameState
@@ -25,8 +25,8 @@ describe("終局まで通した検証", () => {
 
   it("角と金で詰ます手順", () => {
     const gameState = new GameState(
-      new Board(hirateSquares),
-      emptyHands
+      Board.init.hirate(),
+      Hands.init.empty()
     );
 
     const checkmateGameState = gameState

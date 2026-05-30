@@ -1,13 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { pieceMotionValidator } from "../validators/motionValidator.js";
 import { Board } from "../../Board/Board.js";
-import { hirateSquares } from "../../Board/hirateSquares.js";
-import { PieceError } from "../../../errors/piece.error.js";
 import type { Position } from "../../types/algebraic.types.js";
+import { PieceError } from "../../errors/piece.error.js";
 
 describe("pieceMotionVector", () => {
   it("他の駒を追い越せない", () => {
-    const board = new Board(hirateSquares);
+    const board = Board.init.hirate();
 
     const invalidPosList: Position[] = [
       { x: 7, y: 4 },
@@ -22,7 +21,7 @@ describe("pieceMotionVector", () => {
   });
 
   it("定義されていないベクトル移動はできない", () => {
-    const board = new Board(hirateSquares);
+    const board = Board.init.hirate();
 
     const invalidPosList: Position[] = [
       { x: 1, y: 1 },
@@ -38,7 +37,7 @@ describe("pieceMotionVector", () => {
   });
 
   it("ベクトル定義に沿った移動が可能である", () => {
-    const board = new Board(hirateSquares);
+    const board = Board.init.hirate();
 
     expect(
       () => pieceMotionValidator(board, { x: 7, y: 7 }, { x: 3, y: 7 }, false)

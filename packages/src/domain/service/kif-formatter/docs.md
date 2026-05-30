@@ -85,8 +85,8 @@ flowchart TD
 
 ```ts
 const gameState = new GameState(
-  new Board(hirateSquares),
-  emptyHands
+  Board.init.hirate(),
+  Hands.init.empty()
 );
 ```
 

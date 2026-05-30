@@ -32,6 +32,16 @@ export class GameState {
   }
 
 
+  public static init = {
+    hirate: () => {
+      return new GameState(
+        Board.init.hirate(),
+        Hands.init.empty()
+      )
+    }
+  }
+
+
   public readonly movePiece = (current: Position, next: Position, promote: boolean): GameState => {
     if (this.checkMated === this.currentSide) throw new MovementError("CHECK_MATED")
 
