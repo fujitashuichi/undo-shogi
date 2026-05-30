@@ -1,5 +1,4 @@
-import { MovementError } from "../../../errors/movement.errors.js";
-import { boardDebugger } from "../../Board/__debug__/Board.debug.js";
+import { MovementError } from "../../errors/movement.errors.js";
 import type { Position } from "../../types/algebraic.types.js";
 import { GameState } from "../GameState.js";
 import { isChecked } from "../validators/checkmate/isChecked.js";

@@ -1,4 +1,4 @@
-import { MovementError } from "../../../../errors/movement.errors.js";
+import { MovementError } from "../../../errors/movement.errors.js";
 import type { Position } from "../../../types/algebraic.types.js";
 import { Board } from "../../Board.js";
 import { moveValidator } from "./validators/moveValidator.js";

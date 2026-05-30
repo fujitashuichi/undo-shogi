@@ -1,5 +1,5 @@
-import { MovementError } from "../../../../errors/movement.errors.js";
 import type { Board } from "../../../Board/Board.js";
+import { MovementError } from "../../../errors/movement.errors.js";
 import { positionsUnderAttack } from "../../../lib/positions/positionsUnderAttack/positionsUnderAttack.js";
 import { searchPiecesBySide } from "../../../lib/searchPiecesBySide.js";
 import type { Position } from "../../../types/algebraic.types.js";

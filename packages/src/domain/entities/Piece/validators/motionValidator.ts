@@ -1,9 +1,9 @@
 import { logger } from "../../../../tools/index.js";
 import { isInsideRange } from "../../../../tools/math/isInsideRange.js";
-import { MovementError } from "../../../errors/movement.errors.js";
-import { PieceError } from "../../../errors/piece.error.js";
 import type { Board } from "../../Board/Board.js";
 import { boardConfig } from "../../config/boardConfig.js";
+import { MovementError } from "../../errors/movement.errors.js";
+import { PieceError } from "../../errors/piece.error.js";
 import { isInBoard } from "../../lib/positions/isInArea/isInBoard.js";
 import type { Position } from "../../types/algebraic.types.js";
 

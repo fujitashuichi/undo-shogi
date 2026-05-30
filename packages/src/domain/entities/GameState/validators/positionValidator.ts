@@ -1,5 +1,5 @@
 import { logger } from "../../../../tools/index.js";
-import { LogicError } from "../../../errors/logic.error.js";
+import { LogicError } from "../../errors/logic.error.js";
 import { isInBoard } from "../../lib/positions/isInArea/isInBoard.js";
 
 
