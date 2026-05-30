@@ -1,16 +1,7 @@
 import type { GameState } from "../../entities/GameState/GameState.js";
 import { hashGameStates } from "../../service/kif-commands/hashGameStates.js";
 import { checkRepetition } from "../../service/kif-commands/validators/checkRepetition.js";
-
-
-export type GameEndStatus =
-  | {
-    ended: false
-  }
-  | {
-    ended: true,
-    winner: "Sente" | "Gote" | "Draw"
-  }
+import type { GameEndStatus } from "../types/gameHistory.types.js";
 
 
 export const checkGameEnd = (gameStates: GameState[]): GameEndStatus => {
