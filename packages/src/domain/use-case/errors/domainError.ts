@@ -1,8 +1,9 @@
-import { LogicError } from "../../errors/logic.error.js";
-import { MovementError } from "../../errors/movement.errors.js";
-import { PieceError } from "../../errors/piece.error.js";
-import { ShogiRulesError } from "../../errors/shogiRules.error.js";
+import { LogicError } from "../../entities/errors/logic.error.js";
+import { MovementError } from "../../entities/errors/movement.errors.js";
+import { PieceError } from "../../entities/errors/piece.error.js";
+import { ShogiRulesError } from "../../entities/errors/shogiRules.error.js";
 import { KifError } from "../../service/kif-formatter/errors/kif.error.js";
+import type { PlayError } from "../logic/errors/playError.js";
 
 export class DomainError extends Error {
   constructor (name: string, message: string) {
@@ -19,6 +20,7 @@ type Errors =
   | PieceError
   | ShogiRulesError
   | KifError
+  | PlayError
 ;
 
 
@@ -40,7 +42,10 @@ const messageMap: Record<Errors["type"], string> = {
   MOVE_UNDEFINED_PIECE: "動かす駒を選択してください。",
   OUT_OF_BOARD: unexpectedErrorMessage,
   UNSUPPORTED_KIF: "サポートされていないKIFファイルです。",
-  SELF_CHECKED: "自殺手です。"
+  SELF_CHECKED: "自殺手です。",
+  ZERO_LENGTH_HISTORY: "指し手の履歴が空です。",
+  INVALID_UNDO: "待ったできない局面です",
+  GAME_ALREADY_ENDED: "終局しています。"
 }
 
 

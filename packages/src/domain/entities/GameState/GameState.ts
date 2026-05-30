@@ -1,5 +1,5 @@
-import { MovementError } from "../../errors/movement.errors.js";
 import { Board } from "../Board/Board.js";
+import { MovementError } from "../errors/movement.errors.js";
 import { Hands } from "../Hand/Hands.js";
 import { ShogiPieceNormal } from "../Piece/Piece.js";
 import type { Position } from "../types/algebraic.types.js";

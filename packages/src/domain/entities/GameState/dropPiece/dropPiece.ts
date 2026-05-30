@@ -1,4 +1,4 @@
-import { MovementError } from "../../../errors/movement.errors.js";
+import { MovementError } from "../../errors/movement.errors.js";
 import type { ShogiPieceNormal } from "../../Piece/Piece.js";
 import type { Position } from "../../types/algebraic.types.js";
 import { GameState } from "../GameState.js";
