@@ -1,0 +1,1 @@
+{"version":3,"file":"convertPosition.d.ts","sourceRoot":"","sources":["../../../../../src/domain/service/kif-formatter/lib/convertPosition.ts"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAE,QAAQ,EAAE,MAAM,4CAA4C,CAAC;AAC3E,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,sBAAsB,CAAC;AAMxD,eAAO,MAAM,eAAe;iCACG,WAAW,KAAG,QAAQ;mCAOpB,QAAQ,KAAG,WAAW;CAMtD,CAAA"}

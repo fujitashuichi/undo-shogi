@@ -1,0 +1,1 @@
+{"version":3,"file":"searchKing.d.ts","sourceRoot":"","sources":["../../../../src/domain/entities/lib/searchKing.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,KAAK,EAAE,MAAM,mBAAmB,CAAC;AAE/C,OAAO,KAAK,EAAE,QAAQ,EAAE,MAAM,6BAA6B,CAAC;AAC5D,OAAO,KAAK,EAAE,IAAI,EAAE,MAAM,yBAAyB,CAAC;AAMpD,eAAO,MAAM,kBAAkB,GAAI,OAAO,KAAK,EAAE,MAAM,IAAI,KAAG,QAAQ,GAAG,SAoBxE,CAAA"}

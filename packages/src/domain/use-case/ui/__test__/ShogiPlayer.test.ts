@@ -1,10 +1,14 @@
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { ShogiPlayer } from "../ShogiPlayer";
 
 describe("正常にinitできる", () => {
   it("init.hirate()", () => {
     const result = ShogiPlayer.init.hirate();
 
-    console.log(result);
+    expect(result).toEqual(
+      expect.objectContaining({
+        success: true
+      })
+    )
   });
 });

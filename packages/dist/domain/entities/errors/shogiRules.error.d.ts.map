@@ -1,0 +1,1 @@
+{"version":3,"file":"shogiRules.error.d.ts","sourceRoot":"","sources":["../../../../src/domain/entities/errors/shogiRules.error.ts"],"names":[],"mappings":"AAAA,KAAK,UAAU,GACX,aAAa,CAChB;AAQD,qBAAa,eAAgB,SAAQ,KAAK;aAEtB,IAAI,EAAG,UAAU;gBAAjB,IAAI,EAAG,UAAU;CAMpC"}
