@@ -4,6 +4,7 @@ import { convertToDomainError, type DomainError } from "../errors/domainError.js
 import { PlayError } from "../logic/errors/playError.js";
 import type { GameHistory } from "../types/gameHistory.types.js";
 import { createNewGame } from "./playGame/createNewGame.js";
+import { kifToShogiPlayer } from "./playGame/kifToShogiPlayer.js";
 import { playGame } from "./playGame/playGame.js";
 
 
@@ -24,77 +25,67 @@ export class ShogiPlayer {
 
   public static init = {
     hirate: (): PlayResult => {
-      try {
-        return {
-          success: true,
-          nextPlayer: new ShogiPlayer(
-            createNewGame.hirate()
-          )
-        }
-      } catch (err) {
-        return {
-          success: false,
-          error: convertToDomainError(err)
-        }
-      }
+      return createPlayResultHandler(() => {
+        return new ShogiPlayer(
+          createNewGame.hirate()
+        )
+      });
+    },
+
+    byKif: (kif: string): PlayResult => {
+      return createPlayResultHandler(() => {
+        return kifToShogiPlayer(kif)
+      });
     }
   }
 
-  public readonly play = {
-    movePiece: (currentPos: Position, nextPos: Position, promote: boolean): PlayResult => {
-      try {
-        if (this.history.gameEndStatus.ended) {
-          throw new PlayError("GAME_ALREADY_ENDED");
-        }
 
-        const nextHistory = playGame(this.history).movePiece(currentPos, nextPos, promote);
-        return {
-          success: true,
-          nextPlayer: new ShogiPlayer(nextHistory)
-        }
-      } catch (err) {
-        return {
-          success: false,
-          error: convertToDomainError(err)
-        }
+  public readonly movePiece = (currentPos: Position, nextPos: Position, promote: boolean): PlayResult => {
+    return createPlayResultHandler(() => {
+      if (this.history.gameEndStatus.ended) {
+        throw new PlayError("GAME_ALREADY_ENDED");
       }
-    },
+
+      const nextHistory = playGame(this.history).movePiece(currentPos, nextPos, promote);
+      return new ShogiPlayer(nextHistory)
+    });
+  }
 
 
-    dropPiece: (position: Position, kind: NormalPieceKind): PlayResult => {
-      try {
-        if (this.history.gameEndStatus.ended) {
-          throw new PlayError("GAME_ALREADY_ENDED");
-        }
-
-        const nextHistory = playGame(this.history).dropPiece(position, kind);
-        return {
-          success: true,
-          nextPlayer: new ShogiPlayer(nextHistory)
-        }
-      } catch (err) {
-        return {
-          success: false,
-          error: convertToDomainError(err)
-        }
+  public readonly dropPiece = (position: Position, kind: NormalPieceKind): PlayResult => {
+    return createPlayResultHandler(() => {
+      if (this.history.gameEndStatus.ended) {
+        throw new PlayError("GAME_ALREADY_ENDED");
       }
-    },
+
+      const nextHistory = playGame(this.history).dropPiece(position, kind);
+      return new ShogiPlayer(nextHistory);
+    });
+  }
 
 
-    undo: (): PlayResult => {
-      try {
-        const nextHistory = playGame(this.history).undo();
+  public readonly undo = (): PlayResult => {
+    return createPlayResultHandler(() => {
+      const nextHistory = playGame(this.history).undo();
+      return new ShogiPlayer(nextHistory);
+    });
+  }
+}
 
-        return {
-          success: true,
-          nextPlayer: new ShogiPlayer(nextHistory)
-        }
-      } catch (err) {
-        return {
-          success: false,
-          error: convertToDomainError(err)
-        }
-      }
+
+
+function createPlayResultHandler(
+  func_nextPlayer: () => ShogiPlayer
+): PlayResult {
+  try {
+    return {
+      success: true,
+      nextPlayer: func_nextPlayer()
     }
-  };
+  } catch (err) {
+    return {
+      success: false,
+      error: convertToDomainError(err)
+    }
+  }
 }

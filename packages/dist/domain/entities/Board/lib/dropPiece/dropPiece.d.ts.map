@@ -1,0 +1,1 @@
+{"version":3,"file":"dropPiece.d.ts","sourceRoot":"","sources":["../../../../../../src/domain/entities/Board/lib/dropPiece/dropPiece.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,gBAAgB,EAAE,MAAM,yBAAyB,CAAC;AAChE,OAAO,KAAK,EAAE,QAAQ,EAAE,MAAM,mCAAmC,CAAC;AAClE,OAAO,EAAE,KAAK,EAAE,MAAM,gBAAgB,CAAC;AAIvC,eAAO,MAAM,eAAe,GAAI,OAAO,KAAK,EAAE,UAAU,QAAQ,EAAE,OAAO,gBAAgB,UAexF,CAAA"}

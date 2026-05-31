@@ -1,0 +1,1 @@
+{"version":3,"file":"violateSelfCheck.d.ts","sourceRoot":"","sources":["../../../../../../src/domain/entities/GameState/validators/checkmate/violateSelfCheck.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,KAAK,EAAE,MAAM,yBAAyB,CAAC;AAErD,OAAO,KAAK,EAAE,IAAI,EAAE,MAAM,+BAA+B,CAAC;AAI1D,eAAO,MAAM,gBAAgB,GAAI,WAAW,KAAK,EAAE,MAAM,IAAI,UAM5D,CAAA"}
