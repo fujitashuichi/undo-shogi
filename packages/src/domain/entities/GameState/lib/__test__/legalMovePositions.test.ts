@@ -1,7 +1,6 @@
 import { describe } from "node:test";
 import { expect, it } from "vitest";
 import { Board } from "../../../Board/Board.js";
-import { hirateSquares } from "../../../Board/hirateSquares.js";
 import { pinnedRookSquares } from "../../../lib/__mock__/pinnedRookSquare.js";
 import type { Position } from "../../../types/algebraic.types.js";
 import { legalMovePositions } from "../legalMovePositions/legalMovePositions.js";

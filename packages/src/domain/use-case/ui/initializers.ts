@@ -3,17 +3,20 @@ import { createNewGame } from "./playGame/createNewGame.js";
 import { createPlayResultHandler, ShogiPlayer, type PlayResult } from "./ShogiPlayer.js";
 
 
-const handicapInitializers = handicapSchema.options.map((handicap) => {
-  return {
-    [handicap]: (): PlayResult => {
-      return createPlayResultHandler(() => {
-        return new ShogiPlayer(
-          createNewGame[handicap]()
-        )
-      });
-    }
+type Methods = Record<Handicap, () => PlayResult>;
+
+const handicapInitializers: Methods = handicapSchema.options.reduce((acc: Methods, handicap) => {
+  acc[handicap] = () => {
+    return createPlayResultHandler(() => {
+      return new ShogiPlayer(
+        createNewGame[handicap]()
+      )
+    });
   }
-}) as unknown as Record<Handicap, () => PlayResult>
+
+  return acc;
+}, {} as Methods);
+
 
 
 export const initializers = {

@@ -1,4 +1,3 @@
-import { Hands } from "../Hand/Hands.js";
 import type { Handicap } from "../handicap.types.js";
 import { Board } from "./Board.js";
 import { eightOchiSquares } from "./squares/eightOchiSquares.js";

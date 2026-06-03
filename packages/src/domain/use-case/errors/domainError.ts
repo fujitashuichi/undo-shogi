@@ -6,9 +6,12 @@ import { KifError } from "../../service/kif-formatter/errors/kif.error.js";
 import type { PlayError } from "../logic/errors/playError.js";
 
 export class DomainError extends Error {
-  constructor (name: string, message: string) {
+  constructor (
+    readonly code: string,
+    message: string
+  ) {
     super();
-    this.name = name;
+    this.name = "DomainError";
     this.message = message;
   }
 }

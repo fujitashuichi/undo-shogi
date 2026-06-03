@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { GameState } from "../GameState.js";
 import { Board } from "../../Board/Board.js";
-import { hirateSquares } from "../../Board/hirateSquares.js";
 import { Hands } from "../../Hand/Hands.js";
 
 describe("終局まで通した検証", () => {

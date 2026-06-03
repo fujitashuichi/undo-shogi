@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { ShogiPlayer } from "../ShogiPlayer";
+import { handicapSchema } from "../../../entities/handicap.types";
 
 describe("ShogiPlayer.test.ts", () => {
   describe("正常にinitできる", () => {
@@ -11,6 +12,18 @@ describe("ShogiPlayer.test.ts", () => {
           success: true
         })
       )
+    });
+
+    it("init[handicap]()", () => {
+      handicapSchema.options.forEach(handicap => {
+        const result = ShogiPlayer.init[handicap]();
+
+        expect(result).toEqual(
+          expect.objectContaining({
+            success: true
+          })
+        );
+      })
     });
   });
 })

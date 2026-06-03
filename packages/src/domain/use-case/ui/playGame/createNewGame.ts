@@ -4,20 +4,24 @@ import type { GameHistory } from "../../types/gameHistory.types.js";
 
 
 type Methods = Record<"hirate" | Handicap, () => GameHistory>;
+type HandicapMethods = Pick<Methods, Handicap>;
 
 
-const handicaps = handicapSchema.options.map(handicap => {
-  return {
-    [handicap]: () => {
+const handicaps: Pick<HandicapMethods, Handicap> =
+  handicapSchema.options.reduce((acc: HandicapMethods, handicap) => {
+    acc[handicap] = () => {
       return {
         gameEndStatus: {
           ended: false
         },
-        history: [GameState.init[handicap]]
+        history: [GameState.init[handicap]()]
       }
     }
-  }
-}) as unknown as Pick<Methods, Handicap>;
+
+      return acc;
+    },
+    {} as HandicapMethods
+  );
 
 
 export const createNewGame: Methods = {

@@ -4,14 +4,17 @@ import { handicapSchema, type Handicap } from "../handicap.types.js";
 import { GameState } from "./GameState.js";
 
 
-export const handicapInitializers: Record<Handicap, () => GameState> =
-  handicapSchema.options.map(handicap => {
-    return {
-      [handicap]: () => {
-        return new GameState(
-          Board.init[handicap](),
-          Hands.init.empty()
-        )
-      }
+type Methods = Record<Handicap, () => GameState>;
+
+
+export const handicapInitializers: Methods =
+  handicapSchema.options.reduce((acc: Methods, handicap) => {
+    acc[handicap] = () => {
+      return new GameState(
+        Board.init[handicap](),
+        Hands.init.empty()
+      )
     }
-  }) as unknown as Record<Handicap, () => GameState>;
+
+    return acc;
+  }, {} as Methods);

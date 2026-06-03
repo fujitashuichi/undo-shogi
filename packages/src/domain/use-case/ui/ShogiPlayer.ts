@@ -83,11 +83,3 @@ export function createPlayResultHandler(
     }
   }
 }
-
-
-
-ShogiPlayer.init.hirate();
-
-ShogiPlayer.init.byKif(`kifをここに書く`);
-
-ShogiPlayer.init.kakuOchi();
