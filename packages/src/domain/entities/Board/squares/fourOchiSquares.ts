@@ -1,8 +1,6 @@
-// In the context of Shogi, Hirate (平手) refers to an even game or a standard starting position where no handicap is applied.
-
-import type { FixedLengthArray } from "../../../tools/index.js";
-import { ShogiPiece } from "../Piece/Piece.js";
-import type { Board } from "./Board.js";
+import type { FixedLengthArray } from "../../../../tools/index.js";
+import { ShogiPiece } from "../../Piece/Piece.js";
+import type { Board } from "../Board.js";
 
 
 const majorPieces: FixedLengthArray<ShogiPiece["kind"], 9> = ["Lance", "Knight", "Silver", "Gold", "King", "Gold", "Silver", "Knight", "Lance"];
@@ -15,11 +13,10 @@ const row_2 = [undefined, new ShogiPiece("Gote", "Rook"), ...Array(5).fill(undef
 const row_3 = Array(9).fill(null).map(() => new ShogiPiece("Gote", "Pawn")) as Row;
 const row_empty = Array(9).fill(undefined) as Row;
 const row_7 = Array(9).fill(null).map(() => new ShogiPiece("Sente", "Pawn")) as Row;
-const row_8 = [undefined, new ShogiPiece("Sente", "Bishop"), ...Array(5).fill(undefined), new ShogiPiece("Sente", "Rook"), undefined] as Row;
-const row_9 = majorPieces.map(type => new ShogiPiece("Sente", type)) as Row;
+const row_9 = majorPieces.map((type, idx) => [0, 8].includes(idx) ? undefined : new ShogiPiece("Sente", type)) as Row;
 
 
-export const hirateSquares: Board["squares"] = [
+export const fourOchiSquares: Board["squares"] = [
   row_1,
   row_2,
   row_3,
@@ -27,6 +24,6 @@ export const hirateSquares: Board["squares"] = [
   row_empty,
   row_empty,
   row_7,
-  row_8,
+  row_empty,
   row_9
 ];

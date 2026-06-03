@@ -3,12 +3,12 @@ import type { NormalPieceKind } from "../../entities/types/piece.types.js";
 import { convertToDomainError, type DomainError } from "../errors/domainError.js";
 import { PlayError } from "../logic/errors/playError.js";
 import type { GameHistory } from "../types/gameHistory.types.js";
-import { createNewGame } from "./playGame/createNewGame.js";
+import { initializers } from "./initializers.js";
 import { kifToShogiPlayer } from "./playGame/kifToShogiPlayer.js";
 import { playGame } from "./playGame/playGame.js";
 
 
-type PlayResult =
+export type PlayResult =
   | { success: false, error: DomainError }
   | { success: true, nextPlayer: ShogiPlayer }
 
@@ -24,13 +24,7 @@ export class ShogiPlayer {
 
 
   public static init = {
-    hirate: (): PlayResult => {
-      return createPlayResultHandler(() => {
-        return new ShogiPlayer(
-          createNewGame.hirate()
-        )
-      });
-    },
+    ...initializers,
 
     byKif: (kif: string): PlayResult => {
       return createPlayResultHandler(() => {
@@ -74,7 +68,7 @@ export class ShogiPlayer {
 
 
 
-function createPlayResultHandler(
+export function createPlayResultHandler(
   func_nextPlayer: () => ShogiPlayer
 ): PlayResult {
   try {
@@ -89,3 +83,11 @@ function createPlayResultHandler(
     }
   }
 }
+
+
+
+ShogiPlayer.init.hirate();
+
+ShogiPlayer.init.byKif(`kifをここに書く`);
+
+ShogiPlayer.init.kakuOchi();
