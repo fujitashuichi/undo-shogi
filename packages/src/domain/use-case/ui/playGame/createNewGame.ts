@@ -1,7 +1,30 @@
 import { GameState } from "../../../entities/GameState/GameState.js";
+import { handicapSchema, type Handicap } from "../../../entities/handicap.types.js";
 import type { GameHistory } from "../../types/gameHistory.types.js";
 
-export const createNewGame = {
+
+type Methods = Record<"hirate" | Handicap, () => GameHistory>;
+type HandicapMethods = Pick<Methods, Handicap>;
+
+
+const handicaps: Pick<HandicapMethods, Handicap> =
+  handicapSchema.options.reduce((acc: HandicapMethods, handicap) => {
+    acc[handicap] = () => {
+      return {
+        gameEndStatus: {
+          ended: false
+        },
+        history: [GameState.init[handicap]()]
+      }
+    }
+
+      return acc;
+    },
+    {} as HandicapMethods
+  );
+
+
+export const createNewGame: Methods = {
   hirate: (): GameHistory => {
     return {
       gameEndStatus: {
@@ -9,5 +32,7 @@ export const createNewGame = {
       },
       history: [GameState.init.hirate()]
     }
-  }
+  },
+
+  ...handicaps
 }

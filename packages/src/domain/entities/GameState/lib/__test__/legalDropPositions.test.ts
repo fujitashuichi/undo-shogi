@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { Board } from "../../../Board/Board.js";
-import { hirateSquares } from "../../../Board/hirateSquares.js";
 import { legalDropPositions } from "../legalDropPositions/legalDropPositions.js";
 import { checkedSquares } from "../../validators/__mock__/checkedSquare.js";
 import type { Position } from "../../../types/algebraic.types.js";
