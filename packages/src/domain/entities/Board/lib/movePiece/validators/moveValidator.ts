@@ -1,11 +1,11 @@
 import type { ShogiPiece } from "../../../../Piece/Piece.js";
 import type { Position } from "../../../../types/algebraic.types.js";
 import type { Board } from "../../../Board.js";
-import type { Side } from "../../../../types/piece.types.js";
 import { pieceMotionValidator } from "../../../../Piece/validators/motionValidator.js";
 import { isInPromotionZone } from "../../../../lib/positions/isInArea/isInPromotionZone.js";
 import { logger } from "../../../../../../tools/index.js";
 import { MovementError } from "../../../../errors/movement.errors.js";
+import type { Side } from "../../../../types/players.types.js";
 
 
 export const moveValidator = {

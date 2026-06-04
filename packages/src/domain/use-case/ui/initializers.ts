@@ -1,4 +1,4 @@
-import { handicapSchema, type Handicap } from "../../entities/handicap.types.js";
+import { handicapSchema, type Handicap } from "../../entities/types/handicap.types.js";
 import { createNewGame } from "./playGame/createNewGame.js";
 import { createPlayResultHandler, ShogiPlayer, type PlayResult } from "./ShogiPlayer.js";
 

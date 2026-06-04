@@ -1,5 +1,5 @@
 import { GameState } from "../../../entities/GameState/GameState.js";
-import { handicapSchema, type Handicap } from "../../../entities/handicap.types.js";
+import { handicapSchema, type Handicap } from "../../../entities/types/handicap.types.js";
 import type { GameHistory } from "../../types/gameHistory.types.js";
 
 

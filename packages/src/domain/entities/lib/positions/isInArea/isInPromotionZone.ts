@@ -1,7 +1,7 @@
 import { isInsideRange } from "../../../../../tools/math/isInsideRange.js";
 import { boardConfig } from "../../../config/boardConfig.js";
 import type { Position } from "../../../types/algebraic.types.js";
-import type { Side } from "../../../types/piece.types.js";
+import type { Side } from "../../../types/players.types.js";
 
 
 const boardSize = boardConfig.boardSize;

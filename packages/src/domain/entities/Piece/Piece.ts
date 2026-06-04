@@ -1,10 +1,11 @@
 import type { UUID } from "crypto";
-import { NormalPieceKindSchema, PromotablePieceKindSchema, PromotedPieceKindSchema, type NormalPieceKind, type PieceKind, type Side } from "../types/piece.types.js";
+import { NormalPieceKindSchema, PromotablePieceKindSchema, PromotedPieceKindSchema, type NormalPieceKind, type PieceKind } from "../types/piece.types.js";
 import { pieceValidator } from "./validators/pieceValidator.js";
 import { normalKindToPromoted } from "./normalToPromoted.js";
 import { promotedKindToNormal } from "./promotedToNormal.js";
 import { pieceConfig } from "../config/pieceConfig.js";
 import { logger } from "../../../tools/index.js";
+import type { Side } from "../types/players.types.js";
 
 
 export class ShogiPiece {

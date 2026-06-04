@@ -5,7 +5,7 @@
 import type { Board } from "../../../Board/Board.js";
 import type { PieceVectors } from "../../../config/motions/types.js";
 import type { Position } from "../../../types/algebraic.types.js";
-import type { Side } from "../../../types/piece.types.js";
+import type { Side } from "../../../types/players.types.js";
 import { searchPiecesBySide } from "../../searchPiecesBySide.js";
 import { isInBoard } from "../isInArea/isInBoard.js";
 import { byPiece_Infinity } from "./byPiece_Infinity.js";

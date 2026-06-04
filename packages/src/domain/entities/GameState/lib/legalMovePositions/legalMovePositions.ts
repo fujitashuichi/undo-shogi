@@ -3,7 +3,7 @@ import { MovementError } from "../../../errors/movement.errors.js";
 import { positionsUnderAttack } from "../../../lib/positions/positionsUnderAttack/positionsUnderAttack.js";
 import { searchPiecesBySide } from "../../../lib/searchPiecesBySide.js";
 import type { Position } from "../../../types/algebraic.types.js";
-import type { Side } from "../../../types/piece.types.js";
+import type { Side } from "../../../types/players.types.js";
 import { isChecked } from "../../validators/checkmate/isChecked.js";
 
 const byPiece = (board: Board, piecePos: Position) => {

@@ -1,7 +1,5 @@
 import { z } from "zod";
 
-export type Side = "Sente" | "Gote";
-
 
 // 成っていない駒
 export const NormalPieceKindSchema = z.enum([
