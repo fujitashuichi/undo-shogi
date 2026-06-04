@@ -1,3 +1,4 @@
+import { expect } from "vitest";
 import type { Board } from "../../domain/entities/Board/Board.js";
 
 export const vitest_checkSquares = {
@@ -10,11 +11,13 @@ export const vitest_checkSquares = {
     row_1.every((square_1, idx) => {
       const squares_2 = row_2[idx];
 
-      return (
+      const isSame = (
         square_1 === undefined && squares_2 === undefined
       ) || (
         square_1?.kind === squares_2?.kind
-      )
+      );
+
+      expect(isSame).toBe(true);
     })
   })
 }
