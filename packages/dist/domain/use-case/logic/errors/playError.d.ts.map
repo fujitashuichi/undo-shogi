@@ -1,1 +1,0 @@
-{"version":3,"file":"playError.d.ts","sourceRoot":"","sources":["../../../../../src/domain/use-case/logic/errors/playError.ts"],"names":[],"mappings":"AACA,KAAK,UAAU,GACX,qBAAqB,GACrB,cAAc,GACd,oBAAoB,CAAA;AAUxB,qBAAa,SAAU,SAAQ,KAAK;aAEhB,IAAI,EAAE,UAAU;gBAAhB,IAAI,EAAE,UAAU;CAMnC"}

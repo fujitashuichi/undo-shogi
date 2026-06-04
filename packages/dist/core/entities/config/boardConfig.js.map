@@ -1,1 +1,0 @@
-{"version":3,"file":"boardConfig.js","sourceRoot":"","sources":["../../../../src/core/entities/config/boardConfig.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,WAAW,GAAG;IACzB,SAAS,EAAE,CAAC;IACZ,aAAa,EAAE,CAAC;CACjB,CAAA;AAGD,IAAI,WAAW,CAAC,SAAS,GAAG,WAAW,CAAC,aAAa,EAAE,CAAC;IACtD,MAAM,IAAI,KAAK,CAAC,0CAA0C,CAAC,CAAC;AAC9D,CAAC"}
