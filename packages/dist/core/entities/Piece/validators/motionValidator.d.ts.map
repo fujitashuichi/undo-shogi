@@ -1,1 +1,0 @@
-{"version":3,"file":"motionValidator.d.ts","sourceRoot":"","sources":["../../../../../src/core/entities/Piece/validators/motionValidator.ts"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAE,KAAK,EAAE,MAAM,sBAAsB,CAAC;AAGlD,OAAO,KAAK,EAAE,QAAQ,EAAE,MAAM,gCAAgC,CAAC;AAmG/D,eAAO,MAAM,oBAAoB,GAAI,OAAO,KAAK,EAAE,SAAS,QAAQ,EAAE,MAAM,QAAQ,EAAE,SAAS,OAAO,SAIrG,CAAA"}

@@ -1,6 +1,6 @@
 import { Board } from "../Board/Board.js";
 import { Hands } from "../Hand/Hands.js";
-import { handicapSchema, type Handicap } from "../handicap.types.js";
+import { handicapSchema, type Handicap } from "../types/handicap.types.js";
 import { GameState } from "./GameState.js";
 
 

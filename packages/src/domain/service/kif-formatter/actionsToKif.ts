@@ -4,7 +4,8 @@
  */
 
 import { isInPromotionZone } from "../../entities/lib/positions/isInArea/isInPromotionZone.js";
-import { PromotablePieceKindSchema, PromotedPieceKindSchema, type Side } from "../../entities/types/piece.types.js";
+import { PromotablePieceKindSchema, PromotedPieceKindSchema } from "../../entities/types/piece.types.js";
+import type { Side } from "../../entities/types/players.types.js";
 import type { KifPosition, MoveAction } from "../types/types.js";
 import { codeToKifPieceMap } from "./lib/codeToKifPieceMap.js";
 import { convertPosition } from "./lib/convertPosition.js";

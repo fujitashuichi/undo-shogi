@@ -1,1 +1,0 @@
-{"version":3,"file":"domainError.d.ts","sourceRoot":"","sources":["../../../../src/domain/use-case/errors/domainError.ts"],"names":[],"mappings":"AAOA,qBAAa,WAAY,SAAQ,KAAK;gBACvB,IAAI,EAAE,MAAM,EAAE,OAAO,EAAE,MAAM;CAK3C;AAsCD,eAAO,MAAM,oBAAoB,GAAI,KAAK,OAAO,gBAahD,CAAA"}

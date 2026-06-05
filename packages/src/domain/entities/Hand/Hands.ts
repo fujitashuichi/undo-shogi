@@ -1,4 +1,5 @@
-import type { NormalPieceKind, Side } from "../types/piece.types.js";
+import type { NormalPieceKind } from "../types/piece.types.js";
+import type { Side } from "../types/players.types.js";
 
 
 type PieceRecord = Record<

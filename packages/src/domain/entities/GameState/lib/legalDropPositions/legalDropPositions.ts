@@ -1,7 +1,8 @@
 import type { Board } from "../../../Board/Board.js";
 import type { Hands } from "../../../Hand/Hands.js";
 import type { Position } from "../../../types/algebraic.types.js";
-import type { NormalPieceKind, Side } from "../../../types/piece.types.js";
+import type { NormalPieceKind } from "../../../types/piece.types.js";
+import type { Side } from "../../../types/players.types.js";
 import { legalDropPositions_IgnoreDropPawnMate } from "./ignoreDropPawnMate.js";
 import { isPawnMateDrop } from "./isPawnMateDrop.js";
 

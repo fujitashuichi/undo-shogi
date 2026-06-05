@@ -10,7 +10,7 @@ import { playGame } from "./playGame/playGame.js";
 
 export type PlayResult =
   | { success: false, error: DomainError }
-  | { success: true, nextPlayer: ShogiPlayer }
+  | { success: true, shogiPlayer: ShogiPlayer }
 
 
 export class ShogiPlayer {
@@ -74,7 +74,7 @@ export function createPlayResultHandler(
   try {
     return {
       success: true,
-      nextPlayer: func_nextPlayer()
+      shogiPlayer: func_nextPlayer()
     }
   } catch (err) {
     return {
