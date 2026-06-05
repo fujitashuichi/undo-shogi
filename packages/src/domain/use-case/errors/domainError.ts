@@ -1,9 +1,10 @@
+import type { GameError } from "../../entities/errors/game.error.js";
+import { KifError } from "../../entities/errors/kif.error.js";
 import { LogicError } from "../../entities/errors/logic.error.js";
 import { MovementError } from "../../entities/errors/movement.errors.js";
 import { PieceError } from "../../entities/errors/piece.error.js";
 import { ShogiRulesError } from "../../entities/errors/shogiRules.error.js";
-import { KifError } from "../../service/kif-formatter/errors/kif.error.js";
-import type { PlayError } from "../logic/errors/playError.js";
+
 
 export class DomainError extends Error {
   constructor (
@@ -23,7 +24,7 @@ type Errors =
   | PieceError
   | ShogiRulesError
   | KifError
-  | PlayError
+  | GameError
 ;
 
 
