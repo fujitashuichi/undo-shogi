@@ -1,9 +1,11 @@
+import { TimerError } from "../errors/timer.error.js";
 import type { Side } from "../types/players.types.js";
 
 type RemainingSeconds = Record<Side, number>;
 
 type Options = {
   remainingSeconds: RemainingSeconds,
+  history?: RemainingSeconds[],
   currentSide?: Side,
 
   // ↓ 外部からの時間観測
@@ -13,6 +15,7 @@ type Options = {
 
 export class Timer {
   private timerId: ReturnType<typeof setInterval> | null = null;
+  private history: RemainingSeconds[];
 
   private _remaining: RemainingSeconds;
   private currentSide: Side;
@@ -23,6 +26,7 @@ export class Timer {
     options: Options
   ) {
     this._remaining = { ...options.remainingSeconds };
+    this.history = options.history ?? [];
     this.currentSide = options.currentSide ?? "Sente";
 
     this.onTimeUp = options.onTimeUp;
@@ -66,6 +70,7 @@ export class Timer {
   }
 
   public readonly turnSide = () => {
+    this.history.push(this.remainingSeconds);
     this.stopTimer();
     this.currentSide = this.currentSide === "Sente" ? "Gote" : "Sente";
     this.startTimer();
@@ -75,5 +80,19 @@ export class Timer {
     if (!this.timerId) {
       this.startTimer();
     }
+  }
+
+  public readonly undo = () => {
+    if (this.history.length < 2) {
+      throw new TimerError("INVALID_UNDO");
+    }
+
+    this.history.pop();
+
+    this.stopTimer();
+    this._remaining = { ...this.history.at(-1)! };
+    this.currentSide = this.currentSide === "Sente" ? "Gote" : "Sente";
+
+    this.startTimer();
   }
 }

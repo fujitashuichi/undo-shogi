@@ -4,6 +4,7 @@ import { LogicError } from "../../entities/errors/logic.error.js";
 import { MovementError } from "../../entities/errors/movement.errors.js";
 import { PieceError } from "../../entities/errors/piece.error.js";
 import { ShogiRulesError } from "../../entities/errors/shogiRules.error.js";
+import { TimerError } from "../../entities/errors/timer.error.js";
 
 
 export class DomainError extends Error {
@@ -25,6 +26,7 @@ type Errors =
   | ShogiRulesError
   | KifError
   | GameError
+  | TimerError
 ;
 
 
@@ -60,7 +62,8 @@ export const convertToDomainError = (err: unknown) => {
     err instanceof PieceError ||
     err instanceof ShogiRulesError ||
     err instanceof KifError ||
-    err instanceof PieceError
+    err instanceof PieceError ||
+    err instanceof TimerError
   ) {
     return new DomainError(err.type, messageMap[err.type]);
   }
