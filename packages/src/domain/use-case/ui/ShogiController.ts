@@ -1,10 +1,21 @@
+import type { Board } from "../../entities/Board/Board.js";
 import { Game } from "../../entities/Game/Game.js";
+import type { GameState } from "../../entities/GameState/GameState.js";
 import { Timer } from "../../entities/Timer/Timer.js";
 import type { Position } from "../../entities/types/algebraic.types.js";
 import type { NormalPieceKind } from "../../entities/types/piece.types.js";
 import { domainErrorHandler } from "../errors/domainErrorHandler.js";
 import { initializers } from "./initializers.js";
 
+
+type Status = {
+  gameEndStatus: Game["status"]["gameEndStatus"],
+  remainingSeconds: Timer["remainingSeconds"],
+  history: {
+    board: GameState["board"],
+    hands: GameState["hands"]
+  }[]
+}
 
 export class ShogiController {
   private _game: Game;
@@ -19,8 +30,8 @@ export class ShogiController {
   }
 
 
-  public get status() {
-    return domainErrorHandler(() => {
+  public get status(): Status {
+    return domainErrorHandler((): Status => {
       const history = this._game.status.history;
 
       return {

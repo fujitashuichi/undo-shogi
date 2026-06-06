@@ -1,0 +1,1 @@
+export { ShogiController } from "./ui/ShogiController.js";

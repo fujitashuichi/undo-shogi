@@ -1,9 +1,9 @@
 import { GameState } from "../../../entities/GameState/GameState.js";
 import { handicapSchema, type Handicap } from "../../../entities/types/handicap.types.js";
-import type { GameHistory } from "../types/gameHistory.types.js";
+import type { Game } from "../Game.js";
 
 
-type Methods = Record<"hirate" | Handicap, () => GameHistory>;
+type Methods = Record<"hirate" | Handicap, () => Game["status"]>;
 type HandicapMethods = Pick<Methods, Handicap>;
 
 
@@ -25,7 +25,7 @@ const handicaps: Pick<HandicapMethods, Handicap> =
 
 
 export const createNewGame: Methods = {
-  hirate: (): GameHistory => {
+  hirate: (): Game["status"] => {
     return {
       gameEndStatus: {
         ended: false

@@ -1,4 +1,4 @@
-import type { GameError } from "../../entities/errors/game.error.js";
+import { GameError } from "../../entities/errors/game.error.js";
 import { KifError } from "../../entities/errors/kif.error.js";
 import { LogicError } from "../../entities/errors/logic.error.js";
 import { MovementError } from "../../entities/errors/movement.errors.js";
@@ -61,6 +61,7 @@ export const convertToDomainError = (err: unknown) => {
     err instanceof MovementError ||
     err instanceof PieceError ||
     err instanceof ShogiRulesError ||
+    err instanceof GameError ||
     err instanceof KifError ||
     err instanceof PieceError ||
     err instanceof TimerError
