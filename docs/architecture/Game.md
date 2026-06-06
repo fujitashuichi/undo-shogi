@@ -36,7 +36,7 @@ flowchart TD
     allPieceKindsBySide --> pieceRecord
   end
 
-  subgraph GameState
+  subgraph Game
     subgraph gameStateStates[states]
       direction RL
       currentSide
