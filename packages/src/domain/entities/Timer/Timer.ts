@@ -72,6 +72,7 @@ export class Timer {
   public readonly turnSide = () => {
     this.history.push(this.remainingSeconds);
     this.stopTimer();
+    this.history.push(this.remainingSeconds);
     this.currentSide = this.currentSide === "Sente" ? "Gote" : "Sente";
     this.startTimer();
   }

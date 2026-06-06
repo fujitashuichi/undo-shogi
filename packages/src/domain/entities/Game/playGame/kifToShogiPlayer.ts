@@ -13,7 +13,7 @@ export const kifToShogiPlayer = (kif: string): Game => {
     initialState
   );
 
-  const history: Game["history"] = {
+  const history: Game["status"] = {
     gameEndStatus: checkGameEnd(gameStates),
     history: gameStates
   }

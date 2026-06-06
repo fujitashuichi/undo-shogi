@@ -17,7 +17,7 @@ export class GameError extends Error {
     public readonly type: ErrorTypes
   ) {
     super();
-    this.name = "PlayError";
+    this.name = "GameError";
     this.message = messageMap[type];
   }
 }

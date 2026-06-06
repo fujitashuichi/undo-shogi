@@ -1,18 +1,18 @@
 import type { Position } from "../../../entities/types/algebraic.types.js";
 import type { NormalPieceKind } from "../../../entities/types/piece.types.js";
 import { GameError } from "../../errors/game.error.js";
+import type { Game } from "../Game.js";
 import { checkGameEnd } from "../lib/checkGameEnd.js";
-import type { GameHistory } from "../types/gameHistory.types.js";
 
 
 type PlayGameResult = {
-  movePiece(currentPos: Position, nextPos: Position, promote: boolean): GameHistory,
-  dropPiece(position: Position, kind: NormalPieceKind): GameHistory,
-  undo(): GameHistory
+  movePiece(currentPos: Position, nextPos: Position, promote: boolean): Game["status"],
+  dropPiece(position: Position, kind: NormalPieceKind): Game["status"],
+  undo(): Game["status"]
 }
 
 
-export const playGame = (gameHistory: GameHistory): PlayGameResult => {
+export const playGame = (gameHistory: Game["status"]): PlayGameResult => {
   const history = gameHistory.history;
 
   if (history.length === 0) {
@@ -20,7 +20,7 @@ export const playGame = (gameHistory: GameHistory): PlayGameResult => {
   }
 
 
-  const movePiece = (currentPos: Position, nextPos: Position, promote: boolean): GameHistory => {
+  const movePiece = (currentPos: Position, nextPos: Position, promote: boolean): Game["status"] => {
     const gameState = history.at(-1)!;
     const newState = gameState.movePiece(currentPos, nextPos, promote);
 
@@ -32,7 +32,7 @@ export const playGame = (gameHistory: GameHistory): PlayGameResult => {
     }
   }
 
-  const dropPiece = (position: Position, kind: NormalPieceKind): GameHistory => {
+  const dropPiece = (position: Position, kind: NormalPieceKind): Game["status"] => {
     const gameState = history.at(-1)!;
     const newState = gameState.dropPiece(position, kind);
 
@@ -44,7 +44,7 @@ export const playGame = (gameHistory: GameHistory): PlayGameResult => {
     }
   }
 
-  const undo = (): GameHistory => {
+  const undo = (): Game["status"] => {
     if (history.length <= 1) {
       throw new GameError("INVALID_UNDO");
     }

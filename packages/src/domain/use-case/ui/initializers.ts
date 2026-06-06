@@ -5,7 +5,17 @@ import { domainErrorHandler } from "../errors/domainErrorHandler.js";
 import { ShogiController } from "./ShogiController.js";
 
 
-type Methods = Record<"hirate" | Handicap, (...timerOptions: ConstructorParameters<typeof Timer>) => ShogiController>;
+type TimerConstructor = ConstructorParameters<typeof Timer>[0];
+
+
+type Methods = Record<
+  "hirate" | Handicap,
+  (
+    timerOptions: Omit<
+      TimerConstructor,
+      "currentSide"
+    >
+  ) => ShogiController>;
 type HandicapMethods = Pick<Methods, Handicap>;
 
 const handicapInitializers: HandicapMethods =
@@ -28,7 +38,7 @@ const handicapInitializers: HandicapMethods =
 
 export const initializers: Methods = {
   hirate: (
-    ...timerOptions: ConstructorParameters<typeof Timer>
+    ...timerOptions
   ) => {
     return domainErrorHandler(() => {
       return new ShogiController(
