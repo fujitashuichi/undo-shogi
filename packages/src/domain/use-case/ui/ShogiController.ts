@@ -57,22 +57,22 @@ export class ShogiController {
 
   public readonly movePiece = (currentPos: Position, nextPos: Position, promote: boolean) => {
     domainErrorHandler(() => {
-      this._timer.turnSide();
       this._game = this._game.movePiece(currentPos, nextPos, promote);
+      this._timer.turnSide();
     });
   }
 
   public readonly dropPiece = (position: Position, kind: NormalPieceKind) => {
     domainErrorHandler(() => {
-      this._timer.turnSide();
       this._game = this._game.dropPiece(position, kind);
+      this._timer.turnSide();
     });
   }
 
   public readonly undo = () => {
     domainErrorHandler(() => {
-      this._timer.undo();
       this._game = this._game.undo();
+      this._timer.undo();
     });
   }
 }
