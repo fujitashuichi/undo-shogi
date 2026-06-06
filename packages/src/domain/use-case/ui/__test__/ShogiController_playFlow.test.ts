@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { ShogiController } from '../ShogiController';
 import { DomainError } from '../../errors/domainError';
 
@@ -6,6 +6,9 @@ import { DomainError } from '../../errors/domainError';
 describe('ShogiController 統合テスト（自然な操作フロー）', () => {
   beforeEach(() => {
     vi.useFakeTimers();
+  })
+  afterEach(() => {
+    vi.useRealTimers();
   })
 
 
@@ -43,8 +46,6 @@ describe('ShogiController 統合テスト（自然な操作フロー）', () => 
       }
     });
 
-    console.log(controller.status.remainingSeconds);
-
     controller.start();
 
     // 先手: 2六歩
@@ -53,8 +54,6 @@ describe('ShogiController 統合テスト（自然な操作フロー）', () => 
     // 後手: 4秒経過
     vi.advanceTimersByTime(4000);
     expect(controller.status.remainingSeconds.Gote).toBe(596);
-
-    console.log(controller.status.remainingSeconds)
 
     controller.undo();
 
