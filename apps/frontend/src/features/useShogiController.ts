@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Handicap, ShogiController, ShogiTimerOptions } from "@packages";
 
 
@@ -14,35 +14,46 @@ export const useShogiController = () => {
   const [controllers, setControllers] = useState<Controllers>({});
 
 
-  const createNewController = (
-    handicap: "hirate" | Handicap,
-    options: ShogiTimerOptions
-  ) => {
-    const id = crypto.randomUUID();
-    const controller = ShogiController.init[handicap](options);
+  const createNewController = useCallback((
+      handicap: "hirate" | Handicap,
+      options: ShogiTimerOptions
+    ) => {
+      const id = crypto.randomUUID();
+      const controller = ShogiController.init[handicap](options);
 
-    setControllers({
-      ...controllers,
-      [id]: controller
-    });
+      setControllers(
+        prev => ({
+          ...prev,
+          [id]: controller
+        })
+      );
 
-    return { id, controller };
-  }
+      return { id, controller };
+    },
+    []
+  );
 
 
-  const removeController = (id: string) => {
-    if (id in controllers) {
-      controllers[id].stop();
+  const removeController = useCallback((id: string) => {
+      setControllers(prev => {
+        if (!(id in prev)) {
+          return prev;
+        }
 
-      const copy = { ...controllers };
-      delete copy [id];
+        prev[id].stop();
 
-      return setControllers(copy);
-    }
-  }
+        const copy = { ...prev };
+        delete copy [id];
+
+        return copy;
+      })
+    },
+    []
+  );
 
 
   return {
+    controllers,
     createNewController,
     removeController
   }
