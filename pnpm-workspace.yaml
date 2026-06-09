@@ -1,5 +1,9 @@
 allowBuilds:
-  node: set this to true or false
+  node: true
+  sharp: true
+  unrs-resolver: false
 
 packages:
   - 'packages/'
+  - 'apps/frontend/'
+  - 'apps/backend/'

@@ -12,8 +12,8 @@ type Status = {
   gameEndStatus: Game["status"]["gameEndStatus"],
   remainingSeconds: Timer["remainingSeconds"],
   history: {
-    board: GameState["board"],
-    hands: GameState["hands"]
+    board: GameState["board"]["squares"],
+    hands: GameState["hands"]["pieceRecord"]
   }[]
 }
 
@@ -39,8 +39,8 @@ export class ShogiController {
         remainingSeconds: this._timer.remainingSeconds,
         history: history.map(gameState => {
           return {
-            board: gameState.board,
-            hands: gameState.hands
+            board: gameState.board.squares,
+            hands: gameState.hands.pieceRecord
           }
         })
       };

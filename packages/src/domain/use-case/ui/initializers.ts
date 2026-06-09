@@ -1,3 +1,4 @@
+import type { Prettify } from "../../../tools/types/prettify.js";
 import { Game } from "../../entities/Game/Game.js";
 import { Timer } from "../../entities/Timer/Timer.js";
 import { handicapSchema, type Handicap } from "../../entities/types/handicap.types.js";
@@ -5,28 +6,33 @@ import { domainErrorHandler } from "../errors/domainErrorHandler.js";
 import { ShogiController } from "./ShogiController.js";
 
 
-type TimerConstructor = ConstructorParameters<typeof Timer>[0];
+// initメソッドは先手開始が必須であるため、
+// "currentSide" の指定を拒否する
+type TimerOptions = Prettify<
+  Omit<
+    ConstructorParameters<typeof Timer>[0],
+    "currentSide"
+  >
+>;
 
 
 type Methods = Record<
   "hirate" | Handicap,
-  (
-    timerOptions: Omit<
-      TimerConstructor,
-      "currentSide"
-    >
-  ) => ShogiController>;
+  (timerOptions: TimerOptions) => ShogiController
+>;
+
 type HandicapMethods = Pick<Methods, Handicap>;
+
 
 const handicapInitializers: HandicapMethods =
   handicapSchema.options.reduce((acc: HandicapMethods, handicap) => {
     acc[handicap] = (
-      ...timerOptions: ConstructorParameters<typeof Timer>
+      timerOptions: TimerOptions
     ) => {
       return domainErrorHandler(() => {
         return new ShogiController(
           Game.init[handicap](),
-          new Timer(...timerOptions)
+          new Timer(timerOptions)
         )
       });
     }
@@ -38,12 +44,12 @@ const handicapInitializers: HandicapMethods =
 
 export const initializers: Methods = {
   hirate: (
-    ...timerOptions
+    timerOptions
   ) => {
     return domainErrorHandler(() => {
       return new ShogiController(
         Game.init.hirate(),
-        new Timer(...timerOptions)
+        new Timer(timerOptions)
       )
     });
   },
