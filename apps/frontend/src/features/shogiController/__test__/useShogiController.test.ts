@@ -1,6 +1,5 @@
 import { describe, it, vi } from "vitest";
 import { useShogiController } from "../useShogiController";
-import { logger } from "@packages";
 import { renderHook } from "@testing-library/react";
 
 describe("useShogiController", () => {
@@ -19,12 +18,12 @@ describe("useShogiController", () => {
         const time = remaining[side];
 
         if (time % 60 === 0) {
-          logger.trace(`${side}: ${time / 60}min remaining.`);
+          console.log(`${side}: ${time / 60}min remaining.`);
         }
       },
 
       onTimeUp: (side) => {
-        logger.trace(`${side} lose by timeUp.`);
+        console.log(`${side} lose by timeUp.`);
       }
     });
 
@@ -32,12 +31,6 @@ describe("useShogiController", () => {
     controller.start();
 
     vi.advanceTimersByTime(5000);
-
-    logger.trace(
-      controller.status.gameEndStatus,
-      String(controller.status.remainingSeconds),
-      controller.status.history.at(-1)
-    );
 
     result.current.removeController(id);
 
