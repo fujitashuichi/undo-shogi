@@ -1,0 +1,5 @@
+106手目の処理に 0.22229999999990468ms かかりました。
+
+ ✓ apps/frontend/src/features/shogiController/__test__/bottleneck.test.ts (1 test) 93ms
+   ✓ bottleneck test (1)
+     ✓ 106手目の指し手に10msかからない 92ms

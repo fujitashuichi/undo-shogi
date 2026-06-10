@@ -1,18 +1,21 @@
+import type { FixedLengthArray } from "../../../tools/index.js";
 import type { Board } from "../../entities/Board/Board.js";
 import { Game } from "../../entities/Game/Game.js";
 import type { GameState } from "../../entities/GameState/GameState.js";
 import { Timer } from "../../entities/Timer/Timer.js";
 import type { Position } from "../../entities/types/algebraic.types.js";
-import type { NormalPieceKind } from "../../entities/types/piece.types.js";
+import type { NormalPieceKind, PieceKind } from "../../entities/types/piece.types.js";
 import { domainErrorHandler } from "../errors/domainErrorHandler.js";
 import { initializers } from "./initializers.js";
 
+
+type BoardSquares = FixedLengthArray<FixedLengthArray<PieceKind | undefined, 9>, 9>;
 
 type Status = {
   gameEndStatus: Game["status"]["gameEndStatus"],
   remainingSeconds: Timer["remainingSeconds"],
   history: {
-    board: GameState["board"]["squares"],
+    board: BoardSquares
     hands: GameState["hands"]["pieceRecord"]
   }[]
 }
@@ -39,7 +42,9 @@ export class ShogiController {
         remainingSeconds: this._timer.remainingSeconds,
         history: history.map(gameState => {
           return {
-            board: gameState.board.squares,
+            board: gameState.board.squares.map(row =>
+              row.map(square => square ? square.kind : undefined)
+            ) as BoardSquares,
             hands: gameState.hands.pieceRecord
           }
         })
