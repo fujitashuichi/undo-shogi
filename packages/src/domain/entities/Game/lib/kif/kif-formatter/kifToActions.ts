@@ -18,7 +18,7 @@ export const kifToActions = (kifText: string): MoveAction[] => {
 
   let lastTo: KifPosition | null = null;
 
-  const moveRegex = /^\s*(\d+)\s+([１２３４５６７８９一二三四五六七八九同][\s　]*[一二三四五六七八九]?)(成銀|成桂|成香|[\u4e00-\u9faf]{1,2})([右左直上寄引行入])?(?:\((\d)(\d)\)|打)?/;
+  const moveRegex = /^\s*(\d+)\s+([１２３４５６７８９一二三四五六七八九同][\s　]*[一二三四五六七八九]?)(成銀|成桂|成香|と|[\u4e00-\u9faf]{1,2})([右左直上寄引行入])?(?:\((\d)(\d)\)|打)?/;
 
   for (const line of lines) {
     if (
