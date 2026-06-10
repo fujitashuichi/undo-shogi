@@ -19,6 +19,9 @@ type TimerOptions = Prettify<
 type Methods = Record<
   "hirate" | Handicap,
   (timerOptions: TimerOptions) => ShogiController
+> & Record<
+  "byKif",
+  (timerOptions: TimerOptions, kif: string) => ShogiController
 >;
 
 type HandicapMethods = Pick<Methods, Handicap>;
@@ -54,5 +57,14 @@ export const initializers: Methods = {
     });
   },
 
-  ...handicapInitializers
+  ...handicapInitializers,
+
+  byKif: (timerOptions, kif) => {
+    return domainErrorHandler(() => {
+      return new ShogiController(
+        Game.init.byKif(kif),
+        new Timer(timerOptions)
+      )
+    });
+  }
 }

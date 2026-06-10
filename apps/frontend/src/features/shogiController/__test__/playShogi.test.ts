@@ -1,25 +1,51 @@
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { useShogiController } from "../useShogiController";
 import { renderHook } from "@testing-library/react";
 import { playShogi } from "../playShogi";
+import { sampleKif } from "./sampleKif";
 
 
 describe("playShogi", () => {
   const { result } =  renderHook(() => useShogiController());
 
-  const { id, controller } = result.current.createNewController("hirate", {
-    remainingSeconds: {
-      Sente: 10 * 60,
-      Gote:  10 * 60
-    }
-  });
-
   it("一局を通した検証", () => {
+    const { id, controller } = result.current.createNewController("hirate", {
+      remainingSeconds: {
+        Sente: 10 * 60,
+        Gote:  10 * 60
+      }
+    });
+
     playShogi(controller).startMatch();
 
-    // ここに一局の動作を記述し、expectアサーションを行う
+    // ↓ ここに一局の動作を記述し、expectアサーションを行う
+    playShogi(controller).movePiece([7, 7], [7, 6], false);
+    playShogi(controller).movePiece([3, 3], [3, 4], false);
+
+    playShogi(controller).movePiece([7, 7], [2, 2], true);
+
 
     playShogi(controller).stopMatch();
+    result.current.removeController(id);
+  });
+
+
+  it("KIFからcontrollerを作成できる", () => {
+    const { id, controller } = result.current.createNewController_ByKif({
+        remainingSeconds: {
+          Sente: 10 * 60,
+          Gote:  10 * 60
+        }
+      },
+      sampleKif
+    );
+
+    // サンプル棋譜では後手勝ちで終局している
+    expect(controller.status.gameEndStatus).toEqual({
+      ended: true,
+      winner: "Gote"
+    });
+
     result.current.removeController(id);
   });
 });

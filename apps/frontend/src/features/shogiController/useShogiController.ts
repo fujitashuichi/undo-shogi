@@ -33,6 +33,25 @@ export const useShogiController = () => {
     []
   );
 
+  const createNewController_ByKif = useCallback((
+      options: ShogiTimerOptions,
+      kif: string
+    ) => {
+      const id = crypto.randomUUID();
+      const controller = ShogiController.init.byKif(options, kif);
+
+      setControllers(
+        prev => ({
+          ...prev,
+          [id]: controller
+        })
+      );
+
+      return { id, controller };
+    },
+    []
+  )
+
 
   const removeController = useCallback((id: string) => {
       setControllers(prev => {
@@ -55,6 +74,7 @@ export const useShogiController = () => {
   return {
     controllers,
     createNewController,
+    createNewController_ByKif,
     removeController
   }
 }
