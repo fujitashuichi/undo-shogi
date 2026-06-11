@@ -1,6 +1,5 @@
-"use-client";
+"use client";
 
-import { Side } from "@packages";
 import React, { createContext, SetStateAction, useContext } from "react";
 
 export interface Times {
@@ -19,6 +18,6 @@ export const timesCtx = createContext<TimesCtx | null>(null);
 export const useTimes = () => {
   const ctx = useContext(timesCtx);
 
-  if (!ctx) throw new Error('useCounter must be used within a CounterProvider');
+  if (!ctx) throw new Error('useTimes must be used within a TimesProvider');
   return ctx;
 }

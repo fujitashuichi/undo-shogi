@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 
 import { Side } from "@packages";
 import React, { createContext, SetStateAction, useContext } from "react";
@@ -19,6 +19,6 @@ export const gameStatusCtx = createContext<GameStatusCtx | null>(null);
 export const useGameStatus = () => {
   const ctx = useContext(gameStatusCtx);
 
-  if (!ctx) throw new Error('useCounter must be used within a CounterProvider');
+  if (!ctx) throw new Error('useGameStatus must be used within a GameStatusProvider');
   return ctx;
 }

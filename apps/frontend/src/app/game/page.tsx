@@ -1,9 +1,9 @@
-"use-client";
+"use client";
 
 import { AppLoadingBar } from "@/components/AppLoadingBar";
-import { useShogiController } from "@/features";
 import { GameView } from "@/features/components/GameView";
 import { useGameStatus } from "@/features/contexts/gameStatus/gameStatusContext";
+import { usePlayShogi } from "@/features/contexts/playShogi/playShogiContext";
 import { useTimes } from "@/features/contexts/times/timesContext";
 import { useEffect, useState } from "react";
 
@@ -11,15 +11,15 @@ export default function Page() {
   const [controllerId, setControllerId] = useState<string>();
 
   const { times, setTimes } = useTimes();
-  const { gameStatus, setGameStatus } = useGameStatus()
+  const { gameStatus, setGameStatus } = useGameStatus();
 
-
-  const { createNewController, removeController } = useShogiController();
+  const { useControllers } = usePlayShogi();
+  const { createNewController, removeController } = useControllers();
 
 
   useEffect(() => {
     const setUp = () => {
-      const { id, controller } = createNewController("hirate", {
+      const { id } = createNewController("hirate", {
         remainingSeconds: {
           Sente: 10 * 60,
           Gote:  10 * 60

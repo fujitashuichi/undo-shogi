@@ -1,6 +1,7 @@
 import { NormalPieceKind, ShogiController, DomainError, logger } from "@packages";
 import { Coordinate } from "./types/position.type";
 import { coordinateToPosition } from "./lib/convertPosition";
+import { PlayShogiCtx } from "../playShogiContext";
 
 
 type Result = {
@@ -38,9 +39,11 @@ const errorHandler = (func: () => ShogiController): Result => {
 }
 
 
-export const playShogi = (controller: ShogiController) => {
+export const playShogi: PlayShogiCtx["play"] = (controller) => {
   const movePiece = (
-    current: Coordinate, next: Coordinate, promote: boolean
+    current: Coordinate,
+    next: Coordinate,
+    promote: boolean
   ): Result => {
     return errorHandler(() => {
       controller.movePiece(

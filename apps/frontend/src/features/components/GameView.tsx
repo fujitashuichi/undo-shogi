@@ -1,8 +1,9 @@
 import { ShogiBoard } from './ShogiBoard';
-import { useShogiController } from '../shogiController/useShogiController';
 import { usePlayer } from '../contexts/player/playerContext';
 import { GameStatus } from '../contexts/gameStatus/gameStatusContext';
 import { Times } from '../contexts/times/timesContext';
+import { useShogiController } from '../contexts/playShogi/shogiController/useShogiController';
+import { usePlayShogi } from '../contexts/playShogi/playShogiContext';
 
 
 export function GameView({
@@ -12,9 +13,11 @@ export function GameView({
   times: Times,
   gameStatus: GameStatus
 }) {
-  const { controllers } = useShogiController();
+  const { useControllers } = usePlayShogi();
+  const { controllers } = useControllers();
   const { player } = usePlayer();
 
+  console.log(controllers[controllerId]);
   const currentBoard = controllers[controllerId].status.history.at(-1)!.board;
 
   return (
