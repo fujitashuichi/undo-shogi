@@ -1,8 +1,9 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { useShogiController } from "../useShogiController";
 import { renderHook } from "@testing-library/react";
 import { playShogi } from "../playShogi";
 import { sampleKif } from "./sampleKif";
+import { logger } from "@packages";
 
 
 describe("playShogi", () => {
@@ -38,6 +39,8 @@ describe("playShogi", () => {
 
 
   it("KIFからcontrollerを作成できる", () => {
+    vi.spyOn(logger, "warn").mockImplementation(() => {})
+
     const { id, controller } = result.current.createNewController_ByKif({
         remainingSeconds: {
           Sente: 10 * 60,
@@ -54,5 +57,7 @@ describe("playShogi", () => {
     });
 
     result.current.removeController(id);
+
+    vi.restoreAllMocks();
   });
 });
