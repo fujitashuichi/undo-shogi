@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@packages": ["../../packages/src/index.ts"]
+      "@packages": ["../../packages/dist"]
     }
   },
   "include": [

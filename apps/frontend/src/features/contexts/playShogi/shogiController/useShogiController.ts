@@ -2,15 +2,11 @@
 
 import { useCallback, useState } from "react";
 import { Handicap, ShogiController, ShogiTimerOptions } from "@packages";
+import { PlayShogiCtx } from "../playShogiContext";
 
+type Controllers = ReturnType<PlayShogiCtx["useControllers"]>["controllers"];
 
-type Controllers = Record<
-  string,
-  ShogiController
->;
-
-
-export const useShogiController = () => {
+export const useShogiController: PlayShogiCtx["useControllers"] = () => {
   const [controllers, setControllers] = useState<Controllers>({});
 
 
@@ -55,7 +51,7 @@ export const useShogiController = () => {
 
   const removeController = useCallback((id: string) => {
       setControllers(prev => {
-        if (!(id in prev)) {
+        if (!prev[id]) {
           return prev;
         }
 

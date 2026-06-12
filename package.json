@@ -7,6 +7,9 @@
     "prepare": "pnpm build:packages",
     "build:packages": "pnpm --filter \"./packages/\" build",
     "typecheck:packages": "pnpm --filter \"./packages/\" typecheck",
+    "typecheck:frontend": "pnpm --filter \"./apps/frontend/\" typecheck",
+    "lint:frontend": "pnpm --filter \"./apps/frontend\" lint",
+    "dev:frontend": "pnpm --filter \"./apps/frontend\" dev",
     "test": "npx vitest",
     "test:packages": "pnpm test --environment=node ./packages",
     "test:frontend": "pnpm test --environment=happy-dom ./apps/frontend"
