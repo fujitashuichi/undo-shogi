@@ -4,15 +4,15 @@ import React, { useState } from "react";
 import { TimesCtx, timesCtx } from "./timesContext";
 
 export function TimesProvider({ children }: { children: React.ReactNode }) {
-  const [times, setTimes] = useState<TimesCtx["times"]>({
-    sente: "10:00",
-    gote: "10:00"
+  const [timeStrings, setTimeStrings] = useState<TimesCtx["timeStrings"]>({
+    Sente: "--:--",
+    Gote: "--:--"
   });
 
   const value = {
-    times,
-    setTimes
-  }
+    timeStrings,
+    setTimeStrings
+  };
 
 
   return (
