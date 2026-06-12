@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Times, timesCtx } from "./timesContext";
+import { TimesCtx, timesCtx } from "./timesContext";
 
 export function TimesProvider({ children }: { children: React.ReactNode }) {
-  const [times, setTimes] = useState<Times>({
+  const [times, setTimes] = useState<TimesCtx["times"]>({
     sente: "10:00",
     gote: "10:00"
   });

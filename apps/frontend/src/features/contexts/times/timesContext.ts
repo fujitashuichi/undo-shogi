@@ -2,13 +2,13 @@
 
 import React, { createContext, SetStateAction, useContext } from "react";
 
-export interface Times {
+type Times = {
   sente: string,
   gote: string
 }
 
 
-type TimesCtx = {
+export type TimesCtx = {
   times: Times,
   setTimes: React.Dispatch<SetStateAction<Times>>
 }

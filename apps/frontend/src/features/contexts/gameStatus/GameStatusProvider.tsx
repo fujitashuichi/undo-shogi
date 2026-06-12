@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { GameStatus, gameStatusCtx } from "./gameStatusContext";
+import { GameStatusCtx, gameStatusCtx } from "./gameStatusContext";
 
 export function GameStatusProvider({ children }: { children: React.ReactNode }) {
-  const [gameStatus, setGameStatus] = useState<GameStatus>({
+  const [gameStatus, setGameStatus] = useState<GameStatusCtx["gameStatus"]>({
     winner: "Sente",
     giveUp: null
   });

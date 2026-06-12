@@ -3,13 +3,13 @@
 import { Side } from "@packages";
 import React, { createContext, SetStateAction, useContext } from "react";
 
-export interface GameStatus {
+type GameStatus = {
   winner: Side,
   giveUp: Side | null
 }
 
 
-type GameStatusCtx = {
+export type GameStatusCtx = {
   gameStatus: GameStatus,
   setGameStatus: React.Dispatch<SetStateAction<GameStatus>>
 }

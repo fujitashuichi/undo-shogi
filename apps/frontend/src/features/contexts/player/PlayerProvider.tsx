@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Player, playerCtx } from "./playerContext";
+import { PlayerCtx, playerCtx } from "./playerContext";
 
 export function PlayerProvider({ children }: { children: React.ReactNode }) {
-  const [player, setPlayer] = useState<Player>({
+  const [player, setPlayer] = useState<PlayerCtx["player"]>({
     side: "Sente",
     remainingSeconds: 10 * 60
   });

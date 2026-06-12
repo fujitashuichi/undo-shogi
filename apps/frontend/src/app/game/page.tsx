@@ -5,10 +5,12 @@ import { GameView } from "@/features/components/GameView";
 import { useGameStatus } from "@/features/contexts/gameStatus/gameStatusContext";
 import { usePlayShogi } from "@/features/contexts/playShogi/playShogiContext";
 import { useTimes } from "@/features/contexts/times/timesContext";
+import { ShogiController } from "@packages";
 import { useEffect, useState } from "react";
 
 export default function Page() {
   const [controllerId, setControllerId] = useState<string>();
+  const [controller, setController] = useState<ShogiController>();
 
   const { times, setTimes } = useTimes();
   const { gameStatus, setGameStatus } = useGameStatus();
@@ -19,7 +21,7 @@ export default function Page() {
 
   useEffect(() => {
     const setUp = () => {
-      const { id } = createNewController("hirate", {
+      const { id, controller } = createNewController("hirate", {
         remainingSeconds: {
           Sente: 10 * 60,
           Gote:  10 * 60
@@ -39,6 +41,7 @@ export default function Page() {
       });
 
       setControllerId(id);
+      setController(controller);
     };
 
     setUp();
@@ -50,9 +53,9 @@ export default function Page() {
   }, []);
 
 
-  if (!controllerId) return <AppLoadingBar />;
+  if (!controllerId || !controller) return <AppLoadingBar />;
 
   return (
-    <GameView controllerId={controllerId} times={times} gameStatus={gameStatus} />
+    <GameView controller={controller} times={times} gameStatus={gameStatus} />
   )
 }

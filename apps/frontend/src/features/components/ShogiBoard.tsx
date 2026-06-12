@@ -1,12 +1,12 @@
 import { ShogiController } from '@packages';
-import { Player } from '../contexts/player/playerContext';
+import { PlayerCtx } from '../contexts/player/playerContext';
 
 
 export function ShogiBoard({
   board, player
 }: {
   board: ShogiController["status"]["history"][number]["board"],
-  player: Player
+  player: PlayerCtx["player"]
 }) {
   return (
     <div>

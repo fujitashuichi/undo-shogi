@@ -3,13 +3,13 @@
 import { Side } from "@packages";
 import React, { createContext, SetStateAction, useContext } from "react";
 
-export interface Player {
+type Player = {
   side: Side,
   remainingSeconds: number
 }
 
 
-type PlayerCtx = {
+export type PlayerCtx = {
   player: Player,
   setPlayer: React.Dispatch<SetStateAction<Player>>
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { Handicap, NormalPieceKind, ShogiController, ShogiTimerOptions } from "@packages";
-import React, { createContext, SetStateAction, useContext } from "react";
+import { createContext, useContext } from "react";
 import { Coordinate } from "./shogiController/types/position.type";
 
 
@@ -32,7 +32,7 @@ type Play = (controller: ShogiController) => {
 type UseControllers = () => {
   controllers: Record<
     string,
-    ShogiController
+    ShogiController | undefined
   >;
 
   createNewController(
