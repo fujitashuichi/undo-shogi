@@ -4,8 +4,9 @@ import { Side } from "@packages";
 import React, { createContext, SetStateAction, useContext } from "react";
 
 type GameStatus = {
-  winner: Side,
-  giveUp: Side | null
+  winner: Side | null,
+  giveUp: Side | null,
+  onGame: boolean
 }
 
 

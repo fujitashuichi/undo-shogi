@@ -2,7 +2,7 @@ import { Timer } from "./domain/entities/Timer/Timer.js";
 import type { Prettify } from "./tools/types/prettify.js";
 
 
-export { ShogiController } from "./domain/use-case/ui/ShogiController.js";
+export { ShogiController } from "./domain/use-case/ShogiController.js";
 export { DomainError } from "./domain/use-case/errors/domainError.js";
 
 

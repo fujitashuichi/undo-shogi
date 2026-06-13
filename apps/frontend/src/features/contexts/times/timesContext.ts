@@ -1,16 +1,14 @@
 "use client";
 
+import { Side } from "@packages";
 import React, { createContext, SetStateAction, useContext } from "react";
 
-type Times = {
-  sente: string,
-  gote: string
-}
+type TimeStrings = Record<Side, string>;
 
 
 export type TimesCtx = {
-  times: Times,
-  setTimes: React.Dispatch<SetStateAction<Times>>
+  timeStrings: TimeStrings,
+  setTimeStrings: React.Dispatch<SetStateAction<TimeStrings>>
 }
 
 export const timesCtx = createContext<TimesCtx | null>(null);
