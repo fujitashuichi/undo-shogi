@@ -1,12 +1,12 @@
-import type { FixedLengthArray } from "../../../tools/index.js";
-import type { Board } from "../../entities/Board/Board.js";
-import { Game } from "../../entities/Game/Game.js";
-import type { GameState } from "../../entities/GameState/GameState.js";
-import { Timer } from "../../entities/Timer/Timer.js";
-import type { Position } from "../../entities/types/algebraic.types.js";
-import type { NormalPieceKind, PieceKind } from "../../entities/types/piece.types.js";
-import type { Side } from "../../entities/types/players.types.js";
-import { domainErrorHandler } from "../errors/domainErrorHandler.js";
+import type { FixedLengthArray } from "../../tools/index.js";
+import type { Board } from "../entities/Board/Board.js";
+import { Game } from "../entities/Game/Game.js";
+import type { GameState } from "../entities/GameState/GameState.js";
+import { Timer } from "../entities/Timer/Timer.js";
+import type { Position } from "../entities/types/algebraic.types.js";
+import type { NormalPieceKind, PieceKind } from "../entities/types/piece.types.js";
+import type { Side } from "../entities/types/players.types.js";
+import { domainErrorHandler } from "./errors/domainErrorHandler.js";
 import { initializers } from "./initializers.js";
 
 

@@ -1,8 +1,8 @@
-import type { Prettify } from "../../../tools/types/prettify.js";
-import { Game } from "../../entities/Game/Game.js";
-import { Timer } from "../../entities/Timer/Timer.js";
-import { handicapSchema, type Handicap } from "../../entities/types/handicap.types.js";
-import { domainErrorHandler } from "../errors/domainErrorHandler.js";
+import type { Prettify } from "../../tools/types/prettify.js";
+import { Game } from "../entities/Game/Game.js";
+import { Timer } from "../entities/Timer/Timer.js";
+import { handicapSchema, type Handicap } from "../entities/types/handicap.types.js";
+import { domainErrorHandler } from "./errors/domainErrorHandler.js";
 import { ShogiController } from "./ShogiController.js";
 
 
