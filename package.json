@@ -10,9 +10,11 @@
     "typecheck:frontend": "pnpm --filter \"./apps/frontend/\" typecheck",
     "lint:frontend": "pnpm --filter \"./apps/frontend\" lint",
     "dev:frontend": "pnpm --filter \"./apps/frontend\" dev",
+    "dev:backend": "pnpm --filter \"./apps/backend\" dev",
     "test": "npx vitest",
     "test:packages": "pnpm test --environment=node ./packages",
-    "test:frontend": "pnpm test --environment=happy-dom ./apps/frontend"
+    "test:frontend": "pnpm test --environment=happy-dom ./apps/frontend",
+    "test:backend": "pnpm test --environment=node ./apps/backend"
   },
   "keywords": [],
   "author": "",
