@@ -11,7 +11,7 @@ type Props = {
 }
 
 
-export class ShogiClient {
+export class ShogiRoom {
   public readonly gameId;
   public readonly ws;
   public readonly controller;
