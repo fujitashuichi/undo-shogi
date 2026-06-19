@@ -50,11 +50,13 @@ export class WsClient {
 
   public readonly addMeToGroup = (groupId: UUID) => {
     this.groupId = groupId;
+    this.ws.removeAllListeners();
     setupWsEvents(this.wssRegistry, this.ws, this.groupId, this.clientId);
   }
 
   public readonly removeMeFromGroup = () => {
     this.groupId = "unGrouped";
+    this.ws.removeAllListeners();
     setupWsEvents(this.wssRegistry, this.ws, this.groupId, this.clientId);
   }
 }
