@@ -31,7 +31,13 @@ export class WssRegistry {
   }
 
 
-  public findClientByIdAsync = async (clientId: WsClient["clientId"]) => {
+  public readonly addClient = (client: WsClient) => {
+    this.clients.push(client);
+    this.groups.unGrouped.wsClients.push(client);
+  }
+
+
+  public readonly findClientByIdAsync = async (clientId: WsClient["clientId"]) => {
     return await new Promise<
       WsClient | undefined
     >((resolve, reject) => {
@@ -45,7 +51,7 @@ export class WssRegistry {
     });
   }
 
-  public findClientsInGroupAsync = async (groupId: UUID) => {
+  public readonly findClientsInGroupAsync = async (groupId: UUID) => {
     return await new Promise<
       WsClient[]
     >((resolve, reject) => {
