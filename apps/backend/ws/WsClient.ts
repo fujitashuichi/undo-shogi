@@ -20,15 +20,16 @@ const setupWsEvents = (
   });
 
   ws.on("message", (data, isBinary) => {
-      if (!isBinary) {
+      if (
+        !isBinary ||
+        !(data instanceof Buffer)
+      ) {
         return ws.send(encodeBinary("BAD_REQUEST"));
       }
 
-      if (data instanceof ArrayBuffer) {
-        const decoded = decodeBinary(data);
+      const decoded = decodeBinary(data);
 
-        // ShogiControllerの操作
-      }
+      // ShogiControllerの操作
     }
   );
 }
