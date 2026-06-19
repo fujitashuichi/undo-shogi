@@ -1,5 +1,6 @@
 import { ShogiController, type Handicap, type ShogiTimerOptions } from "@packages";
 import type { UUID } from "crypto";
+import { WebSocket } from "ws";
 
 
 type Props = {
