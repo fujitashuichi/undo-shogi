@@ -6,16 +6,14 @@ import type { WssRegistry } from "./WssRegistry";
 
 
 const setupWsEvents = (
+  client: WsClient,
   wssRegistry: WssRegistry,
-  ws: WebSocket,
-  groupId: UUID | "unGrouped",
-  clientId: UUID
+  ws: WebSocket
 ) => {
   ws.on("close", () => {
-    if (groupId !== "unGrouped") {
-      wssRegistry.removeFromGroup(groupId, clientId);
+    if (client) {
+      wssRegistry.clients.removeClient(client);
     }
-    wssRegistry.removeClient(clientId);
   });
 
   ws.on("error", () => {
@@ -39,28 +37,15 @@ const setupWsEvents = (
 
 
 export class WsClient {
-  public groupId: UUID | "unGrouped" = "unGrouped";
+  public groupId: UUID | null;
 
   constructor (
     public readonly clientId: UUID,
     public readonly ws: WebSocket,
     private readonly wssRegistry: WssRegistry,
-    groupId: UUID | "unGrouped"
+    groupId: UUID | null
   ) {
     this.groupId = groupId;
-    setupWsEvents(wssRegistry, ws, groupId, clientId);
-  }
-
-
-  public readonly addMeToGroup = (groupId: UUID) => {
-    this.groupId = groupId;
-    this.ws.removeAllListeners();
-    setupWsEvents(this.wssRegistry, this.ws, groupId, this.clientId)
-  }
-
-  public readonly removeMeFromGroup = () => {
-    this.groupId = "unGrouped";
-    this.ws.removeAllListeners();
-    setupWsEvents(this.wssRegistry, this.ws, this.groupId, this.clientId);
+    setupWsEvents(this, wssRegistry, ws);
   }
 }
