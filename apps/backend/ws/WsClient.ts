@@ -11,8 +11,11 @@ const setupWsEvents = (
   groupId: UUID | "unGrouped",
   clientId: UUID
 ) => {
-  ws.on("close", async () => {
-    await wssRegistry.removeFromGroupAsync(groupId, clientId);
+  ws.on("close", () => {
+    if (groupId !== "unGrouped") {
+      wssRegistry.removeFromGroup(groupId, clientId);
+    }
+    wssRegistry.removeClient(clientId);
   });
 
   ws.on("error", () => {
@@ -36,7 +39,7 @@ const setupWsEvents = (
 
 
 export class WsClient {
-  private groupId: UUID | "unGrouped" = "unGrouped";
+  public groupId: UUID | "unGrouped" = "unGrouped";
 
   constructor (
     public readonly clientId: UUID,
@@ -52,7 +55,7 @@ export class WsClient {
   public readonly addMeToGroup = (groupId: UUID) => {
     this.groupId = groupId;
     this.ws.removeAllListeners();
-    setupWsEvents(this.wssRegistry, this.ws, this.groupId, this.clientId);
+    setupWsEvents(this.wssRegistry, this.ws, groupId, this.clientId)
   }
 
   public readonly removeMeFromGroup = () => {

@@ -5,113 +5,115 @@ import { WebSocketServer } from "ws";
 import { ShogiRoom } from "./ShogiRoom";
 
 
+type Groups = Record<
+  UUID,
+  {
+    wsClients: Set<WsClient>,
+    shogiRoom: ShogiRoom
+  }
+>;
+
+
 export class WssRegistry {
   public readonly wss: WebSocketServer;
 
-  public readonly clients: WsClient[];
-  public readonly groups: Record<
-    UUID,
-    {
-      wsClients: WsClient[],
-      shogiRoom: ShogiRoom
-    }
-  > & {
-    unGrouped: { wsClients: WsClient[] }
-  };
+  public readonly clients: Set<WsClient>;
+
+  public readonly groups: Groups;
+  public readonly unGrouped: Set<WsClient>;
 
 
   constructor(
     wssOptions: ConstructorParameters<typeof WebSocketServer>[0]
   ) {
     this.wss = new WebSocketServer(wssOptions);
-    this.clients = [];
-    this.groups = {
-      unGrouped: { wsClients: [] }
-    };
+    this.clients = new Set();
+    this.groups = {};
+    this.unGrouped = new Set();
   }
 
 
   public readonly addClient = (client: WsClient) => {
-    this.clients.push(client);
-    this.groups.unGrouped.wsClients.push(client);
+    this.clients.add(client);
+    this.unGrouped.add(client);
   }
 
+  public readonly removeClient = (clientId: WsClient["clientId"]) => {
+    const target = this.findClientById(clientId);
+    if (!target) return;
 
-  public readonly findClientByIdAsync = async (clientId: WsClient["clientId"]) => {
-    return await new Promise<
-      WsClient | undefined
-    >((resolve, reject) => {
-      try {
-        resolve(
-          this.clients.find(client => client.clientId === clientId)
-        );
-      } catch(err) {
-        reject(err);
-      }
-    });
-  }
-
-  public readonly findClientsInGroupAsync = async (groupId: UUID) => {
-    return await new Promise<
-      WsClient[]
-    >((resolve, reject) => {
-      try {
-        if (!this.groups[groupId]) {
-          resolve([]);
-        } else {
-          resolve(this.groups[groupId]["wsClients"]);
-        }
-      } catch (err) {
-        reject(err);
-      }
-    });
-  }
-
-
-  public readonly addToGroupAsync = async (groupId: UUID, clientId: WsClient["clientId"]) => {
-    const client = await this.findClientByIdAsync(clientId);
-    if (!client) return;
-
-    client.addMeToGroup(groupId);
-
-    if (this.groups[groupId] && client) {
-      this.groups[groupId]["wsClients"].push(client);
+    const groupId = target.groupId;
+    if (groupId !== "unGrouped" && this.groups[groupId]) {
+      this.groups[groupId].wsClients.delete(target);
     }
+
+    this.unGrouped.delete(target);
+    this.clients.delete(target);
   }
 
-  public readonly removeFromGroupAsync = async (groupId: UUID | "unGrouped", clientId: WsClient["clientId"]) => {
-    const client = await this.findClientByIdAsync(clientId);
-    if (!client) return;
 
-    client.removeMeFromGroup();
+  public readonly findClientById = (
+    clientId: WsClient["clientId"]
+  ) => {
+    return Array.from(this.clients).find(client => client.clientId === clientId);
+  }
+
+  public readonly findClientsInGroup = async (groupId: UUID) => {
+    if (!this.groups[groupId]) {
+      return [];
+    }
+
+    return this.groups[groupId].wsClients;
+  }
+
+
+  public readonly addToGroup = (groupId: UUID, clientId: WsClient["clientId"]) => {
+    const client = this.findClientById(clientId);
+    if (!client) return;
 
     if (!this.groups[groupId]) {
-      return;
-    } else {
-      this.groups[groupId]["wsClients"] = this.groups[groupId]["wsClients"].filter(client => client.clientId !== clientId);
+      return console.warn(`Group does not exists: groupId="${groupId}"`);
     }
+
+    this.unGrouped.delete(client);
+    this.groups[groupId].wsClients.add(client);
+
+    client.addMeToGroup(groupId);
+  }
+
+  public readonly removeFromGroup = (groupId: UUID, clientId: WsClient["clientId"]) => {
+    const client = this.findClientById(clientId);
+    if (!client) return;
+
+    if (!this.groups[groupId]) {
+      return console.warn(`Group does not exists: groupId="${groupId}"`);
+    };
+
+    this.groups[groupId].wsClients.delete(client);
+    this.unGrouped.add(client);
+
+    client.removeMeFromGroup();
   }
 
 
-  public readonly createGroupAsync = (
+  public readonly createGroup = (
     groupId: UUID,
     shogiOptions: ConstructorParameters<typeof ShogiRoom>[0]
   ) => {
     const shogiRoom = new ShogiRoom(shogiOptions);
 
     if (this.groups[groupId]) {
-      console.warn("The group is already created.");
-      return;
+      return console.warn("The group is already created.");
     }
 
     this.groups[groupId] = {
-      wsClients: [],
+      wsClients: new Set(),
       shogiRoom
     }
   }
 
 
-  public readonly sendAllAsync = async (message: any) => {
+  public readonly sendAll = (message: any) => {
     const data = encodeBinary(message);
 
     this.clients.forEach(client => {
