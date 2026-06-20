@@ -1,8 +1,8 @@
 import type { UUID } from "crypto";
 import { WebSocket } from "ws";
-import { encodeBinary } from "./lib/encodeBinary";
-import { decodeBinary } from "./lib/decodeBinary";
-import type { WssRegistry } from "./WssRegistry";
+import { encodeBinary } from "../lib/encodeBinary";
+import { decodeBinary } from "../lib/decodeBinary";
+import type { WssRegistry } from "../WssRegistry/WssRegistry";
 
 
 const setupWsEvents = (
@@ -37,13 +37,11 @@ const setupWsEvents = (
 
 
 export class WsClient {
-  public groupId: UUID | null;
-
   constructor (
     public readonly clientId: UUID,
     public readonly ws: WebSocket,
     private readonly wssRegistry: WssRegistry,
-    groupId: UUID | null
+    public groupId: UUID | null
   ) {
     this.groupId = groupId;
     setupWsEvents(this, wssRegistry, ws);

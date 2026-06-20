@@ -1,13 +1,11 @@
-import { encodeBinary } from "./lib/encodeBinary";
+import { encodeBinary } from "../lib/encodeBinary";
 import { WsClient } from "./WsClient";
 
 
 export class Clients {
-  public readonly all: Set<WsClient>;
+  public readonly all: Set<WsClient> = new Set();
 
-  constructor() {
-    this.all = new Set();
-  }
+  constructor() {}
 
 
   public readonly findById = (

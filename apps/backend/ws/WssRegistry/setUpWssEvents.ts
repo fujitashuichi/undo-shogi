@@ -1,7 +1,7 @@
-import { WsClient } from "./WsClient";
+import { WsClient } from "../Clients/WsClient";
 import type { WssRegistry } from "./WssRegistry";
 
-export const setupWssEvents = (wssRegistry: WssRegistry) => {
+export const setupWssRegistry = (wssRegistry: WssRegistry) => {
   const wss = wssRegistry.wss;
 
   wss.on("connection", (ws) => {

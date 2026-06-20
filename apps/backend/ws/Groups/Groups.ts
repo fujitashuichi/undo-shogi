@@ -1,7 +1,7 @@
 import type { UUID } from "crypto";
-import { WsClient } from "./WsClient";
+import { WsClient } from "../Clients/WsClient";
 import { ShogiRoom } from "./ShogiRoom";
-import { encodeBinary } from "./lib/encodeBinary";
+import { encodeBinary } from "../lib/encodeBinary";
 
 
 type All = Record<
@@ -14,11 +14,9 @@ type All = Record<
 
 
 export class Groups {
-  public readonly all: All;
+  public readonly all: All = {};
 
-  constructor() {
-    this.all = {};
-  }
+  constructor() {}
 
 
   public readonly createGroup = (
@@ -34,6 +32,11 @@ export class Groups {
       shogiRoom: new ShogiRoom(shogiOptions)
     }
   }
+
+  public readonly removeGroup = (groupId: UUID) => {
+    delete this.all[groupId];
+  }
+
 
   public readonly addToGroup = (groupId: UUID, client: WsClient) => {
     if (!this.all[groupId]) {
@@ -66,5 +69,10 @@ export class Groups {
     clients.wsClients.forEach(c => {
       c.ws.send(data);
     });
+  }
+
+
+  public readonly shogiRoom = (groupId: UUID) => {
+    return this.all[groupId]?.shogiRoom;
   }
 }
