@@ -9,7 +9,7 @@ import { TimerError } from "../../entities/errors/timer.error.js";
 
 export class DomainError extends Error {
   constructor (
-    readonly code: string,
+    readonly code: Errors["type"] | "INTERNAL_ERROR",
     message: string
   ) {
     super();

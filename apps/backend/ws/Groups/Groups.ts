@@ -8,7 +8,7 @@ type All = Record<
   UUID,
   {
     wsClients: Set<WsClient>,
-    shogiRoom: ShogiRoom
+    shogiRoom: ShogiRoom | null
   }
 >;
 
@@ -20,8 +20,7 @@ export class Groups {
 
 
   public readonly createGroup = (
-    groupId: UUID,
-    shogiOptions: ConstructorParameters<typeof ShogiRoom>[0]
+    groupId: UUID
   ) => {
     if (this.all[groupId]) {
       return console.warn("The group is already created.");
@@ -29,7 +28,7 @@ export class Groups {
 
     this.all[groupId] = {
       wsClients: new Set(),
-      shogiRoom: new ShogiRoom(shogiOptions)
+      shogiRoom: null
     }
   }
 
@@ -74,5 +73,17 @@ export class Groups {
 
   public readonly shogiRoom = (groupId: UUID) => {
     return this.all[groupId]?.shogiRoom;
+  }
+
+
+  public createShogiRoom = (
+    groupId: UUID,
+    shogiOptions: ConstructorParameters<typeof ShogiRoom>[0]
+  ) => {
+    if (!this.all[groupId]) {
+      return console.warn(`Group does not exists: groupId="${groupId}"`);
+    };
+
+    this.all[groupId].shogiRoom = new ShogiRoom(shogiOptions);
   }
 }

@@ -18,7 +18,8 @@ type Status = {
   history: {
     board: BoardSquares
     hands: GameState["hands"]["pieceRecord"]
-  }[]
+  }[],
+  currentSide: Side
 }
 
 export class ShogiController {
@@ -48,7 +49,8 @@ export class ShogiController {
             ) as BoardSquares,
             hands: gameState.hands.pieceRecord
           }
-        })
+        }),
+        currentSide: this._game.status.history.at(-1)!.currentSide
       };
     });
   }
