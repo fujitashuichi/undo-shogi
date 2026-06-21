@@ -84,6 +84,10 @@ export class Groups {
       return console.warn(`Group does not exists: groupId="${groupId}"`);
     };
 
+    if (this.all[groupId].shogiRoom) {
+      return console.warn(`Shogi room already created at Group: groupId="${groupId}"`);
+    };
+
     this.all[groupId].shogiRoom = new ShogiRoom(shogiOptions);
   }
 }
