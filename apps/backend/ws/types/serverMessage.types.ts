@@ -5,7 +5,7 @@ export const serverMessageSchema = z.object({
   errorMessage: z.string()
 }).or(z.object({
   success: z.literal(true),
-  vale: z.any()
+  value: z.any()
 }));
 
 export type ServerMessage = z.infer<typeof serverMessageSchema>;

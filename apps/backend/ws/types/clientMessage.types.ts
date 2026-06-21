@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { NormalPieceKindSchema } from "../../../../packages/dist/domain/entities/types/piece.types";
 
 
 const positionSchema = z.object({
@@ -16,7 +17,8 @@ const movePieceSchema = z.object({
 
 const dropPieceSchema = z.object({
   command: z.literal("dropPiece"),
-  to: positionSchema
+  to: positionSchema,
+  kind: NormalPieceKindSchema
 });
 
 const undoSchema = z.object({
