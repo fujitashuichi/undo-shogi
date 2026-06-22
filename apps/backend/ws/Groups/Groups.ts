@@ -1,15 +1,17 @@
 import type { UUID } from "crypto";
-import { WsClient } from "../Clients/WsClient";
+import { Client } from "../Clients/Client";
 import { ShogiRoom } from "./ShogiRoom";
 import { encodeBinary } from "../lib/encodeBinary";
 
 
+type Group = {
+  clients: Set<Client>,
+  shogiRoom: ShogiRoom | null
+}
+
 type All = Record<
   UUID,
-  {
-    wsClients: Set<WsClient>,
-    shogiRoom: ShogiRoom | null
-  }
+  Group
 >;
 
 
@@ -27,7 +29,7 @@ export class Groups {
     }
 
     this.all[groupId] = {
-      wsClients: new Set(),
+      clients: new Set(),
       shogiRoom: null
     }
   }
@@ -37,20 +39,20 @@ export class Groups {
   }
 
 
-  public readonly addToGroup = (groupId: UUID, client: WsClient) => {
+  public readonly addToGroup = (groupId: UUID, client: Client) => {
     if (!this.all[groupId]) {
       return console.warn(`Group does not exists: groupId="${groupId}"`);
     }
 
-    this.all[groupId].wsClients.add(client);
+    this.all[groupId].clients.add(client);
   }
 
-  public readonly removeFromGroup = (groupId: UUID, client: WsClient) => {
+  public readonly removeFromGroup = (groupId: UUID, client: Client) => {
     if (!this.all[groupId]) {
       return console.warn(`Group does not exists: groupId="${groupId}"`);
     };
 
-    this.all[groupId].wsClients.delete(client);
+    this.all[groupId].clients.delete(client);
   }
 
 
@@ -63,7 +65,7 @@ export class Groups {
     if (!clients) return;
 
     const data = encodeBinary(message);
-    clients.wsClients.forEach(c => {
+    clients.clients.forEach(c => {
       c.ws.send(data);
     });
   }
