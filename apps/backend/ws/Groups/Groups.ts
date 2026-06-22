@@ -57,7 +57,7 @@ export class Groups {
 
 
   public readonly clients = (groupId: UUID) => {
-    return this.all[groupId];
+    return this.all[groupId]?.clients;
   }
 
   public readonly sendAll = (groupId: UUID, message: any) => {
@@ -65,7 +65,7 @@ export class Groups {
     if (!clients) return;
 
     const data = encodeBinary(message);
-    clients.clients.forEach(c => {
+    clients.forEach(c => {
       c.ws.send(data);
     });
   }
