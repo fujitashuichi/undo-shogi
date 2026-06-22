@@ -7,7 +7,7 @@ export const setupWssRegistry = (wssRegistry: WssRegistry) => {
   wss.on("connection", (ws) => {
     const clientId = crypto.randomUUID();
 
-    const wsClient = new WsClient(clientId, ws, wssRegistry, null);
+    const wsClient = new WsClient(clientId, ws, wssRegistry);
     wssRegistry.clients.addClient(wsClient);
   });
 }

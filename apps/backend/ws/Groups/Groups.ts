@@ -43,7 +43,6 @@ export class Groups {
     }
 
     this.all[groupId].wsClients.add(client);
-    client.groupId = groupId;
   }
 
   public readonly removeFromGroup = (groupId: UUID, client: WsClient) => {
@@ -52,7 +51,6 @@ export class Groups {
     };
 
     this.all[groupId].wsClients.delete(client);
-    client.groupId = null;
   }
 
 

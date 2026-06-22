@@ -20,7 +20,6 @@ flowchart TD
 
 subgraph WsClient
   clientId
-  groupId
   ws
 end
 

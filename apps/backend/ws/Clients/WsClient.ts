@@ -8,10 +8,8 @@ export class WsClient {
   constructor (
     public readonly clientId: UUID,
     public readonly ws: WebSocket,
-    wssRegistry: WssRegistry,
-    public groupId: UUID | null
+    wssRegistry: WssRegistry
   ) {
-    this.groupId = groupId;
     setupWsEvents(this, wssRegistry, ws);
   }
 }
