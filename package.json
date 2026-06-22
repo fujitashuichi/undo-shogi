@@ -8,6 +8,7 @@
     "build:packages": "pnpm --filter \"./packages/\" build",
     "typecheck:packages": "pnpm --filter \"./packages/\" typecheck",
     "typecheck:frontend": "pnpm --filter \"./apps/frontend/\" typecheck",
+    "typecheck:backend": "pnpm --filter \"./apps/backend/\" typecheck",
     "lint:frontend": "pnpm --filter \"./apps/frontend\" lint",
     "dev:frontend": "pnpm --filter \"./apps/frontend\" dev",
     "dev:backend": "pnpm --filter \"./apps/backend\" dev",
