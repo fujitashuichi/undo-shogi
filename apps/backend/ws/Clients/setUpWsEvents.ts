@@ -1,16 +1,16 @@
-import { decodeBinary } from "../lib/decodeBinary";
-import { encodeBinary } from "../lib/encodeBinary";
-import type { ServerMessage } from "../types/serverMessage.types";
+import { decodeBinary } from "../lib/decodeClientMessage";
+import { encodeServerMessage } from "../lib/encodeServerMessage";
+import { clientMessageSchema } from "../types/clientMessage.types";
 import type { WssRegistry } from "../WssRegistry/WssRegistry";
 import type { Client } from "./Client";
-import { WebSocket } from "ws";
 
 
 export const setupWsEvents = (
   client: Client,
-  wssRegistry: WssRegistry,
-  ws: WebSocket
+  wssRegistry: WssRegistry
 ) => {
+  const ws = client.ws;
+
   ws.on("close", () => {
     if (client) {
       wssRegistry.clients.removeClient(client);
@@ -26,14 +26,21 @@ export const setupWsEvents = (
         !isBinary ||
         !(data instanceof Buffer)
       ) {
-        const message: ServerMessage = {
+        return ws.send(encodeServerMessage({
           success: false,
           errorMessage: "BAD_REQUEST"
-        }
-        return ws.send(encodeBinary(message));
+        }));
       }
 
       const decoded = decodeBinary(data);
+
+      const parsed = clientMessageSchema.safeParse(decoded);
+      if (!parsed.success) {
+        return ws.send(encodeServerMessage({
+          success: false,
+          errorMessage: "BAD_REQUEST"
+        }))
+      }
 
       // ShogiControllerの操作
     }

@@ -1,8 +1,14 @@
 import { z } from "zod";
 
+
+const errorMessageSchema = z.enum([
+  "BAD_REQUEST", "INTERNAL_ERROR"
+]);
+
+
 export const serverMessageSchema = z.object({
   success: z.literal(false),
-  errorMessage: z.string()
+  errorMessage: errorMessageSchema
 }).or(z.object({
   success: z.literal(true),
   value: z.any()
