@@ -1,4 +1,4 @@
-import { WsClient } from "../Clients/WsClient";
+import { Client } from "../Clients/Client";
 import type { WssRegistry } from "./WssRegistry";
 
 export const setupWssRegistry = (wssRegistry: WssRegistry) => {
@@ -7,7 +7,7 @@ export const setupWssRegistry = (wssRegistry: WssRegistry) => {
   wss.on("connection", (ws) => {
     const clientId = crypto.randomUUID();
 
-    const wsClient = new WsClient(clientId, ws, wssRegistry);
-    wssRegistry.clients.addClient(wsClient);
+    const client = new Client(clientId, ws, wssRegistry);
+    wssRegistry.clients.addClient(client);
   });
 }

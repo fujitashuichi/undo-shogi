@@ -2,12 +2,12 @@ import { decodeBinary } from "../lib/decodeBinary";
 import { encodeBinary } from "../lib/encodeBinary";
 import type { ServerMessage } from "../types/serverMessage.types";
 import type { WssRegistry } from "../WssRegistry/WssRegistry";
-import type { WsClient } from "./WsClient";
+import type { Client } from "./Client";
 import { WebSocket } from "ws";
 
 
 export const setupWsEvents = (
-  client: WsClient,
+  client: Client,
   wssRegistry: WssRegistry,
   ws: WebSocket
 ) => {

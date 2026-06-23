@@ -1,25 +1,25 @@
 import { encodeBinary } from "../lib/encodeBinary";
-import { WsClient } from "./WsClient";
+import { Client } from "./Client";
 
 
 export class Clients {
-  public readonly all: Set<WsClient> = new Set();
+  public readonly all: Set<Client> = new Set();
 
   constructor() {}
 
 
   public readonly findById = (
-    clientId: WsClient["clientId"]
+    clientId: Client["clientId"]
   ) => {
     return [...this.all].find(client => client.clientId === clientId);
   }
 
 
-  public readonly addClient = (client: WsClient) => {
+  public readonly addClient = (client: Client) => {
     this.all.add(client);
   }
 
-  public readonly removeClient = (client: WsClient) => {
+  public readonly removeClient = (client: Client) => {
     this.all.delete(client);
   }
 

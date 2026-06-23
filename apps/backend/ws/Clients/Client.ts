@@ -4,7 +4,7 @@ import type { WssRegistry } from "../WssRegistry/WssRegistry";
 import { setupWsEvents } from "./setUpWsEvents";
 
 
-export class WsClient {
+export class Client {
   constructor (
     public readonly clientId: UUID,
     public readonly ws: WebSocket,
