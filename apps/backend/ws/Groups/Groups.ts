@@ -1,7 +1,8 @@
 import type { UUID } from "crypto";
 import { Client } from "../Clients/Client";
 import { ShogiRoom } from "./ShogiRoom";
-import { encodeBinary } from "../lib/encodeBinary";
+import { encodeServerMessage } from "../lib/encodeServerMessage";
+import type { ServerMessage } from "../types/serverMessage.types";
 
 
 type Group = {
@@ -60,11 +61,11 @@ export class Groups {
     return this.all[groupId]?.clients;
   }
 
-  public readonly sendAll = (groupId: UUID, message: any) => {
+  public readonly sendAll = (groupId: UUID, message: ServerMessage) => {
     const clients = this.clients(groupId);
     if (!clients) return;
 
-    const data = encodeBinary(message);
+    const data = encodeServerMessage(message);
     clients.forEach(c => {
       c.ws.send(data);
     });

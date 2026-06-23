@@ -1,4 +1,5 @@
-import { encodeBinary } from "../lib/encodeBinary";
+import { encodeServerMessage } from "../lib/encodeServerMessage";
+import type { ServerMessage } from "../types/serverMessage.types";
 import { Client } from "./Client";
 
 
@@ -24,8 +25,8 @@ export class Clients {
   }
 
 
-  public readonly sendAll = (message: any) => {
-    const data = encodeBinary(message);
+  public readonly sendAll = (message: ServerMessage) => {
+    const data = encodeServerMessage(message);
 
     this.all.forEach(client => {
       client.ws.send(data);

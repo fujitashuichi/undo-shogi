@@ -10,6 +10,6 @@ export class Client {
     public readonly ws: WebSocket,
     wssRegistry: WssRegistry
   ) {
-    setupWsEvents(this, wssRegistry, ws);
+    setupWsEvents(this, wssRegistry);
   }
 }
