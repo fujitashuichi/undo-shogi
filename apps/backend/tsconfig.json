@@ -42,7 +42,7 @@
     "skipLibCheck": true,
 
     "paths": {
-      "@packages/shared": ["../../packages/shared/dist/"],
+      "@packages/tools": ["../../packages/tools/dist/"],
       "@packages/shogi": ["../../packages/shogi/dist/"]
     }
   }

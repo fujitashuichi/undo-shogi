@@ -3,7 +3,7 @@ import { sampleKif } from "./sampleKif";
 import { renderHook } from "@testing-library/react";
 import { useShogiController } from "../useShogiController";
 import { playShogi } from "../playShogi";
-import { logger } from "@packages/shared";
+import { logger } from "@packages/tools";
 import { styleText } from "node:util";
 
 describe("bottleneck test", () => {
