@@ -1,4 +1,4 @@
-import { ShogiController } from '@packages';
+import { ShogiController } from '@packages/shogi';
 import { PlayerCtx } from '../contexts/player/playerContext';
 
 

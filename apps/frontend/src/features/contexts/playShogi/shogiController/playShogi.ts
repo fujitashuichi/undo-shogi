@@ -1,4 +1,5 @@
-import { NormalPieceKind, ShogiController, DomainError, logger } from "@packages";
+import { logger } from "@packages/shared";
+import { NormalPieceKind, ShogiController, DomainError } from "@packages/shogi";
 import { Coordinate } from "./types/position.type";
 import { coordinateToPosition } from "./lib/convertPosition";
 import { PlayShogiCtx } from "../playShogiContext";

@@ -3,7 +3,7 @@ import { useShogiController } from "../useShogiController";
 import { renderHook } from "@testing-library/react";
 import { playShogi } from "../playShogi";
 import { sampleKif } from "./sampleKif";
-import { logger } from "@packages";
+import { logger } from "@packages/shared";
 
 
 describe("playShogi", () => {

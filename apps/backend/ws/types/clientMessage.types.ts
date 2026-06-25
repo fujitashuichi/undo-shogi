@@ -1,5 +1,5 @@
+import { NormalPieceKindSchema } from "@packages/shogi";
 import { z } from "zod";
-import { NormalPieceKindSchema } from "../../../../packages/dist/domain/entities/types/piece.types";
 
 
 const positionSchema = z.object({

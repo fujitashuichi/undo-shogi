@@ -1,6 +1,6 @@
 "use client";
 
-import { Handicap, NormalPieceKind, ShogiController, ShogiTimerOptions } from "@packages";
+import { Handicap, NormalPieceKind, ShogiController, ShogiTimerOptions } from "@packages/shogi";
 import { createContext, useContext } from "react";
 import { Coordinate } from "./shogiController/types/position.type";
 

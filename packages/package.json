@@ -6,8 +6,8 @@
   "type": "module",
   "exports": ["./dist/index.ts"],
   "scripts": {
-    "build": "npx tsc",
-    "typecheck": "npx tsc --noemit",
+    "build": "pnpm --filter ./* build",
+    "typecheck": "pnpm --filter ./* typecheck",
     "test": "npx vitest"
   },
   "keywords": [],

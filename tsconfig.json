@@ -39,10 +39,12 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
+    "skipLibCheck": true
+  },
 
-    "paths": {
-      "@my/packages": ["./packages/"]
-    }
-  }
+  "references": [
+    { "path": "./packages/shared/" },
+    { "path": "./packages/shogi/" },
+    { "path": "./packages/shogi/tsconfig.dev.json" }
+  ]
 }

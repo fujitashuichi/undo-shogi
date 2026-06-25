@@ -2,7 +2,7 @@
 
 import { AppButton } from '@/components/AppButton';
 import { useGameStatus } from '../contexts/gameStatus/gameStatusContext';
-import { ShogiController } from '@packages';
+import { ShogiController } from '@packages/shogi';
 import { useStartMatch } from './hooks/useStartMatch';
 
 

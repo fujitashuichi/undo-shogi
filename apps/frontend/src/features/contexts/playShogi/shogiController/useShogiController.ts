@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { Handicap, ShogiController, ShogiTimerOptions } from "@packages";
+import { Handicap, ShogiController, ShogiTimerOptions } from "@packages/shogi";
 import { PlayShogiCtx } from "../playShogiContext";
 
 type Controllers = ReturnType<PlayShogiCtx["useControllers"]>["controllers"];
