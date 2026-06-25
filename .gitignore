@@ -3,6 +3,7 @@
 !.env*.example
 
 dist
+tsconfig.tsbuildinfo
 
 node_modules
 

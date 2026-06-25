@@ -3,7 +3,7 @@ import { hashGameStates } from "../hashGameStates.js";
 import { executeActions } from "../executeActions.js";
 import { kifToActions } from "../../kif-formatter/kifToActions.js";
 import { GameState } from "../../../../../GameState/GameState.js";
-import { vitest_checkArray } from "../../../../../../../tools/vitest/checkArray.js";
+import { vitest_checkArray } from "@tools";
 
 describe("hashGameStates", () => {
   it("同じ盤面は同じハッシュになる", () => {
