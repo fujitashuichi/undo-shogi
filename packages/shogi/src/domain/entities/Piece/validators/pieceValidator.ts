@@ -1,4 +1,4 @@
-import { logger } from "@shared";
+import { logger } from "@tools";
 import { PieceError } from "../../errors/piece.error.js";
 import { PromotedPieceKindSchema, type PieceKind } from "../../types/piece.types.js";
 

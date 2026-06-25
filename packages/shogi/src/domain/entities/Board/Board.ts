@@ -4,7 +4,7 @@ import { hirateSquares } from "./squares/hirateSquares.js";
 import { board_dropPiece } from "./lib/dropPiece/dropPiece.js";
 import { board_movePiece } from "./lib/movePiece/movePiece.js";
 import { handicapInitializers } from "./handicapInitializers.js";
-import type { FixedLengthArray } from "@shared";
+import type { FixedLengthArray } from "@tools";
 
 
 // Boardは動作のみ保証する。駒の増減などは責務ではないと定義する。

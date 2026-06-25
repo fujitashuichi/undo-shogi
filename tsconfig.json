@@ -45,6 +45,7 @@
   "references": [
     { "path": "./packages/tools/" },
     { "path": "./packages/shogi/" },
-    { "path": "./packages/shogi/tsconfig.dev.json" }
+    { "path": "./packages/shogi/tsconfig.dev.json" },
+    { "path": "./packages/ws-messages/" }
   ]
 }

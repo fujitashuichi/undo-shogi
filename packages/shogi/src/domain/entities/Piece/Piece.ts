@@ -5,7 +5,7 @@ import { normalKindToPromoted } from "./normalToPromoted.js";
 import { promotedKindToNormal } from "./promotedToNormal.js";
 import { pieceConfig } from "../config/pieceConfig.js";
 import type { Side } from "../types/players.types.js";
-import { logger } from "@shared";
+import { logger } from "@tools";
 
 
 export class ShogiPiece {

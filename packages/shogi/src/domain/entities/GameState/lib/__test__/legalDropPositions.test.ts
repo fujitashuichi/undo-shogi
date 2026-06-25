@@ -6,7 +6,7 @@ import type { Position } from "../../../types/algebraic.types.js";
 import { longRangeCheckedSquares_Rook } from "../__mock__/longRangeCheckSquares_Rook.js";
 import { longRangeCheckedSquares_Bishop } from "../__mock__/longRangeCheckSquares_Bishop.js";
 import { dropPawnMateTrapSquares } from "../__mock__/dropPawnMateTrapSquares.js";
-import { vitest_checkArray } from "@shared";
+import { vitest_checkArray } from "@tools";
 import { Hands } from "../../../Hand/Hands.js";
 
 

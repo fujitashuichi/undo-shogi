@@ -43,7 +43,8 @@
 
     "paths": {
       "@packages/tools": ["../../packages/tools/dist/"],
-      "@packages/shogi": ["../../packages/shogi/dist/"]
+      "@packages/shogi": ["../../packages/shogi/dist/"],
+      "@packages/ws-messages": ["../../packages/ws-messages/"]
     }
   }
 }
