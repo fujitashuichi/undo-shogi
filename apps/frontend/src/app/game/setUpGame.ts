@@ -3,7 +3,7 @@
 import { useGameStatus } from "@/features/contexts/gameStatus/gameStatusContext";
 import { usePlayShogi } from "@/features/contexts/playShogi/playShogiContext";
 import { useTimes } from "@/features/contexts/times/timesContext";
-import { ShogiController } from "@packages";
+import { ShogiController } from "@packages/shogi";
 import { useState } from "react";
 
 

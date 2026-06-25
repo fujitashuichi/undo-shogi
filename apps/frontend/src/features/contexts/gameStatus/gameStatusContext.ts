@@ -1,6 +1,6 @@
 "use client";
 
-import { Side } from "@packages";
+import { Side } from "@packages/shogi";
 import React, { createContext, SetStateAction, useContext } from "react";
 
 type GameStatus = {
