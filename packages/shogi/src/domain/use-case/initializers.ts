@@ -1,4 +1,4 @@
-import { type Prettify } from "@shared";
+import { type Prettify } from "@tools";
 
 import { Game } from "../entities/Game/Game.js";
 import { Timer } from "../entities/Timer/Timer.js";

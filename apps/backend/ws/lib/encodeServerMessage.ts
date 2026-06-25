@@ -1,4 +1,4 @@
-import type { ServerMessage } from "../types/serverMessage.types";
+import type { ServerMessage } from "../../../../packages/ws-messages/dist";
 
 export const encodeServerMessage = (message: ServerMessage) => {
   const json = JSON.stringify(message);

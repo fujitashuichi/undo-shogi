@@ -9,10 +9,10 @@
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
     "target": "esnext",
-    // "types": [],
+    "types": [],
     // For nodejs:
-    "lib": ["esnext"],
-    "types": ["node"],
+    // "lib": ["esnext"],
+    // "types": ["node"],
     // and npm install -D @types/node
 
     // Other Outputs
@@ -42,14 +42,15 @@
     "skipLibCheck": true,
 
     "paths": {
-      "@tools": ["../tools/dist/index.d.ts"]
+      "@tools": ["../tools/dist/index.d.ts"],
+      "@shogi": ["../shogi/dist/index.d.ts"]
     },
-    "composite": true,
+    "composite": true
   },
-  "include": ["./**/*", "./**/*.d.ts"],
+
   "exclude": [
+    "node_modules",
     "**/__test__/**", "**/*.test.ts",
     "**/__mock__/**",
-    "node_modules", "dist"
   ]
 }

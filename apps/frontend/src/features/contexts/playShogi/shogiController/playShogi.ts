@@ -1,4 +1,4 @@
-import { logger } from "@packages/shared";
+import { logger } from "@packages/tools";
 import { NormalPieceKind, ShogiController, DomainError } from "@packages/shogi";
 import { Coordinate } from "./types/position.type";
 import { coordinateToPosition } from "./lib/convertPosition";

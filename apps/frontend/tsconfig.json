@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@packages/shared": ["../../packages/shared/dist/index.d.ts"],
+      "@packages/tools": ["../../packages/tools/dist/index.d.ts"],
       "@packages/shogi": ["../../packages/shogi/dist/index.d.ts"]
     }
   },

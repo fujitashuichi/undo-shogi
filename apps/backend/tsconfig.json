@@ -42,8 +42,9 @@
     "skipLibCheck": true,
 
     "paths": {
-      "@packages/shared": ["../../packages/shared/dist/"],
-      "@packages/shogi": ["../../packages/shogi/dist/"]
+      "@packages/tools": ["../../packages/tools/dist/"],
+      "@packages/shogi": ["../../packages/shogi/dist/"],
+      "@packages/ws-messages": ["../../packages/ws-messages/"]
     }
   }
 }

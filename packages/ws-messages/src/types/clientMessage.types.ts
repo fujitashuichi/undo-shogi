@@ -1,4 +1,4 @@
-import { NormalPieceKindSchema } from "@packages/shogi";
+import { NormalPieceKindSchema } from "@shogi";
 import { z } from "zod";
 
 

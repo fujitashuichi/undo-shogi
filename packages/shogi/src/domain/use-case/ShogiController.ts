@@ -1,4 +1,4 @@
-import type { FixedLengthArray } from "@shared";
+import type { FixedLengthArray } from "@tools";
 import { Game } from "../entities/Game/Game.js";
 import type { GameState } from "../entities/GameState/GameState.js";
 import { Timer } from "../entities/Timer/Timer.js";

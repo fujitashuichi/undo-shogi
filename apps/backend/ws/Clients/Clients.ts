@@ -1,5 +1,5 @@
+import type { ServerMessage } from "../../../../packages/ws-messages/dist";
 import { encodeServerMessage } from "../lib/encodeServerMessage";
-import type { ServerMessage } from "../types/serverMessage.types";
 import { Client } from "./Client";
 
 
