@@ -1,12 +1,12 @@
 {
-  "name": "packages",
+  "name": "packages/shogi",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "type": "module",
-  "exports": ["./dist/index.ts"],
+  "exports": ["./dist/index.js"],
   "scripts": {
-    "build": "pnpm --filter ./* build",
+    "build": "npx tsc",
     "typecheck": "npx tsc --noemit",
     "test": "npx vitest"
   },
