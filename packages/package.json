@@ -7,7 +7,7 @@
   "exports": ["./dist/index.ts"],
   "scripts": {
     "build": "pnpm --filter ./* build",
-    "typecheck": "npx tsc --noemit",
+    "typecheck": "pnpm --filter ./* typecheck",
     "test": "npx vitest"
   },
   "keywords": [],

@@ -1,3 +1,4 @@
+import { logger } from "@shared";
 import { LogicError } from "../../errors/logic.error.js";
 import { isInBoard } from "../../lib/positions/isInArea/isInBoard.js";
 

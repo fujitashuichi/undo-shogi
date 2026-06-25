@@ -6,6 +6,11 @@ export { DomainError } from "./domain/use-case/errors/domainError.js";
 
 export type { Side } from "./domain/entities/types/players.types.js";
 export type { Handicap } from "./domain/entities/types/handicap.types.js";
+
+
+export type { Position } from "./domain/entities/types/algebraic.types.js";
+
+export { NormalPieceKindSchema, PieceKindSchema, PromotablePieceKindSchema } from "./domain/entities/types/piece.types.js";
 export type { NormalPieceKind, PieceKind, PromotablePieceKind } from "./domain/entities/types/piece.types.js";
 
 

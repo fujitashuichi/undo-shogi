@@ -1,5 +1,4 @@
-import { DomainError, ShogiController, type Handicap, type NormalPieceKind, type ShogiTimerOptions, type Side } from "@packages";
-import type { Position } from "../../../../packages/dist/domain/entities/types/algebraic.types";
+import { DomainError, ShogiController, type Handicap, type NormalPieceKind, type ShogiTimerOptions, type Position } from "@packages/shogi";
 
 
 type Props = {

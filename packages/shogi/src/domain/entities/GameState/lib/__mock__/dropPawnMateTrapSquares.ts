@@ -1,4 +1,4 @@
-import type { FixedLengthArray } from "../../../../../tools/index.js";
+import type { FixedLengthArray } from "@shared";
 import type { Board } from "../../../Board/Board.js";
 import { ShogiPiece } from "../../../Piece/Piece.js";
 

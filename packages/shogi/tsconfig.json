@@ -50,6 +50,6 @@
   "exclude": [
     "**/__test__/**", "**/*.test.ts",
     "**/__mock__/**",
-    "node_modules", "**/dist/**"
+    "node_modules", "dist"
   ]
 }

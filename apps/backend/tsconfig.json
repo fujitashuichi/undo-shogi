@@ -42,7 +42,8 @@
     "skipLibCheck": true,
 
     "paths": {
-      "@packages": ["../../packages/dist"]
+      "@packages/shared": ["../../packages/shared/dist/"],
+      "@packages/shogi": ["../../packages/shogi/dist/"]
     }
   }
 }

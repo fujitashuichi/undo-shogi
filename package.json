@@ -10,6 +10,8 @@
     "typecheck:packages": "pnpm --filter \"./packages/\" typecheck",
     "test:packages": "pnpm test --environment=node ./packages",
 
+    "typecheck:packages/shogi": "pnpm --filter \"./packages/shogi\" typecheck",
+
     "build:packages/shared": "pnpm --filter \"./packages/shared\" build",
     "build:packages/shogi": "pnpm --filter \"./packages/shogi\" build",
 
