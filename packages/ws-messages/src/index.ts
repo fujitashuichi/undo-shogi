@@ -1,2 +1,2 @@
-export * from "./types/clientMessage.types.js";
-export * from "./types/serverMessage.types.js";
+export * from "./types/client/message.types.js";
+export * from "./types/server/serverMessage.types.js";
