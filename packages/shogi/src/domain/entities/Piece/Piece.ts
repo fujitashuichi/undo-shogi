@@ -1,11 +1,11 @@
 import type { UUID } from "crypto";
-import { NormalPieceKindSchema, PromotablePieceKindSchema, PromotedPieceKindSchema, type NormalPieceKind, type PieceKind } from "../types/piece.types.js";
 import { pieceValidator } from "./validators/pieceValidator.js";
 import { normalKindToPromoted } from "./normalToPromoted.js";
 import { promotedKindToNormal } from "./promotedToNormal.js";
 import { pieceConfig } from "../config/pieceConfig.js";
-import type { Side } from "../types/players.types.js";
 import { logger } from "@tools";
+import type { Side } from "@/schemas/primitive/players.js";
+import { normalPieceKindSchema, promotablePieceKindSchema, promotedPieceKindSchema, type NormalPieceKind, type PieceKind } from "@/schemas/primitive/piece.js";
 
 
 export class ShogiPiece {
@@ -17,7 +17,7 @@ export class ShogiPiece {
     public readonly kind: PieceKind,
     public readonly id: UUID = crypto.randomUUID()
   ) {
-    this.isPromoted = PromotedPieceKindSchema.safeParse(kind).success;
+    this.isPromoted = promotedPieceKindSchema.safeParse(kind).success;
     pieceValidator(this.isPromoted, kind);
     this.motion = pieceConfig(side, kind).motion;
   }
@@ -29,7 +29,7 @@ export class ShogiPiece {
       return this;
     }
 
-    const parsed = PromotablePieceKindSchema.safeParse(this.kind)
+    const parsed = promotablePieceKindSchema.safeParse(this.kind)
     if (!parsed.success) {
       logger.warn(`${this.kind} は成ることが出来ない駒です。`);
       return this;
@@ -42,12 +42,12 @@ export class ShogiPiece {
   public disPromote = (): ShogiPieceNormal => {
     const kind = this.kind;
 
-    const parseForPromoted = PromotedPieceKindSchema.safeParse(kind);
+    const parseForPromoted = promotedPieceKindSchema.safeParse(kind);
     if (parseForPromoted.success) {
       return new ShogiPieceNormal(this.side, promotedKindToNormal(parseForPromoted.data), this.id);
     }
 
-    const parseForNormal = NormalPieceKindSchema.safeParse(kind);
+    const parseForNormal = normalPieceKindSchema.safeParse(kind);
     if (parseForNormal.success) {
       return new ShogiPieceNormal(this.side, parseForNormal.data, this.id);
     }
@@ -60,7 +60,7 @@ export class ShogiPiece {
 
     const nextSide: Side = this.side === "Sente" ? "Gote" : "Sente";
 
-    const parsed = PromotedPieceKindSchema.safeParse(this.kind);
+    const parsed = promotedPieceKindSchema.safeParse(this.kind);
     if (parsed.success) {
       const nextKind = promotedKindToNormal(parsed.data);
       return new ShogiPiece(nextSide, nextKind, this.id);

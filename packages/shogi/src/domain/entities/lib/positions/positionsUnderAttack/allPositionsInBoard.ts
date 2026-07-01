@@ -1,6 +1,5 @@
+import type { Position } from "@/schemas/primitive/algebraic.js";
 import { boardConfig } from "../../../config/boardConfig.js";
-import type { Position } from "../../../types/algebraic.types.js";
-
 
 const boardSize = boardConfig.boardSize;
 

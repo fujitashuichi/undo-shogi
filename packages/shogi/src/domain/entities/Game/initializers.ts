@@ -1,4 +1,4 @@
-import { handicapSchema, type Handicap } from "../../entities/types/handicap.types.js";
+import { handicapSchema, type Handicap } from "@/schemas/primitive/handicap.js";
 import { Game } from "./Game.js";
 import { createNewGame } from "./playGame/createNewGame.js";
 

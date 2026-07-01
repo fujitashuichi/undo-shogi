@@ -6,5 +6,4 @@ export const handicapSchema = z.enum([
   "kyoOchi",
   "two", "four", "six", "eight", "ten"
 ])
-
 export type Handicap = z.infer<typeof handicapSchema>;

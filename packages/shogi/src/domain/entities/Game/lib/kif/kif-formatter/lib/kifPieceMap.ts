@@ -1,4 +1,4 @@
-import type { PieceKind } from "../../../../../types/piece.types.js";
+import type { PieceKind } from "@/schemas/primitive/piece.js";
 
 export const kifPieceMap: Record<string, PieceKind> = {
   玉: "King", 王: "King",

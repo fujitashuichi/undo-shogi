@@ -1,4 +1,4 @@
-import type { Handicap } from "../types/handicap.types.js";
+import type { Handicap } from "@/schemas/primitive/handicap.js";
 import { Board } from "./Board.js";
 import { eightOchiSquares } from "./squares/eightOchiSquares.js";
 import { fourOchiSquares } from "./squares/fourOchiSquares.js";

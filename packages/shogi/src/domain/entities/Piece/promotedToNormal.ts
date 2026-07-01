@@ -1,4 +1,4 @@
-import type { PromotablePieceKind, PromotedPieceKind } from "../types/piece.types.js";
+import type { PromotablePieceKind, PromotedPieceKind } from "@/schemas/primitive/piece.js";
 
 const mapPromotedToNormal: Record<PromotedPieceKind, PromotablePieceKind> = {
   P_Silver: "Silver", P_Knight: "Knight", P_Lance: "Lance",

@@ -1,5 +1,5 @@
+import type { Position } from "@/schemas/primitive/algebraic.js";
 import { MovementError } from "../../errors/movement.errors.js";
-import type { Position } from "../../types/algebraic.types.js";
 import { GameState } from "../GameState.js";
 import { isChecked } from "../validators/checkmate/isChecked.js";
 

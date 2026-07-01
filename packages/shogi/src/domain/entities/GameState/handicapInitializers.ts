@@ -1,7 +1,7 @@
-import { Board } from "../Board/Board.js";
-import { Hands } from "../Hand/Hands.js";
-import { handicapSchema, type Handicap } from "../types/handicap.types.js";
+import { handicapSchema, type Handicap } from "@/schemas/primitive/handicap.js";
 import { GameState } from "./GameState.js";
+import { Board } from "../Board/Board.js";
+import { Hands } from "../Hands/Hands.js";
 
 
 type Methods = Record<Handicap, () => GameState>;

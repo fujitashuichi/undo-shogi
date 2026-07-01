@@ -1,7 +1,7 @@
 import type { PieceMotion } from "./types.js";
-import type { PieceKind } from "../../types/piece.types.js";
 import { bishopMotion, goldMotion, kingMotion, knightMotion, lanceMotion, pawnMotion, rookMotion, silverMotion } from "./normal/index.js";
 import { p_BishopMotion, p_KnightMotion, p_LanceMotion, p_PawnMotion, p_RookMotion, p_SilverMotion } from "./promoted/index.js";
+import type { PieceKind } from "@/schemas/primitive/piece.js";
 
 
 export const motionMap: Record<PieceKind, PieceMotion> = {

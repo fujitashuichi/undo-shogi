@@ -1,5 +1,5 @@
-import type { ShogiPieceNormal } from "../../../Piece/Piece.js";
-import type { Position } from "../../../types/algebraic.types.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
+import type { ShogiPieceNormal } from "@/domain/entities/Piece/Piece.js";
 import { Board } from "../../Board.js";
 import { dropValidator } from "./validators/dropValidator.js";
 

@@ -1,5 +1,5 @@
+import type { GameEndStatus } from "@/schemas/structural/gameEndStatus.js";
 import type { GameState } from "../../GameState/GameState.js";
-import type { GameEndStatus } from "../types/gameHistory.types.js";
 import { hashGameStates } from "./kif/kif-commands/hashGameStates.js";
 import { checkRepetition } from "./kif/kif-commands/validators/checkRepetition.js";
 

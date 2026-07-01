@@ -1,10 +1,10 @@
-import { isInsideRange } from "../../../../../../tools/math/isInsideRange.js";
-import { boardConfig } from "../../../../config/boardConfig.js";
-import { MovementError } from "../../../../errors/movement.errors.js";
-import { ShogiPieceNormal } from "../../../../Piece/Piece.js";
-import type { Position } from "../../../../types/algebraic.types.js";
-import type { Board } from "../../../Board.js";
+import { boardConfig } from "@/config/boardConfig.js";
 import { violateDoublePawn } from "./violateDoublePawn.js";
+import type { Board } from "../../../Board.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
+import type { ShogiPieceNormal } from "@/domain/entities/Piece/Piece.js";
+import { MovementError } from "@/domain/entities/errors/movement.errors.js";
+import { isInsideRange } from "@/tools/math/isInsideRange.js";
 
 
 const boardSize = boardConfig.boardSize;
