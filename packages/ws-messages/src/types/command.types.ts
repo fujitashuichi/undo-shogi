@@ -1,10 +1,11 @@
 import { z } from "zod";
 
 
-const shogiCommandSchema = z.enum(["movePiece", "dropPiece", "undo", "startMatch", "stopMatch"]);
+export const shogiCommandSchema = z.enum(["movePiece", "dropPiece", "undo", "startMatch", "stopMatch"]);
+export const systemCommandSchema = z.enum(["onConnection"]);
 
 export const commandSchema = z.union([
   shogiCommandSchema,
-  z.enum(["onConnection"])
+  systemCommandSchema
 ]);
 export type Command = z.infer<typeof commandSchema>;

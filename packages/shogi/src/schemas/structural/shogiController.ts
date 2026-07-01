@@ -1,12 +1,12 @@
 import { z } from "zod";
 import { sideSchema } from "../primitive/players.js";
-import { normalPieceKindSchema, pieceKindSchema } from "../primitive/piece.js";
+import { pieceKindSchema } from "../primitive/piece.js";
 import { remainingSecondsSchema } from "./timer.js";
 import { gameEndStatusSchema } from "./gameEndStatus.js";
 import { pieceRecordSchema } from "./pieceRecord.js";
 
 
-const shogiController_boardSchema = z.array(
+const boardSchema = z.array(
   z.array(
     z.object({
       side: sideSchema,
@@ -20,7 +20,7 @@ const shogiController_boardSchema = z.array(
 
 const historySchema = z.array(
   z.object({
-    board: shogiController_boardSchema,
+    board: boardSchema,
     hands: pieceRecordSchema
   })
 );

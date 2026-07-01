@@ -11,9 +11,11 @@
     "test:packages": "pnpm test --environment=node ./packages",
 
     "typecheck:packages/shogi": "pnpm --filter \"./packages/shogi\" typecheck",
+    "build:packages/shogi": "pnpm --filter \"./packages/shogi\" build",
 
     "build:packages/shared": "pnpm --filter \"./packages/shared\" build",
-    "build:packages/shogi": "pnpm --filter \"./packages/shogi\" build",
+
+    "typecheck:packages/ws-messages": "pnpm --filter \"./packages/ws-messages\" typecheck",
 
     "dev:frontend": "pnpm --filter \"./apps/frontend\" dev",
     "typecheck:frontend": "pnpm --filter \"./apps/frontend/\" typecheck",

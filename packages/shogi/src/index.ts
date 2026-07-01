@@ -6,12 +6,14 @@ export { normalPieceKindSchema, pieceKindSchema, promotablePieceKindSchema, prom
 export type { NormalPieceKind, PieceKind, PromotablePieceKind, PromotedPieceKind } from "@/schemas/primitive/piece.js";
 
 
-export { ShogiController } from "./domain/use-case/ShogiController.js";
-export { DomainError } from "./domain/use-case/errors/domainError.js";
+export { ShogiController } from "@/domain/use-case/ShogiController.js";
+export { DomainError } from "@/domain/use-case/errors/domainError.js";
+
+export { shogiStatusSchema, type ShogiStatus } from "@/schemas/structural/shogiController.js"
 
 
 // UI側で使用できる時計設定を制限する
-import { Timer } from "./domain/entities/Timer/Timer.js";
+import { Timer } from "@/domain/entities/Timer/Timer.js";
 
 type Options = ConstructorParameters<typeof Timer>[0];
 export type ShogiTimerOptions = Pick<Options, "remainingSeconds" | "onTick" | "onTimeUp">
