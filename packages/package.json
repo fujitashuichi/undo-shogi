@@ -4,9 +4,14 @@
   "description": "",
   "main": "dist/index.js",
   "type": "module",
-  "exports": ["./dist/index.ts"],
+  "exports": [
+    "./dist/index.ts"
+  ],
   "scripts": {
-    "build": "pnpm --filter ./* build",
+    "build:tools": "pnpm --filter ./tools build",
+    "build:shogi": "pnpm --filter ./shogi build",
+    "build:ws-messages": "pnpm --filter ./ws-messages build",
+    "build": "pnpm build:tools && pnpm build:shogi && pnpm build:ws-messages",
     "typecheck": "pnpm --filter ./* typecheck",
     "test": "npx vitest"
   },
@@ -15,8 +20,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
-    "@types/node": "^25.6.2",
-    "typescript": "^6.0.3",
-    "zod": "^4.4.3"
+    "@types/node": "^25.9.4",
+    "typescript": "^6.0.3"
   }
 }

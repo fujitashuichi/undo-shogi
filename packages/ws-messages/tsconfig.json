@@ -48,9 +48,7 @@
     "composite": true
   },
 
-  "include": [
-    "./**/*"
-  ],
+  "include": ["./**/*"],
   "exclude": [
     "node_modules", "dist",
     "**/__test__/**", "**/*.test.ts",

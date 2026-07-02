@@ -1,21 +1,26 @@
 import { shogiStatusSchema } from "@shogi";
 import { z } from "zod";
-import { shogiCommandSchema, systemCommandSchema } from "../command.types.js";
+import { shogiCommandSchema, sessionCommandSchema } from "../command.types.js";
 
-
-const shogiResultMessageSchema = z.object({
-  status: shogiStatusSchema
-});
 
 const errorMessageSchema = z.enum([
   "BAD_REQUEST", "INTERNAL_ERROR"
 ]);
 
+const shogiResultMessageSchema = z.object({
+  status: shogiStatusSchema
+});
+
+const sessionMessageSchema = z.object({
+  clientId: z.uuid(),
+  groupId: z.uuid().or(z.literal("unGrouped"))
+});
+
 
 export const serverMessageSchema = z.union([
   z.object({
-  success: z.literal(false),
-  errorMessage: errorMessageSchema
+    success: z.literal(false),
+    errorMessage: errorMessageSchema
   }),
   z.object({
     success: z.literal(true),
@@ -24,7 +29,8 @@ export const serverMessageSchema = z.union([
   }),
   z.object({
     success: z.literal(true),
-    command: systemCommandSchema
+    command: sessionCommandSchema,
+    value: sessionMessageSchema
   })
 ]);
 export type ServerMessage = z.infer<typeof serverMessageSchema>;

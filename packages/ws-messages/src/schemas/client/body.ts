@@ -1,4 +1,4 @@
-import { NormalPieceKindSchema } from "@shogi";
+import { normalPieceKindSchema } from "@shogi";
 import { z } from "zod";
 import type { Command } from "../command.types.js";
 
@@ -19,7 +19,7 @@ const movePieceSchema = z.object({
 
 const dropPieceSchema = z.object({
   to: positionSchema,
-  kind: NormalPieceKindSchema
+  kind: normalPieceKindSchema
 });
 
 const undoSchema = z.object({});

@@ -1,6 +1,6 @@
-import { clientMessageSchema } from "../../../../packages/ws-messages/dist";
-import { decodeBinary } from "../lib/decodeClientMessage";
-import { encodeServerMessage } from "../lib/encodeServerMessage";
+import { clientMessageSchema } from "@packages/ws-messages";
+import { decodeBinary } from "../../lib/decodeClientMessage";
+import { encodeServerMessage } from "../../lib/encodeServerMessage";
 import type { WssRegistry } from "../WssRegistry/WssRegistry";
 import type { Client } from "./Client";
 

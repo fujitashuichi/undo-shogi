@@ -6,41 +6,40 @@
   "scripts": {
     "test": "npx vitest",
 
-    "build:packages": "pnpm --filter \"./packages/\" build",
-    "typecheck:packages": "pnpm --filter \"./packages/\" typecheck",
-    "test:packages": "pnpm test --environment=node ./packages",
-
-    "typecheck:packages/shogi": "pnpm --filter \"./packages/shogi\" typecheck",
-    "build:packages/shogi": "pnpm --filter \"./packages/shogi\" build",
-
-    "build:packages/shared": "pnpm --filter \"./packages/shared\" build",
-
-    "typecheck:packages/ws-messages": "pnpm --filter \"./packages/ws-messages\" typecheck",
-
     "dev:frontend": "pnpm --filter \"./apps/frontend\" dev",
     "typecheck:frontend": "pnpm --filter \"./apps/frontend/\" typecheck",
     "lint:frontend": "pnpm --filter \"./apps/frontend\" lint",
     "test:frontend": "pnpm test --environment=happy-dom ./apps/frontend",
 
     "dev:backend": "pnpm --filter \"./apps/backend\" dev",
+    "build:backend": "pnpm --filter \"./apps/backend\" build",
     "typecheck:backend": "pnpm --filter \"./apps/backend/\" typecheck",
-    "test:backend": "pnpm test --environment=node ./apps/backend"
+    "test:backend": "pnpm test --environment=node ./apps/backend",
+
+    "build:packages": "pnpm --filter \"./packages/\" build",
+    "test:packages": "pnpm test --environment=node ./packages",
+
+    "typecheck:packages": "pnpm --filter \"./packages/\" typecheck",
+
+    "build:packages/shogi": "pnpm --filter \"./packages/shogi\" build",
+    "typecheck:packages/shogi": "pnpm --filter \"./packages/shogi\" typecheck",
+
+    "build:packages/tools": "pnpm --filter \"./packages/tools\" build",
+
+    "typecheck:packages/ws-messages": "pnpm --filter \"./packages/ws-messages\" typecheck"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@11.0.9",
   "dependencies": {
-    "packages": "workspace:*",
     "pino": "^10.3.1",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.7",
-    "zod": "^4.4.3"
+    "vitest": "^4.1.9"
   },
   "devDependencies": {
-    "@types/node": "^25.6.2",
-    "@vitest/ui": "^4.1.7",
-    "happy-dom": "^20.10.2",
-    "pino-pretty": "^13.1.3"
+    "@types/node": "^25.9.4",
+    "@vitest/ui": "^4.1.9",
+    "happy-dom": "^20.10.6"
   }
 }

@@ -47,7 +47,7 @@
     },
     "composite": true,
   },
-  "include": ["./**/*", "./**/*.d.ts"],
+  "include": ["./**/*"],
   "exclude": [
     "**/__test__/**", "**/*.test.ts",
     "**/__mock__/**",
