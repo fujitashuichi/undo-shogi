@@ -1,5 +1,5 @@
+import type { Position } from "@/index.js";
 import { boardConfig } from "../../../../../config/boardConfig.js";
-import type { Position } from "../../../../../types/algebraic.types.js";
 import type { KifPosition } from "../../types/types.js";
 
 

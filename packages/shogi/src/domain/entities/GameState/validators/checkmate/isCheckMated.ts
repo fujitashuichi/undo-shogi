@@ -1,8 +1,8 @@
 import type { Board } from "../../../Board/Board.js";
-import type { Hands } from "../../../Hand/Hands.js";
+import type { Hands } from "../../../Hands/Hands.js";
 import { legalMovePositions } from "../../lib/legalMovePositions/legalMovePositions.js";
 import { legalDropPositions } from "../../lib/legalDropPositions/legalDropPositions.js";
-import type { Side } from "../../../types/players.types.js";
+import type { Side } from "@/schemas/primitive/players.js";
 
 
 export const isCheckMated = (board: Board, hands: Hands, side: Side): boolean => {

@@ -1,16 +1,16 @@
+import type { Side } from "@/schemas/primitive/players.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
 import { Board } from "../Board/Board.js";
-import { MovementError } from "../errors/movement.errors.js";
-import { Hands } from "../Hand/Hands.js";
-import { ShogiPieceNormal } from "../Piece/Piece.js";
-import type { Position } from "../types/algebraic.types.js";
-import type { NormalPieceKind } from "../types/piece.types.js";
-import type { Side } from "../types/players.types.js";
-import { gameState_dropPiece } from "./dropPiece/dropPiece.js";
-import { handicapInitializers } from "./handicapInitializers.js";
-import { gameState_movePiece } from "./movePiece/movePiece.js";
+import { Hands } from "../Hands/Hands.js";
 import { isChecked } from "./validators/checkmate/isChecked.js";
 import { isCheckMated } from "./validators/checkmate/isCheckMated.js";
+import { handicapInitializers } from "./handicapInitializers.js";
+import { MovementError } from "../errors/movement.errors.js";
 import { positionValidator } from "./validators/positionValidator.js";
+import { gameState_movePiece } from "./movePiece/movePiece.js";
+import type { NormalPieceKind } from "@/schemas/primitive/piece.js";
+import { gameState_dropPiece } from "./dropPiece/dropPiece.js";
+import { ShogiPieceNormal } from "../Piece/Piece.js";
 
 
 export class GameState {

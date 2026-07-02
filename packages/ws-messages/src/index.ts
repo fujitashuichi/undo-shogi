@@ -1,2 +1,2 @@
-export * from "./types/clientMessage.types.js";
-export * from "./types/serverMessage.types.js";
+export { clientMessageSchema, type ClientMessage } from "./schemas/client/message.js";
+export { serverMessageSchema, type ServerMessage } from "./schemas/server/message.js";

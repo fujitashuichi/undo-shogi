@@ -1,4 +1,4 @@
-import type { NormalPieceKind, PieceKind } from "../../../../types/piece.types.js";
+import type { NormalPieceKind, PieceKind } from "@/schemas/primitive/piece.js";
 
 export type MoveAction =
   | {

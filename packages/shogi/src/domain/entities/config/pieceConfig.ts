@@ -1,7 +1,6 @@
+import type { Side } from "@/schemas/primitive/players.js";
 import type { ShogiPiece } from "../Piece/Piece.js";
-import type { Side } from "../types/players.types.js";
 import { motionMap } from "./motions/motionMap.js";
-
 
 
 const adjustVectors = (side: Side, kind: ShogiPiece["kind"]) => {

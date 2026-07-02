@@ -1,9 +1,9 @@
 import { describe, it } from "vitest";
-import { hirateSquares } from "../../../../entities/Board/squares/hirateSquares";
-import { tenOchiSquares } from "../../../../entities/Board/squares/tenOchiSquares";
-import { kakuOchiSquares } from "../../../../entities/Board/squares/kakuOchiSquares";
-import { vitest_checkSquares } from "../../../../../tools/vitest/checkSquares";
-import { createInitialStateByKif } from "../kif/createInitialStateByKif";
+import { createInitialStateByKif } from "../kif/createInitialStateByKif.js";
+import { vitest_checkSquares } from "@/tools/vitest/checkSquares.js";
+import { hirateSquares } from "@/domain/entities/Board/squares/hirateSquares.js";
+import { kakuOchiSquares } from "@/domain/entities/Board/squares/kakuOchiSquares.js";
+import { tenOchiSquares } from "@/domain/entities/Board/squares/tenOchiSquares.js";
 
 
 

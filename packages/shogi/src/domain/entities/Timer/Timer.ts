@@ -1,7 +1,7 @@
+import type { Side } from "@/schemas/primitive/players.js";
+import type { RemainingSeconds } from "@/schemas/structural/timer.js";
 import { TimerError } from "../errors/timer.error.js";
-import type { Side } from "../types/players.types.js";
 
-type RemainingSeconds = Record<Side, number>;
 
 type Options = {
   remainingSeconds: RemainingSeconds,
@@ -12,6 +12,7 @@ type Options = {
   onTimeUp?: (side: Side) => any,
   onTick?: (side: Side, remainingSeconds: RemainingSeconds) => any
 }
+
 
 export class Timer {
   private timerId: ReturnType<typeof setInterval> | null = null;

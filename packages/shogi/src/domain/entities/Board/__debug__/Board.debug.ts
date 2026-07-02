@@ -1,4 +1,4 @@
-import type { PieceKind } from "../../types/piece.types.js";
+import type { PieceKind } from "@/schemas/primitive/piece.js";
 import type { Board } from "../Board.js";
 
 export const boardDebugger = {

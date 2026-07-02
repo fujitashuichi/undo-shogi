@@ -1,15 +1,10 @@
-import type { NormalPieceKind } from "../types/piece.types.js";
-import type { Side } from "../types/players.types.js";
-
-
-type PieceRecord = Record<
-  Side,
-  Record<NormalPieceKind, number>
->;
+import type { Side } from "@/schemas/primitive/players.js";
+import type { NormalPieceKind } from "@/schemas/primitive/piece.js";
+import type { PieceRecord } from "@/schemas/structural/pieceRecord.js";
 
 
 export class Hands {
-  public pieceRecord: PieceRecord;
+  public pieceRecord;
 
   constructor (
     pieceRecord: PieceRecord

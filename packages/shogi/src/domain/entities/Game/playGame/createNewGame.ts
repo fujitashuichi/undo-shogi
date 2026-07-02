@@ -1,6 +1,6 @@
-import { GameState } from "../../../entities/GameState/GameState.js";
-import { handicapSchema, type Handicap } from "../../../entities/types/handicap.types.js";
-import type { Game } from "../Game.js";
+import { handicapSchema, type Handicap } from "@/schemas/primitive/handicap.js";
+import { Game } from "../Game.js";
+import { GameState } from "../../GameState/GameState.js";
 
 
 type Methods = Record<"hirate" | Handicap, () => Game["status"]>;

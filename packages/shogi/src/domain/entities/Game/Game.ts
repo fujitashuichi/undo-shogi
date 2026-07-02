@@ -1,11 +1,11 @@
-import type { Position } from "../../entities/types/algebraic.types.js";
-import type { NormalPieceKind } from "../../entities/types/piece.types.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
 import { GameError } from "../errors/game.error.js";
 import type { GameState } from "../GameState/GameState.js";
 import { initializers } from "./initializers.js";
 import { kifToShogiPlayer } from "./playGame/kifToShogiPlayer.js";
 import { playGame } from "./playGame/playGame.js";
-import type { GameEndStatus } from "./types/gameHistory.types.js";
+import type { NormalPieceKind } from "@/schemas/primitive/piece.js";
+import type { GameEndStatus } from "@/schemas/structural/gameEndStatus.js";
 
 
 export type Status = {

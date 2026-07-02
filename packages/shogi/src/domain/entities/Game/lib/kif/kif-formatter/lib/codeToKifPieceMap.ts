@@ -1,4 +1,4 @@
-import type { PieceKind } from "../../../../../types/piece.types.js";
+import type { PieceKind } from "@/schemas/primitive/piece.js";
 
 export const codeToKifPieceMap: Record<PieceKind, string> = {
   King: "玉", Gold: "金", Silver: "銀", Knight: "桂", Lance: "香",

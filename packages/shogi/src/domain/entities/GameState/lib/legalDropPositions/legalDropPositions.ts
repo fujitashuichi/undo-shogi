@@ -1,10 +1,10 @@
+import type { Side } from "@/schemas/primitive/players.js";
 import type { Board } from "../../../Board/Board.js";
-import type { Hands } from "../../../Hand/Hands.js";
-import type { Position } from "../../../types/algebraic.types.js";
-import type { NormalPieceKind } from "../../../types/piece.types.js";
-import type { Side } from "../../../types/players.types.js";
+import type { Hands } from "../../../Hands/Hands.js";
 import { legalDropPositions_IgnoreDropPawnMate } from "./ignoreDropPawnMate.js";
 import { isPawnMateDrop } from "./isPawnMateDrop.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
+import type { NormalPieceKind } from "@/schemas/primitive/piece.js";
 
 
 const byPiece = (board: Board, hands: Hands, kind: NormalPieceKind, side: Side): Position[] => {

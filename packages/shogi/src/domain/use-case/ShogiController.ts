@@ -1,25 +1,11 @@
-import type { FixedLengthArray } from "@tools";
-import { Game } from "../entities/Game/Game.js";
-import type { GameState } from "../entities/GameState/GameState.js";
-import { Timer } from "../entities/Timer/Timer.js";
-import type { Position } from "../entities/types/algebraic.types.js";
-import type { NormalPieceKind, PieceKind } from "../entities/types/piece.types.js";
-import type { Side } from "../entities/types/players.types.js";
+import type { NormalPieceKind } from "@/schemas/primitive/piece.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
+import type { Game } from "../entities/Game/Game.js";
+import type { Timer } from "../entities/Timer/Timer.js";
 import { domainErrorHandler } from "./errors/domainErrorHandler.js";
 import { initializers } from "./initializers.js";
+import type { ShogiStatus } from "@/schemas/structural/shogiController.js";
 
-
-type BoardSquares = FixedLengthArray<FixedLengthArray<{ side: Side, piece: PieceKind } | undefined, 9>, 9>;
-
-type Status = {
-  gameEndStatus: Game["status"]["gameEndStatus"],
-  remainingSeconds: Timer["remainingSeconds"],
-  history: {
-    board: BoardSquares
-    hands: GameState["hands"]["pieceRecord"]
-  }[],
-  currentSide: Side
-}
 
 export class ShogiController {
   private _game: Game;
@@ -34,8 +20,8 @@ export class ShogiController {
   }
 
 
-  public get status(): Status {
-    return domainErrorHandler((): Status => {
+  public get status(): ShogiStatus {
+    return domainErrorHandler((): ShogiStatus => {
       const history = this._game.status.history;
 
       return {
@@ -45,7 +31,7 @@ export class ShogiController {
           return {
             board: gameState.board.squares.map(row =>
               row.map(square => square ? { side: square.side, piece: square.kind } : undefined)
-            ) as BoardSquares,
+            ),
             hands: gameState.hands.pieceRecord
           }
         }),

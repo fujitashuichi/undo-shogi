@@ -1,7 +1,7 @@
-import { MovementError } from "../../../errors/movement.errors.js";
-import type { Position } from "../../../types/algebraic.types.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
 import { Board } from "../../Board.js";
 import { moveValidator } from "./validators/moveValidator.js";
+import { MovementError } from "@/domain/entities/errors/movement.errors.js";
 
 export const board_movePiece = (board: Board, current: Position, next: Position, promote: boolean) => {
   moveValidator.assertCanMove(board, current, next, promote);

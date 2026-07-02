@@ -2,14 +2,13 @@
  * KIF文字列を解析し、GameStateが解釈できる着手情報の配列に変換します。
  */
 
-
-import type { Position } from "../../../../types/algebraic.types.js";
-import { NormalPieceKindSchema } from "../../../../types/piece.types.js";
 import type { KifPosition, MoveAction } from "../types/types.js";
 import { KifError } from "../../../../errors/kif.error.js";
 import { convertPosition } from "./lib/convertPosition.js";
 import { kifPieceMap } from "./lib/kifPieceMap.js";
 import { stringToNum } from "./lib/stringToNum.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
+import { normalPieceKindSchema } from "@/index.js";
 
 
 export const kifToActions = (kifText: string): MoveAction[] => {
@@ -62,7 +61,7 @@ export const kifToActions = (kifText: string): MoveAction[] => {
       const piece = pieceStr.split(/[打]/)[0]!;
       const kind = kifPieceMap[piece];
 
-      const parsed = NormalPieceKindSchema.safeParse(kind);
+      const parsed = normalPieceKindSchema.safeParse(kind);
       if (!parsed.success) throw new KifError("UNSUPPORTED_KIF");
 
       moves.push({ type: "drop", to, kind: parsed.data });

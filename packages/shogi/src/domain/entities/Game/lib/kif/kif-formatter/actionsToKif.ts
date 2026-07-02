@@ -4,12 +4,12 @@
  */
 
 
+import { promotablePieceKindSchema, promotedPieceKindSchema } from "@/schemas/primitive/piece.js";
 import { isInPromotionZone } from "../../../../lib/positions/isInArea/isInPromotionZone.js";
-import { PromotablePieceKindSchema, PromotedPieceKindSchema } from "../../../../types/piece.types.js";
-import type { Side } from "../../../../types/players.types.js";
 import type { KifPosition, MoveAction } from "../types/types.js";
 import { codeToKifPieceMap } from "./lib/codeToKifPieceMap.js";
 import { convertPosition } from "./lib/convertPosition.js";
+import type { Side } from "@/schemas/primitive/players.js";
 
 
 
@@ -47,7 +47,7 @@ export const actionsToKif = (moves: MoveAction[]): string => {
       });
 
       const baseKind = move.kind;
-      const isAlreadyPromoted = PromotedPieceKindSchema.safeParse(baseKind).success;
+      const isAlreadyPromoted = promotedPieceKindSchema.safeParse(baseKind).success;
 
       let pieceName = codeToKifPieceMap[baseKind] || baseKind;
 
@@ -59,7 +59,7 @@ export const actionsToKif = (moves: MoveAction[]): string => {
           promoteStr = "成";
         } else {
           const canPromote =
-            PromotablePieceKindSchema.safeParse(baseKind).success && (
+            promotablePieceKindSchema.safeParse(baseKind).success && (
               isInPromotionZone(side, fromPosition) ||
               isInPromotionZone(side, toPosition)
             );

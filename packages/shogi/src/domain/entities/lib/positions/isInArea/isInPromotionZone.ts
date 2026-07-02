@@ -1,7 +1,7 @@
+import type { Side } from "@/schemas/primitive/players.js";
 import { isInsideRange } from "../../../../../tools/math/isInsideRange.js";
 import { boardConfig } from "../../../config/boardConfig.js";
-import type { Position } from "../../../types/algebraic.types.js";
-import type { Side } from "../../../types/players.types.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
 
 
 const boardSize = boardConfig.boardSize;

@@ -5,7 +5,7 @@ import { boardConfig } from "../../config/boardConfig.js";
 import { MovementError } from "../../errors/movement.errors.js";
 import { PieceError } from "../../errors/piece.error.js";
 import { isInBoard } from "../../lib/positions/isInArea/isInBoard.js";
-import type { Position } from "../../types/algebraic.types.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
 
 
 const boardSize = boardConfig.boardSize;

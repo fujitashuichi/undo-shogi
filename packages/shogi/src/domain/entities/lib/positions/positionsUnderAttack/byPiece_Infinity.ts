@@ -1,6 +1,6 @@
+import type { Position } from "@/schemas/primitive/algebraic.js";
 import type { Board } from "../../../Board/Board.js";
 import type { ShogiPiece } from "../../../Piece/Piece.js";
-import type { Position } from "../../../types/algebraic.types.js";
 import { isInBoard } from "../isInArea/isInBoard.js";
 
 

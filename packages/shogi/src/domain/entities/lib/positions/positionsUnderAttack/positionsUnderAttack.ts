@@ -2,13 +2,13 @@
 
 // memo: 目的の駒自身を効きから省く → 「自分sideの駒がある場所を省く」に含まれるため不要
 
+import type { Position } from "@/schemas/primitive/algebraic.js";
 import type { Board } from "../../../Board/Board.js";
 import type { PieceVectors } from "../../../config/motions/types.js";
-import type { Position } from "../../../types/algebraic.types.js";
-import type { Side } from "../../../types/players.types.js";
 import { searchPiecesBySide } from "../../searchPiecesBySide.js";
 import { isInBoard } from "../isInArea/isInBoard.js";
 import { byPiece_Infinity } from "./byPiece_Infinity.js";
+import type { Side } from "@/schemas/primitive/players.js";
 
 
 const byPiece = (board: Board, piecePos: Position): Position[] => {

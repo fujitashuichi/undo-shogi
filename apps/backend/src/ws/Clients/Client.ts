@@ -3,7 +3,6 @@ import { WebSocket } from "ws";
 import type { WssRegistry } from "../WssRegistry/WssRegistry";
 import { setupWsEvents } from "./setUpWsEvents";
 
-
 export class Client {
   constructor (
     public readonly clientId: UUID,

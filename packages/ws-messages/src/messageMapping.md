@@ -1,7 +1,7 @@
 ```mermaid
 classDiagram
 
-class ShogiCommands{
+class ShogiCommand{
   | "movePiece"
   | "dropPiece"
   | "undo"
@@ -9,23 +9,24 @@ class ShogiCommands{
   | "stopMatch"
 }
 
-class Commands{
+class Command{
   | "onConnection"
-  | ShogiCommands
+  | ShogiCommand
 }
 
-Commands o-- ShogiCommands
+Command o-- ShogiCommand
 
 
 class Header{
-  commands: Commands
+  command: Command
 }
 
-Header o-- Commands
+Header o-- Command
 
 
 class Input{
   header: Header
+  body: T extends Command
 }
 
 Input o-- Header
@@ -36,7 +37,7 @@ Input o-- Header
 ```mermaid
 classDiagram
 
-class ShogiCommands{
+class ShogiCommand{
   | "movePiece"
   | "dropPiece"
   | "undo"
@@ -44,24 +45,24 @@ class ShogiCommands{
   | "stopMatch"
 }
 
-class Commands{
+class Command{
   | "onConnection"
-  | ShogiCommands
+  | ShogiCommand
 }
 
-Commands o-- ShogiCommands
+Command o-- ShogiCommand
 
 
 class Header{
-  commands: Commands
+  command: Command
 }
 
-Header o-- Commands
+Header o-- Command
 
 
 class Output{
   header
-  body: T extends Commands
+  body: T extends Command
 }
 
 Output o-- Header

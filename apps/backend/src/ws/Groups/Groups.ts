@@ -1,8 +1,8 @@
 import type { UUID } from "crypto";
 import { Client } from "../Clients/Client";
 import { ShogiRoom } from "./ShogiRoom";
-import { encodeServerMessage } from "../lib/encodeServerMessage";
-import type { ServerMessage } from "../../../../packages/ws-messages/dist";
+import type { ServerMessage } from "@packages/ws-messages";
+import { encodeServerMessage } from "../../lib/encodeServerMessage";
 
 
 type Group = {

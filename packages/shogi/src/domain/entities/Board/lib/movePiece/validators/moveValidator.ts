@@ -1,11 +1,11 @@
-import type { ShogiPiece } from "../../../../Piece/Piece.js";
-import type { Position } from "../../../../types/algebraic.types.js";
-import type { Board } from "../../../Board.js";
-import { pieceMotionValidator } from "../../../../Piece/validators/motionValidator.js";
-import { isInPromotionZone } from "../../../../lib/positions/isInArea/isInPromotionZone.js";
-import { MovementError } from "../../../../errors/movement.errors.js";
-import type { Side } from "../../../../types/players.types.js";
 import { logger } from "@tools";
+import type { Board } from "../../../Board.js";
+import type { ShogiPiece } from "@/domain/entities/Piece/Piece.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
+import type { Side } from "@/schemas/primitive/players.js";
+import { pieceMotionValidator } from "@/domain/entities/Piece/validators/motionValidator.js";
+import { MovementError } from "@/domain/entities/errors/movement.errors.js";
+import { isInPromotionZone } from "@/domain/entities/lib/positions/isInArea/isInPromotionZone.js";
 
 
 export const moveValidator = {

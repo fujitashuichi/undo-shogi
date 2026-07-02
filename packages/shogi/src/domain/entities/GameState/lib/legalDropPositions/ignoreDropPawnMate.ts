@@ -1,11 +1,11 @@
+import type { Hands } from "@/domain/entities/Hands/Hands.js";
 import type { Board } from "../../../Board/Board.js";
 import { ShogiPieceNormal } from "../../../Piece/Piece.js";
-import type { Position } from "../../../types/algebraic.types.js";
-import type { NormalPieceKind } from "../../../types/piece.types.js";
 import { allPositionInBoard } from "../../../lib/positions/positionsUnderAttack/allPositionsInBoard.js";
-import type { Hands } from "../../../Hand/Hands.js";
 import { isChecked } from "../../validators/checkmate/isChecked.js";
-import type { Side } from "../../../types/players.types.js";
+import type { NormalPieceKind } from "@/schemas/primitive/piece.js";
+import type { Side } from "@/schemas/primitive/players.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
 
 
 const byPiece = (board: Board, hands: Hands, kind: NormalPieceKind, side: Side): Position[] => {

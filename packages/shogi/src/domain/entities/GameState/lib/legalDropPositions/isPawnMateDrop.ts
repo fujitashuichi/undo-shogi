@@ -1,12 +1,12 @@
 import type { Board } from "../../../Board/Board.js";
-import type { Hands } from "../../../Hand/Hands.js";
+import type { Hands } from "../../../Hands/Hands.js";
 import { ShogiPieceNormal } from "../../../Piece/Piece.js";
-import type { Position } from "../../../types/algebraic.types.js";
-import type { NormalPieceKind } from "../../../types/piece.types.js";
 import { isChecked } from "../../validators/checkmate/isChecked.js";
 import { legalDropPositions_IgnoreDropPawnMate } from "./ignoreDropPawnMate.js";
 import { legalMovePositions } from "../legalMovePositions/legalMovePositions.js";
-import type { Side } from "../../../types/players.types.js";
+import type { Side } from "@/schemas/primitive/players.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
+import type { NormalPieceKind } from "@/schemas/primitive/piece.js";
 
 
 export const isPawnMateDrop = (board: Board, hands: Hands, side: Side, position: Position, pieceKind: NormalPieceKind): boolean => {

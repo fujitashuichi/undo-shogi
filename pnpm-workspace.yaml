@@ -8,3 +8,16 @@ packages:
   - 'packages/*'
   - 'apps/frontend/'
   - 'apps/backend/'
+
+catalog:
+  typescript: ^6.0.3
+
+  "@types/node": ^25.9.4
+
+  eslint: 9.39.4
+
+  vitest: 4.1.9
+  "@vitest/ui": 4.1.9
+
+  ws: ^8.21.0
+  "@types/ws": ^8.18.1
