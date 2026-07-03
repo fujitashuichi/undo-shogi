@@ -4,7 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "type": "module",
-  "exports": ["./dist/index.ts"],
+  "exports": [
+    "./dist/index.ts"
+  ],
   "scripts": {
     "build": "pnpm --filter ./* build",
     "typecheck": "pnpm --filter ./* typecheck",
@@ -16,7 +18,6 @@
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
     "@types/node": "^25.6.2",
-    "typescript": "^6.0.3",
-    "zod": "^4.4.3"
+    "typescript": "^6.0.3"
   }
 }

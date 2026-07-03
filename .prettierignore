@@ -1,0 +1,10 @@
+# Ignore artifacts:
+build
+node_modules
+dist
+
+coverage
+
+**/*.md
+**/*.yaml
+**/*.yml
