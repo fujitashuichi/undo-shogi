@@ -25,7 +25,6 @@
   "license": "ISC",
   "packageManager": "pnpm@11.0.9",
   "dependencies": {
-    "knip": "catalog:",
     "pino-pretty": "catalog:",
     "typescript": "^6.0.3"
   },
@@ -33,6 +32,7 @@
     "@types/node": "^25.6.2",
     "@vitest/ui": "catalog:",
     "happy-dom": "catalog:",
+    "knip": "catalog:",
     "prettier": "catalog:"
   }
 }
