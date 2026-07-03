@@ -6,20 +6,22 @@ settings:
 
 catalogs:
   default:
-    '@types/ws':
-      specifier: ^8.18.1
-      version: 8.18.1
-    vitest:
-      specifier: 4.1.9
-      version: 4.1.9
-    ws:
-      specifier: ^8.21.0
-      version: 8.21.0
+    lodash:
+      specifier: ^4.18.1
+      version: 4.18.1
 
 importers:
 
   .:
     dependencies:
+      packages:
+
+        specifier: workspace:*
+
+        version: link:packages
+      lodash:
+        specifier: 'catalog:'
+        version: 4.18.1
       pino:
         specifier: ^10.3.1
         version: 10.3.1
@@ -37,8 +39,14 @@ importers:
         specifier: ^4.1.9
         version: 4.1.9(vitest@4.1.9)
       happy-dom:
-        specifier: ^20.10.6
-        version: 20.10.6
+        specifier: ^20.10.2
+        version: 20.10.2
+      pino-pretty:
+        specifier: ^13.1.3
+        version: 13.1.3
+      prettier:
+        specifier: ^3.9.4
+        version: 3.9.4
 
   apps/backend:
     dependencies:
@@ -51,6 +59,9 @@ importers:
       express:
         specifier: ^5.2.1
         version: 5.2.1
+      lodash:
+        specifier: 'catalog:'
+        version: 4.18.1
       ws:
         specifier: 'catalog:'
         version: 8.21.0
@@ -61,6 +72,9 @@ importers:
 
   apps/frontend:
     dependencies:
+      lodash:
+        specifier: 'catalog:'
+        version: 4.18.1
       next:
         specifier: 16.2.4
         version: 16.2.4(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -103,8 +117,11 @@ importers:
 
     dependencies:
       '@types/node':
-        specifier: ^25.9.4
-        version: 25.9.4
+        specifier: ^25.6.2
+        version: 25.9.1
+      lodash:
+        specifier: 'catalog:'
+        version: 4.18.1
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -114,6 +131,9 @@ importers:
       '@types/node':
         specifier: ^25.9.4
         version: 25.9.4
+      lodash:
+        specifier: 'catalog:'
+        version: 4.18.1
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -126,9 +146,9 @@ importers:
       '@types/node':
         specifier: ^25.9.4
         version: 25.9.4
-      pino:
-        specifier: ^10.3.1
-        version: 10.3.1
+      lodash:
+        specifier: 'catalog:'
+        version: 4.18.1
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -141,6 +161,9 @@ importers:
       '@types/node':
         specifier: ^25.9.4
         version: 25.9.4
+      lodash:
+        specifier: 'catalog:'
+        version: 4.18.1
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1983,6 +2006,9 @@ packages:
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
+  lodash@4.18.1:
+    resolution: {integrity: sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==}
+
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
@@ -2220,6 +2246,11 @@ packages:
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+
+  prettier@3.9.4:
+    resolution: {integrity: sha512-yWG/o/4oJfo036EKAfK6ACAoDOfHeRHx4tuxkfBZiauURiaSmYwlpOr5LQqKtIkRD2z1PLteme2WoxEnj4tHTg==}
+    engines: {node: '>=14'}
+    hasBin: true
 
   pretty-format@27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
@@ -4652,6 +4683,8 @@ snapshots:
 
   lodash.merge@4.6.2: {}
 
+  lodash@4.18.1: {}
+
   loose-envify@1.4.0:
     dependencies:
       js-tokens: 4.0.0
@@ -4882,6 +4915,8 @@ snapshots:
       source-map-js: 1.2.1
 
   prelude-ls@1.2.1: {}
+
+  prettier@3.9.4: {}
 
   pretty-format@27.5.1:
     dependencies:
