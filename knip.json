@@ -1,5 +1,19 @@
 {
-  "ignoreDependencies": [
-    "prettier"
-  ]
+  "workspaces": {
+    ".": {
+      "ignoreDependencies": [
+        "pino-pretty"
+      ]
+    },
+    "apps/frontend": {
+      "entry": [
+        "./**/globals.css"
+      ]
+    },
+    "apps/backend": {
+      "ignoreDependencies": [
+        "ws", "@types/ws"
+      ]
+    }
+  }
 }

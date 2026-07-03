@@ -2,9 +2,10 @@ import { describe, expect, it } from "vitest";
 import { GameState } from "../GameState.js";
 import { Board } from "../../Board/Board.js";
 import { checkedSquares } from "../validators/__mock__/checkedSquare.js";
-import { Hands } from "../../Hand/Hands.js";
 import { PieceError } from "../../errors/piece.error.js";
 import { MovementError } from "../../errors/movement.errors.js";
+import { Hands } from "../../Hands/Hands.js";
+
 
 describe("GameState", () => {
   it("駒を動かした際に手番が移る", () => {

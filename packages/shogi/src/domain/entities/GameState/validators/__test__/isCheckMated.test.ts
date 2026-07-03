@@ -3,7 +3,8 @@ import { Board } from "../../../Board/Board.js";
 import { atamakinSquares } from "../__mock__/atamakinSquares.js";
 import { isCheckMated } from "../checkmate/isCheckMated.js";
 import { checkedSquares } from "../__mock__/checkedSquare.js";
-import { Hands } from "../../../Hand/Hands.js";
+import { Hands } from "@/domain/entities/Hands/Hands.js";
+
 
 describe("isCheckMated", () => {
   it("頭金の詰みを判定する", () => {
