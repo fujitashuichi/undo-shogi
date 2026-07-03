@@ -8,7 +8,10 @@
     "./dist/index.ts"
   ],
   "scripts": {
-    "build": "pnpm --filter ./* build",
+    "build:tools": "pnpm --filter ./tools build",
+    "build:shogi": "pnpm --filter ./shogi build",
+    "build:ws-messages": "pnpm --filter ./ws-messages build",
+    "build": "pnpm build:tools && pnpm build:shogi && pnpm build:ws-messages",
     "typecheck": "pnpm --filter ./* typecheck",
     "test": "npx vitest"
   },

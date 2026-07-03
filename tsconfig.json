@@ -46,6 +46,8 @@
     { "path": "./packages/tools/" },
     { "path": "./packages/shogi/" },
     { "path": "./packages/shogi/tsconfig.dev.json" },
-    { "path": "./packages/ws-messages/" }
+    { "path": "./packages/ws-messages/" },
+    { "path": "./apps/backend/" },
+    { "path": "./apps/frontend/" }
   ]
 }

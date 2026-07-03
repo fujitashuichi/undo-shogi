@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.d.ts"
+  },
   "scripts": {
-    "dev": "node index.ts",
-    "typecheck": "npx tsc --noemit",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node ./src/index.ts",
+    "build": "npx tsc && npx tsc-alias",
+    "test": "npx vitest"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +22,6 @@
     "ws": "catalog:"
   },
   "devDependencies": {
-    "@types/node": "^25.9.3"
+    "@types/node": "^25.9.4"
   }
 }
