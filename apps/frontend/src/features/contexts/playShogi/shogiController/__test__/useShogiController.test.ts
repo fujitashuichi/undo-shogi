@@ -1,3 +1,4 @@
+
 import { describe, it, vi } from "vitest";
 import { useShogiController } from "../useShogiController";
 import { renderHook } from "@testing-library/react";

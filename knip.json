@@ -2,17 +2,41 @@
   "workspaces": {
     ".": {
       "ignoreDependencies": [
-        "pino-pretty"
+        "pino-pretty",
+        "prettier"
       ]
     },
     "apps/frontend": {
+      "ignore": [
+        "**/dist/**",
+        "**/.next/**"
+      ],
       "entry": [
-        "./**/globals.css"
+        "**/*.{js,ts,jsx,tsx}",
+        "src/app/globals.css"
       ]
     },
     "apps/backend": {
+      "ignore": [
+        "**/dist/**"
+      ],
       "ignoreDependencies": [
         "ws", "@types/ws"
+      ]
+    },
+    "packages/tools": {
+      "ignore": [
+        "**/dist/**"
+      ]
+    },
+    "packages/shogi": {
+      "ignore": [
+        "**/dist/**"
+      ]
+    },
+    "packages/ws-messages": {
+      "ignore": [
+        "**/dist/**"
       ]
     }
   }

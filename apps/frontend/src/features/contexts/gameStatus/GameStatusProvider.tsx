@@ -6,7 +6,8 @@ import { GameStatusCtx, gameStatusCtx } from "./gameStatusContext";
 export function GameStatusProvider({ children }: { children: React.ReactNode }) {
   const [gameStatus, setGameStatus] = useState<GameStatusCtx["gameStatus"]>({
     winner: "Sente",
-    giveUp: null
+    giveUp: null,
+    onGame: true
   });
 
   const value = {

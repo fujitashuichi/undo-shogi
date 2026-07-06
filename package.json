@@ -33,6 +33,8 @@
     "@vitest/ui": "catalog:",
     "happy-dom": "catalog:",
     "knip": "catalog:",
-    "prettier": "catalog:"
+    "prettier": "catalog:",
+    "vitest": "catalog:",
+    "@testing-library/react": "catalog:"
   }
 }
