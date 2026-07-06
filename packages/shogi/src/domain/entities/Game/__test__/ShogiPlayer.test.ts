@@ -1,6 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { Game } from "../Game";
-import { handicapSchema } from "../../types/handicap.types";
+import { describe, expect, it } from "vitest";import { Game } from "../Game.js";
+import { handicapSchema } from "@/schemas/primitive/handicap.js";
 
 
 describe("ShogiPlayer.test.ts", () => {

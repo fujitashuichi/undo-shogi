@@ -25,14 +25,16 @@
   "license": "ISC",
   "packageManager": "pnpm@11.0.9",
   "dependencies": {
-    "pino": "catalog:",
-    "typescript": "^6.0.3",
-    "vitest": "catalog:"
+    "pino-pretty": "catalog:",
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
     "@types/node": "^25.6.2",
     "@vitest/ui": "catalog:",
     "happy-dom": "catalog:",
-    "prettier": "catalog:"
+    "knip": "catalog:",
+    "prettier": "catalog:",
+    "vitest": "catalog:",
+    "@testing-library/react": "catalog:"
   }
 }
