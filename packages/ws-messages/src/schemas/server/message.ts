@@ -13,7 +13,7 @@ const shogiResultMessageSchema = z.object({
 
 const sessionMessageSchema = z.object({
   clientId: z.uuid(),
-  groupId: z.uuid().or(z.literal("unGrouped"))
+  groupId: z.uuid().brand("UUID").or(z.literal("unGrouped"))
 });
 
 
