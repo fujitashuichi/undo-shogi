@@ -1,14 +1,16 @@
-import { WebSocket } from "ws";
 import type { WssRegistry } from "../WssRegistry/WssRegistry";
 import type { Client } from "./Client";
 import { onMessageEvent } from "./onMessageEvent";
 
 
 const setEvents = (
-  ws: WebSocket,
+  client: Client,
+  wssRegistry: WssRegistry,
   setAlive: (boolean: boolean) => void,
   removeClient: () => void
 ) => {
+  const ws = client.ws;
+
   ws.on("pong", () => {
     setAlive(true);
   });
@@ -21,7 +23,7 @@ const setEvents = (
     removeClient();
   });
 
-  onMessageEvent(ws);
+  onMessageEvent(client, wssRegistry);
 }
 
 
@@ -58,5 +60,5 @@ export const setupWsEvents = (
   }
 
 
-  setEvents(ws, setAlive, removeClient);
+  setEvents(client, wssRegistry, setAlive, removeClient);
 }

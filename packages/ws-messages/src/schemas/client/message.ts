@@ -13,6 +13,10 @@ export const clientMessageSchema = z.union([
     body: z.object({})
   }),
   z.object({
+    command: z.literal("joinGroup"),
+    body: z.object({})
+  }),
+  z.object({
     command: z.literal("movePiece"),
     body: z.object({
       from: positionSchema,
