@@ -1,4 +1,4 @@
-import { logger } from "@packags/tools";
+import { logger } from "@packages/tools";
 import { LogicError } from "../../errors/logic.error.js";
 import { isInBoard } from "../../lib/positions/isInArea/isInBoard.js";
 

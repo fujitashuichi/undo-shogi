@@ -1,4 +1,4 @@
-import { logger } from "@packags/tools";
+import { logger } from "@packages/tools";
 import { isInsideRange } from "../../../../tools/math/isInsideRange.js";
 import type { Board } from "../../Board/Board.js";
 import { boardConfig } from "../../config/boardConfig.js";

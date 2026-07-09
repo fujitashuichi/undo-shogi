@@ -3,7 +3,7 @@ import { pieceValidator } from "./validators/pieceValidator.js";
 import { normalKindToPromoted } from "./normalToPromoted.js";
 import { promotedKindToNormal } from "./promotedToNormal.js";
 import { pieceConfig } from "../config/pieceConfig.js";
-import { logger } from "@packags/tools";
+import { logger } from "@packages/tools";
 import type { Side } from "@/schemas/primitive/players.js";
 import { normalPieceKindSchema, promotablePieceKindSchema, promotedPieceKindSchema, type NormalPieceKind, type PieceKind } from "@/schemas/primitive/piece.js";
 

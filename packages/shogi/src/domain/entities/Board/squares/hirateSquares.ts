@@ -1,4 +1,4 @@
-import type { FixedLengthArray } from "@packags/tools";
+import type { FixedLengthArray } from "@packages/tools";
 import { ShogiPiece } from "../../Piece/Piece.js";
 import type { Board } from "../Board.js";
 

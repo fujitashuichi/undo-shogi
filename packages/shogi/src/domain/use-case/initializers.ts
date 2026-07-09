@@ -1,4 +1,4 @@
-import { type Prettify } from "@packags/tools";
+import { type Prettify } from "@packages/tools";
 
 import { Game } from "../entities/Game/Game.js";
 import { Timer } from "../entities/Timer/Timer.js";

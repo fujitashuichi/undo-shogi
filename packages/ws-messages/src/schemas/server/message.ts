@@ -1,4 +1,4 @@
-import { shogiStatusSchema } from "@paclages/shogi";
+import { shogiStatusSchema } from "@packages/shogi";
 import { z } from "zod";
 import { shogiCommandSchema, sessionCommandSchema } from "../command.types.js";
 
