@@ -123,9 +123,6 @@ importers:
       '@packages/shogi':
         specifier: workspace:*
         version: link:../../packages/shogi
-      '@packages/tools':
-        specifier: workspace:*
-        version: link:../../packages/tools
       '@packages/ws-messages':
         specifier: workspace:*
         version: link:../../packages/ws-messages
@@ -148,15 +145,6 @@ importers:
 
   apps/frontend:
     dependencies:
-      '@packages/shogi':
-        specifier: workspace:*
-        version: link:../../packages/shogi
-      '@packages/tools':
-        specifier: workspace:*
-        version: link:../../packages/tools
-      '@packages/ws-messages':
-        specifier: workspace:*
-        version: link:../../packages/ws-messages
       next:
         specifier: 'catalog:'
         version: 16.2.4(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -191,16 +179,6 @@ importers:
       typescript:
         specifier: ^5
         version: 5.9.3
-
-  packages:
-
-    dependencies:
-      '@types/node':
-        specifier: ^25.6.2
-        version: 25.9.4
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
 
   packages/shogi:
     dependencies:
@@ -237,9 +215,6 @@ importers:
       '@packages/shogi':
         specifier: workspace:*
         version: link:../shogi
-      '@packages/tools':
-        specifier: workspace:*
-        version: link:../tools
       '@types/node':
         specifier: ^25.9.4
         version: 25.9.4

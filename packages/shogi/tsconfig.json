@@ -47,10 +47,6 @@
     },
     "composite": true,
   },
-
-  "references": [
-    { "path": "../tools/" }
-  ],
   "include": ["./**/*"],
   "exclude": [
     "**/__test__/**", "**/*.test.ts",

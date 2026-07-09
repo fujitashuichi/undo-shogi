@@ -4,7 +4,6 @@ allowBuilds:
   unrs-resolver: false
 
 packages:
-  - packages/
   - packages/*
   - apps/frontend/
   - apps/backend/

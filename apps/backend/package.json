@@ -16,7 +16,6 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@packages/tools": "workspace:*",
     "@packages/shogi": "workspace:*",
     "@packages/ws-messages": "workspace:*",
     "@types/express": "catalog:",

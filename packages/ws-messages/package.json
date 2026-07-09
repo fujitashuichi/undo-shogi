@@ -17,7 +17,6 @@
   "license": "ISC",
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
-    "@packages/tools": "workspace:*",
     "@packages/shogi": "workspace:*",
     "@types/node": "^25.9.4",
     "typescript": "^6.0.3",
