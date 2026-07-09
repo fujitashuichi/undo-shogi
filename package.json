@@ -31,7 +31,6 @@
     "@testing-library/react": "catalog:",
     "@types/node": "^25.6.2",
     "@vitest/ui": "catalog:",
-    "happy-dom": "catalog:",
     "knip": "catalog:",
     "prettier": "catalog:",
     "tsc-alias": "catalog:",
