@@ -41,6 +41,8 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
 
+    "moduleResolution": "bundler",
+
     "composite": true
   },
   "include": ["./**/*"],
