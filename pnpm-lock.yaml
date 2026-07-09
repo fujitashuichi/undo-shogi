@@ -145,6 +145,9 @@ importers:
 
   apps/frontend:
     dependencies:
+      '@packages/shogi':
+        specifier: workspace:*
+        version: link:../../packages/shogi
       next:
         specifier: 'catalog:'
         version: 16.2.4(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
