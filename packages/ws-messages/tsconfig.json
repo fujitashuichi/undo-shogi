@@ -42,8 +42,8 @@
     "skipLibCheck": true,
 
     "paths": {
-      "@tools": ["../tools/dist/index.d.ts"],
-      "@shogi": ["../shogi/dist/index.d.ts"]
+      "@packages/tools": ["../tools/dist/index.d.ts"],
+      "@packages/shogi": ["../shogi/dist/index.d.ts"]
     },
     "composite": true
   },

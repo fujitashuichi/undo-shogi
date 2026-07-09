@@ -1,5 +1,5 @@
 {
-  "name": "packages/shogi",
+  "name": "@packages/shogi",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.d.js",
@@ -17,6 +17,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.33.0",
   "dependencies": {
+    "@packages/tools": "workspace:*",
     "@types/node": "^25.9.4",
     "typescript": "^6.0.3",
     "zod": "catalog:"

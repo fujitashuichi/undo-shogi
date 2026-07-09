@@ -5,7 +5,7 @@ import { checkedSquares } from "../../validators/__mock__/checkedSquare.js";
 import { longRangeCheckedSquares_Rook } from "../__mock__/longRangeCheckSquares_Rook.js";
 import { longRangeCheckedSquares_Bishop } from "../__mock__/longRangeCheckSquares_Bishop.js";
 import { dropPawnMateTrapSquares } from "../__mock__/dropPawnMateTrapSquares.js";
-import { vitest_checkArray } from "@tools";
+import { vitest_checkArray } from "@packags/tools";
 import { Hands } from "@/domain/entities/Hands/Hands.js";
 import type { Position } from "@/schemas/primitive/algebraic.js";
 

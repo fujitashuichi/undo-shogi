@@ -1,4 +1,4 @@
-import { logger } from "@tools";
+import { logger } from "@packags/tools";
 import type { Board } from "../../../Board.js";
 import type { ShogiPiece } from "@/domain/entities/Piece/Piece.js";
 import type { Position } from "@/schemas/primitive/algebraic.js";

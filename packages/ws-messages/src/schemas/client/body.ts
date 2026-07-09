@@ -1,4 +1,4 @@
-import { normalPieceKindSchema } from "@shogi";
+import { normalPieceKindSchema } from "@paclages/shogi";
 import { z } from "zod";
 import type { Command } from "../command.types.js";
 

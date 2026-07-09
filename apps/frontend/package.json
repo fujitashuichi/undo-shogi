@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "@apps/frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,6 +10,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@packages/tools": "workspace:*",
+    "@packages/shogi": "workspace:*",
+    "@packages/ws-messages": "workspace:*",
     "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"

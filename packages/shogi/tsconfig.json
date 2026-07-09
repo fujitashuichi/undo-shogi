@@ -43,7 +43,7 @@
 
     "paths": {
       "@/*": ["./src/*"],
-      "@tools": ["../tools/dist/index.d.ts"]
+      "@packages/tools": ["../tools/dist/index.d.ts"]
     },
     "composite": true,
   },

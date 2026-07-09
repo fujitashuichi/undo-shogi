@@ -1,4 +1,4 @@
-import { logger } from "@tools";
+import { logger } from "@packags/tools";
 import { PieceError } from "../../errors/piece.error.js";
 import { promotedPieceKindSchema, type PieceKind } from "@/schemas/primitive/piece.js";
 
