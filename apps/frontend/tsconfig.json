@@ -27,6 +27,11 @@
 
     "composite": true
   },
+  "references": [
+    { "path": "../../packages/tools/" },
+    { "path": "../../packages/shogi/" },
+    { "path": "../../packages/ws-messages/" }
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

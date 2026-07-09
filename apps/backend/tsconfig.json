@@ -49,6 +49,12 @@
 
     "composite": true
   },
+
+  "references": [
+    { "path": "../../packages/tools/" },
+    { "path": "../../packages/shogi/" },
+    { "path": "../../packages/ws-messages/" }
+  ],
   "include": ["./**/*"],
   "exclude": [
     "node_modules", "dist",
