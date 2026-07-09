@@ -41,8 +41,6 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
 
-    "moduleResolution": "bundler",
-
     "paths": {
       "@packages/tools": ["../../packages/tools/dist/index.d.ts"],
       "@packages/shogi": ["../../packages/shogi/dist/index.d.ts"],

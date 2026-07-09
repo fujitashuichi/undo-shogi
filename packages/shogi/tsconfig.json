@@ -41,8 +41,6 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
 
-    "moduleResolution": "bundler",
-
     "paths": {
       "@/*": ["./src/*"],
       "@packages/tools": ["../tools/dist/index.d.ts"]
