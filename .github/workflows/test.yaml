@@ -15,11 +15,11 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v6
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+
       - name: Install dependencies
-        run: |
-          curl -fsSL https://get.pnpm.io/install.sh | sh -
-          pnpm setup
-          pnpm install
+        run: pnpm install
 
       - name: Run test
         run: |
