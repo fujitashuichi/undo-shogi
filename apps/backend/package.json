@@ -20,7 +20,6 @@
     "@packages/ws-messages": "workspace:*",
     "@types/express": "catalog:",
     "@types/ws": "catalog:",
-    "happy-dom": "catalog:",
     "express": "catalog:",
     "ws": "catalog:"
   },
