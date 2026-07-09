@@ -10,6 +10,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@packages/shogi": "workspace:*",
     "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
