@@ -2,10 +2,15 @@
   "name": "@packages/shogi",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.d.js",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
   },
   "scripts": {
     "build": "npx tsc && npx tsc-alias",

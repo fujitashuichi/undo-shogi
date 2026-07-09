@@ -2,9 +2,15 @@
   "name": "@apps/backend",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/index.d.ts",
+  "types": "module",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.d.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
   },
   "scripts": {
     "dev": "node ./src/index.ts",
