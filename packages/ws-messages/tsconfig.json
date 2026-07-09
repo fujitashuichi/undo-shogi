@@ -48,6 +48,11 @@
     "composite": true
   },
 
+  "references": [
+    { "path": "../tools/" },
+    { "path": "../shogi/" }
+  ],
+
   "include": ["./**/*"],
   "exclude": [
     "node_modules", "dist",
