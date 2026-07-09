@@ -1,0 +1,31 @@
+name: Run Test
+
+on:
+  push:
+    branches: ["dev"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup node
+        uses: actions/setup-node@v6
+
+      - name: Install dependencies
+        run: |
+          curl -fsSL https://get.pnpm.io/install.sh | sh -
+          pnpm install
+
+      - name: Run test
+        run: |
+          pnpm build
+          pnpm typecheck
+          pnpm lint
+          pnpm knip
+          pnpm test

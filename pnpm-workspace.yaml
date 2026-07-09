@@ -34,6 +34,7 @@ catalog:
   react-dom: 19.2.4
   tailwindcss: ^4
   tsc-alias: ^1.9.0
+  turbo: ^2.10.4
   typescript: ^6.0.3
   vitest: ^4.1.9
   ws: ^8.21.0
