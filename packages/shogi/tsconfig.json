@@ -42,8 +42,7 @@
     "skipLibCheck": true,
 
     "paths": {
-      "@/*": ["./src/*"],
-      "@packages/tools": ["../tools/dist/index.d.ts"]
+      "@/*": ["./src/*"]
     },
     "composite": true,
   },

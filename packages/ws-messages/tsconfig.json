@@ -41,10 +41,6 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
 
-    "paths": {
-      "@packages/tools": ["../tools/dist/index.d.ts"],
-      "@packages/shogi": ["../shogi/dist/index.d.ts"]
-    },
     "composite": true
   },
   "include": ["./**/*"],
