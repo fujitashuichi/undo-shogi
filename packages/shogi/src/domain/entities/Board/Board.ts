@@ -3,7 +3,7 @@ import { hirateSquares } from "./squares/hirateSquares.js";
 import { board_dropPiece } from "./lib/dropPiece/dropPiece.js";
 import { board_movePiece } from "./lib/movePiece/movePiece.js";
 import { handicapInitializers } from "./handicapInitializers.js";
-import type { FixedLengthArray } from "@tools";
+import type { FixedLengthArray } from "@packages/tools";
 import type { Position } from "@/schemas/primitive/algebraic.js";
 
 

@@ -8,12 +8,14 @@
     },
     "apps/frontend": {
       "ignore": [
-        "**/dist/**",
         "**/.next/**"
       ],
       "entry": [
-        "**/*.{js,ts,jsx,tsx}",
+        "src/**/*.{js,ts,jsx,tsx}",
         "src/app/globals.css"
+      ],
+      "ignoreDependencies": [
+        "@packages/*"
       ]
     },
     "apps/backend": {
@@ -21,7 +23,7 @@
         "**/dist/**"
       ],
       "ignoreDependencies": [
-        "ws", "@types/ws"
+        "ws", "@types/ws", "@packages/shogi", "@packages/ws-messages"
       ]
     },
     "packages/tools": {

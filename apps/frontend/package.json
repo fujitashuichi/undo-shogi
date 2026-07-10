@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "@apps/frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,6 +10,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@packages/tools": "workspace:*",
+    "@packages/shogi": "workspace:*",
     "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
@@ -19,6 +21,7 @@
     "@types/node": "^20",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "happy-dom": "catalog:",
     "eslint": "catalog:",
     "eslint-config-next": "catalog:",
     "tailwindcss": "catalog:",

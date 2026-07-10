@@ -1,0 +1,30 @@
+name: Run Test
+
+on:
+  push:
+    branches: ["**"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup node
+        uses: actions/setup-node@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run test
+        run: |
+          pnpm build
+          pnpm typecheck
+          pnpm lint
+          pnpm knip
+          pnpm test

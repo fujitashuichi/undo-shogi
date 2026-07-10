@@ -1,3 +1,4 @@
+// @vitest-environment happy-dom
 import { describe, expect, it, vi } from "vitest";
 import { useShogiController } from "../useShogiController";
 import { renderHook } from "@testing-library/react";
