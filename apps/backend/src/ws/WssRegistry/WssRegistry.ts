@@ -1,6 +1,7 @@
 import { WebSocketServer } from "ws";
 import { Clients } from "../Clients/Clients";
 import { Groups } from "../Groups/Groups";
+import { MatchingQueue } from "../MatchingQueue/MatchingQueue";
 import { setupWssRegistry } from "./setUpWssEvents";
 import type { UUID } from "crypto";
 
@@ -10,6 +11,7 @@ export class WssRegistry {
 
   public readonly clients: Clients;
   public readonly groups: Groups;
+  public readonly matchingQueue: MatchingQueue;
 
 
   constructor(
@@ -18,12 +20,13 @@ export class WssRegistry {
     this.wss = new WebSocketServer(wssOptions);
     this.clients = new Clients();
     this.groups = new Groups();
+    this.matchingQueue = new MatchingQueue();
 
     setupWssRegistry(this);
   }
 
 
   public readonly shogiRoom = (groupId: UUID) => {
-    return this.groups.shogiRoom(groupId);
+    return this.groups.group(groupId)?.shogiRoom;
   }
 }
