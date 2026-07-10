@@ -120,6 +120,9 @@ importers:
       '@packages/shogi':
         specifier: workspace:*
         version: link:../../packages/shogi
+      '@packages/tools':
+        specifier: workspace:*
+        version: link:../../packages/tools
       '@packages/ws-messages':
         specifier: workspace:*
         version: link:../../packages/ws-messages
