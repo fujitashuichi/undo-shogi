@@ -1,94 +1,27 @@
 import type { UUID } from "crypto";
-import { Client } from "../Clients/Client";
-import { ShogiRoom } from "./ShogiRoom";
-import type { ServerMessage } from "@packages/ws-messages";
-import { encodeServerMessage } from "../../lib/encodeServerMessage";
-
-
-type Group = {
-  clients: Set<Client>,
-  shogiRoom: ShogiRoom | null
-}
-
-type All = Record<
-  UUID,
-  Group
->;
+import type { Group } from "./Group";
+import { logger } from "@packages/tools";
 
 
 export class Groups {
-  public readonly all: All = {};
+  public readonly all: Record<UUID, Group> = {};
 
   constructor() {}
 
 
-  public readonly createGroup = (
-    groupId: UUID
-  ) => {
+  public readonly group = (groupId: UUID) => {
+    return this.all[groupId];
+  }
+
+  public readonly createGroup = (groupId: UUID, group: Group) => {
     if (this.all[groupId]) {
-      return console.warn("The group is already created.");
+      return logger.warn("The group is already created.");
     }
 
-    this.all[groupId] = {
-      clients: new Set(),
-      shogiRoom: null
-    }
+    this.all[groupId] = group;
   }
 
   public readonly removeGroup = (groupId: UUID) => {
     delete this.all[groupId];
-  }
-
-
-  public readonly addToGroup = (groupId: UUID, client: Client) => {
-    if (!this.all[groupId]) {
-      return console.warn(`Group does not exists: groupId="${groupId}"`);
-    }
-
-    this.all[groupId].clients.add(client);
-  }
-
-  public readonly removeFromGroup = (groupId: UUID, client: Client) => {
-    if (!this.all[groupId]) {
-      return console.warn(`Group does not exists: groupId="${groupId}"`);
-    };
-
-    this.all[groupId].clients.delete(client);
-  }
-
-
-  public readonly clients = (groupId: UUID) => {
-    return this.all[groupId]?.clients;
-  }
-
-  public readonly sendAll = (groupId: UUID, message: ServerMessage) => {
-    const clients = this.clients(groupId);
-    if (!clients) return;
-
-    const data = encodeServerMessage(message);
-    clients.forEach(c => {
-      c.ws.send(data);
-    });
-  }
-
-
-  public readonly shogiRoom = (groupId: UUID) => {
-    return this.all[groupId]?.shogiRoom;
-  }
-
-
-  public createShogiRoom = (
-    groupId: UUID,
-    shogiOptions: ConstructorParameters<typeof ShogiRoom>[0]
-  ) => {
-    if (!this.all[groupId]) {
-      return console.warn(`Group does not exists: groupId="${groupId}"`);
-    };
-
-    if (this.all[groupId].shogiRoom) {
-      return console.warn(`Shogi room already created at Group: groupId="${groupId}"`);
-    };
-
-    this.all[groupId].shogiRoom = new ShogiRoom(shogiOptions);
   }
 }

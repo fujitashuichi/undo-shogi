@@ -8,27 +8,13 @@ export const groupingLogic = (
   wssRegistry: WssRegistry,
   message: ClientMessage
 ) => {
-  if (!(
-    message.command === "onConnection" ||
-    message.command === "joinGroup"
-  )) {
+  if (message.command !== "joinGroup") {
     client.send({
       success: false,
       errorMessage: "INTERNAL_ERROR"
     });
   }
 
-
-  if (message.command === "onConnection") {
-    client.send({
-      success: true,
-      command: "onConnection",
-      value: {
-        clientId: client.clientId,
-        groupId: "unGrouped"
-      }
-    });
-  }
 
   if (message.command === "joinGroup") {
     // キューに追加
