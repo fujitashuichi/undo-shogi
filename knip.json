@@ -23,7 +23,7 @@
         "**/dist/**"
       ],
       "ignoreDependencies": [
-        "ws", "@types/ws", "@packages/shogi", "@packages/ws-messages"
+        "ws", "@types/ws", "@packages/*"
       ]
     },
     "packages/tools": {
