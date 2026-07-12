@@ -2,7 +2,7 @@ import { z } from "zod";
 
 
 export const shogiCommandSchema = z.enum(["movePiece", "dropPiece", "undo", "startMatch", "stopMatch"]);
-export const sessionCommandSchema = z.enum(["onConnection", "joinGroup"]);
+export const sessionCommandSchema = z.enum(["onConnection", "matching"]);
 
 export const commandSchema = z.union([
   shogiCommandSchema,

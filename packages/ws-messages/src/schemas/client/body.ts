@@ -11,7 +11,7 @@ const positionSchema = z.object({
 
 const onConnectionSchema = z.object({});
 
-const joinGroupSchema = z.object({
+const matchingSchema = z.object({
   groupId: z.enum(["matching", "unGrouped"])
 });
 
@@ -45,7 +45,7 @@ export type Body = z.infer<typeof bodySchema>;
 
 type BodySchemasType =
   | typeof onConnectionSchema
-  | typeof joinGroupSchema
+  | typeof matchingSchema
   | typeof movePieceSchema
   | typeof dropPieceSchema
   | typeof undoSchema
@@ -54,7 +54,7 @@ type BodySchemasType =
 
 export const bodySchemaMap: Record<Command, BodySchemasType> = {
   onConnection: onConnectionSchema,
-  joinGroup: joinGroupSchema,
+  matching: matchingSchema,
   movePiece: movePieceSchema,
   dropPiece: dropPieceSchema,
   undo: undoSchema,

@@ -13,7 +13,7 @@ export const clientMessageSchema = z.union([
     body: z.object({})
   }),
   z.object({
-    command: z.literal("joinGroup"),
+    command: z.literal("matching"),
     body: z.object({})
   }),
   z.object({
