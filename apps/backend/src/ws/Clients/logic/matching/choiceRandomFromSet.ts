@@ -1,6 +1,5 @@
-export const choiceRandomFromSet = <T>(
-  set: Set<T>
+export const choiceRandomFromArray = <T>(
+  array: Array<T>
 ) => {
-  const array = [...set];
   return array[Math.floor(Math.random() * array.length)];
 }
