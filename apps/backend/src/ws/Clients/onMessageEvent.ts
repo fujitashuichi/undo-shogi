@@ -1,9 +1,9 @@
 import { decodeBinary } from "../../lib/decodeClientMessage";
 import { clientMessageSchema, type ClientMessage } from "@packages/ws-messages";
 import type { Client } from "./Client";
-import { shogiLogic } from "./logic/shogiLogic";
+import { shogiLogic } from "./logic/shogi/shogiLogic";
 import type { WssRegistry } from "../WssRegistry/WssRegistry";
-import { groupingLogic } from "./logic/groupingLogic";
+import { matchingLogic } from "./logic/matching/matchingLogic";
 
 
 const messageRouter = (
@@ -23,8 +23,8 @@ const messageRouter = (
       });
       break;
 
-    case "joinGroup":
-      groupingLogic(client, wssRegistry, message);
+    case "matching":
+      matchingLogic(client, wssRegistry, message);
       break;
 
     default:
