@@ -20,7 +20,6 @@ describe("ShogiController: callback関数の動作テスト", () => {
         Gote: 30 * 60
       },
       onTick: (side, remaining) => {
-        console.log(`${side}: ${remaining[side]} s`);
         onTickMock();
       }
     });
@@ -41,7 +40,6 @@ describe("ShogiController: callback関数の動作テスト", () => {
         Gote: 3
       },
       onTimeUp: (side) => {
-        console.log(`${side}: lose`);
         onTickMock();
       }
     });

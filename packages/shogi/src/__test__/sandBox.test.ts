@@ -1,9 +1,12 @@
-import { describe, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { Timer } from "../domain/entities/Timer/Timer";
 
 describe("sandBox", () => {
-  it("Timerのコールバック関数を実演", () => {
+  it("Timerのコールバック関数が過不足なく呼ばれる", () => {
     vi.useFakeTimers();
+
+    let tickCount = 0;
+    let timeUpCount = 0;
 
     const timer = new Timer({
       remainingSeconds: {
@@ -11,11 +14,11 @@ describe("sandBox", () => {
         Gote:  3
       },
 
-      onTick: (side, remaining) => {
-        console.log(`${side}: ${remaining[side]} s`);
+      onTick: (_side, _remaining) => {
+        tickCount++;
       },
-      onTimeUp: (side) => {
-        console.log(`${side} lose...`);
+      onTimeUp: (_side) => {
+        timeUpCount++;
       }
     });
 
@@ -25,5 +28,8 @@ describe("sandBox", () => {
     timer.stopTimer();
 
     vi.useRealTimers();
+
+    expect(tickCount).toBe(3);
+    expect(timeUpCount).toBe(1);
   });
 });

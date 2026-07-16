@@ -1,4 +1,5 @@
-import { describe, expect, it } from "vitest";import { Game } from "../Game.js";
+import { describe, expect, it } from "vitest";
+import { Game } from "../Game.js";
 import { handicapSchema } from "@/schemas/primitive/handicap.js";
 
 

@@ -25,7 +25,7 @@ export class Board {
   }
 
 
-  public static init = {
+  public static readonly init = {
     hirate: () => {
       return new Board(hirateSquares)
     },

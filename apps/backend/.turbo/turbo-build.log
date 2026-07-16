@@ -1,4 +1,0 @@
-$ npx tsc && npx tsc-alias
-src/ws/Clients/logic/matching/matchingLogic.ts(12,7): error TS2367: This comparison appears to be unintentional because the types '"movePiece" | "dropPiece" | "undo" | "startMatch" | "stopMatch" | "onConnection" | "matching"' and '"joinGroup"' have no overlap.
-src/ws/Clients/onMessageEvent.ts(26,10): error TS2678: Type '"joinGroup"' is not comparable to type '"movePiece" | "dropPiece" | "undo" | "startMatch" | "stopMatch" | "onConnection" | "matching"'.
-[ELIFECYCLE] Command failed with exit code 2.
