@@ -28,7 +28,7 @@ export const kifToActions = (kifText: string): MoveAction[] => {
       break;
     }
 
-    const match = line.match(moveRegex);
+    const match = new RegExp(moveRegex).exec(line);
     if (!match) continue;
 
     const [_, _indexStr, toStr, pieceStr, _modifierStr, fromXStr, fromYStr] = match;
@@ -73,8 +73,8 @@ export const kifToActions = (kifText: string): MoveAction[] => {
 
       if (!fromXStr || !fromYStr || !kind) throw new KifError("UNSUPPORTED_KIF");
 
-      const kifFromX = parseInt(fromXStr, 10);
-      const kifFromY = parseInt(fromYStr, 10);
+      const kifFromX = Number.parseInt(fromXStr, 10);
+      const kifFromY = Number.parseInt(fromYStr, 10);
       const from: Position = convertPosition.kifToLogicPosition({ x: kifFromX, y: kifFromY });
 
       const promote = pieceStr.includes("成");

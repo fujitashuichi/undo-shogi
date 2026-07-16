@@ -24,7 +24,7 @@ export class Game {
   }
 
 
-  public static init = {
+  public static readonly init = {
     ...initializers,
 
     byKif: (kif: string): Game => {

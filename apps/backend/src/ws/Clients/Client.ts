@@ -1,4 +1,4 @@
-import type { UUID } from "crypto";
+import type { UUID } from "node:crypto";
 import { WebSocket } from "ws";
 import type { WssRegistry } from "../WssRegistry/WssRegistry";
 import { setupWsEvents } from "./setUpWsEvents";

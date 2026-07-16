@@ -8,9 +8,7 @@ export const checkRepetition = (actionsHash: string[]): RepetitionResult => {
   const hashPositions: Record<string, number[]> = {};
 
   actionsHash.forEach((hash, index) => {
-    if (!hashPositions[hash]) {
-      hashPositions[hash] = [];
-    }
+    hashPositions[hash] ??= [];
     hashPositions[hash].push(index);
   });
 
@@ -20,8 +18,8 @@ export const checkRepetition = (actionsHash: string[]): RepetitionResult => {
 
   if (candidates.length === 0) return { isRepetition: false };
 
-  const targetHash = candidates.reduce((earliest, current) =>
-    hashPositions[current]![3]! < hashPositions[earliest]![3]! ? current : earliest
+  const targetHash = candidates.reduce(
+    (earliest, current) => hashPositions[current]![3]! < hashPositions[earliest]![3]! ? current : earliest
   );
 
 

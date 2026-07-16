@@ -9,7 +9,7 @@ import type { Position } from "@/schemas/primitive/algebraic.js";
 
 
 const byPiece = (board: Board, hands: Hands, kind: NormalPieceKind, side: Side): Position[] => {
-  if (!hands.allPieceKindsBySide(side).some(k => k === kind)) {
+  if (!hands.allPieceKindsBySide(side).includes(kind)) {
     return [];
   }
 

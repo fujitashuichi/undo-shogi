@@ -2,7 +2,7 @@ import type { ServerMessage } from "@packages/ws-messages";
 import type { Client } from "../Clients/Client";
 import { ShogiRoom } from "./ShogiRoom";
 import { encodeServerMessage } from "../../lib/encodeServerMessage";
-import type { UUID } from "crypto";
+import type { UUID } from "node:crypto";
 
 
 type Clients = {

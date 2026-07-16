@@ -4,7 +4,7 @@ import { Groups } from "../Groups/Groups";
 import { MatchingQueue } from "../MatchingQueue/MatchingQueue";
 import { Matcher } from "../Matcher/Matcher";
 import { setupWssRegistry } from "./setUpWssEvents";
-import type { UUID } from "crypto";
+import type { UUID } from "node:crypto";
 
 
 export class WssRegistry {

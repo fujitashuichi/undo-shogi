@@ -31,8 +31,8 @@ const assertMotionVector = (board: Board, current: Position, next: Position): vo
         x += dx;
         y += dy;
       }
-    } else {
-      if (next.x === x && next.y === y) return true;
+    } else if (next.x === x && next.y === y) {
+      return true;
     }
     return false;
   });

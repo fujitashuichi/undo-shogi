@@ -30,7 +30,7 @@ export const actionsToKif = (moves: MoveAction[]): string => {
     });
 
     let toStr = "";
-    if (lastTo && lastTo.x === toPosition.x && lastTo.y === toPosition.y) {
+    if (lastTo?.x === toPosition.x && lastTo.y === toPosition.y) {
       toStr = "同　";
     } else {
       toStr = `${numToKanjiX[toPosition.x]}${numToKanjiY[toPosition.y]}`;
