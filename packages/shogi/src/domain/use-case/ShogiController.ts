@@ -9,7 +9,7 @@ import type { ShogiStatus } from "@/schemas/structural/shogiController.js";
 
 export class ShogiController {
   private _game: Game;
-  private _timer: Timer;
+  private readonly _timer: Timer;
 
   constructor(
     game: Game,
@@ -41,7 +41,7 @@ export class ShogiController {
   }
 
 
-  static readonly init = {
+  public static readonly init = {
     ...initializers
   }
 

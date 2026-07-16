@@ -16,9 +16,7 @@ export const searchKingPosition = (board: Board, side: Side): Position | undefin
       const square = board.squares[y]![x];
 
       if (
-        square &&
-        square.kind === "King" &&
-        square.side === side
+        square?.kind === "King" && square.side === side
       ) {
         kingPosition = { x, y };
         break outerLoop;

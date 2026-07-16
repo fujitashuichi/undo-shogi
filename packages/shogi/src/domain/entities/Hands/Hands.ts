@@ -12,7 +12,7 @@ export class Hands {
     this.pieceRecord = pieceRecord;
   }
 
-  public static init = {
+  public static readonly init = {
     empty: () => {
       return new Hands({
         Sente: {

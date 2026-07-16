@@ -16,10 +16,12 @@ type Options = {
 
 export class Timer {
   private timerId: ReturnType<typeof setInterval> | null = null;
-  private history: RemainingSeconds[];
 
   private _remaining: RemainingSeconds;
   private currentSide: Side;
+
+  private readonly history: RemainingSeconds[];
+
   public readonly onTimeUp: Options["onTimeUp"];
   public readonly onTick:   Options["onTick"]
 
@@ -27,9 +29,8 @@ export class Timer {
     options: Options
   ) {
     this._remaining = { ...options.remainingSeconds };
-    this.history = options.history ?? [this.remainingSeconds];
     this.currentSide = options.currentSide ?? "Sente";
-
+    this.history = options.history ?? [this.remainingSeconds];
     this.onTimeUp = options.onTimeUp;
     this.onTick   = options.onTick;
   }

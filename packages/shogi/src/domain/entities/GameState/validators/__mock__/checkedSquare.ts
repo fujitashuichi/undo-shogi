@@ -1,7 +1,7 @@
 import type { FixedLengthArray } from "@packages/tools";
 import type { Board } from "../../../Board/Board.js";
 import { ShogiPiece } from "../../../Piece/Piece.js";
-import type { Side } from "../../../types/players.types.js";
+import type { Side } from "../../../../../schemas/primitive/players.js";
 
 
 type Row = FixedLengthArray<ShogiPiece | undefined, 9>;
@@ -11,7 +11,7 @@ const pawn = (side: Side) => {
 }
 
 
-const row_empty = Array(9).fill(undefined) as Row;
+const row_empty = new Array(9).fill(undefined) as Row;
 
 
 export const checkedSquares: Board["squares"] = [

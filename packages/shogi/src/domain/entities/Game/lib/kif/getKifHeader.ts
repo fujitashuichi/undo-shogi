@@ -1,7 +1,7 @@
 export const getKifHeader = (kifContent: string): Record<string, string> => {
   const headers: Record<string, string> = {};
 
-  const lines = kifContent.replace(/\r\n/g, '\n').split('\n');
+  const lines = kifContent.replaceAll('\r\n', '\n').split('\n');
 
   for (const line of lines) {
     const trimmedLine = line.trim();

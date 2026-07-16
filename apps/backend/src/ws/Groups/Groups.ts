@@ -1,12 +1,10 @@
-import type { UUID } from "crypto";
+import type { UUID } from "node:crypto";
 import type { Group } from "./Group";
 import { logger } from "@packages/tools";
 
 
 export class Groups {
   public readonly all: Record<UUID, Group> = {};
-
-  constructor() {}
 
 
   public readonly group = (groupId: UUID) => {

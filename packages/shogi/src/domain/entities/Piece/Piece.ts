@@ -1,4 +1,4 @@
-import type { UUID } from "crypto";
+import type { UUID } from "node:crypto";
 import { pieceValidator } from "./validators/pieceValidator.js";
 import { normalKindToPromoted } from "./normalToPromoted.js";
 import { promotedKindToNormal } from "./promotedToNormal.js";
