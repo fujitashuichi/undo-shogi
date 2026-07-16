@@ -18,8 +18,13 @@ export const checkRepetition = (actionsHash: string[]): RepetitionResult => {
 
   if (candidates.length === 0) return { isRepetition: false };
 
-  const targetHash = candidates.reduce(
-    (earliest, current) => hashPositions[current]![3]! < hashPositions[earliest]![3]! ? current : earliest
+  const targetHash = candidates.reduce<null | string>((earliest, current) => {
+      if (earliest === null || !hashPositions[earliest]) {
+        return current;
+      }
+      return hashPositions[current]![3]! < hashPositions[earliest]![3]! ? current : earliest
+    },
+    null
   );
 
 
