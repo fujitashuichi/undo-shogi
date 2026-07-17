@@ -2,6 +2,8 @@ import express from "express";
 import type { Request, Response } from "express"
 
 const app = express();
+app.disable("x-powered-by");
+
 const port = 3000;
 
 
