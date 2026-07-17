@@ -1,6 +1,6 @@
 import { shogiStatusSchema } from "@packages/shogi";
 import { z } from "zod";
-import { shogiCommandSchema, sessionCommandSchema } from "../command.types.js";
+import { shogiCommandSchema, sessionCommandSchema } from "../command.schemas.js";
 
 
 const errorMessageSchema = z.enum([

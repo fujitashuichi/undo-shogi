@@ -1,6 +1,6 @@
 import { normalPieceKindSchema } from "@packages/shogi";
 import { z } from "zod";
-import type { Command } from "../command.types.js";
+import type { Command } from "../command.schemas.js";
 
 
 const positionSchema = z.object({
