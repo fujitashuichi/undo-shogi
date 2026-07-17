@@ -40,5 +40,15 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true
-  }
+  },
+
+  // VSCodeの補完のために必須
+  "references": [
+    { "path": "./packages/tools/" },
+    { "path": "./packages/shogi/tsconfig.json" },
+    { "path": "./packages/shogi/tsconfig.test.json" },
+    { "path": "./packages/ws-messages/" },
+    { "path": "./apps/backend/" },
+    { "path": "./apps/frontend/" }
+  ]
 }

@@ -4,7 +4,8 @@
     "composite": true
   },
   "include": [
-    "./**/*"
+    "./**/*",
+    "**/__test__/**", "**/__mock__/**"
   ],
   "exclude": [
     "node_modules", "dist"
