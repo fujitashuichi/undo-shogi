@@ -1,9 +1,9 @@
-import { decodeBinary } from "../../lib/decodeClientMessage";
+import { decodeBinary } from "../../../lib/decodeClientMessage";
 import { clientMessageSchema, type ClientMessage } from "@packages/ws-messages";
-import type { Client } from "./Client";
-import { shogiLogic } from "./logic/shogi/shogiLogic";
-import type { WssRegistry } from "../WssRegistry/WssRegistry";
-import { matchingLogic } from "./logic/matching/matchingLogic";
+import type { Client } from "../Client";
+import { shogiLogic } from "./logic/shogiLogic";
+import type { WssRegistry } from "../../WssRegistry/WssRegistry";
+import { matchingLogic } from "./logic/matchingLogic";
 
 
 const messageRouter = (

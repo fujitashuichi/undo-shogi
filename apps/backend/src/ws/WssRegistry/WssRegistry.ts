@@ -1,7 +1,7 @@
 import { WebSocketServer } from "ws";
 import { Clients } from "../Clients/Clients";
 import { Groups } from "../Groups/Groups";
-import { MatchingQueue } from "../MatchingQueue/MatchingQueue";
+import { MatchingQueue } from "../Matcher/MatchingQueue";
 import { Matcher } from "../Matcher/Matcher";
 import { setupWssRegistry } from "./setUpWssEvents";
 import type { UUID } from "node:crypto";
@@ -23,7 +23,7 @@ export class WssRegistry {
     this.clients = new Clients();
     this.groups = new Groups();
     this.matchingQueue = new MatchingQueue();
-    this.matcher = new Matcher(this.matchingQueue.queue);
+    this.matcher = new Matcher(this.matchingQueue);
 
     setupWssRegistry(this);
   }

@@ -1,5 +1,5 @@
-import type { WssRegistry } from "../WssRegistry/WssRegistry";
-import type { Client } from "./Client";
+import type { WssRegistry } from "../../WssRegistry/WssRegistry";
+import type { Client } from "../Client";
 import { onMessageEvent } from "./onMessageEvent";
 
 
