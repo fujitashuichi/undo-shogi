@@ -37,9 +37,6 @@ export class Matcher {
       Gote: matchedClient
     };
 
-    this.queue.delete(client);
-    this.queue.delete(matchedClient);
-
     return onMatched(clients);
   }
 }
