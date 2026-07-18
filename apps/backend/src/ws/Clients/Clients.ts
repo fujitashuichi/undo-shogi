@@ -6,8 +6,6 @@ import { encodeServerMessage } from "../../lib/encodeServerMessage";
 export class Clients {
   public readonly all: Set<Client> = new Set();
 
-  constructor() {}
-
 
   public readonly findById = (
     clientId: Client["clientId"]

@@ -1,7 +1,7 @@
 import type { UUID } from "node:crypto";
 import { WebSocket } from "ws";
 import type { WssRegistry } from "../WssRegistry/WssRegistry";
-import { setupWsEvents } from "./setUpWsEvents";
+import { setupWsEvents } from "./events/setUpWsEvents";
 import { encodeServerMessage } from "../../lib/encodeServerMessage";
 import type { ServerMessage } from "@packages/ws-messages";
 

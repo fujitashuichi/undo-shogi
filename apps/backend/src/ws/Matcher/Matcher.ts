@@ -1,6 +1,6 @@
 import type { Client } from "../Clients/Client";
+import { choiceRandomFromArray } from "./matching/choiceRandomFromSet";
 import type { MatchingQueue } from "./MatchingQueue";
-import { choiceRandomFromArray } from "../Clients/logic/matching/choiceRandomFromSet";
 import type { Side } from "@packages/shogi";
 
 
@@ -19,13 +19,10 @@ export class Matcher {
     onMatched: (clients: Record<Side, Client>) => T,
     onFailure: () => U
   }): T | U => {
-    if (!this.queue.includes(client)) {
+    if (!this.queue.includes(client) || this.queue.length === 1) {
       return onFailure();
     }
 
-    if (this.queue.length === 1) {
-      return onFailure();
-    }
 
     const matchedClient = choiceRandomFromArray(
       [...this.queue].filter(c => c.clientId !== client.clientId)

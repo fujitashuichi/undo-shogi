@@ -1,8 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { Client } from "../../../Client";
-import { Matcher } from "../../../../Matcher/Matcher";
-import { mockClient } from "../__mock__/Client.mock";
-import { MatchingQueue } from "../../../../Matcher/MatchingQueue";
+import { MatchingQueue } from "../MatchingQueue";
+import { Matcher } from "../Matcher";
+import { mockClient } from "../../Clients/__mock__/Client.mock";
 
 
 describe("Matcher", () => {

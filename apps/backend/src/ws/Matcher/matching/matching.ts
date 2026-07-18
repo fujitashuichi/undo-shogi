@@ -1,7 +1,7 @@
 import type { UUID } from "node:crypto";
-import type { WssRegistry } from "../../../WssRegistry/WssRegistry";
-import type { Client } from "../../Client";
-import { Group } from "../../../Groups/Group";
+import { Group } from "../../Groups/Group";
+import { WssRegistry } from "../../WssRegistry/WssRegistry";
+import { Client } from "../../Clients/Client";
 
 
 type Result =

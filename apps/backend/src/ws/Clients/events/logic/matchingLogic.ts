@@ -1,7 +1,7 @@
 import type { ClientMessage } from "@packages/ws-messages";
-import type { WssRegistry } from "../../../WssRegistry/WssRegistry";
+import { matching } from "../../../Matcher/matching/matching";
 import type { Client } from "../../Client";
-import { matching } from "./matching";
+import type { WssRegistry } from "../../../WssRegistry/WssRegistry";
 
 
 export const matchingLogic = (
