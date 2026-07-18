@@ -1,20 +1,18 @@
 import type { Client } from "../Clients/Client";
 
 export class MatchingQueue {
-  private _queue: Set<Client> = new Set();
-
-  constructor() {}
+  private readonly _queue: Set<Client> = new Set();
 
 
   public get queue() {
-    return this._queue;
+    return [...this._queue];
   }
 
   public add = (client: Client) => {
-    this.queue.add(client);
+    this._queue.add(client);
   }
 
   public remove = (client: Client) => {
-    this.queue.delete(client);
+    this._queue.delete(client);
   }
 }

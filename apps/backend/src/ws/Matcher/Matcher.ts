@@ -1,24 +1,29 @@
 import type { Client } from "../Clients/Client";
-import type { MatchingQueue } from "../MatchingQueue/MatchingQueue";
+import type { MatchingQueue } from "./MatchingQueue";
 import { choiceRandomFromArray } from "../Clients/logic/matching/choiceRandomFromSet";
 import type { Side } from "@packages/shogi";
 
 
 export class Matcher {
   constructor(
-    private readonly queue: MatchingQueue["queue"]
+    public readonly matchingQueue: MatchingQueue
   ) {}
+
+
+  public get queue() {
+    return this.matchingQueue.queue;
+  }
 
   public readonly tryMatch = <T, U>({ client, onMatched, onFailure }: {
     client: Client,
     onMatched: (clients: Record<Side, Client>) => T,
     onFailure: () => U
   }): T | U => {
-    if (!this.queue.has(client)) {
-      this.queue.add(client);
+    if (!this.queue.includes(client)) {
+      return onFailure();
     }
 
-    if (this.queue.size === 1) {
+    if (this.queue.length === 1) {
       return onFailure();
     }
 

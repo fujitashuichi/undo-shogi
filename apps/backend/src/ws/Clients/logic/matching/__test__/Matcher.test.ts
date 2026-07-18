@@ -2,36 +2,21 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { Client } from "../../../Client";
 import { Matcher } from "../../../../Matcher/Matcher";
 import { mockClient } from "../__mock__/Client.mock";
+import { MatchingQueue } from "../../../../Matcher/MatchingQueue";
 
 
 describe("Matcher", () => {
-  let queue: Set<Client>;
+  let matchingQueue: MatchingQueue;
   let matcher: Matcher;
 
   beforeEach(() => {
-    queue = new Set<Client>();
-    matcher = new Matcher(queue);
+    matchingQueue = new MatchingQueue();
+    matcher = new Matcher(matchingQueue);
   });
-
-
-  it("キューに存在しないクライアントがtryMatchを呼んだ場合、キューに追加される", () => {
-    const client = mockClient();
-
-    const result = matcher.tryMatch({
-      client,
-      onMatched: () => "success",
-      onFailure: () => "failed",
-    });
-
-    expect(result).toBe("failed");
-    expect(queue.has(client)).toBe(true);
-    expect(queue.size).toBe(1);
-  });
-
 
   it("キューに自分しかいない場合、マッチングが失敗する", () => {
     const client = mockClient();
-    queue.add(client);
+    matchingQueue.add(client);
 
     const result = matcher.tryMatch({
       client,
@@ -40,16 +25,16 @@ describe("Matcher", () => {
     });
 
     expect(result).toBe("failed");
-    expect(queue.size).toBe(1);
+    expect(matchingQueue.queue).toHaveLength(1);
   });
 
 
-  it("自分以外のプレイヤーがキューにいる場合、マッチングが成功し、お互いがキューから削除される", () => {
+  it("自分以外のプレイヤーがキューにいる場合、マッチングが成功する", () => {
     const me = mockClient();
     const rival = mockClient();
 
-    queue.add(me);
-    queue.add(rival);
+    matchingQueue.add(me);
+    matchingQueue.add(rival);
 
     const onMatchedMock = vi.fn((_clients) => "matched");
     const onFailureMock = vi.fn(() => "failure");
@@ -65,9 +50,5 @@ describe("Matcher", () => {
 
     expect(onMatchedMock).toHaveBeenCalledTimes(1);
     expect(onFailureMock).not.toHaveBeenCalled();
-
-    expect(queue.has(me)).toBe(false);
-    expect(queue.has(rival)).toBe(false);
-    expect(queue.size).toBe(0);
   });
 });
