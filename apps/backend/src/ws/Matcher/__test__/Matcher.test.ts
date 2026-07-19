@@ -1,21 +1,18 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { MatchingQueue } from "../MatchingQueue";
 import { Matcher } from "../Matcher";
 import { mockClient } from "../../Clients/__mock__/Client.mock";
 
 
 describe("Matcher", () => {
-  let matchingQueue: MatchingQueue;
   let matcher: Matcher;
 
   beforeEach(() => {
-    matchingQueue = new MatchingQueue();
-    matcher = new Matcher(matchingQueue);
+    matcher = new Matcher();
   });
 
   it("キューに自分しかいない場合、マッチングが失敗する", () => {
     const client = mockClient();
-    matchingQueue.add(client);
+    matcher.enqueue(client);
 
     const result = matcher.tryMatch({
       client,
@@ -24,7 +21,7 @@ describe("Matcher", () => {
     });
 
     expect(result).toBe("failed");
-    expect(matchingQueue.items).toHaveLength(1);
+    expect(matcher.clients).toHaveLength(1);
   });
 
 
@@ -32,8 +29,8 @@ describe("Matcher", () => {
     const me = mockClient();
     const rival = mockClient();
 
-    matchingQueue.add(me);
-    matchingQueue.add(rival);
+    matcher.enqueue(me);
+    matcher.enqueue(rival);
 
     const onMatchedMock = vi.fn((_clients) => "matched");
     const onFailureMock = vi.fn(() => "failure");
