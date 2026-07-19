@@ -50,9 +50,8 @@ export const setupWsEvents = (
 
 
   const removeClient = () => {
-    if (client) {
-      wssRegistry.clients.removeClient(client);
-    }
+    wssRegistry.matcher.dequeue(client);
+    wssRegistry.clients.removeClient(client);
 
     setAlive(false);
     clearInterval(checkAlive);

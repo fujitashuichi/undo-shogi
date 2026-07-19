@@ -1,18 +1,27 @@
 import type { Client } from "../Clients/Client";
 
 export class MatchingQueue {
-  private readonly _queue: Set<Client> = new Set();
+  private _queue: Array<Client> = [];
 
 
-  public get queue() {
-    return [...this._queue];
+  public get items(): Readonly<Array<Client>> {
+    return this._queue;
   }
 
+  public get size() {
+    return this._queue.length;
+  }
+
+  public readonly has = (client: Client) => {
+    return this._queue.includes(client);
+  }
+
+
   public add = (client: Client) => {
-    this._queue.add(client);
+    this._queue.push(client);
   }
 
   public remove = (client: Client) => {
-    this._queue.delete(client);
+    this._queue = this._queue.filter(c => c.clientId !== client.clientId);
   }
 }
