@@ -24,7 +24,7 @@ describe("Matcher", () => {
     });
 
     expect(result).toBe("failed");
-    expect(matchingQueue.queue).toHaveLength(1);
+    expect(matchingQueue.items).toHaveLength(1);
   });
 
 

@@ -12,7 +12,7 @@ export class WssRegistry {
 
   public readonly clients: Clients;
   public readonly groups: Groups;
-  public readonly matchingQueue: MatchingQueue;
+  private readonly matchingQueue: MatchingQueue;
   public readonly matcher: Matcher;
 
 

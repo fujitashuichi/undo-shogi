@@ -17,7 +17,7 @@ export const matchingLogic = (
   }
 
 
-  wssRegistry.matchingQueue.add(client);
+  wssRegistry.matcher.enqueue(client);
   const result = matching(wssRegistry, client);
 
   if (!result.success) {
