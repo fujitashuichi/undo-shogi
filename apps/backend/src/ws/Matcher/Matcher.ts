@@ -1,14 +1,16 @@
 import type { Client } from "../Clients/Client";
 import { getRandomInt } from "./matching/choiceRandomFromSet";
-import type { MatchingQueue } from "./MatchingQueue";
+import { MatchingQueue } from "./MatchingQueue";
 import type { Side } from "@packages/shogi";
 
 
 export class Matcher {
-  constructor(
-    private readonly queue: MatchingQueue
-  ) {}
+  private readonly queue = new MatchingQueue();
 
+
+  public get clients() {
+    return this.queue.items;
+  }
 
   public readonly enqueue = (client: Client) => {
     this.queue.add(client);
