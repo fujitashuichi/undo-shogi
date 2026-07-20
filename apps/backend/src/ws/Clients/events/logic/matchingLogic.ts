@@ -1,7 +1,7 @@
 import type { ClientMessage } from "@packages/ws-messages";
-import { matching } from "../../../Matcher/matching/matching";
 import type { Client } from "../../Client";
 import type { WssRegistry } from "../../../WssRegistry/WssRegistry";
+import { Group } from "../../../Groups/Group";
 
 
 export const matchingLogic = (
@@ -18,25 +18,27 @@ export const matchingLogic = (
 
 
   wssRegistry.matcher.enqueue(client);
-  const result = matching(wssRegistry, client);
 
-  if (!result.success) {
-    return client.send({
-      success: true,
-      command: "matching",
-      value: {
-        clientId: client.clientId,
-        groupId: "unMatched"
+  wssRegistry.matcher.tryMatching({
+    onMatched: (pairs) => {
+      pairs.forEach(pair => {
+        const groupId = crypto.randomUUID();
+        wssRegistry.groups.createGroup(
+          groupId, new Group(pair)
+        );
+
+        [pair.Sente, pair.Gote].forEach(c => {
+          c.send({
+            success: true,
+            command: "matching",
+            value: {
+              clientId: c.clientId,
+              groupId: groupId
+            }
+          })
+        });
       }
-    });
-  }
-
-  return client.send({
-    success: true,
-    command: "matching",
-    value: {
-      clientId: client.clientId,
-      groupId: result.groupId
-    }
-  })
+    )},
+    onFailure: () => {}
+  });
 }
