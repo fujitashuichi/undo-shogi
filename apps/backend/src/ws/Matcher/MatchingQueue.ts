@@ -18,6 +18,7 @@ export class MatchingQueue {
 
 
   public add = (client: Client) => {
+    if (this.has(client)) return;
     this._queue.push(client);
   }
 
