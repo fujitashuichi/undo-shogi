@@ -14,13 +14,12 @@ describe("Matcher", () => {
     const client = mockClient();
     matcher.enqueue(client);
 
-    const result = matcher.tryMatch({
-      client,
-      onMatched: () => "success",
-      onFailure: () => "failed",
-    });
+    const onMatched = vi.fn();
+    const onFailure = vi.fn();
+    matcher.tryMatching({ onMatched, onFailure });
 
-    expect(result).toBe("failed");
+    expect(onMatched).not.toHaveBeenCalled();
+    expect(onFailure).toHaveBeenCalledTimes(1);
     expect(matcher.clients).toHaveLength(1);
   });
 
@@ -32,19 +31,12 @@ describe("Matcher", () => {
     matcher.enqueue(me);
     matcher.enqueue(rival);
 
-    const onMatchedMock = vi.fn((_clients) => "matched");
-    const onFailureMock = vi.fn(() => "failure");
+    const onMatched = vi.fn();
+    const onFailure = vi.fn();
+    matcher.tryMatching({ onMatched, onFailure });
 
-    const result = matcher.tryMatch({
-      client: me,
-      onMatched: onMatchedMock,
-      onFailure: onFailureMock,
-    });
-
-
-    expect(result).toEqual("matched");
-
-    expect(onMatchedMock).toHaveBeenCalledTimes(1);
-    expect(onFailureMock).not.toHaveBeenCalled();
+    expect(onMatched).toHaveBeenCalledTimes(1);
+    expect(onFailure).not.toHaveBeenCalled();
+    expect(matcher.clients).toHaveLength(0);
   });
 });
