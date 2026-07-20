@@ -29,7 +29,7 @@ export class Matcher {
     onMatched: (pairs: Pair[]) => void,
     onFailure: () => void
   }): void => {
-    if (this.queue.size > 2) {
+    if (this.queue.size < 2) {
       return onFailure();
     }
 
