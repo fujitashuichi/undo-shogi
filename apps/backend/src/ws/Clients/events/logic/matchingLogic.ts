@@ -1,7 +1,8 @@
 import type { ClientMessage } from "@packages/ws-messages";
 import type { Client } from "../../Client";
 import type { WssRegistry } from "../../../WssRegistry/WssRegistry";
-import { Group } from "../../../Groups/Group";
+import { stopMatching } from "./stopMatching";
+import { startMatching } from "./startMatching";
 
 
 export const matchingLogic = (
@@ -9,36 +10,16 @@ export const matchingLogic = (
   wssRegistry: WssRegistry,
   message: ClientMessage
 ) => {
-  if (message.command !== "matching") {
-    return client.send({
-      success: false,
-      errorMessage: "INTERNAL_ERROR"
-    });
+  if (message.command === "stopMatching") {
+    return stopMatching(client, wssRegistry);
   }
 
+  if (message.command === "startMatching") {
+    return startMatching(client, wssRegistry);
+  }
 
-  wssRegistry.matcher.enqueue(client);
-
-  wssRegistry.matcher.tryMatching({
-    onMatched: (pairs) => {
-      pairs.forEach(pair => {
-        const groupId = crypto.randomUUID();
-        wssRegistry.groups.createGroup(
-          groupId, new Group(pair)
-        );
-
-        [pair.Sente, pair.Gote].forEach(c => {
-          c.send({
-            success: true,
-            command: "matching",
-            value: {
-              clientId: c.clientId,
-              groupId: groupId
-            }
-          })
-        });
-      }
-    )},
-    onFailure: () => {}
+  return client.send({
+    success: false,
+    errorName: "INTERNAL_ERROR"
   });
 }

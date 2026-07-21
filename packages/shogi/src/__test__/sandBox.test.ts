@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { Timer } from "../domain/entities/Timer/Timer";
+import { Timer } from "../domain/entities/Timer/Timer.js";
 
 describe("sandBox", () => {
   it("Timerのコールバック関数が過不足なく呼ばれる", () => {

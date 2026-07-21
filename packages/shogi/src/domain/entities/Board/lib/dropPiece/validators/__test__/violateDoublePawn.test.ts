@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { Board } from "../../../../Board.js";
 import { ShogiPieceNormal } from "../../../../../Piece/Piece.js";
-import type { Position } from "../../../../../types/algebraic.types.js";
 import { ShogiRulesError } from "../../../../../errors/shogiRules.error.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
 
 describe("将棋のルール", () => {
   it("2歩を禁止する", () => {

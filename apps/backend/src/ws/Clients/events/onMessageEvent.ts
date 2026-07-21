@@ -12,19 +12,10 @@ const messageRouter = (
   wssRegistry: WssRegistry
 ) => {
   switch (message.command) {
-    case "onConnection":
-      client.send({
-        success: true,
-        command: "onConnection",
-        value: {
-          clientId: client.clientId,
-          groupId: "unGrouped"
-        }
-      });
-      break;
-
-    case "matching":
+    case "startMatching":
       matchingLogic(client, wssRegistry, message);
+      break;
+    case "stopMatching":
       break;
 
     default:
@@ -44,7 +35,7 @@ export const onMessageEvent = (client: Client, wssRegistry: WssRegistry) => {
     ) {
       return client.send({
         success: false,
-        errorMessage: "BAD_REQUEST"
+        errorName: "BAD_REQUEST"
       });
     }
 
@@ -54,7 +45,7 @@ export const onMessageEvent = (client: Client, wssRegistry: WssRegistry) => {
     if (!parsed.success) {
       return client.send({
         success: false,
-        errorMessage: "BAD_REQUEST"
+        errorName: "BAD_REQUEST"
       });
     };
 
