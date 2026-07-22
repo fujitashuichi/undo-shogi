@@ -23,6 +23,6 @@ export const sessionMessageSchema = z.union([
   z.object({
     success: z.literal(true),
     command,
-    value: sessionDataSchema
+    body: sessionDataSchema
   })
 ]);

@@ -20,7 +20,7 @@ export const startMatching = (
           c.send({
             success: true,
             command: "matched",
-            value: {
+            body: {
               clientId: c.clientId,
               groupId: groupId
             }
