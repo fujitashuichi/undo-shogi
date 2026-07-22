@@ -3,7 +3,8 @@ import { clientMessageSchema, type ClientMessage } from "@packages/ws-messages";
 import type { Client } from "../Client";
 import { shogiLogic } from "./logic/shogiLogic";
 import type { WssRegistry } from "../../WssRegistry/WssRegistry";
-import { matchingLogic } from "./logic/matchingLogic";
+import { stopMatching } from "./logic/stopMatching";
+import { startMatching } from "./logic/startMatching";
 
 
 const messageRouter = (
@@ -13,9 +14,11 @@ const messageRouter = (
 ) => {
   switch (message.command) {
     case "startMatching":
-      matchingLogic(client, wssRegistry, message);
+      startMatching(client, wssRegistry);
       break;
+
     case "stopMatching":
+      stopMatching(client, wssRegistry);
       break;
 
     default:

@@ -21,6 +21,6 @@ export const shogiMessageSchema = z.union([
   z.object({
     success: z.literal(true),
     command,
-    value: z.object({ status: shogiStatusSchema })
+    body: z.object({ status: shogiStatusSchema })
   })
 ]);
