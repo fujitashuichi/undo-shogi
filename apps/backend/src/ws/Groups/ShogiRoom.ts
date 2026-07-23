@@ -1,4 +1,4 @@
-import { ShogiError, ShogiController, type Handicap, type NormalPieceKind, type ShogiTimerOptions, type Position } from "@packages/shogi";
+import { ShogiError, ShogiController, type Handicap, type NormalPieceKind, type ShogiTimerOptions, type Position, type ShogiStatus } from "@packages/shogi";
 
 
 type Props = {
@@ -13,7 +13,7 @@ export type ShogiResult =
   }
   | {
     success: true,
-    status: ShogiController["status"],
+    status: ShogiStatus,
     message: string
   };
 

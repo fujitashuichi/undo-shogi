@@ -27,7 +27,20 @@ export const shogiLogic = (
   executeShogi(
     (result) => {
       if (!result.success) {
+        return client.send({
+          type: "shogi",
+          command: message.command,
+          success: false,
+          errorName: result.errorName
+        });
       }
+
+      client.send({
+        type: "shogi",
+        command: message.command,
+        success: true,
+        body: { status: result.status }
+      })
     },
     shogiRoom,
     message
