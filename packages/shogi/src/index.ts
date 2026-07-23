@@ -8,6 +8,7 @@ export type { NormalPieceKind, PieceKind, PromotablePieceKind, PromotedPieceKind
 
 export { ShogiController } from "./domain/use-case/ShogiController.js";
 export { DomainError } from "./domain/use-case/errors/domainError.js";
+export { shogiErrorMessageSchema } from "./schemas/primitive/error.js";
 
 export { shogiStatusSchema, type ShogiStatus } from "./schemas/structural/shogiController.js"
 

@@ -1,3 +1,4 @@
+import type { ShogiErrorMessage } from "@/schemas/primitive/error.js";
 import { GameError } from "../../entities/errors/game.error.js";
 import { KifError } from "../../entities/errors/kif.error.js";
 import { LogicError } from "../../entities/errors/logic.error.js";
@@ -32,7 +33,7 @@ type Errors =
 
 const unexpectedErrorMessage = "予期しないエラーが発生しました。";
 
-const messageMap: Record<Errors["type"], string> = {
+const messageMap: Record<Errors["type"], ShogiErrorMessage> = {
   CHECK_MATED: "詰んでいます。",
   DOUBLE_PAWN: "二歩です。",
   DROP_PAWN_MATE: "打ち歩詰めのため打てません。",

@@ -1,27 +1,18 @@
-import type { ClientMessage } from "@packages/ws-messages";
+import type { ClientSessionMessage } from "@packages/ws-messages";
 import type { Client } from "../../Client";
-import { startMatching } from "../logic/startMatching";
+import { startMatching } from "./logic/session/startMatching";
 import type { WssRegistry } from "../../../WssRegistry/WssRegistry";
 
 export const sessionRouter = (
   client: Client,
   wssRegistry: WssRegistry,
-  command: ClientMessage["command"]
+  message: ClientSessionMessage
 ) => {
-  switch (command) {
-    case "startMatching":
-      startMatching(client, wssRegistry);
-      break;
+  if (message.command === "startMatching") {
+    return startMatching(client, wssRegistry);
+  }
 
-    case "stopMatching":
-      startMatching(client, wssRegistry);
-      break;
-
-    default:
-      client.send({
-        type: "none",
-        success: false,
-        errorName: "INTERNAL_ERROR"
-      });
+  if (message.command === "stopMatching") {
+    return startMatching(client, wssRegistry);
   }
 }

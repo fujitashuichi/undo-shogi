@@ -1,10 +1,10 @@
 import { z } from "zod";
-import { shogiMessageSchema } from "./shogiMessage.js";
-import { sessionMessageSchema } from "./sessionMessage.js";
+import { clientShogiMessageSchema } from "./shogiMessage.js";
+import { clientSessionMessageSchema } from "./sessionMessage.js";
 
 
 export const clientMessageSchema = z.union([
-  shogiMessageSchema,
-  sessionMessageSchema
+  clientShogiMessageSchema,
+  clientSessionMessageSchema
 ]);
 export type ClientMessage = z.infer<typeof clientMessageSchema>;

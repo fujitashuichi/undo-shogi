@@ -1,6 +1,6 @@
-import type { WssRegistry } from "../../../WssRegistry/WssRegistry";
-import type { Client } from "../../Client";
-import { Group } from "../../../Groups/Group";
+import type { WssRegistry } from "../../../../../WssRegistry/WssRegistry";
+import type { Client } from "../../../../Client";
+import { Group } from "../../../../../Groups/Group";
 
 export const startMatching = (
   client: Client,
@@ -13,7 +13,7 @@ export const startMatching = (
       pairs.forEach(pair => {
         const groupId = crypto.randomUUID();
         wssRegistry.groups.createGroup(
-          groupId, new Group(pair)
+          groupId, new Group(groupId, pair)
         );
 
         [pair.Sente, pair.Gote].forEach(c => {

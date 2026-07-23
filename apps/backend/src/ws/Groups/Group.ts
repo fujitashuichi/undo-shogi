@@ -15,9 +15,17 @@ export class Group {
   public shogiRoom: ShogiRoom | null = null;
 
   constructor(
+    public readonly groupId: UUID,
     public readonly clients: Clients
   ) {}
 
+
+  public get clientIds() {
+    return [
+      this.clients.Sente.clientId,
+      this.clients.Gote.clientId
+    ];
+  }
 
   public readonly sendAll = (message: ServerMessage) => {
     const clients = this.clients;
