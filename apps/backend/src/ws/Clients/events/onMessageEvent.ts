@@ -1,32 +1,8 @@
 import { decodeBinary } from "../../../lib/decodeClientMessage";
-import { clientMessageSchema, type ClientMessage } from "@packages/ws-messages";
+import { clientMessageSchema } from "@packages/ws-messages";
 import type { Client } from "../Client";
-import { shogiLogic } from "./logic/shogiLogic";
 import type { WssRegistry } from "../../WssRegistry/WssRegistry";
-import { stopMatching } from "./logic/stopMatching";
-import { startMatching } from "./logic/startMatching";
-
-
-const messageRouter = (
-  message: ClientMessage,
-  client: Client,
-  wssRegistry: WssRegistry
-) => {
-  switch (message.command) {
-    case "startMatching":
-      startMatching(client, wssRegistry);
-      break;
-
-    case "stopMatching":
-      stopMatching(client, wssRegistry);
-      break;
-
-    default:
-      shogiLogic(client, message);
-      break;
-  }
-}
-
+import { messageRouter } from "./router/messageRouter";
 
 export const onMessageEvent = (client: Client, wssRegistry: WssRegistry) => {
   const ws = client.ws;
@@ -37,6 +13,7 @@ export const onMessageEvent = (client: Client, wssRegistry: WssRegistry) => {
       !(data instanceof Buffer)
     ) {
       return client.send({
+        type: "none",
         success: false,
         errorName: "BAD_REQUEST"
       });
@@ -47,6 +24,7 @@ export const onMessageEvent = (client: Client, wssRegistry: WssRegistry) => {
     const parsed = clientMessageSchema.safeParse(decoded);
     if (!parsed.success) {
       return client.send({
+        type: "none",
         success: false,
         errorName: "BAD_REQUEST"
       });
