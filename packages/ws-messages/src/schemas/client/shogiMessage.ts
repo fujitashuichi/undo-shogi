@@ -9,6 +9,7 @@ const positionSchema = z.object({
 
 export const shogiMessageSchema = z.union([
   z.object({
+    type: z.literal("shogi"),
     command: z.literal("movePiece"),
     body: z.object({
       from: positionSchema,
@@ -17,6 +18,7 @@ export const shogiMessageSchema = z.union([
     })
   }),
   z.object({
+    type: z.literal("shogi"),
     command: z.literal("dropPiece"),
     body: z.object({
       to: positionSchema,
@@ -24,6 +26,7 @@ export const shogiMessageSchema = z.union([
     })
   }),
   z.object({
+    type: z.literal("shogi"),
     command: z.enum(["undo", "startGame", "stopGame"])
   })
 ]);

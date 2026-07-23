@@ -18,6 +18,7 @@ export const startMatching = (
 
         [pair.Sente, pair.Gote].forEach(c => {
           c.send({
+            type: "session",
             success: true,
             command: "matched",
             body: {

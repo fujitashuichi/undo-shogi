@@ -16,11 +16,13 @@ const sessionDataSchema = z.object({
 
 export const sessionMessageSchema = z.union([
   z.object({
+    type: z.literal("session"),
     success: z.literal(false),
     command,
     errorName: errorNameSchema
   }),
   z.object({
+    type: z.literal("session"),
     success: z.literal(true),
     command,
     body: sessionDataSchema

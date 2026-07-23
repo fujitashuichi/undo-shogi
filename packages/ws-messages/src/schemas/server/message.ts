@@ -8,6 +8,7 @@ export const serverMessageSchema = z.union([
   shogiMessageSchema,
   sessionMessageSchema,
   z.object({
+    type: z.literal("none"),
     success: false,
     errorName: errorNameSchema
   })
