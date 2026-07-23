@@ -1,4 +1,4 @@
-import { DomainError, ShogiController, type Handicap, type NormalPieceKind, type ShogiTimerOptions, type Position } from "@packages/shogi";
+import { ShogiError, ShogiController, type Handicap, type NormalPieceKind, type ShogiTimerOptions, type Position } from "@packages/shogi";
 
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 export type ShogiResult =
   | {
     success: false,
-    code: DomainError["code"]
+    errorName: ShogiError["errorName"]
   }
   | {
     success: true,
@@ -93,16 +93,16 @@ export class ShogiRoom {
         message
       };
     } catch (err) {
-      if (!(err instanceof DomainError)) {
+      if (!(err instanceof ShogiError)) {
         return {
           success: false,
-          code: "INTERNAL_ERROR"
+          errorName: "INTERNAL_ERROR"
         };
       }
 
       return {
         success: false,
-        code: err.code
+        errorName: err.errorName
       };
     }
   }

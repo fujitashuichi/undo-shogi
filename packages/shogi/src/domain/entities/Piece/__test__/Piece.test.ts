@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { pieceMotionValidator } from "../validators/motionValidator.js";
 import { Board } from "../../Board/Board.js";
-import type { Position } from "../../types/algebraic.types.js";
-import { PieceError } from "../../errors/piece.error.js";
+import type { Position } from "@/schemas/primitive/algebraic.js";
+import { PieceError } from "../../errors/pieceError.js";
 
 describe("pieceMotionVector", () => {
   it("他の駒を追い越せない", () => {

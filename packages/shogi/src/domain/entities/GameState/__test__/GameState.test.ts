@@ -2,9 +2,9 @@ import { describe, expect, it } from "vitest";
 import { GameState } from "../GameState.js";
 import { Board } from "../../Board/Board.js";
 import { checkedSquares } from "../validators/__mock__/checkedSquare.js";
-import { PieceError } from "../../errors/piece.error.js";
-import { MovementError } from "../../errors/movement.errors.js";
 import { Hands } from "../../Hands/Hands.js";
+import { PieceError } from "../../errors/pieceError.js";
+import { MovementError } from "../../errors/movementErrors.js";
 
 
 describe("GameState", () => {

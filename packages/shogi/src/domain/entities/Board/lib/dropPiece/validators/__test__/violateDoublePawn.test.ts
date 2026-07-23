@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { Board } from "../../../../Board.js";
 import { ShogiPieceNormal } from "../../../../../Piece/Piece.js";
-import { ShogiRulesError } from "../../../../../errors/shogiRules.error.js";
 import type { Position } from "@/schemas/primitive/algebraic.js";
+import { RulesError } from "@/domain/entities/errors/rulesError.js";
 
 describe("将棋のルール", () => {
   it("2歩を禁止する", () => {
@@ -17,7 +17,7 @@ describe("将棋のルール", () => {
     invalidPosList.forEach(pos => {
       expect(
         () => board.dropPiece(pos, new ShogiPieceNormal("Sente", "Pawn"))
-      ).toThrow(ShogiRulesError);
+      ).toThrow(RulesError);
     });
   });
 });

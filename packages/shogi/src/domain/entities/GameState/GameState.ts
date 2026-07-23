@@ -5,7 +5,7 @@ import { Hands } from "../Hands/Hands.js";
 import { isChecked } from "./validators/checkmate/isChecked.js";
 import { isCheckMated } from "./validators/checkmate/isCheckMated.js";
 import { handicapInitializers } from "./handicapInitializers.js";
-import { MovementError } from "../errors/movement.errors.js";
+import { MovementError } from "../errors/movementErrors.js";
 import { positionValidator } from "./validators/positionValidator.js";
 import { gameState_movePiece } from "./movePiece/movePiece.js";
 import type { NormalPieceKind } from "@/schemas/primitive/piece.js";

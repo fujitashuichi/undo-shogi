@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { Board } from "../Board.js";
 import { pawnInRowTwoSquares } from "../__mock__/pawnInRawTwoSquares.js";
 import { centerKnightsSquares } from "../__mock__/centerKnightsSquares.js";
-import { MovementError } from "../../errors/movement.errors.js";
+import { MovementError } from "../../errors/movementErrors.js";
 
 
 describe("成り強制手のバリデーション", () => {

@@ -2,7 +2,7 @@ import { type Prettify } from "@packages/tools";
 
 import { Game } from "../entities/Game/Game.js";
 import { Timer } from "../entities/Timer/Timer.js";
-import { domainErrorHandler } from "./errors/domainErrorHandler.js";
+import { shogiErrorHandler } from "./errors/shogiErrorHandler.js";
 import { ShogiController } from "./ShogiController.js";
 import { handicapSchema, type Handicap } from "@/schemas/primitive/handicap.js";
 
@@ -33,7 +33,7 @@ const handicapInitializers: HandicapMethods =
     acc[handicap] = (
       timerOptions: TimerOptions
     ) => {
-      return domainErrorHandler(() => {
+      return shogiErrorHandler(() => {
         return new ShogiController(
           Game.init[handicap](),
           new Timer(timerOptions)
@@ -50,7 +50,7 @@ export const initializers: Methods = {
   hirate: (
     timerOptions
   ) => {
-    return domainErrorHandler(() => {
+    return shogiErrorHandler(() => {
       return new ShogiController(
         Game.init.hirate(),
         new Timer(timerOptions)
@@ -61,7 +61,7 @@ export const initializers: Methods = {
   ...handicapInitializers,
 
   byKif: (timerOptions, kif) => {
-    return domainErrorHandler(() => {
+    return shogiErrorHandler(() => {
       return new ShogiController(
         Game.init.byKif(kif),
         new Timer(timerOptions)

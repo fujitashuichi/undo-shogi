@@ -1,4 +1,4 @@
-import { shogiErrorMessageSchema, shogiStatusSchema } from "@packages/shogi";
+import { shogiErrorNameSchema, shogiStatusSchema } from "@packages/shogi";
 import { z } from "zod";
 import { errorNameSchema } from "./errorName.js";
 
@@ -19,7 +19,7 @@ export const serverShogiMessageSchema = z.union([
     command,
     errorName: z.enum([
       ...errorNameSchema.options,
-      ...shogiErrorMessageSchema.options
+      ...shogiErrorNameSchema.options
     ])
   }),
   z.object({

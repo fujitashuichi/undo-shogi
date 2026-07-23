@@ -1,7 +1,7 @@
 import type { Board } from "../../../Board.js";
 import { boardConfig } from "../../../../config/boardConfig.js";
 import type { ShogiPiece } from "../../../../Piece/Piece.js";
-import { ShogiRulesError } from "../../../../errors/shogiRules.error.js";
+import { RulesError } from "../../../../errors/rulesError.js";
 import type { Position } from "@/schemas/primitive/algebraic.js";
 import type { Side } from "@/schemas/primitive/players.js";
 
@@ -17,8 +17,7 @@ export const violateDoublePawn = (board: Board, positionDropped: Position, side:
 
     // 持ち駒を打った側の 歩 のみカウントする
     const isCountablePawn = (
-      square &&
-      square!.kind === "Pawn" &&
+      square?.kind === "Pawn" &&
       square!.side === side
     ) || (
       y === positionDropped.y
@@ -28,7 +27,7 @@ export const violateDoublePawn = (board: Board, positionDropped: Position, side:
       pawnsPosList.push({ x: positionDropped.x, y });
 
       if (pawnsPosList.length > 1) {
-        throw new ShogiRulesError("DOUBLE_PAWN");
+        throw new RulesError("DOUBLE_PAWN");
       }
     };
   }

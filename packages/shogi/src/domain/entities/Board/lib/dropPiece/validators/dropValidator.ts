@@ -3,7 +3,7 @@ import { violateDoublePawn } from "./violateDoublePawn.js";
 import type { Board } from "../../../Board.js";
 import type { Position } from "@/schemas/primitive/algebraic.js";
 import type { ShogiPieceNormal } from "@/domain/entities/Piece/Piece.js";
-import { MovementError } from "@/domain/entities/errors/movement.errors.js";
+import { MovementError } from "@/domain/entities/errors/movementErrors.js";
 import { isInsideRange } from "@/tools/math/isInsideRange.js";
 
 

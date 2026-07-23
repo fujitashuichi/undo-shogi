@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { ShogiController } from '../ShogiController.js';
-import { DomainError } from '../errors/domainError.js';
+import { ShogiError } from '../errors/ShogiError.js';
 
 
 describe('ShogiController 統合テスト（自然な操作フロー）', () => {
@@ -67,7 +67,7 @@ describe('ShogiController 統合テスト（自然な操作フロー）', () => 
   });
 
 
-  it('無効な移動操作が行われた場合、domainErrorHandlerを通じて適切に処理されること', () => {
+  it('無効な移動操作が行われた場合、ShogiErrorHandlerを通じて適切に処理されること', () => {
     // 平手、持ち時間: 10分
     const controller = ShogiController.init.hirate({
       remainingSeconds: {
@@ -81,7 +81,7 @@ describe('ShogiController 統合テスト（自然な操作フロー）', () => 
     // 不正手エラーを伝播する
     expect(() => {
       controller.movePiece({ x: 7, y: 6 }, { x: 1, y: 1 }, false);
-    }).toThrow(DomainError);
+    }).toThrow(ShogiError);
   });
 
   it("初手はundoできない", () => {
@@ -96,8 +96,8 @@ describe('ShogiController 統合テスト（自然な操作フロー）', () => 
       () => controller.undo()
     ).toThrow(
       expect.objectContaining({
-        name: "DomainError",
-        code: "INVALID_UNDO"
+        name: "ShogiError",
+        errorName: "INVALID_UNDO"
       })
     );
   });

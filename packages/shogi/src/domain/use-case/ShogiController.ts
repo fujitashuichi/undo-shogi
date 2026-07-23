@@ -2,7 +2,7 @@ import type { NormalPieceKind } from "@/schemas/primitive/piece.js";
 import type { Position } from "@/schemas/primitive/algebraic.js";
 import type { Game } from "../entities/Game/Game.js";
 import type { Timer } from "../entities/Timer/Timer.js";
-import { domainErrorHandler } from "./errors/domainErrorHandler.js";
+import { shogiErrorHandler } from "./errors/shogiErrorHandler.js";
 import { initializers } from "./initializers.js";
 import type { ShogiStatus } from "@/schemas/structural/shogiController.js";
 
@@ -21,7 +21,7 @@ export class ShogiController {
 
 
   public get status(): ShogiStatus {
-    return domainErrorHandler((): ShogiStatus => {
+    return shogiErrorHandler((): ShogiStatus => {
       const history = this._game.status.history;
 
       return {
@@ -48,33 +48,33 @@ export class ShogiController {
 
 
   public readonly start = () => {
-    domainErrorHandler(() => {
+    shogiErrorHandler(() => {
       this._timer.startTimer();
     });
   }
   public readonly stop = () => {
-    domainErrorHandler(() => {
+    shogiErrorHandler(() => {
       this._timer.stopTimer();
     });
   }
 
 
   public readonly movePiece = (currentPos: Position, nextPos: Position, promote: boolean) => {
-    domainErrorHandler(() => {
+    shogiErrorHandler(() => {
       this._game = this._game.movePiece(currentPos, nextPos, promote);
       this._timer.turnSide();
     });
   }
 
   public readonly dropPiece = (position: Position, kind: NormalPieceKind) => {
-    domainErrorHandler(() => {
+    shogiErrorHandler(() => {
       this._game = this._game.dropPiece(position, kind);
       this._timer.turnSide();
     });
   }
 
   public readonly undo = () => {
-    domainErrorHandler(() => {
+    shogiErrorHandler(() => {
       this._game = this._game.undo();
       this._timer.undo();
     });
