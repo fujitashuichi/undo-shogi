@@ -3,7 +3,6 @@ import { Clients } from "../Clients/Clients";
 import { Groups } from "../Groups/Groups";
 import { Matcher } from "../Matcher/Matcher";
 import { setupWssRegistry } from "./setUpWssEvents";
-import type { UUID } from "node:crypto";
 
 
 export class WssRegistry {
@@ -23,10 +22,5 @@ export class WssRegistry {
     this.matcher = new Matcher();
 
     setupWssRegistry(this);
-  }
-
-
-  public readonly shogiRoom = (groupId: UUID) => {
-    return this.groups.group(groupId)?.shogiRoom;
   }
 }
