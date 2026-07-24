@@ -1,5 +1,5 @@
 import { logger } from "@packages/tools";
-import { NormalPieceKind, ShogiController, DomainError } from "@packages/shogi";
+import { NormalPieceKind, ShogiController, ShogiError } from "@packages/shogi";
 import { Coordinate } from "./types/position.type";
 import { coordinateToPosition } from "./lib/convertPosition";
 import { PlayShogiCtx } from "../playShogiContext";
@@ -23,7 +23,7 @@ const errorHandler = (func: () => ShogiController): Result => {
       status: structuredClone(controller.status)
     };
   } catch (err) {
-    if (err instanceof DomainError) {
+    if (err instanceof ShogiError) {
       return {
         success: false,
         message: err.message

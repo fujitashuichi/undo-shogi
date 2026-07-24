@@ -2,7 +2,7 @@ import type { ClientMessage } from "@packages/ws-messages";
 import type { WssRegistry } from "../../../WssRegistry/WssRegistry";
 import type { Client } from "../../Client";
 import { sessionRouter } from "./sessionRouter";
-import { shogiRouter } from "./shogiRouter";
+import { shogiLogic } from "./shogiLogic";
 
 export const messageRouter = (
   message: ClientMessage,
@@ -11,11 +11,11 @@ export const messageRouter = (
 ) => {
   switch (message.type) {
     case "session":
-      sessionRouter(client, wssRegistry, message.command);
+      sessionRouter(client, wssRegistry, message);
       break;
 
     case "shogi":
-      shogiRouter(client, wssRegistry, message.command);
+      shogiLogic(client, wssRegistry, message);
       break;
 
     default:

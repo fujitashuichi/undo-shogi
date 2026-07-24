@@ -3,7 +3,7 @@
  */
 
 import type { KifPosition, MoveAction } from "../types/types.js";
-import { KifError } from "../../../../errors/kif.error.js";
+import { KifError } from "../../../../errors/kifError.js";
 import { convertPosition } from "./lib/convertPosition.js";
 import { kifPieceMap } from "./lib/kifPieceMap.js";
 import { stringToNum } from "./lib/stringToNum.js";

@@ -4,7 +4,7 @@ import type { ShogiPiece } from "@/domain/entities/Piece/Piece.js";
 import type { Position } from "@/schemas/primitive/algebraic.js";
 import type { Side } from "@/schemas/primitive/players.js";
 import { pieceMotionValidator } from "@/domain/entities/Piece/validators/motionValidator.js";
-import { MovementError } from "@/domain/entities/errors/movement.errors.js";
+import { MovementError } from "@/domain/entities/errors/movementErrors.js";
 import { isInPromotionZone } from "@/domain/entities/lib/positions/isInArea/isInPromotionZone.js";
 
 

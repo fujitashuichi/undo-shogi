@@ -1,5 +1,5 @@
 import { logger } from "@packages/tools";
-import { PieceError } from "../../errors/piece.error.js";
+import { PieceError } from "../../errors/pieceError.js";
 import { promotedPieceKindSchema, type PieceKind } from "@/schemas/primitive/piece.js";
 
 

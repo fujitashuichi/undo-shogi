@@ -1,5 +1,5 @@
 import type { Position } from "@/schemas/primitive/algebraic.js";
-import { GameError } from "../errors/game.error.js";
+import { GameError } from "../errors/gameError.js";
 import type { GameState } from "../GameState/GameState.js";
 import { initializers } from "./initializers.js";
 import { kifToShogiPlayer } from "./playGame/kifToShogiPlayer.js";

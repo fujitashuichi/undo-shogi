@@ -14,7 +14,7 @@ const sessionDataSchema = z.object({
   ])
 });
 
-export const sessionMessageSchema = z.union([
+export const serverSessionMessageSchema = z.union([
   z.object({
     type: z.literal("session"),
     success: z.literal(false),
@@ -28,3 +28,4 @@ export const sessionMessageSchema = z.union([
     body: sessionDataSchema
   })
 ]);
+export type ServerSessionMessage = z.infer<typeof serverSessionMessageSchema>;

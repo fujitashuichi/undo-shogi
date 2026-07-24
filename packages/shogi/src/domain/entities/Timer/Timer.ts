@@ -1,6 +1,6 @@
 import type { Side } from "@/schemas/primitive/players.js";
 import type { RemainingSeconds } from "@/schemas/structural/timer.js";
-import { TimerError } from "../errors/timer.error.js";
+import { TimerError } from "../errors/timerError.js";
 
 
 type Options = {

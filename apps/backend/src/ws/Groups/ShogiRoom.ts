@@ -1,4 +1,4 @@
-import { DomainError, ShogiController, type Handicap, type NormalPieceKind, type ShogiTimerOptions, type Position } from "@packages/shogi";
+import { ShogiError, ShogiController, type Handicap, type NormalPieceKind, type ShogiTimerOptions, type Position, type ShogiStatus } from "@packages/shogi";
 
 
 type Props = {
@@ -6,14 +6,14 @@ type Props = {
   timerOptions: ShogiTimerOptions
 }
 
-type PlayResult =
+export type ShogiResult =
   | {
     success: false,
-    code: DomainError["code"]
+    errorName: ShogiError["errorName"]
   }
   | {
     success: true,
-    status: ShogiController["status"],
+    status: ShogiStatus,
     message: string
   };
 
@@ -39,14 +39,14 @@ export class ShogiRoom {
   }
 
 
-  public readonly startMatch = (): PlayResult => {
+  public readonly startGame = (): ShogiResult => {
     return this.handlePlay(
       `Start match.`,
       () => this._controller.start()
     );
   }
 
-  public readonly stopMatch = (): PlayResult => {
+  public readonly stopGame = (): ShogiResult => {
     return this.handlePlay(
       `Stop match.`,
       () => this._controller.stop()
@@ -56,7 +56,7 @@ export class ShogiRoom {
 
   public readonly movePiece = (
     currentPos: Position, nextPos: Position, promote: boolean
-  ): PlayResult => {
+  ): ShogiResult => {
     return this.handlePlay(
       `${this.currentSide} moved Piece.`,
       () => this._controller.movePiece(currentPos, nextPos, promote)
@@ -65,14 +65,14 @@ export class ShogiRoom {
 
   public readonly dropPiece = (
     position: Position, piece: NormalPieceKind
-  ): PlayResult => {
+  ): ShogiResult => {
     return this.handlePlay(
       `${this.currentSide} dropped Piece.`,
       () => this._controller.dropPiece(position, piece)
     )
   }
 
-  public readonly undo = (): PlayResult => {
+  public readonly undo = (): ShogiResult => {
     return this.handlePlay(
       `Undo ${this.currentSide}'s play.`,
       () => this._controller.undo()
@@ -83,7 +83,7 @@ export class ShogiRoom {
   private readonly handlePlay = (
     message: string,
     fn: () => void
-  ): PlayResult => {
+  ): ShogiResult => {
     try {
       fn();
 
@@ -93,16 +93,16 @@ export class ShogiRoom {
         message
       };
     } catch (err) {
-      if (!(err instanceof DomainError)) {
+      if (!(err instanceof ShogiError)) {
         return {
           success: false,
-          code: "INTERNAL_ERROR"
+          errorName: "INTERNAL_ERROR"
         };
       }
 
       return {
         success: false,
-        code: err.code
+        errorName: err.errorName
       };
     }
   }

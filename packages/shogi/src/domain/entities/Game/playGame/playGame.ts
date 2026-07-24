@@ -2,7 +2,7 @@ import type { Position } from "@/schemas/primitive/algebraic.js";
 import type { Game } from "../Game.js";
 import { checkGameEnd } from "../lib/checkGameEnd.js";
 import type { NormalPieceKind } from "@/schemas/primitive/piece.js";
-import { GameError } from "../../errors/game.error.js";
+import { GameError } from "../../errors/gameError.js";
 
 
 type PlayGameResult = {

@@ -1,6 +1,6 @@
 import type { Position } from "@/schemas/primitive/algebraic.js";
 import type { Board } from "../../../Board/Board.js";
-import { MovementError } from "../../../errors/movement.errors.js";
+import { MovementError } from "../../../errors/movementErrors.js";
 import { positionsUnderAttack } from "../../../lib/positions/positionsUnderAttack/positionsUnderAttack.js";
 import { searchPiecesBySide } from "../../../lib/searchPiecesBySide.js";
 import { isChecked } from "../../validators/checkmate/isChecked.js";

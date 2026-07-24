@@ -1,5 +1,5 @@
 import type { Position } from "@/schemas/primitive/algebraic.js";
-import { MovementError } from "../../errors/movement.errors.js";
+import { MovementError } from "../../errors/movementErrors.js";
 import type { ShogiPieceNormal } from "../../Piece/Piece.js";
 import { GameState } from "../GameState.js";
 import { isChecked } from "../validators/checkmate/isChecked.js";
