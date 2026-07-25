@@ -1,5 +1,7 @@
 import express from "express";
 import type { Request, Response } from "express"
+import { WssRegistry } from "./ws/WssRegistry/WssRegistry";
+import { logger } from "@packages/tools";
 
 const app = express();
 app.disable("x-powered-by");
@@ -12,6 +14,8 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+const server = app.listen(port, () => {
+  logger.info(`Server is running at http://localhost:${port}`);
 });
+
+const wssRegistry = new WssRegistry({ server });

@@ -13,7 +13,7 @@
     }
   },
   "scripts": {
-    "dev": "node ./src/index.ts",
+    "dev": "npx tsx watch ./src/index.ts",
     "build": "npx tsc && npx tsc-alias",
     "typecheck": "npx tsc --noemit",
     "test": "npx vitest"
