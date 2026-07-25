@@ -1,3 +1,4 @@
+import { logger } from "@packages/tools";
 import { Client } from "../Clients/Client";
 import type { WssRegistry } from "./WssRegistry";
 
@@ -9,5 +10,7 @@ export const setupWssRegistry = (wssRegistry: WssRegistry) => {
 
     const client = new Client(clientId, ws, wssRegistry);
     wssRegistry.clients.addClient(client);
+
+    logger.info(`client "${clientId}" connected.`);
   });
 }
