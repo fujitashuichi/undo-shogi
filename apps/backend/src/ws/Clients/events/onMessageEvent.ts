@@ -3,6 +3,7 @@ import { clientMessageSchema } from "@packages/ws-messages";
 import type { Client } from "../Client";
 import type { WssRegistry } from "../../WssRegistry/WssRegistry";
 import { messageRouter } from "./router/messageRouter";
+import { logger } from "@packages/tools";
 
 export const onMessageEvent = (client: Client, wssRegistry: WssRegistry) => {
   const ws = client.ws;
@@ -12,6 +13,7 @@ export const onMessageEvent = (client: Client, wssRegistry: WssRegistry) => {
       !isBinary ||
       !(data instanceof Buffer)
     ) {
+      logger.warn("Invalid dataType.");
       return client.send({
         type: "none",
         success: false,

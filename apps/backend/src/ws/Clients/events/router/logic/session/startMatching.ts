@@ -1,6 +1,7 @@
 import type { WssRegistry } from "../../../../../WssRegistry/WssRegistry";
 import type { Client } from "../../../../Client";
 import { Group } from "../../../../../Groups/Group";
+import { logger } from "@packages/tools";
 
 export const startMatching = (
   client: Client,
@@ -27,6 +28,8 @@ export const startMatching = (
             }
           })
         });
+
+        logger.trace(`Clients matched:\n  { Sente: "${pair.Sente.clientId}", Gote: "${pair.Gote.clientId}" }`)
       }
     )},
     onFailure: () => {}
