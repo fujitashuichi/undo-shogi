@@ -1,7 +1,7 @@
 import { describe, it } from "vitest";
 import { hashGameStates } from "../hashGameStates.js";
 import { executeActions } from "../executeActions.js";
-import { kifToActions } from "../../kif-formatter/kifToActions.js";
+import { kifToActions } from "../../kif-formatter/kifToActions/kifToActions.js";
 import { GameState } from "../../../../../GameState/GameState.js";
 import { vitest_checkArray } from "@packages/tools";
 

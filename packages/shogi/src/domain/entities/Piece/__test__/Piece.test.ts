@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { pieceMotionValidator } from "../validators/motionValidator.js";
+import { pieceMotionValidator } from "../validators/motionValidator/index.js";
 import { Board } from "../../Board/Board.js";
 import type { Position } from "@/schemas/primitive/algebraic.js";
 import { PieceError } from "../../errors/pieceError.js";
