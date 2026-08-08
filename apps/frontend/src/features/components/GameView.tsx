@@ -9,10 +9,10 @@ import { StopGameButton } from './StopGameButton';
 
 export function GameView({
   controller, gameStatus
-}: {
+}: Readonly<{
   controller: ShogiController,
   gameStatus: GameStatusCtx["gameStatus"]
-}) {
+}>) {
   const { player } = usePlayer();
   const { timeStrings } = useTimes();
 

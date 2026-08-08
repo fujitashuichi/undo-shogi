@@ -34,7 +34,7 @@ export class GameState {
   }
 
 
-  public static init = {
+  public static readonly init = {
     hirate: () => {
       return new GameState(
         Board.init.hirate(),

@@ -4,10 +4,10 @@ import { PlayerCtx } from '../contexts/player/playerContext';
 
 export function ShogiBoard({
   board, player
-}: {
+}: Readonly<{
   board: ShogiController["status"]["history"][number]["board"],
   player: PlayerCtx["player"]
-}) {
+}>) {
   return (
     <div>
       {
@@ -17,12 +17,10 @@ export function ShogiBoard({
 
             if (!square) {
               piece = <div></div>;
+            } else if (square.side === player.side) {
+              piece = <div>{square.piece}</div>;
             } else {
-              if (square.side === player.side) {
-                piece = <div>{square.piece}</div>;
-              } else {
-                piece = <div className="rotate-180">{square.piece}</div>
-              }
+              piece = <div className="rotate-180">{square.piece}</div>
             }
 
             return (<div key={`${y_idx}_${x_idx}`}>{piece}</div>)

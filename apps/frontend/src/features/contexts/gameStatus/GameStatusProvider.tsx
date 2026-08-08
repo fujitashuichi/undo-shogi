@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { GameStatusCtx, gameStatusCtx } from "./gameStatusContext";
 
 export function GameStatusProvider({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -10,10 +10,10 @@ export function GameStatusProvider({ children }: Readonly<{ children: React.Reac
     onGame: true
   });
 
-  const value = {
+  const value = useMemo(() => ({
     gameStatus,
     setGameStatus
-  }
+  }), [gameStatus, setGameStatus]);
 
 
   return (

@@ -6,7 +6,7 @@ import { ShogiController } from '@packages/shogi';
 import { useStopMatch } from './hooks/useStopMatch';
 
 
-export function StopGameButton({ controller }: { controller: ShogiController }) {
+export function StopGameButton({ controller }: Readonly<{ controller: ShogiController }>) {
   const { gameStatus } = useGameStatus();
   const { stopMatch } = useStopMatch(controller);
 
