@@ -2,7 +2,7 @@ import { GameState } from "../../GameState/GameState.js";
 import type { Game } from "../Game.js";
 import { checkGameEnd } from "./checkGameEnd.js";
 import { executeActions } from "./kif/kif-commands/executeActions.js";
-import { kifToActions } from "./kif/kif-formatter/kifToActions.js";
+import { kifToActions } from "./kif/kif-formatter/kifToActions/kifToActions.js";
 
 
 export const readKif = (kif: string): Game["status"] => {

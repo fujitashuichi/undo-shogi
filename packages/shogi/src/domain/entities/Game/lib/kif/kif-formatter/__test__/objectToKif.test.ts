@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { actionsToKif } from "../actionsToKif.js";
+import { actionsToKif } from "../actionsToKif/actionsToKif.js";
 
 describe("objectToKif", () => {
   it("moveオブジェクトを正常に棋譜化する", () => {
