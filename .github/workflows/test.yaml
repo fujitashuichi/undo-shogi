@@ -19,7 +19,7 @@ jobs:
         uses: pnpm/action-setup@b0f76dfb45f55f8421693e4803ac7bb65143bd34
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts
 
       - name: Run test
         run: |
