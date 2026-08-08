@@ -151,6 +151,9 @@ importers:
       '@packages/tools':
         specifier: workspace:*
         version: link:../../packages/tools
+      '@packages/ws-messages':
+        specifier: workspace:*
+        version: link:../../packages/ws-messages
       next:
         specifier: 'catalog:'
         version: 16.2.4(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
