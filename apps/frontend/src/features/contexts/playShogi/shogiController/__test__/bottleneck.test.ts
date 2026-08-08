@@ -34,7 +34,7 @@ describe("bottleneck test", () => {
     const duration = performance.now() - start;
 
     expect(duration).toBeLessThan(10);
-    expect(controller.status.history.length).toBe(106 + 1); // 初期局面が含まれるため、106手目のlengthは107
+    expect(controller.status.history).toHaveLength(106 + 1); // 初期局面が含まれるため、106手目のlengthは107
 
     console.log(styleText(["bgYellow", "red"], " info "), `106手目の処理に ${duration}ms かかりました。`)
 

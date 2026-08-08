@@ -58,7 +58,7 @@ export const kifToActions = (kifText: string): MoveAction[] => {
     const isDrop = line.includes("打") || (!fromXStr && !fromYStr && !toStr.startsWith("同"));
 
     if (isDrop) {
-      const piece = pieceStr.split(/[打]/)[0]!;
+      const piece = pieceStr.split(/打/)[0]!;
       const kind = kifPieceMap[piece];
 
       const parsed = normalPieceKindSchema.safeParse(kind);
