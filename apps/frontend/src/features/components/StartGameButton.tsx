@@ -6,7 +6,7 @@ import { ShogiController } from '@packages/shogi';
 import { useStartMatch } from './hooks/useStartMatch';
 
 
-export function StartGameButton({ controller }: { controller: ShogiController }) {
+export function StartGameButton({ controller }: Readonly<{ controller: ShogiController }>) {
   const { gameStatus } = useGameStatus();
   const { startMatch } = useStartMatch(controller);
 

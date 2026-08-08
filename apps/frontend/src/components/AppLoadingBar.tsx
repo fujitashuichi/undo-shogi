@@ -1,10 +1,10 @@
 import type React from "react"
 
-type Props = {
+type Props = Readonly<{
   className?: React.HTMLAttributes<HTMLDivElement>["className"],
   outerColorHex?: string,
   innerColorHex?: string
-}
+}>;
 
 export function AppLoadingBar({ className, innerColorHex, outerColorHex }: Props) {
   const baseStyle = "w-full h-5";
