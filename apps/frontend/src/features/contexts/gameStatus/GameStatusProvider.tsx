@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { GameStatusCtx, gameStatusCtx } from "./gameStatusContext";
 
-export function GameStatusProvider({ children }: { children: React.ReactNode }) {
+export function GameStatusProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [gameStatus, setGameStatus] = useState<GameStatusCtx["gameStatus"]>({
     winner: "Sente",
     giveUp: null,
