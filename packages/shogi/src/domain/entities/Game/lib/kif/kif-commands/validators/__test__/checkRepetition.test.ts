@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { checkRepetition } from "../checkRepetition.js";
 import { hashGameStates } from "../../hashGameStates.js";
 import { executeActions } from "../../executeActions.js";
-import { kifToActions } from "../../../kif-formatter/kifToActions.js";
+import { kifToActions } from "../../../kif-formatter/kifToActions/kifToActions.js";
 import { GameState } from "../../../../../../GameState/GameState.js";
 
 describe("checkRepetition", () => {

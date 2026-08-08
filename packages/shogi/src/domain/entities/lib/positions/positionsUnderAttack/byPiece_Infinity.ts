@@ -34,9 +34,7 @@ export const byPiece_Infinity = (
         if (square.side !== piece.side) {
           positionsUnderAttack.push({ x, y });
         }
-      };
-
-      if (!square) {
+      } else {
         positionsUnderAttack.push({ x, y });
       }
     }
