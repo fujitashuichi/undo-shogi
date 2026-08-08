@@ -1,7 +1,7 @@
 import { createInitialStateByKif } from "../lib/kif/createInitialStateByKif.js";
 import { Game } from "../Game.js";
 import { executeActions } from "../lib/kif/kif-commands/executeActions.js";
-import { kifToActions } from "../lib/kif/kif-formatter/kifToActions.js";
+import { kifToActions } from "../lib/kif/kif-formatter/kifToActions/kifToActions.js";
 import { checkGameEnd } from "../lib/checkGameEnd.js";
 
 
