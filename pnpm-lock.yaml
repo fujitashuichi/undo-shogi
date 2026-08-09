@@ -218,9 +218,6 @@ importers:
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
-      vitest:
-        specifier: 'catalog:'
-        version: 4.1.9(@types/node@25.9.4)(@vitest/ui@4.1.9)(happy-dom@20.10.6)(vite@8.0.14(@types/node@25.9.4)(jiti@2.7.0)(yaml@2.9.0))
 
   packages/ws-messages:
     dependencies:

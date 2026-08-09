@@ -1,6 +1,7 @@
 import type { WssRegistry } from "../../WssRegistry/WssRegistry";
 import type { Client } from "../Client";
 import { onMessageEvent } from "./onMessageEvent";
+import { logger } from "@packages/tools";
 
 
 const setEvents = (
@@ -17,6 +18,7 @@ const setEvents = (
 
   ws.on("close", () => {
     removeClient();
+    logger.info(`client "${client.clientId}" closed.`);
   });
 
   ws.on("error", () => {
