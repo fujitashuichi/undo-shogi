@@ -1,12 +1,10 @@
 "use client";
 
-import { createContext, RefObject, useContext } from "react";
+import { createContext, useContext } from "react";
 
-type Socket = RefObject<WebSocket | null>;
 type CreateNewConnection = () => void;
 
 type SocketCtx = {
-  socket: Socket,
   createNewConnection: CreateNewConnection
 }
 

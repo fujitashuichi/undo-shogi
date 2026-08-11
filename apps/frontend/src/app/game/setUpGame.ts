@@ -1,8 +1,8 @@
 "use client";
 
-import { useGameStatus } from "@/features/contexts/gameStatus/gameStatusContext";
-import { usePlayShogi } from "@/features/contexts/playShogi/playShogiContext";
-import { useTimes } from "@/features/contexts/times/timesContext";
+import { useGameStatus } from "@/features/local/contexts/gameStatus/gameStatusContext";
+import { usePlayShogi } from "@/features/local/contexts/playShogi/playShogiContext";
+import { useTimes } from "@/features/local/contexts/times/timesContext";
 import { ShogiController } from "@packages/shogi";
 import { useState } from "react";
 

@@ -1,11 +1,12 @@
 import { logger } from "@packages/tools";
 import { serverMessageSchema } from "@packages/ws-messages";
-import { SocketStatusCtx } from "../contexts/socketStatus";
+import { messageRouter } from "./messageRouter";
+import { ShogiCtx } from "../../Contexts/shogiCtx";
 
 
 export const onMessageEvent = (
   data: unknown,
-  setLastMessage: SocketStatusCtx["setLastMessage"]
+  shogiCtx: ShogiCtx
 ) => {
   const parsed = serverMessageSchema.safeParse(data);
 
@@ -15,7 +16,5 @@ export const onMessageEvent = (
   }
 
   const message = parsed.data;
-  setLastMessage(message);
-
-  // メッセージに応じた処理を行う
+  messageRouter(message, shogiCtx);
 }

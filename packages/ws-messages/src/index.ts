@@ -6,3 +6,4 @@ export { clientSessionMessageSchema, type ClientSessionMessage } from "./schemas
 
 export { serverShogiMessageSchema, type ServerShogiMessage } from "./schemas/server/shogiMessage.js";
 export { serverSessionMessageSchema, type ServerSessionMessage } from "./schemas/server/sessionMessage.js";
+export { serverSystemMessageSchema, type ServerSystemMessage } from "./schemas/server/systemMessage.js";

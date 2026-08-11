@@ -4,19 +4,20 @@ import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { socketCtx } from "./socket";
 import { useSocketStatus } from "./socketStatus";
 import { setupWsEvents } from "../lib/wsEvents";
+import { useShogi } from "../../Contexts/shogiCtx";
 
 
 const BE_URL = "ws://localhost:3000";
 
 export function SocketProvider({ children }: Readonly<{ children: React.ReactNode }>) {
-  const { setStatus, setLastMessage } = useSocketStatus();
+  const shogiCtx = useShogi();
 
   const socket = useRef<WebSocket | null>(null);
 
   const createNewConnection = useCallback(() => {
     socket.current = new WebSocket(BE_URL);
-    setupWsEvents(socket.current, setStatus, setLastMessage);
-  }, [setStatus, setLastMessage]);
+    setupWsEvents(socket.current, shogiCtx);
+  }, [shogiCtx]);
 
 
   useEffect(() => {
@@ -32,8 +33,8 @@ export function SocketProvider({ children }: Readonly<{ children: React.ReactNod
 
 
   const value = useMemo(() => ({
-    socket, createNewConnection
-  }), [socket, createNewConnection]);
+    createNewConnection
+  }), [createNewConnection]);
 
 
   return (

@@ -20,7 +20,7 @@ export const messageRouter = (
 
     default:
       client.send({
-        type: "none",
+        type: "system",
         success: false,
         errorName: "BAD_REQUEST"
       })

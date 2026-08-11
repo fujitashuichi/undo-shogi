@@ -1,5 +1,5 @@
-import { useGameStatus } from "@/features/contexts/gameStatus/gameStatusContext";
-import { usePlayShogi } from "@/features/contexts/playShogi/playShogiContext";
+import { useGameStatus } from "@/features/local/contexts/gameStatus/gameStatusContext";
+import { usePlayShogi } from "@/features/local/contexts/playShogi/playShogiContext";
 import { ShogiController } from "@packages/shogi";
 
 export const useStartMatch = (controller: ShogiController) => {
