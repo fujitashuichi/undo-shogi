@@ -4,7 +4,7 @@ import React from "react";
 import { ShogiErrorProvider } from "../errors/contexts/ShogiErrorProvider";
 import { ShogiSessionProvider } from "../session/contexts/ShogiSessionProvider";
 import { ShogiStateProvider } from "../shogiState/contexts/ShogiStateProvider";
-import { SocketProvider } from "../ws/contexts/SocketProvider";
+import { WebSocketProvider } from "../ws/contexts/WebSocketProvider";
 
 
 export function ShogiProvider({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -12,9 +12,9 @@ export function ShogiProvider({ children }: Readonly<{ children: React.ReactNode
     <ShogiErrorProvider>
     <ShogiSessionProvider>
     <ShogiStateProvider>
-      <SocketProvider>
+      <WebSocketProvider>
         {children}
-      </SocketProvider>
+      </WebSocketProvider>
     </ShogiStateProvider>
     </ShogiSessionProvider>
     </ShogiErrorProvider>
