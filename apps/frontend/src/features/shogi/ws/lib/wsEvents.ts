@@ -1,13 +1,15 @@
 import { logger } from "@packages/tools";
 import { onMessageEvent } from "./onMessageEvent";
-import { SocketStatusCtx } from "../contexts/socketStatus";
+import { ShogiCtx } from "../../Contexts/shogiCtx";
 
 
 export const setupWsEvents = (
   ws: WebSocket,
-  setStatus: SocketStatusCtx["setStatus"],
-  setLastMessage: SocketStatusCtx["setLastMessage"]
+  shogiCtx: ShogiCtx
 ) => {
+  const { socketStatusCtx } = shogiCtx;
+  const { setStatus } = socketStatusCtx;
+
   ws.onopen = () => {
     setStatus("opened");
     logger.info("Connection opened successfully.");
@@ -24,6 +26,6 @@ export const setupWsEvents = (
   }
 
   ws.onmessage = (event) => {
-    onMessageEvent(event.data, setLastMessage);
+    onMessageEvent(event.data, shogiCtx);
   }
 }

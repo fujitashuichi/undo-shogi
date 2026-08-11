@@ -1,9 +1,9 @@
 "use client";
 
 import { AppLoadingBar } from "@/components/AppLoadingBar";
-import { GameView } from "@/features/components/GameView";
-import { useGameStatus } from "@/features/contexts/gameStatus/gameStatusContext";
-import { usePlayShogi } from "@/features/contexts/playShogi/playShogiContext";
+import { GameView } from "@/features/local/components/GameView";
+import { useGameStatus } from "@/features/local/contexts/gameStatus/gameStatusContext";
+import { usePlayShogi } from "@/features/local/contexts/playShogi/playShogiContext";
 import { useEffect } from "react";
 import { useSetupGame } from "./setUpGame";
 

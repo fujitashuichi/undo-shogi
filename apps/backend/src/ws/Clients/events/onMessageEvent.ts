@@ -15,7 +15,7 @@ export const onMessageEvent = (client: Client, wssRegistry: WssRegistry) => {
     ) {
       logger.warn("Invalid dataType.");
       return client.send({
-        type: "none",
+        type: "system",
         success: false,
         errorName: "BAD_REQUEST"
       });
@@ -26,7 +26,7 @@ export const onMessageEvent = (client: Client, wssRegistry: WssRegistry) => {
     const parsed = clientMessageSchema.safeParse(decoded);
     if (!parsed.success) {
       return client.send({
-        type: "none",
+        type: "system",
         success: false,
         errorName: "BAD_REQUEST"
       });

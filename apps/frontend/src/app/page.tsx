@@ -1,7 +1,7 @@
 "use client";
 
-import { SocketStatusView } from "@/features/ws/components/SocketStatusView";
-import { WebSocketProvider } from "@/features/ws/contexts/WebSocketProvider";
+import { SocketStatusView } from "@/features/shogi/ws/components/SocketStatusView";
+import { WebSocketProvider } from "@/features/shogi/ws/contexts/WebSocketProvider";
 
 export default function Home() {
   return (
