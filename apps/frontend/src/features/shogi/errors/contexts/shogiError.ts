@@ -2,7 +2,7 @@ import { ShogiError } from "@packages/shogi";
 import { createContext, Dispatch, SetStateAction, useContext } from "react";
 
 
-type ErrorName = ShogiError["errorName"] | null;
+type ErrorName = ShogiError["errorName"] | "BAD_REQUEST" | null;
 
 export type ShogiErrorCtx = {
   errorName: ErrorName,
