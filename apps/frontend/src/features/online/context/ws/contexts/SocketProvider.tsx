@@ -2,8 +2,8 @@
 
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { socketCtx } from "./socketCtx";
-import { setupWsEvents } from "@/features/shogi/ws/lib/wsEvents";
 import { useShogi } from "../../shogiCtx";
+import { setupWsEvents } from "@/features/online/ws/wsEvents";
 
 
 const BE_URL = "ws://localhost:3000";

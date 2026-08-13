@@ -1,4 +1,4 @@
-import { ShogiCtx } from "@/features/shogi/contexts/shogiCtx";
+import { ShogiCtx } from "@/features/online/context/shogiCtx";
 import { ServerShogiMessage } from "@packages/ws-messages";
 
 export const shogiLogic = (
