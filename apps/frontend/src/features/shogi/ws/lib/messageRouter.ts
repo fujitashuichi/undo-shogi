@@ -3,7 +3,7 @@ import { ServerMessage } from "@packages/ws-messages";
 import { sessionLogic } from "./logic/session/sessionLogic";
 import { systemLogic } from "./logic/system/systemLogic";
 import { shogiLogic } from "./logic/shogi/shogiLogic";
-import { ShogiCtx } from "../../Contexts/shogiCtx";
+import { ShogiCtx } from "../../contexts/shogiCtx";
 
 export const messageRouter = (
   message: ServerMessage,

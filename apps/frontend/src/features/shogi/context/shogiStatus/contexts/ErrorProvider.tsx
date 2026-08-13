@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { ShogiErrorCtx, shogiErrorCtx } from "./shogiError";
+import { ShogiErrorCtx, shogiErrorCtx } from "./ErrorCtx";
 
 export function ShogiErrorProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [errorName, setErrorName] = useState<ShogiErrorCtx["errorName"]>(null);

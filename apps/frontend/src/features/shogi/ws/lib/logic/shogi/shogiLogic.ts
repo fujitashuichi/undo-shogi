@@ -1,13 +1,13 @@
-import { ShogiCtx } from "@/features/shogi/Contexts/shogiCtx";
+import { ShogiCtx } from "@/features/shogi/contexts/shogiCtx";
 import { ServerShogiMessage } from "@packages/ws-messages";
 
 export const shogiLogic = (
   message: ServerShogiMessage,
   shogiCtx: ShogiCtx
 ) => {
-  const { shogiErrorCtx, shogiStateCtx } = shogiCtx;
+  const { shogiErrorCtx, shogiStatusCtx } = shogiCtx;
   const { setErrorName } = shogiErrorCtx;
-  const { setStatus, setCurrentBoard, setCurrentTime } = shogiStateCtx;
+  const { setStatus, setCurrentBoard, setCurrentTime } = shogiStatusCtx;
 
   if (!message.success) {
     setErrorName(message.errorName);

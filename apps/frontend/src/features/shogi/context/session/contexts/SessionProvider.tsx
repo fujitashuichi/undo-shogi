@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ShogiSessionCtx, sessionCtx } from "./shogiSessionCtx";
+import { ShogiSessionCtx, sessionCtx } from "./sessionCtx";
 
 export function ShogiSessionProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [status, setStatus] = useState<ShogiSessionCtx["status"]>("idle");

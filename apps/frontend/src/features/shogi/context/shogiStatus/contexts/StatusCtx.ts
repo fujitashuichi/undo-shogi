@@ -5,17 +5,17 @@ type Status = ShogiStatus | null;
 type CurrentTime = ShogiStatus["remainingSeconds"] | null;
 type CurrentBoard = ShogiStatus["history"][number] | null;
 
-export type ShogiStateCtx = {
+export type ShogiStatusCtx = {
   status: Status,             setStatus: Dispatch<SetStateAction<Status>>
   currentTime: CurrentTime,   setCurrentTime: Dispatch<SetStateAction<CurrentTime>>
   currentBoard: CurrentBoard, setCurrentBoard: Dispatch<SetStateAction<CurrentBoard>>
 }
 
 
-export const shogiStateCtx = createContext<ShogiStateCtx | null>(null);
+export const shogiStatusCtx = createContext<ShogiStatusCtx | null>(null);
 
-export const useShogiState = () => {
-  const ctx = useContext(shogiStateCtx);
+export const useShogiStatus = () => {
+  const ctx = useContext(shogiStatusCtx);
 
   if (!ctx) throw new Error("useShogiState must be used within ShogiStateProvider.");
   return ctx;

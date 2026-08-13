@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef } from "react";
-import { socketCtx } from "./socket";
-import { useSocketStatus } from "./socketStatus";
-import { setupWsEvents } from "../lib/wsEvents";
-import { useShogi } from "../../Contexts/shogiCtx";
+import { socketCtx } from "./socketCtx";
+import { setupWsEvents } from "@/features/shogi/ws/lib/wsEvents";
+import { useShogi } from "../../shogiCtx";
 
 
 const BE_URL = "ws://localhost:3000";
