@@ -1,8 +1,8 @@
 import { ShogiSessionCtx, useShogiSession } from "./session/contexts/sessionCtx";
-import { SessionErrorCtx, useSessionError } from "./session/contexts/sessionErrorCtx";
-import { ShogiErrorCtx, useShogiError } from "./shogiStatus/contexts/ErrorCtx";
-import { ShogiStatusCtx, useShogiStatus } from "./shogiStatus/contexts/StatusCtx";
+import { SessionErrorCtx, useSessionError } from "./session/contexts/ErrorCtx";
 import { SocketStatusCtx, useSocketStatus } from "./ws/contexts/socketStatus";
+import { ShogiStatusCtx, useShogiStatus } from "./gameStatus/contexts/StatusCtx";
+import { ShogiErrorCtx, useShogiError } from "./gameStatus/contexts/ErrorCtx";
 
 export type ShogiCtx = {
   socketStatusCtx: SocketStatusCtx,

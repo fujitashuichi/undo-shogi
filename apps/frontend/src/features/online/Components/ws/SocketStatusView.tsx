@@ -1,6 +1,6 @@
 "use client";
 
-import { useSocketStatus } from "../../contexts/ws/contexts/socketStatus";
+import { useSocketStatus } from "../../context/ws/contexts/socketStatus";
 
 
 export function SocketStatusView() {

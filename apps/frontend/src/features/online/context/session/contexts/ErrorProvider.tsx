@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { SessionErrorCtx, sessionErrorCtx } from "./sessionErrorCtx";
+import { SessionErrorCtx, sessionErrorCtx } from "./ErrorCtx";
 
 export function SessionErrorProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [errorName, setErrorName] = useState<SessionErrorCtx["errorName"]>(null);

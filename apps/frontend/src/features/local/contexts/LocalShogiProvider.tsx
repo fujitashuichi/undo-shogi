@@ -4,7 +4,7 @@ import { TimesProvider } from "./times/TimesProvider";
 import { GameStatusProvider } from "./gameStatus/GameStatusProvider";
 import { PlayShogiProvider } from "./playShogi/PlayShogiProvider";
 
-export function ShogiProvider({ children }: Readonly<{ children: React.ReactNode }>) {
+export function LocalShogiProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <PlayerProvider>
       <TimesProvider>

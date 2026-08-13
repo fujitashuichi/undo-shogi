@@ -1,19 +1,19 @@
 "use client";
 
 import React from "react";
-import { ShogiStatusProvider } from "./shogiStatus/contexts/StatusProvider";
 import { SessionProvider } from "./session/SessionProvider";
 import { WebSocketProvider } from "./ws/WebSocketProvider";
+import { GameStatusProvider } from "./gameStatus/GameStatusProvider";
 
 
-export function ShogiProvider({ children }: Readonly<{ children: React.ReactNode }>) {
+export function OnlineShogiProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ShogiStatusProvider>
+    <GameStatusProvider>
       <SessionProvider>
         <WebSocketProvider>
           {children}
         </WebSocketProvider>
       </SessionProvider>
-    </ShogiStatusProvider>
+    </GameStatusProvider>
   )
 }

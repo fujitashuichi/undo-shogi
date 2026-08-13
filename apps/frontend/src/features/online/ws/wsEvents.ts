@@ -1,6 +1,6 @@
 import { logger } from "@packages/tools";
+import { ShogiCtx } from "../context/shogiCtx";
 import { onMessageEvent } from "./onMessageEvent";
-import { ShogiCtx } from "../../contexts/shogiCtx";
 
 
 export const setupWsEvents = (

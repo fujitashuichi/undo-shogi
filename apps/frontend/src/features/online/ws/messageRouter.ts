@@ -1,9 +1,9 @@
 import { logger } from "@packages/tools";
 import { ServerMessage } from "@packages/ws-messages";
-import { sessionLogic } from "./logic/session/sessionLogic";
+import { ShogiCtx } from "../context/shogiCtx";
 import { systemLogic } from "./logic/system/systemLogic";
+import { sessionLogic } from "./logic/session/sessionLogic";
 import { shogiLogic } from "./logic/shogi/shogiLogic";
-import { ShogiCtx } from "../../contexts/shogiCtx";
 
 export const messageRouter = (
   message: ServerMessage,
