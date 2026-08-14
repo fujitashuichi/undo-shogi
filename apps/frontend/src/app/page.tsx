@@ -1,7 +1,7 @@
 "use client";
 
 import { SocketStatusView } from "@/features/online/Components/ws/SocketStatusView";
-import { ShogiErrorProvider } from "@/features/online/context/gameStatus/contexts/ErrorProvider";
+import { ShogiErrorProvider } from "@/features/online/contexts/gameStatus/contexts/ErrorProvider";
 
 export default function Home() {
   return (

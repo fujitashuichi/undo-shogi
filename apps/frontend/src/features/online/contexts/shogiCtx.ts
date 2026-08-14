@@ -3,6 +3,7 @@ import { SessionErrorCtx, useSessionError } from "./session/contexts/ErrorCtx";
 import { SocketStatusCtx, useSocketStatus } from "./ws/contexts/socketStatus";
 import { ShogiStatusCtx, useShogiStatus } from "./gameStatus/contexts/StatusCtx";
 import { ShogiErrorCtx, useShogiError } from "./gameStatus/contexts/ErrorCtx";
+import { SystemErrorCtx, useSystemError } from "./system/contexts/errorCtx";
 
 export type ShogiCtx = {
   socketStatusCtx: SocketStatusCtx,
@@ -11,7 +12,9 @@ export type ShogiCtx = {
   shogiErrorCtx: ShogiErrorCtx,
 
   sessionCtx: ShogiSessionCtx,
-  sessionErrorCtx: SessionErrorCtx
+  sessionErrorCtx: SessionErrorCtx,
+
+  systemErrorCtx: SystemErrorCtx
 }
 
 export const useShogi = (): ShogiCtx => {
@@ -22,6 +25,8 @@ export const useShogi = (): ShogiCtx => {
     shogiErrorCtx: useShogiError(),
 
     sessionCtx: useShogiSession(),
-    sessionErrorCtx: useSessionError()
+    sessionErrorCtx: useSessionError(),
+
+    systemErrorCtx: useSystemError()
   };
 }
