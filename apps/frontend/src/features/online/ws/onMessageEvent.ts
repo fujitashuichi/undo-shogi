@@ -1,7 +1,7 @@
 import { logger } from "@packages/tools";
 import { serverMessageSchema } from "@packages/ws-messages";
 import { messageRouter } from "./messageRouter";
-import { ShogiCtx } from "../context/shogiCtx";
+import { ShogiCtx } from "../contexts/shogiCtx";
 
 
 export const onMessageEvent = (

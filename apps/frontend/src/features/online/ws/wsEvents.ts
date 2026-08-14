@@ -1,5 +1,5 @@
 import { logger } from "@packages/tools";
-import { ShogiCtx } from "../context/shogiCtx";
+import { ShogiCtx } from "../contexts/shogiCtx";
 import { onMessageEvent } from "./onMessageEvent";
 
 
